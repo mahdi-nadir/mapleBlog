@@ -1,0 +1,15 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Roboto:wght@300&family=Rubik&display=swap');
+
+/* import welcome page css file */
+@import 'welcome.css';
+@import 'login.css';
+@import 'register.css';
+@import 'form.css';
+@import 'guestLayout.css';
+
+body {
+    font-family: 'Roboto', sans-serif;
+}

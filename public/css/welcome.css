@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Pacifico&family=Roboto:wght@300&family=Rubik&display=swap');
+
+.bodyLanding {
+    background: url(../img/mapleleaf.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} 
+
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+    color: black;
+    text-align: center;
+    font-size: 26pt;
+    width: 60%; 
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.landingPage a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 20px;
+    text-decoration: none;
+    font-size: clamp(12pt, 18pt, 22pt);
+    font-weight: bold;
+    color: white;
+    background-color: #c63030;
+    border-radius: 4px;
+    transition: background-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.landingPage a:hover {
+    background-color: #be4b28;
+    transform: scale(1.05);
+}
+
+.titreLanding {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.titreLanding h1 {
+    font-family: 'Barriecito', cursive;
+}
+
+.titreLanding .neverAlone {
+    text-decoration: underline;
+}
+
+.titreLanding h3 {
+    font-family:'Barriecito', cursive;
+    font-family: 'Pacifico', cursive;
+}
+
+.liens {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.liens a {
+    display: inline-block;
+    width: 240px;
+    text-transform: uppercase;
+    font-size: 18pt;
+}
+
+@media screen and (max-width: 650px) {
+    .bodyLanding {
+        background: url(../img/mapleleafsmall2.jpg);
+        background-repeat: no-repeat; 
+        background-position: center -200px;
+        background-attachment: fixed;
+    }
+
+    .landingPage {
+        font-size: 18pt;
+        left: 50%;
+        width: 400px;
+        color: white;
+    }
+
+    .liens {
+        flex-direction: column;
+    }
+
+    .liens a {
+        font-size: 12pt;
+        width: 180px;
+    }
+}

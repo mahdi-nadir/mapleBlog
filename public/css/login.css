@@ -1,0 +1,51 @@
+.loginSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.loginField {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.signature a {
+    color: white;
+    font-weight: bold;
+}
+
+.forgotPassword {
+    display: inline-block;
+    color: white;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 8pt;
+    width: fit-content;
+    margin-top: -8px;
+    margin-left: 45%;
+}
+
+
+@media screen and (max-width: 650px) {
+    .loginSection {
+        width: 80%;
+    }
+}
+    
+
