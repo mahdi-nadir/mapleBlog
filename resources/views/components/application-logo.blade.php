@@ -1,1 +1,1 @@
-<img src="/img/logowhite.png" alt="Website Logo" id="logo">
+<img src="/img/maplelogo.png" alt="Website Logo" id="logo">

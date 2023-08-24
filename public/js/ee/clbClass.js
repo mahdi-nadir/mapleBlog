@@ -208,7 +208,7 @@ tefBtn.addEventListener('click', () => {
         } else {
             let tefScore = [Number(tefReadingScore.innerHTML), Number(tefListeningScore.innerHTML), Number(tefWritingScore.innerHTML), Number(tefSpeakingScore.innerHTML)];
             let min = Math.min(...tefScore);
-            finalResultTef.innerHTML = `Your CLB is <b class="underline">${min}</b>`;
+            finalResultTef.innerHTML = `Your CLB is ${min}`;
         }
     })
 

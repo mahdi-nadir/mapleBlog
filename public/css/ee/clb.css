@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 .languageButtons {
     width: fit-content;
     margin: 0 auto;
@@ -15,23 +30,24 @@
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+    width: 140px;
     transition: all 0.3s ease-in-out;
 }
 
-.btnTef {
+.btnTef, #tefResultBtn {
     background-color: aqua;
 }
 
-.btnTcf {
-    background-color: #fff;
+.btnTcf, #tcfResultBtn {
+    background-color: #fd6a6a;
 }
 
-.btnIelts {
-    background-color: #ff6767;
+.btnIelts, #ieltsResultBtn {
+    background-color: #f7e706;
 }
 
-.btnCelpip {
-    background-color: #c6bbeb;
+.btnCelpip, #celpipResultBtn {
+    background-color: #7cff54;
 }
 
 .btnLanguage:hover {
@@ -40,16 +56,133 @@
 
 .tef, .tcf, .ielts, .celpip {
     text-align: center;
-    width: 500px;
+    width: 40%;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid #fff;
     border-radius: 10px;
     margin-top: 2rem;
+}
+
+.tef {
+    border: 2px solid aqua;
+}
+
+.tcf {
+    border: 2px solid #fd6a6a;
+}
+
+.ielts {
+    border: 2px solid #f7e706;
+}
+
+.celpip {
+    border: 2px solid #7cff54;
+}
+
+.resultDiv {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.tef .resultDiv {
+    color: aqua;
+}
+
+.tcf .resultDiv {
+    color: #fd6a6a;
+}
+
+.ielts .resultDiv {
+    color: #f7e706;
+}
+
+.celpip .resultDiv {
+    color: #7cff54;
+}
+
+#tefResultBtn, #tcfResultBtn, #ieltsResultBtn, #celpipResultBtn, #tefResetBtn, #tcfResetBtn, #ieltsResetBtn, #celpipResetBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 140px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 1rem;
+}
+
+.tef div , .tcf div , .ielts div , .celpip div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .tef .title , .tcf .title , .ielts .title , .celpip .title {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Black Ops One', cursive;
+    letter-spacing: 1px;
+}
+
+.tef label , .tcf label , .ielts label , .celpip label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tef input , .tcf input , .ielts input , .celpip input {
+    padding: 0.2rem 1rem;
+    text-align: center;
+}
+
+.skillScoreArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 40%;
+    position: relative;
+}
+
+.skillScore {
+    color: white;
+    font-size: 20pt;
+    margin-top: 0.5rem;
+    position: absolute;
+    top: -8px;
+    right: -18px;
+    font-weight: bold;
+}
+
+.result {
+    margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 650px) {
+    .tef, .tcf, .ielts, .celpip {
+        width: 80%;
+    }
+
+    .canadaLangSpan {
+        display: none;
+    }
+
+    .btnLanguage {
+        width: 90px;
+    }
+
+    .languageButtons {
+        flex-direction: column;
+    }
+
+    .skillScore {
+        font-size: 14pt;
+        top: -4px;
+    }
 }

@@ -3,8 +3,8 @@
 
                 <!-- Logo -->
                 <div>
-                    <a href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
-                        <x-application-logo />
+                    <a id="linklogo" href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
+                        <div class="logoarea"><x-application-logo /><span id="spanLogo">MapleMind</span></div>
                     </a>
                 </div>
 

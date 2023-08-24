@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Roboto:wght@300&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 #navbar {
     display: flex;
@@ -22,9 +23,32 @@
     box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
 }
 
-#logo {
-    width: 160px;
+.logoarea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    color: #eee;
+    font-family: 'Black Ops One', cursive;
+    font-size: 16pt;
+    font-weight: bold;
+    text-transform: uppercase;
 }
+
+#linklogo {
+    text-decoration: none;
+}
+
+#logo {
+    width: 60px;
+}
+
+/* #labelLogo {
+    all: initial;
+    
+} */
 
 #navbarOptions, #userOptions {
     display: flex;
@@ -101,4 +125,28 @@
 
 .userLink.logout:hover  {
     color: #c63030;
+}
+
+@media screen and (max-width: 600px) {
+    /* #navbar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #navbarOptions, #userOptions {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #navbarOptions li ul, #userOptions li ul {
+        top: 50px;
+    } */
+
+    #linklogo span {
+        display: none;
+    }
 }
