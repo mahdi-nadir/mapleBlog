@@ -8,11 +8,11 @@
             <form class="formulaire" method="POST" action="{{ route('login') }}"> 
                 @csrf
                 
-                <div class="form_title_login">Log in</div>
+                <div class="form_title">Log in</div>
 
                 <!-- Email Address -->
                 <div>
-                    <div class="loginField">
+                    <div class="formField">
                         <x-input-label for="email" :value="__('Email')" id="emailLabel"/>
                         <div>
                             <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="off" autofocus class="login__input"/>
@@ -23,7 +23,7 @@
 
                 <!-- Password -->
                 <div>
-                    <div class="loginField">
+                    <div class="formField">
                         <x-input-label for="password" :value="__('Password')" id="passwordLabel"/>
                         <div id="passwordDiv">
                             <x-text-input id="password" type="password" name="password" required autocomplete="current-password" class="login__input"/>
@@ -46,7 +46,7 @@
 
                     <div class="signature">
                         <a href="{{ route('register') }}">
-                            {{ __('Don\'t have an account?') }}
+                            {{ __('Don\'t have an account? Register') }}
                         </a>
 
                         <x-primary-button class="cta">

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Roboto:wght@300&family=Rubik&display=swap');
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+    position: relative;
+    color: white;
+}
+
+#navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+#logo {
+    width: 160px;
+}
+
+#navbarOptions, #userOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+#userOptions {
+    gap: 1rem;
+}
+
+#navbarOptions > li {
+    list-style-type: none;
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 16px 5px;
+}
+
+#navbarOptions li ul, #userOptions li ul {
+    display: none;
+    position: absolute;
+    top: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: #0f0f0f;
+    border-top: none;
+    min-width: 250px;
+    list-style-type: none;
+    z-index: 22;
+    padding-top: 10px;
+}
+
+#navbarOptions li ul *, #userOptions li ul * {
+    all: initial;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    text-indent: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#navbarOptions li ul *:hover, #userOptions li ul *:hover {
+    text-decoration: underline;
+}
+
+#navbarOptions li:hover ul, #userOptions li:hover ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.7rem;
+    padding: 5px;
+}
+
+#navbarOptions li:hover, #userOptions li:hover {
+    color: yellow;
+}
+
+.userLink {
+    text-decoration: none;
+    color: white;
+    font-size: 16pt;
+}
+
+.userLink.profile:hover  {
+    color: #12b16f;
+}
+
+.userLink.logout:hover  {
+    color: #c63030;
+}

@@ -9,13 +9,7 @@
     padding: 20px;
 }
 
-.loginField {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: .6rem;
-}
+
 
 .signature {
     display: flex;

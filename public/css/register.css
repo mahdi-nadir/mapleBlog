@@ -1,4 +1,4 @@
-.registerSection {
+/* .registerSection {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -6,16 +6,16 @@
     width: 30%;
     text-align: center;
     color: white;
-    /* padding: 20px; */
-}
+    padding: 20px;
+} */
 
-.registerField {
+/* .registerField {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: .6rem;
-}
+} */
 
 .confirmPasswordRegister {
     margin-top: 2rem;

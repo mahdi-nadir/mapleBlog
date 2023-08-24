@@ -12,25 +12,30 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- <link rel="stylesheet" href="/css/app.css"> --}}
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
+        {{-- <script src="{{ asset('js/ee/main.js') }}" defer type="module"></script> --}}
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <body>
+        <div class="mainContainer">
+            <div>
+                @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+                <!-- Page Heading -->
+                @if (isset($header))
+                    <header>
+                        <div>
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endif
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
     </body>
 </html>

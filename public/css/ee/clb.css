@@ -1,0 +1,55 @@
+.languageButtons {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btnLanguage {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnTef {
+    background-color: aqua;
+}
+
+.btnTcf {
+    background-color: #fff;
+}
+
+.btnIelts {
+    background-color: #ff6767;
+}
+
+.btnCelpip {
+    background-color: #c6bbeb;
+}
+
+.btnLanguage:hover {
+    transform: scale(1.05);
+}
+
+.tef, .tcf, .ielts, .celpip {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.tef .title , .tcf .title , .ielts .title , .celpip .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}

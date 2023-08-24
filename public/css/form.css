@@ -15,7 +15,26 @@
     padding: 10px 0;
   }
 
-  .form_title_login, .form_title_register {
+  .formSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    text-align: center;
+    color: white;
+    /* padding: 20px; */
+}
+
+  .formField {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+  .form_title {
     text-align: center;
     font-size: 30px;
     color: white;

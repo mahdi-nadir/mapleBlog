@@ -9,7 +9,8 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />        
+        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />  
+        {{-- <script src="{{ asset('js/ee/main.js') }}" type="module"></script>       --}}
     </head>
     <body class="bodyLanding">
         <div class="landingPage">
