@@ -18,10 +18,22 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'role_id' => 2,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'imgUser_id' => fake()->numberBetween(1, 3),
+            'gender_id' => 1,
+            'date_of_birth' => fake()->date(),
+            'country_id' => fake()->numberBetween(1, 10),
+            'system_id' => 2,
+            'diploma_id' => fake()->numberBetween(1, 3),
+            'noc_id' => fake()->numberBetween(1, 19),
+            'eligibility_score' => fake()->numberBetween(0, 100),
+            'crs_score' => fake()->numberBetween(300, 1000),
+            'step_id' => 1,
+            'is_banned' => fake()->boolean(),
             'remember_token' => Str::random(10),
         ];
     }

@@ -180,5 +180,5 @@
             </div>
         </div>
     </section>
-    <script src="{{ asset('js/ee/clbClass.js') }}"></script>
+    {{-- <script src="{{ asset('js/ee/clbClass.js') }}"></script> --}}
     </x-app-layout>

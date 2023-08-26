@@ -3,7 +3,7 @@
 
                 <!-- Logo -->
                 <div>
-                    <a id="linklogo" href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
+                    <a id="linklogo" class="homeLink" href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
                         <div class="logoarea"><x-application-logo /><span id="spanLogo">MapleMind</span></div>
                     </a>
                 </div>
@@ -19,27 +19,27 @@
                     <li id="expressEntry">
                         {{ __('Express Entry') }}
                         <ul>
-                            <x-nav-link :href="route('ee.eligibility')" :active="request()->routeIs('ee.eligibility')">
+                            <x-nav-link id="eligibilityCalculatorLink" :href="route('ee.eligibility')" :active="request()->routeIs('ee.eligibility')">
                                 {{ __('eligibility calculator') }}
                             </x-nav-link>
                             
-                            <x-nav-link :href="route('ee.crs')" :active="request()->routeIs('ee.crs')">
+                            <x-nav-link id="crsLink" :href="route('ee.crs')" :active="request()->routeIs('ee.crs')">
                                 {{ __('crs') }}
                             </x-nav-link>
                             
-                            <x-nav-link :href="route('ee.clb')" :active="request()->routeIs('ee.clb')">
+                            <x-nav-link id="nclcLink" :href="route('ee.clb')" :active="request()->routeIs('ee.clb')">
                                 {{ __('clb') }}
                             </x-nav-link>
                             
-                            <x-nav-link :href="route('ee.suggestedpnp')" :active="request()->routeIs('ee.suggestedpnp')">
+                            <x-nav-link id="suggestedpnpLink" :href="route('ee.suggestedpnp')" :active="request()->routeIs('ee.suggestedpnp')">
                                 {{ __('suggested pnp') }}
                             </x-nav-link>
                             
-                            {{-- <x-nav-link :href="route('ebooks')" :active="request()->routeIs('ebooks')">
+                            {{-- <x-nav-link id="ebooksLink" :href="route('ebooks')" :active="request()->routeIs('ebooks')">
                                 {{ __('ebooks') }}
                             </x-nav-link> --}}
                             
-                            <x-nav-link :href="route('ee.extrainfo')" :active="request()->routeIs('ee.extrainfo')">
+                            <x-nav-link id="extraInfoLink" :href="route('ee.extrainfo')" :active="request()->routeIs('ee.extrainfo')">
                                 {{ __('extraInfo') }}
                             </x-nav-link>
                         </ul>

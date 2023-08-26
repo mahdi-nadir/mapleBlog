@@ -15,13 +15,12 @@
         {{-- <link rel="stylesheet" href="/css/app.css"> --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
-        {{-- <script src="{{ asset('js/ee/main.js') }}" defer type="module"></script> --}}
     </head>
     <body>
         <div class="mainContainer">
             <div>
                 @include('layouts.navigation')
-
+                
                 <!-- Page Heading -->
                 @if (isset($header))
                     <header>
@@ -29,13 +28,14 @@
                             {{ $header }}
                         </div>
                     </header>
-                @endif
-
-                <!-- Page Content -->
-                <main>
-                    {{ $slot }}
-                </main>
+                    @endif
+                    
+                    <!-- Page Content -->
+                    <main>
+                        {{ $slot }}
+                    </main>
+                </div>
             </div>
-        </div>
+            <script src="{{ asset('js/ee/main.js') }}" type="module"></script>
     </body>
 </html>
