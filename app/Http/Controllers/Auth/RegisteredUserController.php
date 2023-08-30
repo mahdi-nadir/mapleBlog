@@ -57,7 +57,9 @@ class RegisteredUserController extends Controller
         ]);
 
         $dob = $request->input('yob') . '-' . $request->input('mob') . '-' . $request->input('dob');
-
+        if ($request->gender_id == NULL || $request->gender_id == '') {
+            $request->gender_id = '1';
+        }
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
