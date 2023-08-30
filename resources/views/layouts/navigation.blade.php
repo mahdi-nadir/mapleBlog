@@ -2,7 +2,12 @@
     <div class="container m-auto flex flex-row justify-between items-center">
         <h1>
             <a id="linklogo" class="inline-flex p-y text-xl tracking-wider font-bold" href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
-                {{-- <div class="w-[80px]"> --}}{{-- <x-application-logo /> --}}logo ici{{-- </div><span class="text-white">MapleMind</span> --}}
+                <div class="flex flex-row justify-center items-center gap-2">
+                    <div class="w-[55px] hover:scale-110">
+                        <x-application-logo />
+                    </div>
+                    <span class="text-white">MapleMind</span>
+                </div>
             </a>
         </h1>
     {{-- </div> --}}
@@ -69,14 +74,14 @@
         </ul>
 
         <div id="userMenu" class="flex flex-row justify-center items-center gap-4 md:gap-8">
-            <button id="dark-mode-toggle" class="text-white px-2"><i class="fa-solid fa-moon"></i></button>
-            <x-responsive-nav-link :href="route('profile.edit')" class="userLink profile px-2" title="{{ Auth::user()->username }}">
-                <i class="fa-solid fa-user"></i>
+            <button id="dark-mode-toggle" class="text-white"></button>
+            <x-responsive-nav-link :href="route('profile.edit')" class="px-2" title="{{ Auth::user()->username }}">
+                <i class="fa-solid fa-user text-xl md:text-2xl hover:text-green-400"></i>
             </x-responsive-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="userLink logout px-2">
-                    <i class="fa-solid fa-right-from-bracket"></i>
+                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="px-2">
+                    <i class="fa-solid fa-right-from-bracket text-xl md:text-2xl hover:text-red-400"></i>
                 </x-responsive-nav-link>
             </form>
         </div>
@@ -90,16 +95,34 @@
 </div>
 </nav>
 @if (Auth::user()->img_user_id == NULL)
-    <section class="userNotice">
-        please update your profile 
-    </section>
+<x-responsive-nav-link :href="route('profile.edit')" title="{{ __('Update Profile') }}">
+    <section class="mt-2 bg-red-500 p-4 font-bold text-white w-full rounded-lg border-black dark:border-white border-2 uppercase hover:bg-red-600">
+            {{ __('please update your profile') }} 
+        </section>
+        </x-responsive-nav-link>
 @endif
 <script>
     const toggleDarkMode = () => {
-        document.documentElement.classList.toggle('dark');
+        const isDarkMode = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('darkMode', isDarkMode);
+        updateDarkModeIcon(isDarkMode);
+    };
+
+    const updateDarkModeIcon = (isDarkMode) => {
+        const darkModeToggle = document.querySelector('#dark-mode-toggle');
+        darkModeToggle.innerHTML = isDarkMode
+            ? '<i class="fa-solid fa-sun text-xl md:text-2xl"></i>'
+            : '<i class="fa-solid fa-moon text-xl md:text-2xl px-1"></i>';
     };
 
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     darkModeToggle.addEventListener('click', toggleDarkMode);
+
+    const storedDarkMode = localStorage.getItem('darkMode');
+    if (storedDarkMode === 'true') {
+        toggleDarkMode();
+    } else {
+        updateDarkModeIcon(false);
+    }
 </script>
 
