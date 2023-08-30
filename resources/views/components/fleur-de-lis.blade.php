@@ -1,0 +1,1 @@
+<img src="/img/quebeclily.png" alt="Arrima system icon">
