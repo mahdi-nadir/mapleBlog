@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark {
+    --tw-bg-opacity: 1;
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+  }
+  
+  .dark .dark-text {
+    color: var(--tw-text-opacity, 1);
+  }
+
+
+
+.body {
+    /* min-height: 100%; */
+    /* background-color: #010101; */
+    /* background-color: #eee; */
+}
+
+.bodyLanding {
+    background: url(/public/img/mapleleaf.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.mainContainer {
+    max-width: 1200px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #999;
+    /* background-color: #ddd; */
+}
+
+
+/* navbar */
+/* #navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    position: relative;
+    color: white;
+} */
+
+#navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.8);
+}
+
+#navbarOptions li ul {
+    display: none;
+}
+
+#navbarOptions li ul *, #navbarOptions li {
+    font-family: 'Roboto', sans-serif;
+}
+
+#navbarOptions li:hover ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.7rem;
+    padding: 5px;
+}
+
+#burger {
+    display: none;
+}
+
+#labelburger {
+    display: none;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    #linklogo span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .bodyLanding {
+        background: url(/public/img/mapleleafsmall2.jpg);
+        background-repeat: no-repeat; 
+        background-position: center -200px;
+        background-attachment: fixed;
+    }
+
+    #labelburger {
+        display: block;
+    }
+
+    #burger:checked + .navBig,
+    #burger:checked + #labelburger + .navSmall {
+        display: flex;
+    }
+
+    /* #navbarOptions {
+        display: none;
+    } */
+}

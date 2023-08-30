@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ArrimaController;
-use App\Http\Controllers\ExpressEntryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArrimaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ExpressEntryController;
 
 
 
@@ -31,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/express-entry/clb-calculator', [ExpressEntryController::class, 'clb'])->name('ee.clb');
     Route::get('/express-entry/suggested-pnp', [ExpressEntryController::class, 'suggestedpnp'])->name('ee.suggestedpnp');
     Route::get('/express-entry/extra-info', [ExpressEntryController::class, 'extrainfo'])->name('ee.extrainfo');
+
+    // Route::get('/essai', [UserController::class, 'index']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

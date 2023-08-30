@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\ImgUser;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +18,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
+        $image == NULL ? $image = 'default.png' : $image = $image->path;
         return view('profile.edit', [
             'user' => $request->user(),
+            'image' => $image,
         ]);
     }
 
@@ -26,13 +31,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // $user->gender_id = $request->input('gender_id');
+
+        $user->system_id = $request->input('system_id');
+
+        $user->diploma_id = $request->input('diploma_id');
+
+        $user->noc_id = $request->input('noc_id');
+
+        $user->step_id = $request->input('step_id');
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

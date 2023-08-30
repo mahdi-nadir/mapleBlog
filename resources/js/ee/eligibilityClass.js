@@ -9,7 +9,6 @@ export default class eligibilityClass {
         // this.translator.loadTranslations();
 
 
-
         this.main = document.querySelector('main');
         this.count = 0;
         this.educationScore = 0;

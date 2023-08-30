@@ -13,12 +13,11 @@
 
         <!-- Scripts -->
         {{-- <link rel="stylesheet" href="/css/app.css"> --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <div class="mainContainer">
-            <div>
+    <body class="mainContainer dark:bg-black dark:text-white mx-auto">
                 @include('layouts.navigation')
                 
                 <!-- Page Heading -->
@@ -28,14 +27,12 @@
                             {{ $header }}
                         </div>
                     </header>
-                    @endif
+                @endif
                     
-                    <!-- Page Content -->
-                    <main>
-                        {{ $slot }}
-                    </main>
-                </div>
-            </div>
-            <script src="{{ asset('js/ee/main.js') }}" type="module"></script>
+                <!-- Page Content -->
+                <main class="">
+                    {{ $slot }}
+                </main>
+            {{-- <script src="{{ asset('js/ee/main.js') }}" type="module"></script> --}}
     </body>
 </html>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('content', 600);
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
+            $table->unsignedBigInteger('img_post_id')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
@@ -28,6 +29,10 @@ return new class extends Migration
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
+                ->cascadeOnDelete();
+
+            $table->foreign('img_post_id')
+                ->references('id')->on('img_posts')
                 ->cascadeOnDelete();
         });
     }

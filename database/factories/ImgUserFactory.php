@@ -17,7 +17,7 @@ class ImgUserFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'path' => $this->faker->imageUrl(640, 480, 'animals', true, 'cats'),
+            'token' => $this->faker->unique()->word(),
         ];
     }
 }

@@ -23,18 +23,21 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'role_id' => 2,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'imgUser_id' => fake()->numberBetween(1, 3),
+            'img_user_id' => NULL,
             'gender_id' => 1,
             'date_of_birth' => fake()->date(),
-            'country_id' => fake()->numberBetween(1, 10),
+            // 'dob' => fake()->numberBetween(1, 31),
+            // 'mob' => fake()->numberBetween(1, 12),
+            // 'yob' => fake()->numberBetween(1900, 2021),
+            // 'country' => 'Canada',
             'system_id' => 2,
             'diploma_id' => fake()->numberBetween(1, 3),
             'noc_id' => fake()->numberBetween(1, 19),
             'eligibility_score' => fake()->numberBetween(0, 100),
             'crs_score' => fake()->numberBetween(300, 1000),
             'step_id' => 1,
-            'is_banned' => fake()->boolean(),
-            'remember_token' => Str::random(10),
+            'is_banned' => false,
+            // 'remember_token' => Str::random(10),
         ];
     }
 

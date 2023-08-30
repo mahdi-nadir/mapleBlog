@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('img_users', function (Blueprint $table) {
             $table->id();
             $table->string('path', 255);
+            // $table->string('token', 100)->default('default');
             $table->timestamps();
         });
     }

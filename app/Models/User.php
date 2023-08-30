@@ -70,15 +70,15 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function imgUser()
+    public function profileImage()
     {
         return $this->hasOne(ImgUser::class);
     }
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
+    // public function country()
+    // {
+    //     return $this->belongsTo(Country::class);
+    // }
 
     public function system()
     {

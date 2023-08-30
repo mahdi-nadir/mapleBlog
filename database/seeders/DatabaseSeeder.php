@@ -50,11 +50,11 @@ class DatabaseSeeder extends Seeder
         Step::factory()->create(['name' => 'landing']);
         Step::factory()->create(['name' => 'citizenship']);
 
-        ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/000/fff']);
-        ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/555/fff']);
-        ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/999/fff']);
+        // ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/000/fff']);
+        // ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/555/fff']);
+        // ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/999/fff']);
 
-        Country::factory(20)->create();
+        // Country::factory(20)->create();
 
         Noc::factory(20)->create();
 
@@ -66,12 +66,12 @@ class DatabaseSeeder extends Seeder
         User::factory(20)->create();
 
 
+
+        // ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/000']);
+        // ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/555']);
+        // ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/999']);
+
         Post::factory(20)->create();
-
-        ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/000']);
-        ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/555']);
-        ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/999']);
-
         Comment::factory(20)->create();
 
         Message::factory(20)->create();
