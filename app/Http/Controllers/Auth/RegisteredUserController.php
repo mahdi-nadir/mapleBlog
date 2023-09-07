@@ -71,7 +71,7 @@ class RegisteredUserController extends Controller
             // 'dob' => 1,
             // 'mob' => 1,
             // 'yob' => 2000,
-            'system_id' => NULL,
+            'system_id' => 1,
             'diploma_id' => 1,
             'noc_id' => 1,
             'step_id' => 1,

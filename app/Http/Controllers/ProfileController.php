@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\ImgUser;
+use App\Models\Noc;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use App\Models\ImgUser;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Diploma;
+use App\Models\Step;
+use App\Models\System;
 
 class ProfileController extends Controller
 {
@@ -18,11 +22,19 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $systems = System::all();
+        $diplomas = Diploma::all();
+        $steps = Step::all();
+        $nocs = Noc::all();
         $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
         $image == NULL ? $image = 'default.png' : $image = $image->path;
         return view('profile.edit', [
             'user' => $request->user(),
             'image' => $image,
+            'nocs' => $nocs,
+            'steps' => $steps,
+            'diplomas' => $diplomas,
+            'systems' => $systems,
         ]);
     }
 

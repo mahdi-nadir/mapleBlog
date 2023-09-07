@@ -9,6 +9,8 @@ export default {
       display: ['group-focus'],
       opacity: ['group-focus'],
       inset: ['group-focus'],
+      // object-fit
+      objectFit: ['resposive'],
     },
   },
   plugins: [],

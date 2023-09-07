@@ -30,6 +30,7 @@ return new class extends Migration
             $table->unsignedBigInteger("noc_id")->nullable();
             $table->integer("eligibility_score")->default(0)->max(100)->min(0);
             $table->integer("crs_score")->default(0)->max(1200)->min(0);
+            $table->integer("arrima_score")->default(0)->max(100)->min(0);
             $table->unsignedBigInteger("step_id")->nullable();
             $table->boolean("is_banned")->default(false);
             $table->rememberToken();

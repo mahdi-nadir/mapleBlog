@@ -93,7 +93,7 @@
     </button> --}}
 </div>
 </nav>
-@if (Auth::user()->gender_id == NULL || Auth::user()->system_id == NULL || Auth::user()->noc_id == NULL)
+@if (Auth::user()->diploma_id == 1 || Auth::user()->system_id == 1 || Auth::user()->noc_id == 1)
     <x-responsive-nav-link :href="route('profile.edit')" title="{{ __('Update Profile') }}">
         <section class="mt-1 bg-red-500 p-4 font-bold text-white w-full rounded-lg border-black dark:border-white border-2 uppercase hover:bg-red-600">
                 {{ __('please update your profile') }} <i class="fa-solid fa-angles-right animate-pulse"></i>

@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'img_post_id' => NULL,
             'likes' => $this->faker->numberBetween(0, 100),
             'dislikes' => $this->faker->numberBetween(0, 100),
-            'category_id' => $this->faker->numberBetween(1, 3),
+            'category_id' => $this->faker->numberBetween(1, 9),
             'user_id' => $this->faker->numberBetween(1, 20),
         ];
     }

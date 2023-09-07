@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nocs', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10);
+            $table->string('code', 10)->nullable();
             $table->timestamps();
         });
     }

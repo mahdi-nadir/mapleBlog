@@ -17,7 +17,7 @@ class NocFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => $this->faker->numberBetween(1, 20),
+            // 'code' => $this->faker->numberBetween(1, 20),
         ];
     }
 }

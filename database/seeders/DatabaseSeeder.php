@@ -27,28 +27,38 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            CategorySeeder::class,
+            ImgUserSeeder::class,
+            RoleSeeder::class,
+            GenderSeeder::class,
+            SystemSeeder::class,
+            DiplomaSeeder::class,
+            StepSeeder::class,
+            NocSeeder::class,
+        ]);
 
-        Role::factory()->create(['type' => 'admin']);
-        Role::factory()->create(['type' => 'user']);
+        // Role::factory()->create(['type' => 'admin']);
+        // Role::factory()->create(['type' => 'user']);
 
-        Gender::factory()->create(['name' => 'male']);
-        Gender::factory()->create(['name' => 'female']);
+        // Gender::factory()->create(['name' => 'male']);
+        // Gender::factory()->create(['name' => 'female']);
 
-        System::factory()->create(['name' => 'Arrima']);
-        System::factory()->create(['name' => 'Express Entry']);
+        // System::factory()->create(['name' => 'Arrima']);
+        // System::factory()->create(['name' => 'Express Entry']);
 
-        Diploma::factory()->create(['level' => 'Baccalauréat']);
-        Diploma::factory()->create(['level' => 'Master']);
-        Diploma::factory()->create(['level' => 'PhD']);
+        // Diploma::factory()->create(['level' => 'Baccalauréat']);
+        // Diploma::factory()->create(['level' => 'Master']);
+        // Diploma::factory()->create(['level' => 'PhD']);
 
-        Step::factory()->create(['name' => 'Pre-ITA']);
-        Step::factory()->create(['name' => 'ITA']);
-        Step::factory()->create(['name' => 'Post-ITA']);
-        Step::factory()->create(['name' => 'Post-AOR']);
-        Step::factory()->create(['name' => 'PPR']);
-        Step::factory()->create(['name' => 'post-COPR']);
-        Step::factory()->create(['name' => 'landing']);
-        Step::factory()->create(['name' => 'citizenship']);
+        // Step::factory()->create(['name' => 'Pre-ITA']);
+        // Step::factory()->create(['name' => 'ITA']);
+        // Step::factory()->create(['name' => 'Post-ITA']);
+        // Step::factory()->create(['name' => 'Post-AOR']);
+        // Step::factory()->create(['name' => 'PPR']);
+        // Step::factory()->create(['name' => 'post-COPR']);
+        // Step::factory()->create(['name' => 'landing']);
+        // Step::factory()->create(['name' => 'citizenship']);
 
         // ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/000/fff']);
         // ImgUser::factory()->create(['path' => 'https://dummyimage.com/600x400/555/fff']);
@@ -56,12 +66,13 @@ class DatabaseSeeder extends Seeder
 
         // Country::factory(20)->create();
 
-        Noc::factory(20)->create();
+        // Noc::factory(20)->create();
+        // NocSeeder::class;
 
-        Category::factory()->create(['name' => 'immigration']);
-        Category::factory()->create(['name' => 'job']);
-        Category::factory()->create(['name' => 'housing']);
-        Category::factory()->create(['name' => 'process']);
+        // Category::factory()->create(['name' => 'immigration']);
+        // Category::factory()->create(['name' => 'job']);
+        // Category::factory()->create(['name' => 'housing']);
+        // Category::factory()->create(['name' => 'process']);
 
         User::factory(20)->create();
 

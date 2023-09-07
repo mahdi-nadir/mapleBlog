@@ -1,5 +1,5 @@
 <section>
-    <header>
+    {{-- <header> --}}
         {{-- <h2>
             {{ __('Profile Information') }}
         </h2> --}}
@@ -7,13 +7,13 @@
         {{-- <p>
             {{ __("Update your account's profile information and email address.") }}
         </p> --}}
-    </header>
+    {{-- </header> --}}
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}">
+    <form method="post" action="{{ route('profile.update') }}" class="flex flex-col justify-center items-center gap-4">
         @csrf
         @method('patch')
         
@@ -23,12 +23,12 @@
             <x-input-error  :messages="$errors->get('username')" />
         </div> --}}
 
-        <div>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2">
             <x-input-label class="label" for="username" :value="__('Username')" />
                 <h3>{{ $user->username }}</h3>
         </div>
 
-        <div>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2">
             <x-input-label class="label" for="email" :value="__('Email')" />
             <h3>{{ $user->email }}</h3>
 
@@ -51,73 +51,76 @@
             @endif
         </div>
 
+        
 
         <div>
-            <x-input-label class="label" for="gender" :value="__('gender')" />
-            <h4>current data: {{ Auth::user()->gender->name }}</h4>
-            <x-input-error  :messages="$errors->get('gender')" />
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+                <x-input-label class="label" for="gender" :value="__('Gender')" />
+                <h4>{{ Auth::user()->gender->name == NULL ? 'not set' : Auth::user()->gender->name }}</h4>
+            </div>
+            <x-input-error :messages="$errors->get('gender')" />
         </div>
 
-        <x-input-label class="label" for="date_of_birth" :value="__('date_of_birth')" />
-        <div class="birthday">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+        <x-input-label class="label" for="date_of_birth" :value="__('Date of Birth')" />
+        {{-- <div class="birthday"> --}}
             <div>
-                <x-input-label for="dob" :value="__('Day')" />
-                <h3 value="{{ explode('-',Auth::user()->date_of_birth)[2] }}">{{ explode('-',Auth::user()->date_of_birth)[2] }}</h3>
+                {{-- <x-input-label for="dob" :value="__('Day')" /> --}}
+                <h3>{{ explode('-',Auth::user()->date_of_birth)[2] }}/{{ explode('-',Auth::user()->date_of_birth)[1] }}/{{ explode('-',Auth::user()->date_of_birth)[0] }}</h3>
                 <x-input-error  :messages="$errors->get('dob')" />
             </div>
-            
+{{--             
             <div>
-                <x-input-label for="mob" :value="__('Month')" />
-                <h3 value="{{ explode('-',Auth::user()->date_of_birth)[1] }}">{{ explode('-',Auth::user()->date_of_birth)[1] }}</h3>
+                <h3>{{ explode('-',Auth::user()->date_of_birth)[1] }}</h3>
                 <x-input-error  :messages="$errors->get('mob')" />
             </div>
 
             <div>
-                <x-input-label for="yob" :value="__('Year')" />
-                <h3 value="{{ explode('-',Auth::user()->date_of_birth)[0] }}">{{ explode('-',Auth::user()->date_of_birth)[0] }}</h3>
+                <h3>{{ explode('-',Auth::user()->date_of_birth)[0] }}</h3>
                 <x-input-error  :messages="$errors->get('yob')" />
-            </div>
+            </div> --}}
         </div>
 
         <div>
             <x-input-label class="label" for="system" :value="__('system')" />
-            <h4>current system: {{ Auth::user()->system_id == NULL ? 'not set' : Auth::user()->system->name }}</h4>
             <select name="system_id" id="system" class="input">
-                <option value="1">Arrima</option>
-                <option value="2">Express Entry</option>
+                <option value="">{{ __('Select system') }}</option>
+                @foreach ($systems as $system)
+                    <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ $system->name }}</option>
+                @endforeach
             </select>
             <x-input-error  :messages="$errors->get('system')" />
         </div>
 
         <div>
             <x-input-label class="label" for="diploma" :value="__('diploma')" />
-            <h4>current data: {{ Auth::user()->diploma->level }}</h4>
             <select name="diploma_id" id="diploma" class="input">
-                <option value="1">Baccalauréat</option>
-                <option value="2">Master</option>
-                <option value="3">Doctorat</option>
+                <option value="">{{ __('Select diploma') }}</option>
+                @foreach ($diplomas as $diploma)
+                    <option value="{{ $diploma->id }}" {{ Auth::user()->diploma_id == $diploma->id ? 'selected' : '' }}>{{ $diploma->level }}</option>
+                @endforeach
             </select>
             <x-input-error  :messages="$errors->get('diploma')" />
         </div>
 
         <div>
             <x-input-label class="label" for="noc" :value="__('noc')" />
-            <h4>current data: {{ Auth::user()->noc->code }}</h4>
             <select name="noc_id" id="noc" class="input">
-                <option value="1">11111</option>
-                <option value="2">22222</option>
-                <option value="3">33333</option>
+                <option value="">{{ __('Select NOC') }}</option>
+                @foreach ($nocs as $noc)
+                    <option value="{{ $noc->id }}" {{ Auth::user()->noc_id == $noc->id ? 'selected' : '' }}>{{ $noc->code }}</option>
+                @endforeach
             </select>
             <x-input-error  :messages="$errors->get('noc')" />
         </div>
 
         <div>
             <x-input-label class="label" for="step" :value="__('step')" />
-            <h4>current data: {{ Auth::user()->step->name }}</h4>
             <select name="step_id" id="step" class="input">
-                <option value="1">ita</option>
-                <option value="2">post-ita</option>
-                <option value="3">post-aor</option>
+                <option value="">{{ __('Select step') }}</option>
+                @foreach ($steps as $step)
+                    <option value="{{ $step->id }}" {{ Auth::user()->step_id == $step->id ? 'selected' : '' }}>{{ $step->name }}</option>
+                @endforeach
             </select>
             <x-input-error  :messages="$errors->get('step')" />
         </div>

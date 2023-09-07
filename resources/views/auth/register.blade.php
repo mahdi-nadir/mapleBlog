@@ -64,8 +64,8 @@
                     {{-- <h4>current data: {{ Auth::user()->gender->name }}</h4> --}}
                     <select name="gender_id" id="gender" class="w-[100%] p-1 text-lg md:text-xl text-black rounded-md">
                         <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
+                        <option value="2">Male</option>
+                        <option value="3">Female</option>
                     </select>
                     <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
                 </div>
