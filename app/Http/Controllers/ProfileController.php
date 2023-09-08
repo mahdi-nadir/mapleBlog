@@ -62,9 +62,9 @@ class ProfileController extends Controller
         }
 
         if ($user->system_id == 1 || $user->diploma_id == 1 || $user->noc_id == 1 || $user->step_id == 1) {
-            notify()->warning('Great, but there\'s still other information to update');
+            notify()->warning('Great, but there\'s still other information to update', 'Almost done');
         } else {
-            notify()->success('Well done, your profile is now updated');
+            notify()->success('Well done, your profile is now updated', 'Success');
         }
 
         $user->save();

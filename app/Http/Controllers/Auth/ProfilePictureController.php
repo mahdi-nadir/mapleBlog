@@ -24,15 +24,6 @@ class ProfilePictureController extends Controller
             $fileName = 'default.jpg';
         }
 
-        // $request->validate([
-        //     'image' => [
-        //         'required',
-        //         // 'image',
-        //         // 'mimes:jpg,png,jpeg',
-        //         // 'dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
-        //         // 'max:2048'
-        //     ], // Adjust validation rules as needed
-        // ]);
         $getImage = ImgUser::where('id', auth()->user()->img_user_id)->first();
         if (!$getImage) {
             $imgUser = ImgUser::create([
@@ -48,6 +39,7 @@ class ProfilePictureController extends Controller
         $user = auth()->user();
         $user->img_user_id = $imgUser->id;
         $user->save();
+        notify()->success('You\'ve got a really nice picture ' . Auth::user()->username, 'Amazing');
 
         return back()->with('success', 'Image uploaded successfully.');
     }

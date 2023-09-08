@@ -39,14 +39,14 @@
         <div>
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-            @if (session('status') === 'password-updated')
+            {{-- @if (session('status') === 'password-updated')
                 <p
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                 >{{ __('Saved.') }}</p>
-            @endif
+            @endif --}}
         </div>
     </form>
 </section>
