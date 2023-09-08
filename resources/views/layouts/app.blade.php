@@ -14,11 +14,13 @@
         <!-- Scripts -->
         {{-- <link rel="stylesheet" href="/css/app.css"> --}}
         {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        @notifyCss
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
     </head>
     <body class="mainContainer dark:bg-black dark:text-white mx-auto">
                 @include('layouts.navigation')
+                <x-notify::notify />
                 
                 <!-- Page Heading -->
                 @if (isset($header))
@@ -34,5 +36,6 @@
                     {{ $slot }}
                 </main>
             {{-- <script src="{{ asset('js/ee/main.js') }}" type="module"></script> --}}
+            @notifyJs
     </body>
 </html>

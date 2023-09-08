@@ -28,6 +28,8 @@ class ProfileController extends Controller
         $nocs = Noc::all();
         $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
         $image == NULL ? $image = 'default.png' : $image = $image->path;
+
+        // emotify('success', 'Well done, your profile is now updated');
         return view('profile.edit', [
             'user' => $request->user(),
             'image' => $image,
@@ -57,6 +59,12 @@ class ProfileController extends Controller
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
+        }
+
+        if ($user->system_id == 1 || $user->diploma_id == 1 || $user->noc_id == 1 || $user->step_id == 1) {
+            notify()->warning('Great, but there\'s still other information to update');
+        } else {
+            notify()->success('Well done, your profile is now updated');
         }
 
         $user->save();
