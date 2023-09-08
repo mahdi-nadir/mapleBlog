@@ -28,7 +28,7 @@
         <button id="showDeleteUserDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-red-800">Delete Account</button>
     </div>
 
-    <section id="sectionEditProfile" class="flex flex-col justify-center items-center gap-4 rounded w-full md:w-fit text-center p-5 mx-auto">
+    <section id="sectionEditProfile" class="flex flex-col justify-center items-center gap-4 rounded w-full  text-center p-5 mx-auto">
             {{-- <div class="flex flex-col md:flex-row justify-evenly items-center gap-4 bg-blue-200 w-full"> --}}
             <div id="imgDiv" class="hidden">
                 @include('profile.partials.update-image-form')

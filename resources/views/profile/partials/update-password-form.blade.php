@@ -12,22 +12,27 @@
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
-
-        <div>
-            <x-input-label for="current_password" :value="__('Current Password')" />
-            <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
+        
+        <div class="flex flex-col justify-center items-center">
+            {{-- <x-input-label for="current_password" :value="__('Current Password')" /> --}}
+            <label for="current_password" class="font-bold">{{ __('Current Password') }}</label>
+            <input id="current_password" name="current_password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password" :value="__('New Password')" />
-            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            {{-- <x-input-label for="password" :value="__('New Password')" /> --}}
+            <label for="password" class="font-bold">{{ __('New Password') }}</label>
+            {{-- <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" /> --}}
+            <input id="password" name="password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            {{-- <x-input-label for="password_confirmation" :value="__('Confirm Password')" /> --}}
+            <label for="password_confirmation" class="font-bold">{{ __('Confirm Password') }}</label>
+            {{-- <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" /> --}}
+            <input id="password_confirmation" name="password_confirmation" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
