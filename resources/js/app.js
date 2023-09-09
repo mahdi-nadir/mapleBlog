@@ -7,6 +7,7 @@ import EligibilityClass from "./ee/eligibilityClass.js";
 import ExtraInfoClass from "./ee/extraInfoClass.js";
 import HashtagClass from "./ee/hashtag.js";
 import NavbarClass from "./navbarClass.js";
+import FooterClass from "./footerClass.js";
 import SuggestedPnpClass from "./ee/suggestedpnpClass.js";
 import WeatherClass from "./ee/weatherClass.js";
 // import TranslationClass from "./translationClass.js";
@@ -46,6 +47,7 @@ let robotBtn = document.querySelector('.robotBtn');
 // let main = document.querySelector('main');
 
 new NavbarClass();
+new FooterClass();
 // new ChatBotClass();
 // new WeatherClass();
 // new CurrencyClass();

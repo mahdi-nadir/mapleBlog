@@ -22,22 +22,6 @@ export default class NavbarClass {
             this.expressEntry.innerHTML = "Express Entry";
             this.arrima.innerHTML = "Arrima";
         }
-
-        // this.burger.addEventListener('click', () => {
-        //     this.toggleBurger();
-        //     console.log('clicked');
-        //     if (this.open) {
-        //         this.burger.innerHTML = '<i class="fa-solid fa-times text-white text-2xl md:text-4xl ml-4 my-3 hover:text-red-400"></i>';
-        //         this.navbarOptions.classList.remove('hidden');
-        //         console.log('hidden');
-
-        //     } else {
-        //         this.burger.innerHTML = '<i class="fa-solid fa-bars text-white text-2xl md:text-4xl ml-4 my-3 hover:text-lime-400"></i>';
-        //         this.navbarOptions.classList.add('hidden');
-        //         console.log('remove');
-
-        //     }
-        // });
     }
 
     handleWindowResize() {
