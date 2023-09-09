@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
     </head>
-    <body class="mainContainer flex flex-col h-screen justify-between text-center dark:bg-black dark:text-white mx-auto">
+    <body class="mainContainer flex flex-col h-screen justify-between text-center dark:bg-black dark:text-white mx-auto max-w-screen">
         <div>        
             @include('layouts.navigation')
             <x-notify::notify />

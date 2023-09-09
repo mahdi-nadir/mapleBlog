@@ -1,6 +1,9 @@
 export default class ChatBotClass {
     constructor() {
         this.robotBtn = document.querySelector('.robotBtn');
+        this.hashtagBtn = document.querySelector('.hashtagBtn');
+        this.currencyBtn = document.querySelector('.currencyBtn');
+        this.weatherBtn = document.querySelector('.weatherBtn');
         this.messageBot = document.querySelector('.messageBot');
         this.chatDiv = document.querySelector('.mainChatWindow');
         this.chatArea = document.querySelector('.chatArea');
@@ -59,7 +62,7 @@ export default class ChatBotClass {
             "Medy",
             "Fiona"
         ];
-        // this.init();
+        this.init();
     }
 
     init() {
@@ -69,12 +72,26 @@ export default class ChatBotClass {
             this.chatDiv.style.opacity = '1';
             this.chatDiv.style.visibility = 'visible';
             this.chatDiv.style.zIndex = '1000';
-            this.robotBtn.style.display = 'none';
+            // this.robotBtn.style.display = 'none';
+            // this.weatherBtn.style.display = 'none';
+            // this.currencyBtn.style.display = 'none';
+            // this.hashtagBtn.style.display = 'none';
             this.spinner.style.display = 'block';
             this.startConversation();
             let frLang = document.querySelectorAll('.frBtn');
             let engLang = document.querySelectorAll('.engBtn');
 
+            if (this.chatDiv.style.display == 'block') {
+                this.robotBtn.style.display = 'none';
+                this.weatherBtn.style.display = 'none';
+                this.currencyBtn.style.display = 'none';
+                this.hashtagBtn.style.display = 'none';
+            } else {
+                this.robotBtn.style.display = 'block';
+                this.weatherBtn.style.display = 'block';
+                this.currencyBtn.style.display = 'block';
+                this.hashtagBtn.style.display = 'block';
+            }
             frLang.forEach(btn => {
                 btn.addEventListener('click', () => {
                     this.answerUser('French');
@@ -98,11 +115,17 @@ export default class ChatBotClass {
             }
             this.chatArea.style.display = 'none';
             this.reduceBtn.style.display = 'none';
+            this.weatherBtn.style.display = 'block';
+            this.currencyBtn.style.display = 'block';
+            this.hashtagBtn.style.display = 'block';
         })
 
         this.closeChatBtn.addEventListener('click', () => {
             this.chatDiv.style.display = 'none';
             this.robotBtn.style.display = 'block';
+            this.weatherBtn.style.display = 'block';
+            this.currencyBtn.style.display = 'block';
+            this.hashtagBtn.style.display = 'block';
             this.chatArea.style.display = 'block';
             this.reduceBtn.style.display = 'block';
             this.discussion.innerHTML = ''
@@ -136,6 +159,9 @@ export default class ChatBotClass {
             this.chatDiv.style.display = 'block';
             this.chatArea.style.display = 'block';
             this.reduceBtn.style.display = 'block';
+            this.weatherBtn.style.display = 'none';
+            this.currencyBtn.style.display = 'none';
+            this.hashtagBtn.style.display = 'none';
             this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
         })
     }
@@ -150,17 +176,17 @@ export default class ChatBotClass {
         setTimeout(() => {
             this.robotIcon.style.display = 'block';
             this.heyMessage.style.display = 'block';
-            this.playAudioInbox();
+            // this.playAudioInbox();
         }, 800)
         setTimeout(() => {
             this.masculinePronoun.style.display = 'block';
-            this.playAudioInbox();
+            // this.playAudioInbox();
         }, 2500)
         setTimeout(() => {
             this.whatLang.style.display = 'block';
             this.suggestionUser.style.display = 'block';
             this.spinner.style.display = 'none';
-            this.playAudioInbox();
+            // this.playAudioInbox();
         }, 3200)
     }
 
@@ -697,7 +723,7 @@ export default class ChatBotClass {
             anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
         }
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        this.playAudioInbox();
+        // this.playAudioInbox();
     }
 
     questionFromWebsite(lang) {
@@ -729,7 +755,7 @@ export default class ChatBotClass {
                             </div>
                         </div>
                     `; this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                        this.playAudioInbox();
+                        // this.playAudioInbox();
                         this.refreshing(lang);
                     }, 2000);
                 })
@@ -761,7 +787,7 @@ export default class ChatBotClass {
                         </div>
                     `;
                         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                        this.playAudioInbox();
+                        // this.playAudioInbox();
                         this.refreshing(lang);
                     }, 2000);
                 })
@@ -769,21 +795,21 @@ export default class ChatBotClass {
         }
     }
 
-    playAudioInbox() {
-        let audio = new Audio('assets/sounds/messageSound.mp3');
-        audio.play();
-    }
+    // playAudioInbox() {
+    //     let audio = new Audio('../../sounds/messageSound.mp3');
+    //     audio.play();
+    // }
 
-    showHaveQuestionsMark() {
-        let haveQuestionsMark = document.querySelector('.haveQuestions');
-        if (window.innerWidth > 650) {
-            this.haveQuestionsMark.style.display = 'block';
-        }
+    // showHaveQuestionsMark() {
+    //     let haveQuestionsMark = document.querySelector('.haveQuestions');
+    //     if (window.innerWidth > 650) {
+    //         this.haveQuestionsMark.style.display = 'block';
+    //     }
 
-        this.haveQuestionsMark.addEventListener('click', () => {
-            this.haveQuestionsMark.style.display = 'none';
-        })
-    }
+    //     this.haveQuestionsMark.addEventListener('click', () => {
+    //         this.haveQuestionsMark.style.display = 'none';
+    //     })
+    // }
 
     // eligibility
     fromAdmissibilite(lang) {
@@ -795,7 +821,7 @@ export default class ChatBotClass {
         let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         ageBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -817,7 +843,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `;
-                    this.playAudioInbox();
+                    // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -843,7 +869,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `;
-                    this.playAudioInbox();
+                    // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -868,7 +894,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -893,7 +919,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -918,7 +944,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -957,7 +983,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -975,7 +1001,7 @@ export default class ChatBotClass {
         let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         ageBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1021,7 +1047,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1046,7 +1072,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1071,7 +1097,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1096,7 +1122,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1130,7 +1156,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1154,7 +1180,7 @@ export default class ChatBotClass {
         let pnpBtn = document.querySelectorAll('.pnpBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         etatCivilBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1181,7 +1207,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1210,7 +1236,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1239,7 +1265,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1268,7 +1294,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1297,7 +1323,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1330,7 +1356,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1359,7 +1385,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1388,7 +1414,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1419,7 +1445,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1450,7 +1476,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1498,7 +1524,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1522,7 +1548,7 @@ export default class ChatBotClass {
         let fundsBtn = document.querySelectorAll('.fundsBtn');
         let pnpBtn = document.querySelectorAll('.pnpBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         etatCivilBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1549,7 +1575,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1578,7 +1604,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1607,7 +1633,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1636,7 +1662,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1665,7 +1691,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1698,7 +1724,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1727,7 +1753,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1756,7 +1782,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1787,7 +1813,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1818,7 +1844,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1866,7 +1892,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1887,7 +1913,7 @@ export default class ChatBotClass {
         let feesBtn = document.querySelectorAll('.feesBtn');
         let vmBtn = document.querySelectorAll('.vmBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         docsListBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1917,7 +1943,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1948,7 +1974,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -1981,7 +2007,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2015,7 +2041,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2049,7 +2075,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2085,7 +2111,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2116,7 +2142,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2136,7 +2162,7 @@ export default class ChatBotClass {
         let feesBtn = document.querySelectorAll('.feesBtn');
         let vmBtn = document.querySelectorAll('.vmBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         docsListBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2166,7 +2192,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2197,7 +2223,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2230,7 +2256,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2264,7 +2290,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2298,7 +2324,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2334,7 +2360,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2365,7 +2391,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2382,7 +2408,7 @@ export default class ChatBotClass {
         let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
         let adrBtn = document.querySelectorAll('.adrBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         bioBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2412,7 +2438,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2441,7 +2467,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2466,7 +2492,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2482,7 +2508,7 @@ export default class ChatBotClass {
         let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
         let adrBtn = document.querySelectorAll('.adrBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         bioBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2512,7 +2538,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2541,7 +2567,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2570,7 +2596,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2586,7 +2612,7 @@ export default class ChatBotClass {
         let visaBtn = document.querySelectorAll('.visaBtn');
         let coprBtn = document.querySelectorAll('.coprBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         visaBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2613,7 +2639,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2642,7 +2668,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2657,7 +2683,7 @@ export default class ChatBotClass {
         let visaBtn = document.querySelectorAll('.visaBtn');
         let coprBtn = document.querySelectorAll('.coprBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         visaBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2684,7 +2710,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2713,7 +2739,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2729,7 +2755,7 @@ export default class ChatBotClass {
         let nasBtn = document.querySelectorAll('.nasBtn');
         let bankBtn = document.querySelectorAll('.bankBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         nasBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2756,7 +2782,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2809,7 +2835,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2824,7 +2850,7 @@ export default class ChatBotClass {
         let nasBtn = document.querySelectorAll('.nasBtn');
         let bankBtn = document.querySelectorAll('.bankBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-        this.playAudioInbox();
+        // this.playAudioInbox();
 
         nasBtn.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -2851,7 +2877,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })
@@ -2898,7 +2924,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.playAudioInbox();
+                `; // this.playAudioInbox();
                     this.refreshing(lang);
                 }, 2000);
             })

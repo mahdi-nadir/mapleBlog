@@ -101,7 +101,7 @@
     background: rgba(0, 0, 0, 0.7);
     visibility: hidden;
     opacity: 0;
-    z-index: 1;
+    z-index: 9998;
     pointer-events: auto;
 }
 
@@ -120,18 +120,18 @@
     border-radius: 5px;
 }
 
-/*.active {
+.active {
     color: yellow !important;
     text-decoration: underline;
-} */
+}
 
 
 /* ############################# */
 /* ############################# */
 /* ############################# */
-
-
-
+.chatDiv {
+    height: 360px;
+}
 
 
 

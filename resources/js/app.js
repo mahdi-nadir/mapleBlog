@@ -48,7 +48,7 @@ let robotBtn = document.querySelector('.robotBtn');
 
 new NavbarClass();
 new FooterClass();
-// new ChatBotClass();
+new ChatBotClass();
 // new WeatherClass();
 // new CurrencyClass();
 // new HashtagClass();
