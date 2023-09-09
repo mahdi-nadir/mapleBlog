@@ -87,6 +87,54 @@
 
 
 
+/* ############################# */
+/* ############################# */
+/* ############################# */
+
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 2s ease-in-out;
+    background: rgba(0, 0, 0, 0.7);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+#modal, #modalResult, #modalConfirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s ease-in;
+    /* width: fit-content;
+    height: fit-content; */
+    /* width: 900px; */
+    background: #f7e6e6;
+    z-index: 9999;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+/*.active {
+    color: yellow !important;
+    text-decoration: underline;
+} */
+
+
+/* ############################# */
+/* ############################# */
+/* ############################# */
+
+
+
+
+
+
 @media screen and (max-width: 600px) {
     #linklogo span {
         display: none;

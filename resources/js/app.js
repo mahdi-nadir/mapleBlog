@@ -10,7 +10,10 @@ import NavbarClass from "./navbarClass.js";
 import SuggestedPnpClass from "./ee/suggestedpnpClass.js";
 import WeatherClass from "./ee/weatherClass.js";
 // import TranslationClass from "./translationClass.js";
-
+let weatherBtn = document.querySelector('.weatherBtn');
+let currencyBtn = document.querySelector('.currencyBtn');
+let hashtagBtn = document.querySelector('.hashtagBtn');
+let robotBtn = document.querySelector('.robotBtn');
 // year for footer
 // let span = document.querySelector('#year');
 // span.textContent = new Date().getFullYear();
@@ -43,7 +46,10 @@ import WeatherClass from "./ee/weatherClass.js";
 // let main = document.querySelector('main');
 
 new NavbarClass();
-new ChatBotClass()
+// new ChatBotClass();
+// new WeatherClass();
+// new CurrencyClass();
+// new HashtagClass();
 
 
 // let language = localStorage.getItem('language') === 'true' || false;
@@ -54,29 +60,29 @@ new ChatBotClass()
 //     new translationClass();
 // });
 
-// weatherBtn.addEventListener('click', () => {
-//     let modalResult = document.querySelector('#modalResult');
-//     let weatherTemplate = document.querySelector('#weatherTemplate');
-//     let clone = weatherTemplate.content.cloneNode(true);
-//     modalResult.appendChild(clone);
-//     new WeatherClass();
-// })
+weatherBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    let weatherTemplate = document.querySelector('#weatherTemplate');
+    let clone = weatherTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    new WeatherClass();
+})
 
-// currencyBtn.addEventListener('click', () => {
-//     let modalResult = document.querySelector('#modalResult');
-//     let currencyTemplate = document.querySelector('#currencyTemplate');
-//     let clone = currencyTemplate.content.cloneNode(true);
-//     modalResult.appendChild(clone);
-//     new CurrencyClass();
-// })
+currencyBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    let currencyTemplate = document.querySelector('#currencyTemplate');
+    let clone = currencyTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    new CurrencyClass();
+})
 
-// hashtagBtn.addEventListener('click', () => {
-//     let modalResult = document.querySelector('#modalResult');
-//     let hashtagTemplate = document.querySelector('#hashtagTemplate');
-//     let clone = hashtagTemplate.content.cloneNode(true);
-//     modalResult.appendChild(clone);
-//     new hashtagClass();
-// })
+hashtagBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    let hashtagTemplate = document.querySelector('#hashtagTemplate');
+    let clone = hashtagTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    new HashtagClass();
+})
 
 // add event listeners to buttons and display the right component when clicked
 // homeBtn.addEventListener('click', () => {

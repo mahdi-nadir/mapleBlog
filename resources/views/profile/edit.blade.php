@@ -1,10 +1,10 @@
 <x-app-layout>
     {{-- <x-slot name="header" class="text-center"> --}}
-        <h2 class="font-bold text-xl md:text-4xl uppercase text-center mt-5 ">
+        <h2 class="font-bold text-xl md:text-4xl uppercase text-center mt-5">
             {{ __('Profile') }}
         </h2>
     {{-- </x-slot> --}}
-    <div class="flex flex-col items-center text-center md:flex-row md:justify-center md:text-left md:space-x-10 w-full md:w-1/2 mx-auto my-10">
+    <div class="flex flex-col items-center text-center md:flex-row md:justify-center md:text-left md:space-x-10 w-full md:w-1/2 mx-auto mb-10 mt-5">
         <!-- Profile Image -->
         <img src="{{ asset('img/' . $image) }}" alt="Profile Image" class="object-cover w-60 h-60 border-2 border-black dark:border-white rounded-lg mb-4 lg:mb-0">
     
@@ -12,7 +12,7 @@
         <div class="text-lg lg:text-xl">
             <h3><span class="font-bold">{{ __('Username') }}: </span>{{ $user->username }}</h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Email') }}: </span>{{ $user->email }}</h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('System') }}: </span><span class={{ $user->system->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->system->name }}</span></h3>
+            <h3 class="mt-1"><span class="font-bold">{{ __('Immigration System') }}: </span><span class={{ $user->system->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->system->name }}</span></h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Step') }}: </span><span class={{ $user->step->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->step->name }}</span></h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Degree') }}: </span><span class={{ $user->diploma->level == 'Not set' ? 'text-red-500' : '' }}>{{ $user->diploma->level }}</span></h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('NOC') }}: </span><span class={{ $user->noc->code == 'Not set' ? 'text-red-500' : '' }}>{{ $user->noc->code }}</span></h3>
@@ -36,19 +36,19 @@
             {{-- </div> --}}
 
             {{-- <div class="flex flex-row justify-center items-center gap-4"> --}}
-                <div id="userInfoDiv" class="hidden w-1/3">
+                <div id="userInfoDiv" class="hidden">
                     @include('profile.partials.update-profile-information-form')
                 </div>
             {{-- </div> --}}
 
             {{-- <div> --}}
-                <div id="updatePasswordDiv" class="hidden w-1/3">
+                <div id="updatePasswordDiv" class="hidden">
                     @include('profile.partials.update-password-form')
                 </div>
             {{-- </div> --}}
 
             {{-- <div> --}}
-                <div id="deleteAccountDiv" class="hidden w-1/3">
+                <div id="deleteAccountDiv" class="hidden">
                     @include('profile.partials.delete-user-form')
                 </div>
             {{-- </div> --}}

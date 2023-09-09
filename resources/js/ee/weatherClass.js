@@ -1,6 +1,5 @@
 import weatherapi from './apikey.js';
 
-
 export default class WeatherClass {
     constructor() {
         this.modalResult = document.querySelector('#modalResult');

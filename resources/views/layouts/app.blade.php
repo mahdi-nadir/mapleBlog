@@ -18,23 +18,26 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
     </head>
-    <body class="mainContainer dark:bg-black dark:text-white mx-auto">
-                @include('layouts.navigation')
-                <x-notify::notify />
+    <body class="mainContainer flex flex-col h-screen justify-between text-center dark:bg-black dark:text-white mx-auto">
+        <div>        
+            @include('layouts.navigation')
+            <x-notify::notify />
                 
                 <!-- Page Heading -->
-                @if (isset($header))
+                {{-- @if (isset($header))
                     <header>
                         <div>
                             {{ $header }}
                         </div>
                     </header>
-                @endif
+                @endif --}}
                     
                 <!-- Page Content -->
-                <main class="">
-                    {{ $slot }}
-                </main>
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+        @include('layouts.utilities')
             {{-- <script src="{{ asset('js/ee/main.js') }}" type="module"></script> --}}
             @notifyJs
     </body>
