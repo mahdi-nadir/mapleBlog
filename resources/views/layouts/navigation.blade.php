@@ -20,19 +20,19 @@
             <li class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
                 <h1 id="expressEntry">{{ __('Express Entry') }}</h1>
                 <ul class="absolute top-[115%] left-[30%] translate-x-[-30%] md:top-[102%] border border-t-0 border-white bg-black w-[180px] list-none z-20 pt-5">
-                    <x-nav-link id="eligibilityCalculatorLink" class="text-white w-full" :href="route('ee.eligibility')" :active="request()->routeIs('ee.eligibility')">
+                    <x-nav-link id="eligibilityCalculatorLink" class="text-white w-full" href="{{ LaravelLocalization::localizeUrl('/express-entry/eligibility-calculator') }}" :active="request()->routeIs('ee.eligibility')">
                         {{ __('eligibility') }}
                     </x-nav-link>
                                 
-                    <x-nav-link id="crsLink" :href="route('ee.crs')" class="text-white w-full" :active="request()->routeIs('ee.crs')">
+                    <x-nav-link id="crsLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/crs-calculator') }}" class="text-white w-full" :active="request()->routeIs('ee.crs')">
                         {{ __('crs calculator') }}
                     </x-nav-link>
                     
-                    <x-nav-link id="nclcLink" :href="route('ee.clb')" class="text-white w-full" :active="request()->routeIs('ee.clb')">
+                    <x-nav-link id="nclcLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/clb-calculator') }}" class="text-white w-full" :active="request()->routeIs('ee.clb')">
                         {{ __('clb calculator') }}
                     </x-nav-link>
                     
-                    <x-nav-link id="suggestedpnpLink" :href="route('ee.suggestedpnp')" class="text-white w-full" :active="request()->routeIs('ee.suggestedpnp')">
+                    <x-nav-link id="suggestedpnpLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/suggested-pnp') }}" class="text-white w-full" :active="request()->routeIs('ee.suggestedpnp')">
                         {{ __('suggested pnp') }}
                     </x-nav-link>
                     
@@ -40,7 +40,7 @@
                         {{ __('ebooks') }}
                     </x-nav-link> --}}
                     
-                    <x-nav-link id="extraInfoLink" :href="route('ee.extrainfo')" class="text-white w-full" :active="request()->routeIs('ee.extrainfo')">
+                    <x-nav-link id="extraInfoLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/extra-info') }}" class="text-white w-full" :active="request()->routeIs('ee.extrainfo')">
                         {{ __('extra Information') }}
                     </x-nav-link>
                 </ul>
@@ -49,23 +49,23 @@
             <li id="arrimaBtn" class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
                 <h1 id="arrima" class="w-10 h-10 md:w-fit md:h-fit pt-1">{{ __('Arrima') }}</h1>
                 <ul class="absolute top-[101%] left-[30%] translate-x-[-30%] md:top-[98%] border border-t-0 border-white bg-black w-[180px] list-none z-20 pt-5">
-                    <x-nav-link :href="route('arrima.expression_of_interest')" class="text-white w-full" :active="request()->routeIs('arrima.expression_of_interest')">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/expression-of-interest') }}" class="text-white w-full" :active="request()->routeIs('arrima.expression_of_interest')">
                         {{ __('expr. of interest') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('arrima.self_assessment_tool')" class="text-white w-full" :active="request()->routeIs('arrima.self_assessment_tool')">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/self-assessment-tool') }}" class="text-white w-full" :active="request()->routeIs('arrima.self_assessment_tool')">
                         {{ __('assessment tool') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('arrima.csq')" class="text-white w-full" :active="request()->routeIs('arrima.csq')">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/csq') }}" class="text-white w-full" :active="request()->routeIs('arrima.csq')">
                         {{ __('csq') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('arrima.permanent_residence')" class="text-white w-full" :active="request()->routeIs('arrima.permanent_residence')">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/permanent-residence') }}" class="text-white w-full" :active="request()->routeIs('arrima.permanent_residence')">
                         {{ __('arrima PR') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('arrima.pmi')" class="text-white w-full" :active="request()->routeIs('arrima.pmi')">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/pmi') }}" class="text-white w-full" :active="request()->routeIs('arrima.pmi')">
                         {{ __('PMI') }}
                     </x-nav-link>
                 </ul>
@@ -73,6 +73,9 @@
         </ul>
 
         <div id="userMenu" class="flex flex-row justify-center items-center gap-4 md:gap-8">
+            
+            <button id="language" class="text-white">{{ LaravelLocalization::getCurrentLocale() == 'fr' ? 'en' : 'fr' }}</button>
+            
             <button id="dark-mode-toggle" class="text-white"></button>
             <x-responsive-nav-link :href="route('profile.edit')" class="px-2" title="{{ Auth::user()->username }}">
                 <i class="fa-solid fa-user text-xl md:text-2xl hover:text-green-400"></i>
@@ -123,5 +126,23 @@
     } else {
         updateDarkModeIcon(false);
     }
+
+    
+    // switch language
+    const languageToggle = document.querySelector('#language');languageToggle.addEventListener('click', () => {
+    if (languageToggle.innerHTML == 'en') {
+        window.location.href = window.location.href.replace('/fr', '/en');
+    } else {
+        window.location.href = window.location.href.replace('/en', '/fr');
+    }
+});
+
+// const storedFrench = localStorage.getItem('french');
+// if (storedFrench === 'true') {
+//     toggleLanguage();
+// } else {
+//     // Update the language button text based on the current URL
+//     languageToggle.innerHTML = window.location.href.includes('/fr') ? 'EN' : 'FR';
+// }
 </script>
 

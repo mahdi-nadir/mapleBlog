@@ -11,7 +11,7 @@
         <!-- User Information -->
         <div class="text-lg lg:text-xl">
             <h3><span class="font-bold">{{ __('Username') }}: </span>{{ $user->username }}</h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('Email') }}: </span>{{ $user->email }}</h3>
+            <h3 class="mt-1"><span class="font-bold">{{ __('email') }}: </span>{{ $user->email }}</h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Immigration System') }}: </span><span class={{ $user->system->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->system->name }}</span></h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Step') }}: </span><span class={{ $user->step->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->step->name }}</span></h3>
             <h3 class="mt-1"><span class="font-bold">{{ __('Degree') }}: </span><span class={{ $user->diploma->level == 'Not set' ? 'text-red-500' : '' }}>{{ $user->diploma->level }}</span></h3>
