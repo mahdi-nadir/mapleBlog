@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Update Password') }}
+            {{ __('updatePassword2') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('updatePasswordMessage') }}
         </p>
     </header>
 
@@ -14,39 +14,25 @@
         @method('put')
         
         <div class="flex flex-col justify-center items-center">
-            {{-- <x-input-label for="current_password" :value="__('Current Password')" /> --}}
-            <label for="current_password" class="font-bold">{{ __('Current Password') }}</label>
-            <input id="current_password" name="current_password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="current-password" />
+            <label for="current_password" class="font-bold">{{ __('currentPassword') }}</label>
+            <input id="current_password" name="current_password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-1/2 mt-1 block" autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
-        <div>
-            {{-- <x-input-label for="password" :value="__('New Password')" /> --}}
-            <label for="password" class="font-bold">{{ __('New Password') }}</label>
-            {{-- <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" /> --}}
-            <input id="password" name="password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="new-password" />
+        <div class="flex flex-col justify-center items-center">
+            <label for="password" class="font-bold">{{ __('newPassword') }}</label>
+            <input id="password" name="password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-1/2 mt-1 block" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
-        <div>
-            {{-- <x-input-label for="password_confirmation" :value="__('Confirm Password')" /> --}}
-            <label for="password_confirmation" class="font-bold">{{ __('Confirm Password') }}</label>
-            {{-- <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" /> --}}
-            <input id="password_confirmation" name="password_confirmation" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full mt-1 block" autocomplete="new-password" />
+        <div class="flex flex-col justify-center items-center">
+            <label for="password_confirmation" class="font-bold">{{ __('confirmPassword') }}</label>
+            <input id="password_confirmation" name="password_confirmation" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-1/2 mt-1 block" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div>
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            {{-- @if (session('status') === 'password-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                >{{ __('Saved.') }}</p>
-            @endif --}}
+            <x-primary-button>{{ __('save') }}</x-primary-button>
         </div>
     </form>
 </section>

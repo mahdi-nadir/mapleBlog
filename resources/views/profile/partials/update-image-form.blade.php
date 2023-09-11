@@ -21,7 +21,7 @@
             <div class="flex flex-row justify-center items-center gap-3">
                 {{-- <button id="backImgBtn" class="w-20 p-1 text-sm bg-red-600 text-white uppercase rounded hover:bg-red-800 font-bold">{{ __('Back') }}</button> --}}
                 {{-- <button id='saveBtn' class="w-20 p-1 text-sm bg-black text-white uppercase rounded hover:bg-green-800 font-bold">{{ __('Save') }}</button> --}}
-                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                <x-primary-button>{{ __('save') }}</x-primary-button>
             </div>
         </div>
     </form>

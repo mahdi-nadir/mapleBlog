@@ -19,7 +19,7 @@ export default class NavbarClass {
             this.expressEntry.innerHTML = '<i class="fa-brands fa-canadian-maple-leaf text-white text-2xl"></i>';
             this.arrima.innerHTML = '<div class="w-[10px] h-[10px]"><img src="/img/quebeclily.png" alt"arrima system"/></div>';
         } else {
-            this.expressEntry.innerHTML = "Express Entry";
+            this.expressEntry.innerHTML = window.location.href.includes('/fr') ? "Entrée express" : "Express Entry";
             this.arrima.innerHTML = "Arrima";
         }
     }

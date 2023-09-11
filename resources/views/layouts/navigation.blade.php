@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" id="navbar" class="bg-black fixed top-0 left-0 w-full px-2 h-[60px] flex flex-row justify-between items-center relative text-white">
     <div class="container m-auto flex flex-row justify-between items-center">
         <h1>
-            <a id="linklogo" class="inline-flex p-y text-xl tracking-wider font-bold" href="{{ route('dashboard') }}" title="{{ __('Home page') }}">
+            <a id="linklogo" class="inline-flex p-y text-xl tracking-wider font-bold" href="{{ route('dashboard') }}" title="{{ __('home page') }}">
                 <div class="flex flex-row justify-center items-center gap-2">
                     <div class="w-[55px] hover:scale-110">
                         <x-application-logo />
@@ -18,22 +18,22 @@
     <div id="navbarOptions" class="flex flex-row justify-center items-center gap-4 md:gap-10">
         <ul class="flex flex-row justify-center items-center gap-4 md:gap-10">
             <li class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
-                <h1 id="expressEntry">{{ __('Express Entry') }}</h1>
-                <ul class="absolute top-[115%] left-[30%] translate-x-[-30%] md:top-[102%] border border-t-0 border-white bg-black w-[180px] list-none z-20 pt-5">
+                <h1 id="expressEntry">{{ __('expressEntry') }}</h1>
+                <ul class="absolute top-[115%] left-[30%] translate-x-[-30%] md:top-[99%] border border-t-0 border-white bg-black w-[180px] list-none z-20">
                     <x-nav-link id="eligibilityCalculatorLink" class="text-white w-full" href="{{ LaravelLocalization::localizeUrl('/express-entry/eligibility-calculator') }}" :active="request()->routeIs('ee.eligibility')">
                         {{ __('eligibility') }}
                     </x-nav-link>
                                 
                     <x-nav-link id="crsLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/crs-calculator') }}" class="text-white w-full" :active="request()->routeIs('ee.crs')">
-                        {{ __('crs calculator') }}
+                        {{ __('crs') }}
                     </x-nav-link>
                     
                     <x-nav-link id="nclcLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/clb-calculator') }}" class="text-white w-full" :active="request()->routeIs('ee.clb')">
-                        {{ __('clb calculator') }}
+                        {{ __('clb') }}
                     </x-nav-link>
                     
                     <x-nav-link id="suggestedpnpLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/suggested-pnp') }}" class="text-white w-full" :active="request()->routeIs('ee.suggestedpnp')">
-                        {{ __('suggested pnp') }}
+                        {{ __('suggestedpnp') }}
                     </x-nav-link>
                     
                     {{-- <x-nav-link id="ebooksLink" :href="route('ebooks')" :active="request()->routeIs('ebooks')">
@@ -48,9 +48,9 @@
 
             <li id="arrimaBtn" class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
                 <h1 id="arrima" class="w-10 h-10 md:w-fit md:h-fit pt-1">{{ __('Arrima') }}</h1>
-                <ul class="absolute top-[101%] left-[30%] translate-x-[-30%] md:top-[98%] border border-t-0 border-white bg-black w-[180px] list-none z-20 pt-5">
+                <ul class="absolute top-[101%] left-[30%] translate-x-[-30%] md:top-[95%] border border-t-0 border-white bg-black w-[210px] list-none z-20">
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/expression-of-interest') }}" class="text-white w-full" :active="request()->routeIs('arrima.expression_of_interest')">
-                        {{ __('expr. of interest') }}
+                        {{ __('exprInterest') }}
                     </x-nav-link>
                     
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/self-assessment-tool') }}" class="text-white w-full" :active="request()->routeIs('arrima.self_assessment_tool')">
@@ -62,7 +62,7 @@
                     </x-nav-link>
                     
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/permanent-residence') }}" class="text-white w-full" :active="request()->routeIs('arrima.permanent_residence')">
-                        {{ __('arrima PR') }}
+                        {{ __('pr') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/pmi') }}" class="text-white w-full" :active="request()->routeIs('arrima.pmi')">
@@ -74,7 +74,7 @@
 
         <div id="userMenu" class="flex flex-row justify-center items-center gap-4 md:gap-8">
             
-            <button id="language" class="text-white">{{ LaravelLocalization::getCurrentLocale() == 'fr' ? 'en' : 'fr' }}</button>
+            <button id="language" class="text-white">{{ LaravelLocalization::getCurrentLocale() == 'fr' ? strtoupper('en') : strtoupper('fr') }}</button>
             
             <button id="dark-mode-toggle" class="text-white"></button>
             <x-responsive-nav-link :href="route('profile.edit')" class="px-2" title="{{ Auth::user()->username }}">
@@ -130,7 +130,7 @@
     
     // switch language
     const languageToggle = document.querySelector('#language');languageToggle.addEventListener('click', () => {
-    if (languageToggle.innerHTML == 'en') {
+    if (languageToggle.innerHTML == 'EN') {
         window.location.href = window.location.href.replace('/fr', '/en');
     } else {
         window.location.href = window.location.href.replace('/en', '/fr');
