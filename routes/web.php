@@ -15,13 +15,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -33,6 +27,15 @@ Route::middleware('auth')->group(function () {
         function () { //...
 
             /** Localized Routes here **/
+
+            Route::get('/', function () {
+                return view('welcome');
+            });
+
+            Route::get('/dashboard', function () {
+                return view('dashboard');
+            })->middleware(['auth', 'verified'])->name('dashboard');
+
             Route::get('/arrima/expression-of-interest', [ArrimaController::class, 'expression_of_interest'])->name('arrima.expression_of_interest');
             Route::get('/arrima/self-assessment-tool', [ArrimaController::class, 'self_assessment_tool'])->name('arrima.self_assessment_tool');
             Route::get('/arrima/csq', [ArrimaController::class, 'csq'])->name('arrima.csq');
@@ -50,17 +53,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-            // Route::get('/{lang}', function ($lang) {
-            //     LaravelLocalization::setLocale($lang);
-            //     return redirect()->back();
-            // })->name('lang');
         }
     );
 });
 
 require __DIR__ . '/auth.php';
-// Route::get('/{langen}', function ($langen) {
-//     App::setLocale($langen);
-//     return redirect('/profile');
-// })->name('langen');
