@@ -29,7 +29,7 @@
                     </x-nav-link>
                     
                     <x-nav-link id="nclcLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/clb-calculator') }}" class="text-white w-full" :active="request()->routeIs('ee.clb')">
-                        {{ __('clb') }}
+                        {{ __('clbCalc') }}
                     </x-nav-link>
                     
                     <x-nav-link id="suggestedpnpLink" href="{{ LaravelLocalization::localizeUrl('/express-entry/suggested-pnp') }}" class="text-white w-full" :active="request()->routeIs('ee.suggestedpnp')">

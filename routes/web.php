@@ -27,7 +27,6 @@ Route::middleware('auth')->group(function () {
         function () { //...
 
             /** Localized Routes here **/
-
             Route::get('/', function () {
                 return view('welcome');
             });

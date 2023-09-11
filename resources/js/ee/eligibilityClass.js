@@ -137,7 +137,7 @@ export default class eligibilityClass {
                 this.ageInput.scrollIntoView({ behavior: 'smooth' })
                 this.btnReset.disabled = false;
                 if (this.martialStatus.value == 'married') {
-                    spanMarried.textContent = 'or your spouse';
+                    spanMarried.textContent = window.location.href.includes('/fr') ? 'ou votre conjoint' : 'or your spouse';
                 } else {
                     spanMarried.textContent = '';
                 }
@@ -181,9 +181,9 @@ export default class eligibilityClass {
                 this.ageScore = 0;
                 this.educationDiv.style.display = 'none';
                 this.noticeDiv.style.display = 'block';
-                this.noticeDiv.innerHTML += `
+                this.noticeDiv.innerHTML += window.location.href.includes('/en') ? `
                     You cannot create a profile if you are 17 years old or less
-                    `;
+                    ` : ` Vous ne pouvez pas créer de profil si vous avez 17 ans ou moins`;
                 this.noticeDiv.scrollIntoView({ behavior: 'smooth' })
             } else if (this.ageInput.value == '') {
                 this.noticeDiv.style.display = 'none';
@@ -229,9 +229,9 @@ export default class eligibilityClass {
                 this.firstLangTypeDiv.style.display = 'none';
                 this.firstLangScoresDiv.style.display = 'none';
                 this.noticeDiv.style.display = 'block';
-                this.noticeDiv.innerHTML = `
-                    You should have a language test to be eligible to Express Entry
-                    `;
+                this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `
+                    You should have a valid language test to be eligible to Express Entry
+                    ` : ` Vous devez passer un test de langue valide pour être admissible à Entrée express`;
                 this.noticeDiv.scrollIntoView({ behavior: 'smooth' })
             }
         })
@@ -573,7 +573,7 @@ export default class eligibilityClass {
 
     spanMarriedOrSingle(span) {
         if (this.martialStatus.value == 'married' && this.likeSingle == false) {
-            span.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
+            span.textContent = window.location.href.includes('/en') ? 'or your spouse or common law partner (if they will come with you to Canada)' : 'ou votre conjoint ou conjoint de fait (s\'ils viennent avec vous au Canada)';
         } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
             span.textContent = '';
         }
@@ -598,31 +598,37 @@ export default class eligibilityClass {
     // }
 
     errorLanguageSkill(input, skill) {
-        const existingMessage = `You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry`;
+        const isEnglish = window.location.href.includes('/en');
+        const translatedSkill = isEnglish
+            ? skill
+            : {
+                reading: 'compréhension écrite',
+                writing: 'expression écrite',
+                listening: 'compréhension orale',
+                speaking: 'expression orale',
+            }[skill];
+
+        const message = isEnglish
+            ? `You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry`
+            : `Vous devez obtenir au moins "NCLC 7" dans la compétence ${translatedSkill} pour être admissible à Entrée express`;
+
         const listElements = this.noticeDiv.getElementsByClassName('listElement');
-        let messageExists = false;
+        const messageExists = Array.from(listElements).some(element => element.textContent === message);
 
-        for (let i = 0; i < listElements.length; i++) {
-            if (listElements[i].textContent == existingMessage) {
-                messageExists = true;
-            }
-        }
-
-        if (input.value == '' || input.value == 'first-language-' + skill + '-clb6') {
+        if (input.value === '' || input.value === `first-language-${skill}-clb6`) {
             if (!messageExists) {
                 this.noticeDiv.style.display = 'block';
-                this.noticeDiv.innerHTML += `
-                <li class="listElement">You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
-                `;
+                this.noticeDiv.innerHTML += `<li class="listElement">${message}</li>`;
             }
         } else {
             if (messageExists) {
-                for (let i = 0; i < listElements.length; i++) {
-                    if (listElements[i].textContent == existingMessage) {
-                        listElements[i].remove();
+                Array.from(listElements).forEach(element => {
+                    if (element.textContent === message) {
+                        element.remove();
                     }
-                }
-                if (listElements.length == 0) {
+                });
+
+                if (listElements.length === 0) {
                     this.noticeDiv.style.display = 'none';
                 }
             }
@@ -659,15 +665,15 @@ export default class eligibilityClass {
 
         // let modalResult = document.querySelector('#modalResult');
 
-        if (this.count >= 67) {
-            this.modalResult.style.backgroundColor = '#c3ffc3';
-            let audio = new Audio('assets/sounds/success.mp3');
-            audio.play();
-        } else {
-            this.modalResult.style.backgroundColor = '#fcc2c2';
-            let audio = new Audio('assets/sounds/failure.mp3');
-            audio.play();
-        }
+        // if (this.count >= 67) {
+        //     this.modalResult.style.backgroundColor = '#c3ffc3';
+        //     let audio = new Audio('assets/sounds/success.mp3');
+        //     audio.play();
+        // } else {
+        //     this.modalResult.style.backgroundColor = '#fcc2c2';
+        //     let audio = new Audio('assets/sounds/failure.mp3');
+        //     audio.play();
+        // }
 
         this.modalResult.innerHTML += `
             <div class="mt-5 flex flex-col items-around justify-between gap-10">
@@ -675,13 +681,13 @@ export default class eligibilityClass {
             <div class="indent-8 text-2xl md:text-3xl mt-2">
             <li><b>Age:</b> ${this.ageScore}</li>
             <li><b>Education:</b> ${this.educationScore}</li>
-            <li><b>First Language:</b> ${this.firstLangScore}</li>
-            <li><b>Second Language:</b> ${this.secondLangScore}</li>
-            <li><b>Work Experience:</b> ${this.workExpeScore}</li>
-            <li><b>Reserved Job:</b> ${this.reservedJobScore}</li>
-            <li><b>Adaptability:</b> ${this.adaptabilityScore}</li>
+            <li><b>${window.location.href.includes('/en') ? 'First Language:' : 'Première Langue:'}</b> ${this.firstLangScore}</li>
+            <li><b>${window.location.href.includes('/en') ? 'Second Language:' : 'Deuxième Langue:'}</b> ${this.secondLangScore}</li>
+            <li><b>${window.location.href.includes('/en') ? 'Work Experience:' : 'Expérience Professionnelle:'}</b> ${this.workExpeScore}</li>
+            <li><b>${window.location.href.includes('/en') ? 'Reserved Job:' : 'Emploi réservé:'}</b> ${this.reservedJobScore}</li>
+            <li><b>${window.location.href.includes('/en') ? 'Adaptability:' : 'Adaptabilité:'}</b> ${this.adaptabilityScore}</li>
             </div>
-            <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b>${this.count}</b></h2>
+            <h2 class="text-center text-xl mt-3 md:text-3xl">${window.location.href.includes('/en') ? 'Your score is' : 'Votre score est'} <b>${this.count}</b></h2>
             </div>
             `;
 
@@ -776,118 +782,4 @@ export default class eligibilityClass {
         this.eligibilityDiv.style.backgroundColor = '#e2e8f0';
         this.modalResult.style.backgroundColor = '#f7e6e6';
     }
-
-    /* getVariables() {
-        let elig = []
-        let eligibilityIntro = {}
-
-        // eligibility variables
-        eligibilityIntro[0] = document.querySelector('.eligTitle');
-        eligibilityIntro[1] = eligibilityIntro[0].nextElementSibling;
-        eligibilityIntro[2] = eligibilityIntro[1].nextElementSibling;
-        elig[0] = eligibilityIntro;
-
-        // form variables
-        // marital status
-        let maritalObj = {}
-        maritalObj[0] = document.querySelector('.maritalTitle');
-        maritalObj[1] = document.querySelector('[value="single"]');
-        maritalObj[2] = document.querySelector('[value="married"]');
-        maritalObj[3] = document.querySelector('.maritalModalExplanation');
-        elig[1] = maritalObj;
-
-        // age
-        let ageObj = {}
-        ageObj[0] = document.querySelector('.ageModalExplanation');
-        elig[2] = ageObj;
-
-        // education
-        let educationObj = {}
-        educationObj[0] = document.querySelector('[value="secondary"]');
-        educationObj[1] = document.querySelector('[value="one-year"]');
-        educationObj[2] = document.querySelector('[value="two-year"]');
-        educationObj[3] = document.querySelector('[value="bachelors"]');
-        educationObj[4] = document.querySelector('[value="two-or-more"]');
-        educationObj[5] = document.querySelector('[value="masters"]');
-        educationObj[6] = document.querySelector('[value="doctoral"]');
-        educationObj[7] = document.querySelector('.educationModalExplanation');
-        elig[3] = educationObj;
-
-        // first language
-        let firstLangObj = {}
-        firstLangObj[0] = document.querySelector('.firstLangTitle');
-        firstLangObj[1] = document.querySelector('[htmlFor="first-language-availability"]');
-
-        return elig;
-    }
-
-    translateFr() {
-        let elig = this.getVariables();
-        elig[0][0].innerHTML = 'Calculateur d\'éligibilité';
-        elig[0][1].innerHTML = 'Cet outil vous aidera à déterminer votre admissibilité à Entrée express';
-        elig[0][2].innerHTML = 'Veuillez noter que vous n\'êtes éligible que si vous obtenez 67 points ou plus /100';
-
-        // situation matrimoniale
-        elig[1][0].innerHTML = 'Situation matrimoniale';
-        elig[1][1].innerHTML = 'Célibataire / Mariage annulé / Veuf / Séparé';
-        elig[1][2].innerHTML = 'Marié / Union de fait';
-        elig[1][3].innerHTML = `<li><b>Célibataire</b> signifie que vous n'avez jamais été marié(e) et que vous n'êtes pas en union de fait.</li>
-        <li><b>Mariage annulé</b> signifie un mariage déclaré légalement invalide.</li>
-        <li><b>Veuf/Veuve</b> signifie que votre conjoint est décédé et que vous n'avez pas encore contracté de nouveau mariage ou n'avez pas encore vécu en union de fait.</li>
-        <li><b>Séparé</b> signifie que vous et votre conjoint avez cessé de vivre ensemble pendant au moins 1 an en raison de problèmes de relation conjugale et que vous n'avez pas vécu en union de fait pendant cette période.</li>
-        <li><b>Union de fait</b> signifie que vous avez vécu avec votre partenaire pendant au moins 1 an dans une relation continue et mutuellement dépendante, semblable à un mariage.</li>`;
-
-        // age
-        elig[2][0].innerHTML = `<b>Votre âge est déterminé à partir du jour où le CIC reçoit une invitation à présenter une demande (IPD). Cela signifie que si vous avez actuellement 35 ans, mais que vous aurez 36 ans avant de recevoir une IPD, vous n'obtiendrez pas de points pour avoir 35 ans.</b>`;
-
-        // education
-        elig[3][0].innerHTML = `Certificat d'études secondaires (lycée) ou moins`;
-        elig[3][1].innerHTML = `Certificat de programme d'enseignement post-secondaire d'un an`;
-        elig[3][2].innerHTML = `Certificat de programme d'enseignement post-secondaire de deux ans`;
-        elig[3][3].innerHTML = `Diplôme de premier cycle OU un certificat de programme d'enseignement post-secondaire de trois ans ou plus`;
-        elig[3][4].innerHTML = `Deux diplômes de programmes d'enseignement post-secondaire ou plus (dont au moins 1 devrait être de 3 ans ou plus)`;
-        elig[3][5].innerHTML = `Maîtrise`;
-        elig[3][6].innerHTML = `Doctorat`;
-        elig[3][7].innerHTML = `<b><u>Indiquez le niveau de scolarité le plus élevé pour lequel vous :</u></b>
-        <li>avez obtenu un diplôme, un certificat ou un titre canadien, ou</li>
-        <li>avez obtenu une évaluation des titres de compétences académiques (ÉTCA) si vous avez étudié à l'extérieur du Canada (au cours des cinq dernières années).</li>
-        <b><u>Remarque :</u></b> Le diplôme canadien doit provenir d'un établissement agréé. Si vous possédez un diplôme étranger, vous devez disposer d'un rapport d'ÉTCA provenant d'un organisme approuvé.`
-
-    }
-
-    translateEn() {
-        let elig = this.getVariables();
-        elig[0][0].innerHTML = 'Eligibility Calculator';
-        elig[0][1].innerHTML = 'This tool will help you determine your eligibility for Express Entry';
-        elig[0][2].innerHTML = 'Please note that you are only eligible if you get 67 points or more /100';
-
-        // marital status
-        elig[1][0].innerHTML = 'Marital Status';
-        elig[1][1].innerHTML = 'Single / Annulled Marriage / Widowed / Separated';
-        elig[1][2].innerHTML = 'Married / Common-Law';
-        elig[1][3].innerHTML = `<li><b>Single</b> means you have never been married and are not in a common-law relationship.</li>
-        <li><b>Annulled Marriage</b> means a marriage that is legally declared invalid.</li>
-        <li><b>Widowed</b> means your spouse has died and that you have not re-married or entered into a common-law relationship.</li>
-        <li><b>Separated</b> means that you are still legally married but no longer living with your spouse.</li>
-        <li><b>Married</b> means that you and your spouse have had a ceremony that legally binds you to each other. Your marriage must be legally recognized in the country where it was performed.</li>
-        <li><b>Common-Law</b> means that you have lived continuously with your partner in a marital-type relationship for a minimum of 1 year.</li>`;
-
-        // age
-        elig[2][0].innerHTML = `<b>Your age is based on the day IRCC gets an invitation to apply (ITA). It means that if you are 35 years old now, but you turn 36 before you get an ITA, then you will not get points for being 35.</b>`;
-
-        // education
-        elig[3][0].innerHTML = 'Secondary school (high school) credential or less';
-        elig[3][1].innerHTML = 'One-year post-secondary program credential';
-        elig[3][2].innerHTML = 'Two-year post-secondary program credential';
-        elig[3][3].innerHTML = 'Bachelor\'s degree OR a three or more year post-secondary program credential';
-        elig[3][4].innerHTML = 'Two or more post-secondary program credentials (1 should be 3 or more years)';
-        elig[3][5].innerHTML = 'Master\'s degree';
-        elig[3][6].innerHTML = 'Doctoral level university degree (Ph.D.)';
-        elig[3][7].innerHTML = `<b><u>Enter the highest level of education for which you:</u></b>
-        <li>earned a Canadian degree, diploma, or certificate, or</li>
-        <li>had an Educational Credential Assessment (ECA) if studied outside Canada (within the last five years).</li>
-        <b><u>Note:</u></b> Canadian degree must be from an accredited institution. If you have a foreign degree, you must have an ECA report from an approved agency.`
-
-        // language
-    } */
 }
