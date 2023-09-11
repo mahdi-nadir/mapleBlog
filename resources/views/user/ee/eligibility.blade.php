@@ -23,6 +23,7 @@
                                 <li class="mt-1"><b>{{ __('annulMarriage') }}</b> {{ __('annulMarriageMsg') }}</li>
                                 <li class="mt-1"><b>{{ __('widowed') }}</b> {{ __('widowedMsg') }}</li>
                                 <li class="mt-1"><b>{{ __('separated') }}</b> {{ __('separatedMsg') }}</li>
+                                <li class="mt-1"><b>{{ __('divorced') }}</b> {{ __('divorcedMsg') }}</li>
                                 <li class="mt-1"><b>{{ __('married') }}</b> {{ __('marriedMsg') }}</li>
                                 <li class="mt-1"><b>{{ __('commonLaw') }}</b> {{ __('commonLawMsg') }}</li>
                             </p>
