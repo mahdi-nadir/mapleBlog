@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row justify-center items-center gap-2">
+<div class="flex flex-row justify-center items-center gap-2">
     <button class="weatherBtn text-xl md:text-3xl font-bold hover:text-blue-700 flex flex-row justify-end items-end mr-2" title="Check the weather!"><i class="fa-solid fa-cloud-rain animate-pulse"></i></button>
     <button class="currencyBtn text-xl md:text-3xl font-bold hover:text-blue-700 flex flex-row justify-end items-end mr-2" title="Required Funds"><i class="fa-solid fa-magnifying-glass-dollar animate-pulse"></i></button>
     <button class="hashtagBtn text-xl md:text-3xl font-bold hover:text-blue-700 flex flex-row justify-end items-end mr-2" title="Get your hashtag!"><i class="fa-solid fa-hashtag animate-pulse"></i></button>

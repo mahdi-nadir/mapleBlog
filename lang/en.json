@@ -45,5 +45,7 @@
     "select_system": "Select System",
     "select_degree": "Select Degree",
     "select_noc": "Select NOC",
-    "select_step": "Select Step"
+    "select_step": "Select Step",
+    "designedBy": "Designed and developed with ❤ by",
+    "allRightsReserved": "All rights reserved"
 }

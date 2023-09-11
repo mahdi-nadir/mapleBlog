@@ -45,5 +45,7 @@
     "select_system": "Sélectionnez le système",
     "select_degree": "Sélectionnez le niveau d'étude",
     "select_noc": "Sélectionnez le CNP",
-    "select_step": "Sélectionnez l'étape"
+    "select_step": "Sélectionnez l'étape",
+    "designedBy": "Conceptionné et développé avec ❤ par",
+    "allRightsReserved": "Tous droits réservés"
 }
