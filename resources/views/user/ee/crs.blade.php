@@ -459,7 +459,7 @@
                     <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('addPoints') }}</h1>
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('reservedOcc') }}</h1>
                     <label class="font-bold italic text-slate-600" htmlFor="reserved-job-position-in-canada">
-                        {{ __('reservedOccQuestion2') }} (<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment/lmia-exempt.html" target="_blank">{{ __('ifNeeded') }}</a>)?
+                        {{ __('reservedOccQuestion2') }} (<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment/lmia-exempt.html" target="_blank"><span class="underline text-blue-500">{{ __('ifNeeded') }}</span></a>)?
                     </label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4" name="reserved-job-position-in-canada" id="reserved-job-position-in-canada">

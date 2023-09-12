@@ -36,11 +36,14 @@ export default class eligibilityClass {
         // this.span = document.querySelector('#year');
         // this.span.textContent = new Date().getFullYear();
 
-        this.monthNames = ["January", "February", "March", "April", "May", "June",
+        this.monthNamesEn = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
+        this.monthNamesFr = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
         this.year = new Date().getFullYear() - 10;
-        this.month = this.monthNames[new Date().getMonth()];
+        this.month = window.location.href.includes('/en') ? this.monthNamesEn[new Date().getMonth()] : this.monthNamesFr[new Date().getMonth()];
         this.explanations = document.querySelectorAll('.fa-solid')
 
         // declare variables for the form

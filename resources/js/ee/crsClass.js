@@ -25,11 +25,14 @@ export default class crsClass {
         this.skillTransferabilityScore = 0;
         this.additionalPointsScore = 0;
 
-        this.monthNames = ["January", "February", "March", "April", "May", "June",
+        this.monthNamesEn = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
+        this.monthNamesFr = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
         this.year = new Date().getFullYear() - 10;
-        this.month = this.monthNames[new Date().getMonth()];
+        this.month = window.location.href.includes('/en') ? this.monthNamesEn[new Date().getMonth()] : this.monthNamesFr[new Date().getMonth()];
         this.explanations = document.querySelectorAll('.fa-solid')
 
         // declare variables for the form
@@ -196,10 +199,9 @@ export default class crsClass {
                 if (this.ageInput.value == 17) {
                     this.ageScore = 0;
                     this.noticeDiv.style.display = 'block';
-                    this.noticeDiv.innerHTML = `
-                <span class="underline">BECARFUL</span> <br>
+                    this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `
                 You are not eligible to apply for Express Entry because you are under 18 years old.
-                `;
+                ` : `Vous n'êtes pas admissible à présenter une demande dans le cadre d'Entrée express car vous avez moins de 18 ans.`;
 
                     setTimeout(() => {
                         this.noticeDiv.style.display = 'none';
@@ -251,10 +253,9 @@ export default class crsClass {
                 if (this.ageInput.value == 17) {
                     this.ageScore = 0;
                     this.noticeDiv.style.display = 'block';
-                    this.noticeDiv.innerHTML = `
-                <span class="underline">BECARFUL</span> <br>
-                You are not eligible to apply for Express Entry because you are under 18 years old.
-                `;
+                    this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `
+                    You are not eligible to apply for Express Entry because you are under 18 years old.
+                    ` : `Vous n'êtes pas admissible à présenter une demande dans le cadre d'Entrée express car vous avez moins de 18 ans.`;
 
                     setTimeout(() => {
                         this.noticeDiv.style.display = 'none';
@@ -362,21 +363,10 @@ export default class crsClass {
                 this.studiesInCanadaTypeDiv.style.display = 'none';
                 this.firstLangDiv.style.display = 'block';
                 this.firstLangInput.scrollIntoView({ behavior: 'smooth' })
-            } /* else {
-            notDisplayComponents(this.studiesInCanadaDiv);
-        } */
+            }
         })
 
         this.studiesInCanadaTypeInput.addEventListener('change', () => {
-            /*if (studiesInCanadaTypeInput.value == 'secondary') {
-                educationScore = 5;
-            } else if (studiesInCanadaTypeInput.value == 'diploma') {
-                educationScore = 7;
-            } else if (studiesInCanadaTypeInput.value == 'bachelor') {
-                educationScore = 15;
-            }  else {
-                notDisplayComponents(studiesInCanadaTypeDiv);
-            } */
             this.firstLangDiv.style.display = 'block';
             this.firstLangInput.scrollIntoView({ behavior: 'smooth' })
         })
@@ -392,9 +382,7 @@ export default class crsClass {
                 this.firstLangScoresDiv.style.display = 'none';
                 this.noticeDiv.classList.remove('noticeCRS');
                 this.noticeDiv.style.display = 'block';
-                this.noticeDiv.innerHTML = `
-            You must have a language test result to be eligible for Express Entry.
-            `;
+                this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `You must have a language test result to be eligible for Express Entry.` : `Vous devez avoir un résultat de test de langue pour être admissible à Entrée express.`;
             }
         })
 
@@ -567,7 +555,7 @@ export default class crsClass {
 
         this.workExpCanInput.addEventListener('change', () => {
             let monthYearSpan = document.querySelector('#monthYearExp');
-            monthYearSpan.textContent = `${this.month} 1st, ${this.year}`;
+            monthYearSpan.textContent = window.location.href.includes('/en') ? `${this.month} 1st, ${this.year}` : `1er ${this.month} ${this.year}`;
 
             if (this.martialStatus.value == 'married' && this.likeSingle == false) {
                 if (this.workExpCanInput.value == 1) {
@@ -618,10 +606,8 @@ export default class crsClass {
             } else if (this.workExpInput.value == 0) {
                 this.qualificationDiv.style.display = 'none';
                 this.noticeDiv.style.display = 'block';
-                this.noticeDiv.innerHTML = `
-            <span class="underline">BECARFUL</span> <br>
-            You must have at least one year of continuous full-time or equivalent paid work experience in the past 10 years (from ${this.month} 1st, ${this.year}) in a skilled occupation.
-            `;
+                this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `
+            You must have at least one year of continuous full-time or equivalent paid work experience in the past 10 years (from ${this.month} 1st, ${this.year}) in a skilled occupation.` : `Vous devez avoir au moins un an d'expérience de travail à temps plein ou l'équivalent rémunéré au cours des 10 dernières années (à partir du 1er ${this.month} ${this.year}) dans une profession admissible.`;
                 // setTimeout(() => {
                 //     this.noticeDiv.style.display = 'none';
                 //     this.noticeDiv.innerHTML = '';
@@ -1125,17 +1111,31 @@ export default class crsClass {
 
     spanMarriedOrSingle(span) {
         if (this.martialStatus.value == 'married' && this.likeSingle == false) {
-            span.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
+            span.textContent = window.location.href.includes('/en') ? 'or your spouse or common law partner (if they will come with you to Canada)' : 'ou votre conjoint ou conjoint de fait (s\'ils vous accompagnent au Canada)';
         } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
             span.textContent = '';
         }
     }
 
     errorLanguageSkill(input, skill, nextInput, secondLanguageDiv) {
+        const isEnglish = window.location.href.includes('/en');
+        const translatedSkill = isEnglish
+            ? skill
+            : {
+                reading: 'compréhension écrite',
+                writing: 'expression écrite',
+                listening: 'compréhension orale',
+                speaking: 'expression orale',
+            }[skill];
+
+        const message = isEnglish
+            ? `Just remember that you should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry`
+            : `N'oubliez pas que vous devez obtenir au moins "NCLC 7" dans la compétence ${translatedSkill} pour être admissible à Entrée express`;
+
         if (input.value == '' || input.value == 'clb6' || input.value == 'clb5' || input.value == 'clb4' || input.value == 'clb3') {
             this.noticeDiv.style.display = 'block';
             this.noticeDiv.innerHTML += `
-            <li class="listElement">Just remember that you should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
+            <li class="listElement">${message}</li>
             `;
             setTimeout(() => {
                 this.noticeDiv.style.display = 'none';
@@ -1419,46 +1419,63 @@ export default class crsClass {
 
         // let modalResult = document.querySelector('#modalResult');
 
+        let humanFactors = window.location.href.includes('/en') ? 'Human capital factors' : 'Facteurs de capital humain';
+        let languages = window.location.href.includes('/en') ? 'Languages' : 'Langues';
+        let canWorkExp = window.location.href.includes('/en') ? 'Canadian Work Experience' : 'Expérience Professionnelle Canadienne';
+        let subtotal = window.location.href.includes('/en') ? 'Subtotal' : 'Sous-total';
+        let spouseFactors = window.location.href.includes('/en') ? 'Spouse\'s factors' : 'Facteurs du conjoint';
+        let skillTrans = window.location.href.includes('/en') ? 'Skill transferability factors' : 'Facteurs de transférabilité des compétences';
+        let to50max = window.location.href.includes('/en') ? 'to a maximum of 50 points' : 'à un maximum de 50 points';
+        let offiLangProf = window.location.href.includes('/en') ? 'Official Language proficiency' : 'Compétence linguistique officielle';
+        let foreignWorkExp = window.location.href.includes('/en') ? 'Foreign work experience' : 'Expérience de travail à l\'étranger';
+        let certificateQual = window.location.href.includes('/en') ? 'Certificate of qualification' : 'Certificat de qualification';
+        let addPoints = window.location.href.includes('/en') ? 'Additional points' : 'Points additionnels';
+        let provNom = window.location.href.includes('/en') ? 'Provincial nomination' : 'Nomination provinciale';
+        let jobOffer = window.location.href.includes('/en') ? 'Job offer' : 'Offre d\'emploi';
+        let studiesCan = window.location.href.includes('/en') ? 'Studies in Canada' : 'Études au Canada';
+        let frSkills = window.location.href.includes('/en') ? 'French language skills' : 'Compétences linguistiques en français';
+        let siblingCan = window.location.href.includes('/en') ? 'Sibling in Canada' : 'Frère ou sœur au Canada';
+
         this.modalResult.innerHTML += `
         <div class="modalContent">
         <div class="flex flex-col md:gap-2 justify-center items-center">
-            <h1 class="text-red-800 font-bold uppercase underline">human capital factors</h1>
-            <p class="text-center">Age + Education + Languages + Canadian Work Experience</p>
+            <h1 class="text-red-800 font-bold uppercase underline">${humanFactors}</h1>
+            <p class="text-center">Age + Education + ${languages} + ${canWorkExp}</p>
             <p>${this.ageScore} + ${this.educationScore} + ${firstLangScoree + this.secondLangScore} + ${this.workExpeCanScore}</p>
-            <h3 class="italic uppercase font-bold mt-3">Subtotal = ${this.ageScore + this.educationScore + firstLangScoree + this.secondLangScore + this.workExpeCanScore}</h3>
+            <h3 class="italic uppercase font-bold mt-3">${subtotal} = ${this.ageScore + this.educationScore + firstLangScoree + this.secondLangScore + this.workExpeCanScore}</h3>
         </div>
         `
         if (this.martialStatus.value == 'married' && this.likeSingle == false) {
             this.modalResult.innerHTML += `
                 <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
-                    <h1 class="text-red-800 font-bold uppercase underline">spouse factors</h1>
-                    <p class="text-center">Education + Language + Canadian Work Experience</p>
+                    <h1 class="text-red-800 font-bold uppercase underline">${spouseFactors}</h1>
+                    <p class="text-center">Education + ${languages} + ${canWorkExp}</p>
                     <p>${this.spouseEducationScore} + ${this.spouseLangScore} + ${this.spouseWorkExpScore}</p>
-                    <h3 class="italic uppercase font-bold mt-3">Subtotal = ${allSpouseScore}</h3>
+                    <h3 class="italic uppercase font-bold mt-3">${subtotal} = ${allSpouseScore}</h3>
                 </div>
                 `;
         }
 
         this.modalResult.innerHTML += `
         <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
-            <h1 class="text-red-800 font-bold uppercase underline">skill transferability factors</h1>
-            <p class="font-bold underline text-center mt-2">Education (to a maximum of 50 points)</p>
-            <p class="indent-10 text-center">Education + Official Language proficiency = ${studyPlusLanguage}</p>
-            <p class="indent-10 text-center">Education + Canadian work experience = ${studyPlusWorkExpCan}</p>
-            <h3 class="font-bold italic mt-2">Subtotal = ${studiesEntries}</h3>
-            <p class="font-bold underline text-center mt-2">Foreign work experience (to a maximum of 50 points)</p>
-            <p class="indent-10 text-center">Foreign work experience + Official Language proficiency = ${workExpPlusLanguage}</p>
-            <p class="indent-10 text-center">Foreign work experience + Canadian work experience = ${workExpPlusWorkExpCan}</p>
-            <h3 class="italic font-bold mt-2 mb-2">Subtotal = ${experienceEntries}</h3>
-            <p>Certificate of qualification = ${qualificationEntries}</p>
-            <h3 class="italic uppercase font-bold mt-2">Subtotal = ${this.skillTransferabilityScore}</h3>
+            <h1 class="text-red-800 font-bold uppercase underline">${skillTrans}</h1>
+            <p class="font-bold underline text-center mt-2">Education (${to50max})</p>
+            <p class="indent-10 text-center">Education + ${offiLangProf} = ${studyPlusLanguage}</p>
+            <p class="indent-10 text-center">Education + ${canWorkExp} = ${studyPlusWorkExpCan}</p>
+            <h3 class="font-bold italic mt-2">${subtotal} = ${studiesEntries}</h3>
+            <p class="font-bold underline text-center mt-2">${foreignWorkExp} (${to50max})</p>
+            <p class="indent-10 text-center">${foreignWorkExp} + ${offiLangProf} = ${workExpPlusLanguage}</p>
+            <p class="indent-10 text-center">${foreignWorkExp} + ${canWorkExp} = ${workExpPlusWorkExpCan}</p>
+            <h3 class="italic font-bold mt-2 mb-2">${subtotal} = ${experienceEntries}</h3>
+            <p>${certificateQual} = ${qualificationEntries}</p>
+            <h3 class="italic uppercase font-bold mt-2">${subtotal} = ${this.skillTransferabilityScore}</h3>
         </div>
 
         <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
-            <h1 class="text-red-800 font-bold uppercase underline">additional points</h1>
-            <p class="text-center">Provincial nomination + Job offer + Studies in Canada + French language skills + Sibling in Canada</p>
+            <h1 class="text-red-800 font-bold uppercase underline">${addPoints}</h1>
+            <p class="text-center">${provNom} + ${jobOffer} + ${studiesCan} + ${frSkills} + ${siblingCan}</p>
             <p>${this.nominationScore} + ${this.reservedJobScore} + ${pointsForStudiesInCanada} + ${pointsForFrenchlanguageSkills} + ${this.relativesScore}</p>
-            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${this.additionalPointsScore}</h3>
+            <h3 class="italic uppercase font-bold mt-1">${subtotal} = ${this.additionalPointsScore}</h3>
         </div>
 
         <h1 class="text-red-800 font-bold uppercase mt-4 text-center text-2xl md:text-3xl underline">Total:</h1>
