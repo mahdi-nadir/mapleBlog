@@ -412,7 +412,7 @@
         
                 <div style="display: none;" class="work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('foreignWorkExp') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="work-experience">{{ __('foreignWorkExpQuestion1') }} (from <span id="monthYearExp"></span>), {{ __('foreignWorkExpQuestion2') }}</label>
+                    <label class="font-bold italic text-slate-600" htmlFor="work-experience">{{ __('foreignWorkExpQuestion1') }} ({{ __('from') }} <span id="monthYearExp"></span>), {{ __('foreignWorkExpQuestion2') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4" name="work-experience" id="work-experience">
                             <option value="">{{ __('select') }}</option>
@@ -502,8 +502,8 @@
                 </div>
 
                 <div style="display: none;" class="nomination-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>Provincial Nomination</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="nomination">Do you have a nomination certificate from a province or territory?</label>
+                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('nomination') }}</h1>
+                    <label class="font-bold italic text-slate-600" htmlFor="nomination">{{ __('nominationQuestion') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4" name="nomination" id="nomination">
                             <option value="">{{ __('select') }}</option>
@@ -516,15 +516,15 @@
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                         <p class="pt-5">
                             <b>
-                                <u>Note:</u> A nomination is different from a certificate of qualification. A nomination lets you apply to IRCC for permanent residence. A certificate of qualification lets you work in some skilled trades in Canada. Only the provinces, territories and a federal body can issue these certificates.
+                                <u>Note:</u> {{ __('nominationMsg') }}
                             </b>
                         </p>
                     </div>
                 </div>
 
                 <div style="display: none;" class="relatives-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>Relatives in Canada</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="relatives">Do you <span id="marriedOrNot"></span> have at least one brother or sister living in Canada who is a citizen or permanent resident?</label>
+                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('relatives') }}</h1>
+                    <label class="font-bold italic text-slate-600" htmlFor="relatives">{{ __('relativesQuestion1') }} <span id="marriedOrNot"></span> {{ __('relativesQuestion3') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4" name="relatives" id="relatives">
                             <option value="">{{ __('select') }}</option>
@@ -536,84 +536,84 @@
                     <div style="display: none;" class="explanation explanationRelatives">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                         <p class="pt-5">
-                            <b><u>Note:</u> to answer yes, the brother or sister must be:</b>
+                            <b><u>Note:</u> {{ __('relatives2_1') }}</b>
 
-                            <li>18 years or older</li>
-                            <li>related to you or your partner by blood, marriage, common-law partnership or adoption</li>
-                            <li>have a parent in common with you or your partner</li>
+                            <li>{{ __('relatives2_2') }}</li>
+                            <li>{{ __('relatives2_3') }}</li>
+                            <li>{{ __('relatives2_4') }}</li>
 
-                            <b><u>A brother or sister is related to you by:</u></b>
+                            <b><u>{{ __('relatives2_5') }}</u></b>
 
-                            <li>blood (biological)</li>
-                            <li>adoption</li>
-                            <li>marriage (step-brother or step-sister)</li>
+                            <li>{{ __('relatives2_6') }}</li>
+                            <li>{{ __('relatives2_7') }}</li>
+                            <li>{{ __('relatives2_8') }}</li>
                         </p>
                     </div>
                 </div>
 
                 <div style="display: none;" class="spouse-education-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>Spouse Factors</h1>
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>Spouse Education</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="spouse-education">What is the highest level of education for which your spouse or common-law partner's has:
-                        <li>earned a Canadian degree, diploma or certificate; or</li>
-                        <li>had an Educational Credential Assessment (ECA)? (ECAs must be from an approved agency, in the last five years)</li></label>
+                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('spouseFactors') }}</h1>
+                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseEdu') }}</h1>
+                    <label class="font-bold italic text-slate-600" htmlFor="spouse-education">{{ __('spouseEduQuestion1') }}
+                        <li>{{ __('spouseEduQuestion2') }}</li>
+                        <li>{{ __('spouseEduQuestion3') }}</li></label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4 w-1/2" name="spouse-education" id="spouse-education">
                             <option value="">{{ __('select') }}</option>
-                            <option value="none">None or less than secondary</option>
-                            <option value="secondary">Secondary school</option>
-                            <option value="one-year">1 year post-secondary program</option>
-                            <option value="two-year">2 years post-secondary program</option>
-                            <option value="bachelors">Bachelor's degree OR a +3 years post-secondary program</option>
-                            <option value="two-or-more">2 or more post-secondary program credentials (1 should be 3 or more years)</option>
-                            <option value="masters">Master's degree</option>
-                            <option value="doctoral">Doctoral level university degree (Ph.D.)</option>
+                            <option value="none">{{ __('notCompletedDegree') }}</option>
+                            <option value="secondary">{{ __('secondaryEdu') }}</option>
+                            <option value="one-year">{{ __('oneYear') }}</option>
+                            <option value="two-year">{{ __('twoYear') }}</option>
+                            <option value="bachelors">{{ __('bachelors') }}</option>
+                            <option value="two-or-more">{{ __('twoOrMore') }}</option>
+                            <option value="masters">{{ __('masters') }}</option>
+                            <option value="doctoral">{{ __('phd') }}</option>
                         </select>
                         <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseEducation"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationSpouseSpouseEducation">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                         <p class="pt-5">
-                            <b><u>Enter the highest level of education for which you:</u></b>
+                            <b><u>{{ __('eduMsg1') }}</u></b>
 
-                            <li>earned a Canadian degree, diploma, or certificate, or</li>
-                            <li>had an Educational Credential Assessment (ECA) if studied outside Canada (within the last five years).</li>
-                            <b><u>Note:</u></b> Canadian degree must be from an accredited institution. If you have a foreign degree, you must have an ECA report from an approved agency.
+                            <li>{{ __('eduMsg2') }}</li>
+                            <li>{{ __('eduMsg3') }}</li>
+                            <b><u>Note:</u></b> {{ __('eduMsg4') }}
                         </p>
                     </div>
                 </div>
 
                 <div style="display: none;" class="spouse-work-experience-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>Spouse Work Experience</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="spouse-work-experience">In the last ten years, how many years of skilled work experience in Canada does your spouse/common-law partner have?</label>
+                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseWorkExp') }}</h1>
+                    <label class="font-bold italic text-slate-600" htmlFor="spouse-work-experience">{{ __('spouseWorkExpQuestion1') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
                         <select class="rounded bg-slate-100 border-red-800 border-4" name="spouse-work-experience" id="spouse-work-experience">
                             <option value="">{{ __('select') }}</option>
-                            <option value="0">None or less than a year</option>
-                            <option value="1">1 year</option>
-                            <option value="2">2 years</option>
-                            <option value="3">3 years</option>
-                            <option value="4">4 years</option>
-                            <option value="5">5 years or more</option>
+                            <option value="0">{{ __('noneOrLess1yr') }}</option>
+                            <option value="1">1 {{ __('year') }}</option>
+                            <option value="2">2 {{ __('years') }}</option>
+                            <option value="3">3 {{ __('years') }}</option>
+                            <option value="4">4 {{ __('years') }}</option>
+                            <option value="5">5 {{ __('years') }} {{ __('orMore') }}</option>
                         </select>
                         <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseWorkExp"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationSpouseWorkExp">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                         <p class="pt-5">
-                            <b>It must have been paid, full-time (or an equal amount in part-time), and in one or more NOC TEER category 0, 1, 2, or 3 jobs.</b>
+                            <b>{{ __('foreignWorkExpMsg') }}</b>
                         </p>
                     </div>
                 </div>
 
                 <div style="display: none;" class="spouse-language-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>Spouse Language Skills</h1>
+                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseLangSkills') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label class="font-bold italic text-slate-600" htmlFor="spouse-language-type">Did your spouse or common-law partner take a language test? if so, which one <b>"IF"</b> its test results are less than two years old?</label>
+                        <label class="font-bold italic text-slate-600" htmlFor="spouse-language-type">{{ __('spouseLangSkillsQuestion2') }} <b>"{{ __('if') }}"</b> {{ __('spouseLangSkillsQuestion3') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
                             <select class="rounded bg-slate-100 border-red-800 border-4" name="spouse-language-type" id="spouse-language-type">
                                 <option value="">{{ __('select') }}</option>
-                                <option value="none">Not applicable</option>
+                                <option value="none">{{ __('notApplicable') }}</option>
                                 <option value="ielts">IELTS</option>
                                 <option value="celpip">CELPIP</option>
                                 <option value="tef-canada">TEF Canada</option>
@@ -624,15 +624,15 @@
                         <div style="display: none;" class="explanation explanationSpouseLanguageType">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                             <p class="pt-5">
-                                <b>The test results must be less than two years old when you apply for permanent residence. If the test results of your spouse are older than two years before submitting your application, you will not get points for it. And if you submit your application with an expired test result, IRCC may refuse it if your CRS is less than the draw score.</b>
+                                <b>{{ __('spouseLangMsg') }}</b>
                             </p>
                         </div>
                     </div>
 
                     <div style="display: none;" class="spouse-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-8">
-                        <label class="font-bold italic text-slate-600">Set your test scores</label>
+                        <label class="font-bold italic text-slate-600">{{ __('setUrScores') }}</label>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
-                            <label class="font-bold" htmlFor="spouse-language-reading">Reading</label>
+                            <label class="font-bold" htmlFor="spouse-language-reading">{{ __('reading') }}</label>
                             <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-reading" id="spouse-language-reading">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
@@ -646,7 +646,7 @@
                             </select>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
-                            <label class="font-bold" htmlFor="spouse-language-writing">Writing</label>
+                            <label class="font-bold" htmlFor="spouse-language-writing">{{ __('writing') }}</label>
                             <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-writing" id="spouse-language-writing">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
@@ -660,7 +660,7 @@
                             </select>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
-                            <label class="font-bold" htmlFor="spouse-language-listening">Listening</label>
+                            <label class="font-bold" htmlFor="spouse-language-listening">{{ __('listening') }}</label>
                             <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-listening" id="spouse-language-listening">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
@@ -674,7 +674,7 @@
                             </select>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
-                            <label class="font-bold" htmlFor="spouse-language-speaking">Speaking</label>
+                            <label class="font-bold" htmlFor="spouse-language-speaking">{{ __('speaking') }}</label>
                             <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-speaking" id="spouse-language-speaking">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
@@ -694,8 +694,8 @@
             <div class="flex flex-col justify-center items-center gap-2 md:gap-4 mx-auto">
                 <div class="border-2 border-black bg-red-600 text-white font-bold rounded mt-4 p-2 px-5 noticeCRS w-2/3" style="display: none;"></div>
                 <div class="flex flex-row justify-center items-center gap-4 md:gap-8 mx-auto">
-                    <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Reset</button>
-                    <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Calculate</button>
+                    <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-6' disabled>{{ __('reset') }}</button>
+                    <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6' disabled>{{ __('calculate') }}</button>
                 </div>
             </div>
         </div>
