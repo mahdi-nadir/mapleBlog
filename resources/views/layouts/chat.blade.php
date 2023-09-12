@@ -11,12 +11,12 @@
                 <i class="fa-solid fa-robot ml-1 mb-1 robotIcon" style="display: none;"></i>
                 <div>
                     <h3 class="hey rounded-lg my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">Hey There! I'm Medy, your personal assistant!</h3>
-                    <h3 class="masculinePronoun rounded-lg my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">It's important to understand that using masculine pronouns is not indicative of sexism, but rather a reflection of simplicity.</h3>
-                    <h3 class="whatLang rounded-lg my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">What language do you prefer?
+                    <h3 class="masculinePronoun rounded-lg my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;"></h3>
+                    {{-- <h3 class="whatLang rounded-lg my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">What language do you prefer?
                     <ul class="suggestionUser pt-2" style="display: none;">
                         <li><button class="answer engBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">English</button></li>
                         <li><button class="answer frBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">French</button></li>
-                    </ul></h3>
+                    </ul></h3> --}}
                 </div>
             </div>
             <div class="discussion flex flex-col justify-center items-start gap-2 text-start">

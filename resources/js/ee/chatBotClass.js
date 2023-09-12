@@ -14,7 +14,8 @@ export default class ChatBotClass {
         this.answers = document.querySelectorAll('.answer');
         this.spinner = document.querySelector('.spinner');
         this.heyMessage = document.querySelector('.hey');
-        this.helloMessages = [
+        this.isEnglish = window.location.href.includes('/en');
+        this.helloMessagesEn = [
             "Hello! I'm here to help you with your questions about Express Entry system. I can answer questions about eligibility, Express Entry pool, Post-ITA, Post-AoR, PPR and settlement. What would you like to know?",
             "Hello! I'm Medy, your dedicated assistant.",
             "Greetings! I'm Medy, here to assist you.",
@@ -26,9 +27,24 @@ export default class ChatBotClass {
             "Hiya! I'm Medy, here as your assistant.",
             "Hey, it's Medy! Ready to assist you.",
             "Hello, it's me, Medy, your personal assistant extraordinaire!"
-        ]
+        ];
+
+        this.helloMessagesFr = [
+            "Bonjour ! Je suis là pour vous aider avec vos questions sur le système Entrée express. Je peux répondre à des questions sur l'admissibilité, le bassin d'Entrée express, Post-ITA, Post-AoR, PPR et l'établissement. Que souhaitez-vous savoir ?",
+            "Bonjour ! Je suis Medy, votre assistant dévoué.",
+            "Salutations ! Je suis Medy, ici pour vous assister.",
+            "Salut ! Je suis Medy, à votre service.",
+            "Hey ! C'est Medy, votre assistant.",
+            "Salut ! Je suis Medy, votre aide personnelle.",
+            "Salutations ! Medy se présente en tant qu'assistant.",
+            "Yo ! Medy ici, votre fidèle assistant personnel.",
+            "Salut ! Je suis Medy, ici en tant qu'assistant.",
+            "Hey, c'est Medy ! Prêt à vous assister.",
+            "Bonjour, c'est moi, Medy, votre assistant personnel extraordinaire !"
+        ];
 
         this.masculinePronoun = document.querySelector('.masculinePronoun');
+        this.masculinePronoun.innerHTML = this.isEnglish ? `It's important to understand that using masculine pronouns is not indicative of sexism, but rather a reflection of simplicity.` : `Il est important de comprendre que l'utilisation de pronoms masculins n'est pas indicative du sexisme, mais plutôt un reflet de la simplicité.`;
         this.whatLang = document.querySelector('.whatLang');
         this.robotIcon = document.querySelector('.robotIcon');
         this.chatTime, this.chatMonth, this.chatDay, this.chatHour, this.chatMinute;
@@ -72,14 +88,8 @@ export default class ChatBotClass {
             this.chatDiv.style.opacity = '1';
             this.chatDiv.style.visibility = 'visible';
             this.chatDiv.style.zIndex = '1000';
-            // this.robotBtn.style.display = 'none';
-            // this.weatherBtn.style.display = 'none';
-            // this.currencyBtn.style.display = 'none';
-            // this.hashtagBtn.style.display = 'none';
             this.spinner.style.display = 'block';
             this.startConversation();
-            let frLang = document.querySelectorAll('.frBtn');
-            let engLang = document.querySelectorAll('.engBtn');
 
             if (this.chatDiv.style.display == 'block') {
                 this.robotBtn.style.display = 'none';
@@ -92,19 +102,6 @@ export default class ChatBotClass {
                 this.currencyBtn.style.display = 'block';
                 this.hashtagBtn.style.display = 'block';
             }
-            frLang.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    this.answerUser('French');
-                    this.questionType('french');
-                })
-            })
-
-            engLang.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    this.answerUser('English');
-                    this.questionType('english');
-                })
-            })
         })
 
         this.reduceBtn.addEventListener('click', () => {
@@ -133,20 +130,6 @@ export default class ChatBotClass {
             this.heyMessage.style.display = 'none';
             this.masculinePronoun.style.display = 'none';
             this.whatLang.style.display = 'none';
-            this.suggestionUser.innerHTML = `
-            <li><button class="answer engBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">English</button></li>
-                                <li><button class="answer frBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">French</button></li>`
-
-            let engBtn = document.querySelectorAll('.engBtn');
-            let frBtn = document.querySelectorAll('.frBtn');
-
-            frBtn.forEach(btn => {
-                btn.disabled = false;
-            })
-
-            engBtn.forEach(btn => {
-                btn.disabled = false;
-            })
         })
 
         this.chatDiv.querySelector('span').addEventListener('click', () => {
@@ -172,7 +155,7 @@ export default class ChatBotClass {
         this.chatMonth = this.chatTime.getMonth() + 1;
         this.chatHour = this.chatTime.getHours();
         this.chatMinute = this.chatTime.getMinutes();
-        this.heyMessage.innerHTML = this.helloMessages[Math.floor(Math.random() * this.helloMessages.length)];
+        this.heyMessage.innerHTML = this.isEnglish ? this.helloMessagesEn[Math.floor(Math.random() * this.helloMessagesEn.length)] : this.helloMessagesFr[Math.floor(Math.random() * this.helloMessagesFr.length)];
         setTimeout(() => {
             this.robotIcon.style.display = 'block';
             this.heyMessage.style.display = 'block';
@@ -183,25 +166,26 @@ export default class ChatBotClass {
             // this.playAudioInbox();
         }, 2500)
         setTimeout(() => {
-            this.whatLang.style.display = 'block';
-            this.suggestionUser.style.display = 'block';
+            // this.whatLang.style.display = 'block';
+            // this.suggestionUser.style.display = 'block';
             this.spinner.style.display = 'none';
+            this.questionType();
             // this.playAudioInbox();
-        }, 3200)
+        }, 1200)
     }
 
-    refreshing(lang) {
+    refreshing() {
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
         let refreshBtn = document.querySelectorAll('.resetBtn');
         refreshBtn.forEach(btn => {
             btn.addEventListener('click', () => {
-                this.questionType(lang);
+                this.questionType();
             })
         })
     }
 
     answerUser(response) {
-        this.discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+        this.discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
         <i class="fa-solid fa-user ml-2 mb-1"></i>
                 <div>
                     <h3 class="rounded-lg p-1 my-1 ml-1 pl-2 text-sm md:text-md bg-blue-200 w-full">${response}</h3>
@@ -210,20 +194,16 @@ export default class ChatBotClass {
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    questionType(lang) {
-        let engBtn = document.querySelector('.engBtn');
-        let frBtn = document.querySelector('.frBtn');
-        frBtn.disabled = true;
-        engBtn.disabled = true;
+    questionType() {
         this.spinner.style.display = 'block';
-        if (lang == 'english') {
+        if (this.isEnglish) {
             setTimeout(() => {
                 this.spinner.style.display = 'none';
                 this.discussion.innerHTML += `
-            <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
-                <i class="fa-solid fa-robot ml-1 mb-1"></i>
+            <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
+                <i class="fa-solid fa-robot ml-1"></i>
                 <div>
-                    <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">Great! I can help you with all Express Entry system topics listed below. Select one of them to get started.
+                    <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">How can I help you today? Select a topic to get started.
                     <ul class="suggestionUser pt-2">
                             <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Eligibility</button></li>
                             <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">E.E. Pool</button></li>
@@ -237,18 +217,17 @@ export default class ChatBotClass {
                 </div>
             </div>
         `;
-                this.questionSubType(lang);
+                this.questionSubType();
             }, 2000);
-
         } else {
             setTimeout(() => {
                 this.spinner.style.display = 'none';
                 this.discussion.innerHTML += `
-                <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
-                    <i class="fa-solid fa-robot ml-1 mb-1"></i>
+                <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
+                    <i class="fa-solid fa-robot ml-1"></i>
                     <div>
                         <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
-                        Excellent! Je peux vous aider avec les sujets énumérés ci-dessous concernant le système d'immigration Entrée Express. Sélectionnez-en un pour commencer.
+                        Que voulez-vous savoir aujourd'hui? Sélectionnez un sujet pour commencer.
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Admissibilité</button></li>
                                 <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Bassin E.E.</button></li>
@@ -262,13 +241,13 @@ export default class ChatBotClass {
                     </div>
                 </div>
             `;
-                this.questionSubType(lang);
+                this.questionSubType();
             }, 2000);
         }
     }
 
-    questionSubType(lang) {
-        if (lang == 'french') {
+    questionSubType() {
+        if (!this.isEnglish) {
             let admissibiliteBtn = document.querySelectorAll('.admissibiliteBtn');
             let bassinBtn = document.querySelectorAll('.bassinBtn');
             let postItaFrBtn = document.querySelectorAll('.postItaFrBtn');
@@ -284,7 +263,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                             <i class="fa-solid fa-robot ml-1 mb-1"></i>
                             <div>
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -302,7 +281,7 @@ export default class ChatBotClass {
                                 </h3>
                             </div>
                         </div>
-                    `; this.fromAdmissibilite(lang);
+                    `; this.fromAdmissibilite();
                     }, 2000);
                 })
             })
@@ -314,7 +293,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -337,7 +316,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromBassin(lang);
+                `; this.fromBassin();
                     }, 2000);
                 })
             })
@@ -349,7 +328,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -382,7 +361,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPostItaFr(lang);
+                `; this.fromPostItaFr();
                     }, 2000);
                 })
             })
@@ -394,7 +373,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -423,7 +402,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPostAorFr(lang);
+                `; this.fromPostAorFr();
                     }, 2000);
                 })
             })
@@ -435,7 +414,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -451,7 +430,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPprFr(lang);
+                `; this.fromPprFr();
                     }, 2000);
                 })
             })
@@ -463,7 +442,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -498,12 +477,12 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromInstallation(lang);
+                `; this.fromInstallation();
                     }, 2000);
                 })
             })
 
-            anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+            anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
         } else {
             let eligibilityBtn = document.querySelectorAll('.eligibilityBtn');
             let poolBtn = document.querySelectorAll('.poolBtn');
@@ -520,7 +499,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -538,7 +517,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromEligibility(lang);
+                `; this.fromEligibility();
                     }, 2000);
                 })
             })
@@ -550,7 +529,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -573,7 +552,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPool(lang);
+                `; this.fromPool();
                     }, 2000);
                 })
             })
@@ -585,7 +564,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -612,7 +591,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPostItaEn(lang);
+                `; this.fromPostItaEn();
                     }, 2000);
                 })
             })
@@ -624,7 +603,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -648,7 +627,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPostAorEn(lang);
+                `; this.fromPostAorEn();
                     }, 2000);
                 })
             })
@@ -660,7 +639,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -676,7 +655,7 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromPprEn(lang);
+                `; this.fromPprEn();
                     }, 2000);
                 })
             })
@@ -688,7 +667,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -715,21 +694,21 @@ export default class ChatBotClass {
                             </h3>
                         </div>
                     </div>
-                `; this.fromSettlement(lang);
+                `; this.fromSettlement();
                     }, 2000);
                 })
             })
 
-            anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+            anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
         }
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
         // this.playAudioInbox();
     }
 
-    questionFromWebsite(lang) {
+    questionFromWebsite() {
         let admin = this.admins[Math.floor(Math.random() * this.admins.length)];
         let anotherQuestionBtn = document.querySelectorAll('.anotherQuestionBtn');
-        if (lang == 'english') {
+        if (this.isEnglish) {
             anotherQuestionBtn.forEach(btn => {
                 btn.addEventListener('click', () => {
                     this.spinner.style.display = 'block';
@@ -737,7 +716,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                             <i class="fa-solid fa-robot ml-1 mb-1"></i>
                             <div>
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -756,7 +735,7 @@ export default class ChatBotClass {
                         </div>
                     `; this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
                         // this.playAudioInbox();
-                        this.refreshing(lang);
+                        this.refreshing();
                     }, 2000);
                 })
             })
@@ -768,7 +747,7 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                             <i class="fa-solid fa-robot ml-1 mb-1"></i>
                             <div>
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -788,31 +767,15 @@ export default class ChatBotClass {
                     `;
                         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
                         // this.playAudioInbox();
-                        this.refreshing(lang);
+                        this.refreshing();
                     }, 2000);
                 })
             })
         }
     }
 
-    // playAudioInbox() {
-    //     let audio = new Audio('../../sounds/messageSound.mp3');
-    //     audio.play();
-    // }
-
-    // showHaveQuestionsMark() {
-    //     let haveQuestionsMark = document.querySelector('.haveQuestions');
-    //     if (window.innerWidth > 650) {
-    //         this.haveQuestionsMark.style.display = 'block';
-    //     }
-
-    //     this.haveQuestionsMark.addEventListener('click', () => {
-    //         this.haveQuestionsMark.style.display = 'none';
-    //     })
-    // }
-
     // eligibility
-    fromAdmissibilite(lang) {
+    fromAdmissibilite() {
         let ageBtn = document.querySelectorAll('.ageBtn');
         let educationBtn = document.querySelectorAll('.educationBtn');
         let languagesBtn = document.querySelectorAll('.languagesBtn');
@@ -830,7 +793,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -844,7 +807,7 @@ export default class ChatBotClass {
                     </div>
                 `;
                     // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -856,7 +819,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -870,7 +833,7 @@ export default class ChatBotClass {
                     </div>
                 `;
                     // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -882,7 +845,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -895,7 +858,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -907,7 +870,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -920,7 +883,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -932,7 +895,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -945,7 +908,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -957,7 +920,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -984,15 +947,15 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
     }
 
-    fromEligibility(lang) {
+    fromEligibility() {
         let ageBtn = document.querySelectorAll('.ageBtn');
         let educationBtn = document.querySelectorAll('.educationBtn');
         let languagesBtn = document.querySelectorAll('.languagesBtn');
@@ -1010,7 +973,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1023,7 +986,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `;
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1035,7 +998,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1048,7 +1011,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1060,7 +1023,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1073,7 +1036,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1085,7 +1048,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1098,7 +1061,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1110,7 +1073,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1123,7 +1086,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1135,7 +1098,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1157,16 +1120,16 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
     }
 
     // pool  
-    fromBassin(lang) {
+    fromBassin() {
         let etatCivilBtn = document.querySelectorAll('.etatCivilBtn');
         let ageBtn = document.querySelectorAll('.ageBtn');
         let educationBtn = document.querySelectorAll('.educationBtn');
@@ -1189,7 +1152,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1208,7 +1171,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1220,7 +1183,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1237,7 +1200,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1249,7 +1212,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1266,7 +1229,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1278,7 +1241,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1295,7 +1258,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1307,7 +1270,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1324,7 +1287,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1336,7 +1299,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1357,7 +1320,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1369,7 +1332,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1386,7 +1349,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1398,7 +1361,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1415,7 +1378,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1427,7 +1390,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1446,7 +1409,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1458,7 +1421,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1477,7 +1440,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1489,7 +1452,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1525,17 +1488,17 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    fromPool(lang) {
+    fromPool() {
         let etatCivilBtn = document.querySelectorAll('.etatCivilBtn');
         let ageBtn = document.querySelectorAll('.ageBtn');
         let educationBtn = document.querySelectorAll('.educationBtn');
@@ -1557,7 +1520,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1576,7 +1539,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1588,7 +1551,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1605,7 +1568,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1617,7 +1580,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1634,7 +1597,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1646,7 +1609,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1663,7 +1626,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1675,7 +1638,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1692,7 +1655,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1704,7 +1667,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1725,7 +1688,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1737,7 +1700,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1754,7 +1717,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1766,7 +1729,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1783,7 +1746,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1795,7 +1758,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1814,7 +1777,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1826,7 +1789,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1845,7 +1808,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1857,7 +1820,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1893,18 +1856,18 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
     // From Post Ita
-    fromPostItaFr(lang) {
+    fromPostItaFr() {
         let docsListBtn = document.querySelectorAll('.docsListBtn');
         let personalBgBtn = document.querySelectorAll('.personalBgBtn');
         let profesionalBgBtn = document.querySelectorAll('.profesionalBgBtn');
@@ -1922,7 +1885,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1944,7 +1907,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1956,7 +1919,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -1975,7 +1938,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -1987,7 +1950,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2008,7 +1971,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2020,7 +1983,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2042,7 +2005,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2054,7 +2017,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2076,7 +2039,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2088,7 +2051,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2112,7 +2075,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2124,7 +2087,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2143,17 +2106,17 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    fromPostItaEn(lang) {
+    fromPostItaEn() {
         let docsListBtn = document.querySelectorAll('.docsListBtn');
         let personalBgBtn = document.querySelectorAll('.personalBgBtn');
         let profesionalBgBtn = document.querySelectorAll('.profesionalBgBtn');
@@ -2171,7 +2134,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2193,7 +2156,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2205,7 +2168,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2224,7 +2187,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2236,7 +2199,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2257,7 +2220,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2269,7 +2232,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2291,7 +2254,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2303,7 +2266,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2325,7 +2288,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2337,7 +2300,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2361,7 +2324,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2373,7 +2336,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2392,18 +2355,18 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
     // From Post Aor
-    fromPostAorFr(lang) {
+    fromPostAorFr() {
         let bioBtn = document.querySelectorAll('.bioBtn');
         let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
         let adrBtn = document.querySelectorAll('.adrBtn');
@@ -2417,7 +2380,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2439,7 +2402,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2451,7 +2414,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2468,7 +2431,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2480,7 +2443,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2493,17 +2456,17 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    fromPostAorEn(lang) {
+    fromPostAorEn() {
         let bioBtn = document.querySelectorAll('.bioBtn');
         let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
         let adrBtn = document.querySelectorAll('.adrBtn');
@@ -2517,7 +2480,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2539,7 +2502,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2551,7 +2514,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2568,7 +2531,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2580,7 +2543,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2597,18 +2560,18 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
     // From Post Ppr
-    fromPprFr(lang) {
+    fromPprFr() {
         let visaBtn = document.querySelectorAll('.visaBtn');
         let coprBtn = document.querySelectorAll('.coprBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
@@ -2621,7 +2584,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2640,7 +2603,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2652,7 +2615,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2669,17 +2632,17 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    fromPprEn(lang) {
+    fromPprEn() {
         let visaBtn = document.querySelectorAll('.visaBtn');
         let coprBtn = document.querySelectorAll('.coprBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
@@ -2692,7 +2655,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2711,7 +2674,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2723,7 +2686,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2740,18 +2703,18 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
     // From settlement
-    fromInstallation(lang) {
+    fromInstallation() {
         let nasBtn = document.querySelectorAll('.nasBtn');
         let bankBtn = document.querySelectorAll('.bankBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
@@ -2764,7 +2727,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2783,7 +2746,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2795,7 +2758,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2836,17 +2799,17 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
 
-    fromSettlement(lang) {
+    fromSettlement() {
         let nasBtn = document.querySelectorAll('.nasBtn');
         let bankBtn = document.querySelectorAll('.bankBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
@@ -2859,7 +2822,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2878,7 +2841,7 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
@@ -2890,7 +2853,7 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-3">
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
                         <i class="fa-solid fa-robot ml-1 mb-1"></i>
                         <div>
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
@@ -2925,12 +2888,12 @@ export default class ChatBotClass {
                         </div>
                     </div>
                 `; // this.playAudioInbox();
-                    this.refreshing(lang);
+                    this.refreshing();
                 }, 2000);
             })
         })
 
-        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite(lang))
+        anotherQuestionBtn.addEventListener('click', this.questionFromWebsite())
 
         this.discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
