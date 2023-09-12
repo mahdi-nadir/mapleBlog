@@ -80,10 +80,10 @@ export default class clbClass {
                 } else if (tefReading.value >= 288 && tefReading.value <= 300) {
                     tefReadingScore.innerHTML = 12;
                 } else if (tefReading.value == '') {
-                    errorTefReading.innerHTML = 'You must enter a score';
+                    errorTefReading.innerHTML = window.location.href.includes('/en') ? 'You must enter a score' : 'Vous devez entrer un score';
                     tefReadingScore.innerHTML = 0;
                 } else {
-                    errorTefReading.innerHTML = 'Please enter a valid score';
+                    errorTefReading.innerHTML = window.location.href.includes('/en') ? 'Please enter a valid score' : 'Veuillez entrer un score valide';
                     errorTefReading.style.display = 'block';
                     tefReadingScore.innerHTML = 0;
                 }
@@ -117,10 +117,10 @@ export default class clbClass {
                 } else if (tefListening.value >= 350 && tefListening.value <= 360) {
                     tefListeningScore.innerHTML = 12;
                 } else if (tefListening.value == '') {
-                    errorTefListening.innerHTML = 'You must enter a score';
+                    errorTefListening.innerHTML = window.location.href.includes('/en') ? 'You must enter a score' : 'Vous devez entrer un score';
                     tefListeningScore.innerHTML = 0;
                 } else {
-                    errorTefListening.innerHTML = 'Please enter a valid score';
+                    errorTefListening.innerHTML = window.location.href.includes('/en') ? 'Please enter a valid score' : 'Veuillez entrer un score valide';
                     errorTefListening.style.display = 'block';
                     tefListeningScore.innerHTML = 0;
                 }
@@ -154,10 +154,10 @@ export default class clbClass {
                 } else if (tefWriting.value >= 439 && tefWriting.value <= 450) {
                     tefWritingScore.innerHTML = 12;
                 } else if (tefWriting.value == '') {
-                    errorTefWriting.innerHTML = 'You must enter a score';
+                    errorTefWriting.innerHTML = window.location.href.includes('/en') ? 'You must enter a score' : 'Vous devez entrer un score';
                     tefWritingScore.innerHTML = 0;
                 } else {
-                    errorTefWriting.innerHTML = 'Please enter a valid score';
+                    errorTefWriting.innerHTML = window.location.href.includes('/en') ? 'Please enter a valid score' : 'Veuillez entrer un score valide';
                     errorTefWriting.style.display = 'block';
                     tefWritingScore.innerHTML = 0;
                 }
@@ -191,10 +191,10 @@ export default class clbClass {
                 } else if (tefSpeaking.value >= 439 && tefSpeaking.value <= 450) {
                     tefSpeakingScore.innerHTML = 12;
                 } else if (tefSpeaking.value == '') {
-                    errorTefSpeaking.innerHTML = 'You must enter a score';
+                    errorTefSpeaking.innerHTML = window.location.href.includes('/en') ? 'You must enter a score' : 'Vous devez entrer un score';
                     tefSpeakingScore.innerHTML = 0;
                 } else {
-                    errorTefSpeaking.innerHTML = 'Please enter a valid score';
+                    errorTefSpeaking.innerHTML = window.location.href.includes('/en') ? 'Please enter a valid score' : 'Veuillez entrer un score valide';
                     errorTefSpeaking.style.display = 'block';
                     tefSpeakingScore.innerHTML = 0;
                 }
@@ -204,11 +204,11 @@ export default class clbClass {
                 if (tefReading.value == '' || tefListening.value == '' || tefWriting.value == '' || tefSpeaking.value == '') {
                     finalResultTef.innerHTML = '<span class="text-red-600">Please enter all scores</span>';
                 } else if (checkErrors() == false) {
-                    finalResultTef.innerHTML = `<span class="text-red-600">There are errors in the form</span>`;
+                    finalResultTef.innerHTML = `<span class="text-red-600">${window.location.href.includes('/en') ? 'There are errors in the form' : 'il y a des erreurs dans le formulaire'}</span>`;
                 } else {
                     let tefScore = [Number(tefReadingScore.innerHTML), Number(tefListeningScore.innerHTML), Number(tefWritingScore.innerHTML), Number(tefSpeakingScore.innerHTML)];
                     let min = Math.min(...tefScore);
-                    finalResultTef.innerHTML = `Your CLB is ${min}`;
+                    finalResultTef.innerHTML = `${window.location.href.includes('/en') ? 'Your CLB is' : 'Votre NCLC est'} <span class="font-bold">${min}</span>`;
                 }
             })
 

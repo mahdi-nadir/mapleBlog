@@ -266,5 +266,9 @@
     "nominationMsg": "A nomination is different from a certificate of qualification. A nomination lets you apply to IRCC for permanent residence. A certificate of qualification lets you work in some skilled trades in Canada. Only the provinces, territories and a federal body can issue these certificates.",
     "spouseFactors": "Spouse Factors",
     "notApplicable": "Not Applicable",
-    "spouseLangMsg": "The test results must be less than two years old when you apply for permanent residence. If the test results of your spouse are older than two years before submitting your application, you will not get points for it. And if you submit your application with an expired test result, IRCC may refuse it if your CRS is less than the draw score."
+    "spouseLangMsg": "The test results must be less than two years old when you apply for permanent residence. If the test results of your spouse are older than two years before submitting your application, you will not get points for it. And if you submit your application with an expired test result, IRCC may refuse it if your CRS is less than the draw score.",
+    "clb_calculator": "Canadian Language Benchmark Calculator",
+    "clb_calculator_msg1": "The Canadian Language Benchmarks (CLB) describe 12 levels of ability in each of four different language skills - Listening, Speaking, Reading and Writing.",
+    "clb_calculator_msg2": "Please note that you are eligible only if you get CLB7 or more in all language skills",
+    "result": "Result"
 }

@@ -22,7 +22,7 @@
     "step": "Étape",
     "degree": "Diplôme",
     "noc": "CNP",
-    "teer": "FÉER",
+    "FÉER": "FÉER",
     "dob": "Date de naissance",
     "updatePic": "MàJ la photo de profil",
     "userInfo": "Infos. utilisateur",
@@ -259,11 +259,15 @@
     "certificateQualQuestion": "Possédez-vous un certificat de qualification délivré par une province, un territoire ou un organisme fédéral canadien ?",
     "certificateQualMsg": "Un certificat de qualification permet aux personnes de travailler dans certains métiers spécialisés au Canada. Seules les provinces, les territoires et un organisme fédéral peuvent délivrer ces certificats. Pour en obtenir un, une personne doit faire évaluer sa formation, son expérience professionnelle et ses compétences, puis réussir un examen de certification. Les personnes doivent généralement se rendre dans la province ou le territoire pour être évaluées. Elles peuvent également avoir besoin d'expérience et de formation auprès d'un employeur au Canada. Ceci n'est pas la même chose qu'une nomination d'une province ou d'un territoire.",
     "addPoints": "Points Additionnels",
-    "whichNoc": "Sous quelle catégorie TEER de la CNP se trouve l'offre d'emploi?",
+    "whichNoc": "Sous quelle catégorie FÉER de la CNP se trouve l'offre d'emploi?",
     "majorGroup": "Groupe majeur",
     "nomination": "Nomination provinciale",
     "nominationQuestion": "Possédez-vous une nomination d'une province ou d'un territoire ?",
     "nominationMsg": "Une nomination est différente d'un certificat de qualification. Une nomination vous permet de présenter une demande de résidence permanente auprès d'IRCC. Un certificat de qualification vous permet de travailler dans certains métiers spécialisés au Canada. Seules les provinces, les territoires et un organisme fédéral peuvent délivrer ces certificats.",
     "notApplicable": "Sans objet",
-    "spouseLangMsg": "Les résultats du test doivent dater de moins de deux ans au moment de votre demande de résidence permanente. Si les résultats du test de langue de votre conjoint(e) datent de plus de deux ans avant la soumission de votre demande, vous n'obtiendrez pas de points pour cela. De plus, si vous soumettez votre demande avec un résultat de test expiré et que votre score CRS est inférieur au seuil de sélection, IRCC pourrait la refuser."
+    "spouseLangMsg": "Les résultats du test doivent dater de moins de deux ans au moment de votre demande de résidence permanente. Si les résultats du test de langue de votre conjoint(e) datent de plus de deux ans avant la soumission de votre demande, vous n'obtiendrez pas de points pour cela. De plus, si vous soumettez votre demande avec un résultat de test expiré et que votre score SCG est inférieur au seuil de sélection, IRCC pourrait la refuser.",
+    "clb_calculator": "Calculateur des niveaux de compétence linguistique canadiennes (NCLC)",
+    "clb_calculator_msg1": "Le niveau de compétence linguistique canadiennes (NCLC) décrit 12 niveaux de compétence dans chacune des quatre compétences linguistiques différentes - Écoute, Parole, Lecture et Écriture.",
+    "clb_calculator_msg2": "Veuillez noter que vous êtes admissible uniquement si vous obtenez NCLC 7 ou plus dans toutes les compétences linguistiques.",
+    "result": "Résultat"
 }
