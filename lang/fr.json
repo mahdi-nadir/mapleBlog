@@ -269,5 +269,15 @@
     "clb_calculator": "Calculateur des niveaux de compétence linguistique canadiennes (NCLC)",
     "clb_calculator_msg1": "Le niveau de compétence linguistique canadiennes (NCLC) décrit 12 niveaux de compétence dans chacune des quatre compétences linguistiques différentes - Écoute, Parole, Lecture et Écriture.",
     "clb_calculator_msg2": "Veuillez noter que vous êtes admissible uniquement si vous obtenez NCLC 7 ou plus dans toutes les compétences linguistiques.",
-    "result": "Résultat"
+    "result": "Résultat",
+    "pnpSuggest": "Suggestions pour le Programme des candidats des provinces",
+    "pnpSuggestMsg1": "Cet outil vous informera si votre profession est en demande et vous aidera à identifier le programme PNP le plus adapté pour vous.",
+    "pnpSuggestMsg2": "Avant de commencer, veuillez noter que vous devez connaître votre code CNP (Classification nationale des professions) et votre SCG (Système de classement global).",
+    "pnpSuggestMsg3": "Si vous ne connaissez que votre code CNP de la version 2016, veuillez utiliser ce lien pour le convertir en version 2021 :",
+    "pnpSuggestMsg4": "Conversion CNP",
+    "eligible": "Admissible",
+    "eligibleUnderConditions": "Admissible sous conditions",
+    "notEligible": "Non admissible",
+    "nocCode": "Code CNP",
+    "crsScore": "Score SCG"
 }

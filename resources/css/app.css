@@ -13,6 +13,33 @@
 
 
 
+.gray {
+    background-color: #e5e7eb;
+}
+
+.gray:hover {
+    background-color: #d1d5db;
+}
+
+.green {
+    background-color: #b2f5c4;
+}
+
+.green:hover {
+    background-color: #7fe384;
+}
+
+.yellow {
+    background-color: #fef08a;
+}
+
+.yellow:hover {
+    background-color: #fde047;
+}
+
+
+
+
 .body {
     /* min-height: 100%; */
     /* background-color: #010101; */
@@ -71,7 +98,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     gap: 0.7rem;
     padding: 5px;
 }

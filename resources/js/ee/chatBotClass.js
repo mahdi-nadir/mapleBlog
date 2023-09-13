@@ -129,7 +129,7 @@ export default class ChatBotClass {
             this.robotIcon.style.display = 'none';
             this.heyMessage.style.display = 'none';
             this.masculinePronoun.style.display = 'none';
-            this.whatLang.style.display = 'none';
+            // this.whatLang.style.display = 'none';
         })
 
         this.chatDiv.querySelector('span').addEventListener('click', () => {
@@ -185,7 +185,7 @@ export default class ChatBotClass {
     }
 
     answerUser(response) {
-        this.discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
+        this.discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-end gap-2">
         <i class="fa-solid fa-user ml-2 mb-1"></i>
                 <div>
                     <h3 class="rounded-lg p-1 my-1 ml-1 pl-2 text-sm md:text-md bg-blue-200 w-full">${response}</h3>
@@ -200,10 +200,10 @@ export default class ChatBotClass {
             setTimeout(() => {
                 this.spinner.style.display = 'none';
                 this.discussion.innerHTML += `
-            <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                <i class="fa-solid fa-robot ml-1"></i>
-                <div>
-                    <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">How can I help you today? Select a topic to get started.
+            <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                <div class="mb-1">
+                    <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">I was initially trained to answer questions about the Express Entry system exclusively, but I'm now also learning about Arrima, I promise I'll be good in it. Tell me how can I assist you today? Please select a topic to begin
                     <ul class="suggestionUser pt-2">
                             <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Eligibility</button></li>
                             <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">E.E. Pool</button></li>
@@ -223,11 +223,11 @@ export default class ChatBotClass {
             setTimeout(() => {
                 this.spinner.style.display = 'none';
                 this.discussion.innerHTML += `
-                <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                    <i class="fa-solid fa-robot ml-1"></i>
-                    <div>
+                <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                    <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                    <div class="mb-1">
                         <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
-                        Que voulez-vous savoir aujourd'hui? Sélectionnez un sujet pour commencer.
+                        J'ai été initialement formé pour répondre exclusivement aux questions sur le système Entrée express, mais j'apprends maintenant également sur Arrima. Je vous promets que je vais bien m'en sortir. Dites-moi comment puis-je vous aider aujourd'hui ? Veuillez sélectionner un sujet pour commencer
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Admissibilité</button></li>
                                 <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Bassin E.E.</button></li>
@@ -263,9 +263,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                            <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                            <div>
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                            <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                            <div class="mb-1">
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                                 Je crains que je ne puisse pas rédiger tout un article sur l'admissibilité. Mais j'ai une meilleure idée! Je peux vous donner un lien vers un article qui explique tout cela. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-600">Cliquez ici</a> pour lire l'article.<br><br>
                                 ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
@@ -293,9 +293,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le "bassin du système Entrée express" fait référence à un groupe de candidats potentiels à l'immigration économique au Canada qui soumettent une "expression d'intérêt" (expression of interest, en anglais) dans le cadre du programme Entrée express. Ces candidats sont évalués en fonction de certains critères tels que l'âge, les compétences linguistiques, l'éducation, l'expérience de travail et d'autres facteurs. Par la suite, des invitations à présenter une demande de résidence permanente peuvent être envoyées aux candidats sélectionnés à partir de ce bassin. Cela signifie que les candidats qui se qualifient davantage et qui répondent aux besoins du marché du travail canadien ont plus de chances de recevoir une invitation. <br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
@@ -328,9 +328,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Après avoir reçu une invitation à présenter une demande de résidence permanente dans le cadre du programme Entrée express, la prochaine étape consiste généralement à soumettre une demande complète auprès d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). Voici une explication détaillée de cette étape :
                             <ol>
@@ -373,9 +373,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Après avoir soumis votre demande de résidence permanente, l'étape suivante implique le traitement et l'évaluation approfondie de votre dossier par Immigration, Réfugiés et Citoyenneté Canada (IRCC). Voici une brève explication de cette étape:<br>
                             <ol>
@@ -414,9 +414,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             L'approbation de votre demande de résidence permanente signifie que vous avez satisfait aux critères d'immigration. Vous recevrez une Confirmation de Résidence Permanente (CRP) ou une lettre d'approbation. Déposez votre passeport pour obtenir le visa de résident permanent, puis voyagez au Canada avant la date d'expiration indiquée.<br><br>
     
@@ -442,9 +442,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Une fois que vous avez reçu votre visa d'immigrant pour le Canada, le voyage et l'installation se profilent. Voici un aperçu de ces étapes clés:<br>
                             <ol>
@@ -499,9 +499,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             I'm afraid I cannot write a whole article on eligibility. But I have a better idea! I can provide you with a link to an article that explains all of that. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-500 underline">Click here</a> to read the article. (French only)<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
@@ -529,9 +529,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The "Express Entry pool" refers to a group of potential candidates for economic immigration to Canada who submit an "expression of interest" within the framework of the Express Entry program. These candidates are evaluated based on certain criteria such as age, language skills, education, work experience, and other factors. Subsequently, invitations to apply for permanent residency may be sent to selected candidates from this pool. This means that candidates who qualify more and meet the needs of the Canadian job market have a higher chance of receiving an invitation. <br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
@@ -564,9 +564,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             After receiving an invitation to apply for permanent residency through the Express Entry program, the next step usually involves submitting a complete application to Immigration, Refugees and Citizenship Canada (IRCC). Here's a detailed explanation of this step:<br>
                             <ol>
@@ -603,9 +603,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             After submitting your application for permanent residency, the next step involves the thorough processing and evaluation of your file by Immigration, Refugees and Citizenship Canada (IRCC). Here's a brief explanation of this step:<br>
                             <ol>
@@ -639,9 +639,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Approval of your permanent residency application signifies that you have met the immigration criteria. You'll receive a Confirmation of Permanent Residence (CPR) or an approval letter. Submit your passport to obtain the permanent resident visa, then travel to Canada before the indicated expiry date.<br><br>
     
@@ -667,9 +667,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Une fois que vous avez reçu votre visa d'immigrant pour le Canada, le voyage et l'installation se profilent. Voici un aperçu de ces étapes clés:<br>
                             <ol>
@@ -716,9 +716,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                            <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                            <div>
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                            <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                            <div class="mb-1">
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                                 Need help with a topic not listed? You can navigate to our Facebook group where you can ask your question with the appropriate hashtag. We're here to assist you!<br><br>
                                 
@@ -728,7 +728,7 @@ export default class ChatBotClass {
                                 ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
     
                                 <ul class="suggestionUser pt-2">
-                                        <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                        <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                     </ul>
                                 </h3>
                             </div>
@@ -747,9 +747,9 @@ export default class ChatBotClass {
                     setTimeout(() => {
                         this.spinner.style.display = 'none';
                         this.discussion.innerHTML += `
-                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                            <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                            <div>
+                        <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                            <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                            <div class="mb-1">
                                 <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                                 Besoin d'aide sur un sujet qui n'est pas dans la liste ? Vous pouvez vous diriger vers notre groupe Facebook où vous pourrez poser votre question avec le hashtag approprié. Nous sommes là pour vous aider!<br><br>
                                 
@@ -759,7 +759,7 @@ export default class ChatBotClass {
                                 ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
     
                                 <ul class="suggestionUser pt-2">
-                                        <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                        <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                     </ul>
                                 </h3>
                             </div>
@@ -793,14 +793,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le critère de l'âge dans le score d'admissibilité de l'Entrée express mesure l'impact de l'âge sur la capacité d'adaptation et de contribution du candidat à l'économie canadienne. Des points sont attribués en fonction de l'âge, avec un maximum pour les candidats âgés de 18 à 35 ans, reflétant leur potentiel d'intégration et de productivité à long terme. A savoir que le candidat perd 1 point par année à partir de 36 ans et n'a aucun point à partir de 47 ans ou moins de 18 ans.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -819,14 +819,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le critère des études dans le système Entrée express évalue le niveau d'éducation du candidat et attribue des points en fonction de ce niveau. Cela reflète comment l'éducation du candidat peut contribuer positivement à l'économie canadienne. Les diplômes de divers niveaux, allant des certificats aux diplômes avancés, peuvent donner droit à des points, encourageant ainsi les candidats ayant une variété de compétences à postuler et à contribuer à la société canadienne.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -845,14 +845,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Les compétences linguistiques sont un critère important dans le système Entrée express, évaluant la capacité d'un candidat à communiquer et à s'intégrer dans la société canadienne. Les candidats peuvent obtenir des points en fonction de leurs résultats aux examens de langue approuvés, tels que l'IELTS, le CELPIP, le TEF Canada et le TCF Canada. Chaque examen évalue la maîtrise de l'anglais et/ou du français, en évaluant la compréhension écrite et orale, ainsi que l'expression écrite et orale. Les points attribués varient en fonction du score obtenu (sachant que le score minimal requis est de NCLC7), ce qui reflète l'importance de la communication fluide et de la compréhension dans le processus d'immigration au Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -870,14 +870,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             L'expérience professionnelle acquise à l'étranger est un critère important dans le système Entrée express. Pour être admissible, un candidat doit avoir au moins une année d'expérience de travail continue à temps plein (ou l'équivalent à temps partiel) dans une profession qualifiée, acquise en dehors du Canada. Cette exigence de continuité garantit que le candidat possède une solide expérience professionnelle à l'étranger.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -895,14 +895,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Une offre d'emploi réservé est une proposition d'emploi émise par un employeur canadien spécifiquement en faveur d'un travailleur étranger. Cela signifie que l'employeur a choisi ce travailleur pour combler un poste vacant, et cette offre est généralement liée à une demande d'immigration. L'offre d'emploi réservé peut faciliter le processus d'immigration en offrant un soutien supplémentaire au candidat. Cependant, elle peut être soumise à certaines exigences et conditions définies par les autorités de l'immigration au Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -920,9 +920,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le score d'adaptabilité dans le système Entrée express évalue la capacité du candidat et de son conjoint à s'intégrer dans la société canadienne. Il prend en compte plusieurs facteurs liés à l'adaptabilité:<br>
                             <ol>
@@ -941,7 +941,7 @@ export default class ChatBotClass {
                             L'ensemble de ces facteurs est évalué pour déterminer le score d'adaptabilité global du candidat et de son conjoint, influençant ainsi leur admissibilité au programme Entrée express.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -973,14 +973,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The age criterion in the Express Entry eligibility score measures the impact of age on the candidate's ability to adapt and contribute to the Canadian economy. Points are awarded based on age, with a maximum for candidates aged 18 to 35, reflecting their potential for long-term integration and productivity. It's worth noting that the candidate loses 1 point per year starting from age 36 and receives no points at age 47 or below 18.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -998,14 +998,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The education criterion in the Express Entry system assesses the candidate's level of education and awards points based on this level. This reflects how the candidate's education can positively contribute to the Canadian economy. Degrees of various levels, ranging from certificates to advanced diplomas, can earn points, thereby encouraging candidates with a variety of skills to apply and contribute to Canadian society.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1023,14 +1023,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Linguistic skills are a crucial criterion in the Express Entry system, assessing a candidate's ability to communicate and integrate into Canadian society. Candidates can earn points based on their results in approved language exams such as IELTS, CELPIP, TEF Canada, and TCF Canada. Each exam evaluates proficiency in English and/or French, assessing listening, speaking, reading, and writing skills. Points awarded vary based on the achieved score (with a minimum required score of CLB 7), reflecting the significance of effective communication and comprehension in the Canadian immigration process.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1048,14 +1048,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Foreign work experience is a significant criterion in the Express Entry system. To be eligible, a candidate must have a minimum of one year of continuous full-time work experience (or part-time equivalent) in a qualified occupation gained outside of Canada. This requirement of continuity ensures that the candidate possesses robust professional experience gained abroad.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1073,14 +1073,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             A reserved job offer is an employment proposal extended by a Canadian employer specifically in favor of a foreign worker. This signifies that the employer has selected this worker to fill a vacant position, and the offer is typically tied to an immigration application. The reserved job offer can streamline the immigration process by providing additional support to the candidate. However, it may be subject to certain requirements and conditions set forth by Canadian immigration authorities.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1098,9 +1098,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The adaptability score in the Express Entry system assesses the candidate and their spouse's ability to integrate into Canadian society. It takes into account various factors related to adaptability:<br>
     
@@ -1114,7 +1114,7 @@ export default class ChatBotClass {
                             All these factors are evaluated to determine the overall adaptability score of the candidate and their spouse, thereby influencing their eligibility for the Express Entry program<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1152,9 +1152,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             L'état civil du candidat, qu'il soit célibataire ou marié, joue un rôle dans le système Entrée express.<br>
                             <ol>
@@ -1165,7 +1165,7 @@ export default class ChatBotClass {
                             En somme, l'état civil du candidat, qu'il soit célibataire ou marié, peut jouer un rôle dans l'évaluation de l'admissibilité et du score global dans le cadre du programme Entrée express.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1183,9 +1183,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le critère de l'âge dans le bassin de l'Entrée express est un élément essentiel de l'évaluation des candidats potentiels à l'immigration économique au Canada. Il se réfère à la manière dont l'âge du candidat est pris en compte lors de l'inscription dans le bassin, où les candidats sont classés en fonction de divers facteurs. Plus précisément, le critère de l'âge attribue des points aux candidats en fonction de leur âge au moment de leur inscription.<br>
     
@@ -1194,7 +1194,7 @@ export default class ChatBotClass {
                             En somme, le critère de l'âge dans le bassin de l'Entrée express vise à évaluer comment l'âge du candidat peut influencer sa contribution potentielle à l'économie canadienne et à la société dans son ensemble.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1212,9 +1212,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le critère des études dans le bassin de l'Entrée express est un facteur central qui détermine la position des candidats potentiels dans le processus d'immigration économique au Canada. Il met l'accent sur le niveau d'éducation du candidat au moment de son inscription dans le bassin. Concrètement, ce critère attribue des points en fonction du degré d'accomplissement académique.<br>
     
@@ -1223,7 +1223,7 @@ export default class ChatBotClass {
                             En somme, le critère des études dans le bassin de l'Entrée express évalue comment le niveau d'éducation du candidat peut influencer positivement sa capacité à apporter une contribution durable et bénéfique à l'économie et à la société du Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1241,9 +1241,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le critère des langues dans le bassin de l'Entrée express tient une place cruciale dans l'évaluation des candidats en vue de leur éventuelle immigration économique au Canada. Il met en lumière les compétences linguistiques du candidat au moment de son inscription dans le bassin. En pratique, ce critère octroie des points en fonction des résultats obtenus lors des évaluations linguistiques approuvées.<br>
     
@@ -1252,7 +1252,7 @@ export default class ChatBotClass {
                             Finalement, le critère des langues dans le bassin de l'Entrée express évalue comment les compétences linguistiques du candidat peuvent non seulement favoriser une intégration réussie, mais également souligne la pertinence grandissante de la maîtrise du français depuis 2021, en témoignant de la capacité à communiquer de manière efficace et à jouer un rôle actif au sein de la vie sociale et économique du Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1270,9 +1270,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Dans le contexte du bassin de l'Entrée express, l'expérience professionnelle acquise en dehors du Canada revêt une importance significative. Bien qu'elle n'octroie pas de points indépendants, elle peut être harmonieusement associée à d'autres éléments pour maximiser le score global du candidat.<br>
     
@@ -1281,7 +1281,7 @@ export default class ChatBotClass {
                             Cette approche permet de mettre en avant la valeur des compétences professionnelles développées en dehors du Canada, en les intégrant harmonieusement avec d'autres aspects du profil du candidat. Elle renforce également la notion de « transfert » des compétences acquises ailleurs vers le marché du travail canadien, favorisant ainsi une transition réussie et une contribution économique positive à la société canadienne.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1299,9 +1299,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le conjoint d'un candidat au programme Entrée express peut apporter une contribution significative à son score global dans le bassin. Plus précisément, le conjoint peut influencer positivement le score d'admissibilité grâce à trois principaux éléments:<br>
                             <ol>
@@ -1314,7 +1314,7 @@ export default class ChatBotClass {
                             En conclusion, la participation du conjoint dans le processus d'Entrée express peut jouer un rôle essentiel en ajoutant des points au score global du candidat principal. Les compétences linguistiques, les études et l'expérience professionnelle du conjoint sont autant d'éléments qui peuvent augmenter les chances d'admissibilité et améliorer la position du candidat dans le bassin.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1332,9 +1332,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La notion de transférabilité des compétences au sein du programme Entrée express se révèle comme une voie astucieuse pour optimiser votre score d'admissibilité. En combinant habilement différents éléments de votre parcours, vous avez la possibilité de gagner jusqu'à 100 points supplémentaires, renforçant ainsi votre position dans le processus d'immigration économique au Canada.<br>
     
@@ -1343,7 +1343,7 @@ export default class ChatBotClass {
                             En résumé, la transférabilité des compétences se présente comme une démarche dynamique pour accumuler jusqu'à 100 points, illustrant votre capacité à optimiser vos atouts et à mettre en avant votre polyvalence et votre adaptabilité. Ce concept témoigne de l'importance de la planification stratégique dans le cadre de l'Entrée express, vous permettant de jouer judicieusement avec différents éléments pour atteindre un score d'admissibilité optimal.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1361,9 +1361,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La nomination provinciale constitue un élément déterminant au sein du programme Entrée express. Lorsqu'un candidat reçoit une nomination d'une province ou d'un territoire canadien, il obtient un avantage significatif en termes de points dans son score d'admissibilité. Concrètement, cette nomination octroie un impressionnant total de 600 points, ce qui peut propulser le candidat vers le haut du bassin et augmenter considérablement ses chances d'obtenir une invitation à présenter une demande de résidence permanente.<br>
     
@@ -1372,7 +1372,7 @@ export default class ChatBotClass {
                             Ainsi, la nomination provinciale se distingue comme un catalyseur majeur dans le processus d'Entrée express, conférant au candidat une excellente opportunité d'atteindre un score élevé, favorisant ainsi son accession à la résidence permanente au Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1390,9 +1390,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Les sélections, également appelées tirages ou extractions, au sein du programme Entrée express représentent des moments cruciaux où IRCC sélectionne des candidats potentiels à l'immigration économique. Ces sélections périodiques (généralement chaque 15 jours, les mercredis) ont lieu à intervalles réguliers et visent à inviter les candidats ayant les scores d'admissibilité les plus élevés à présenter une demande de résidence permanente.<br>
     
@@ -1403,7 +1403,7 @@ export default class ChatBotClass {
                             Pour consulter la dernière sélection qui a été faites, <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express/soumettre-profil/selections-candidats.html" target="_blank" rel="noreferrer">cliquez ici</a>.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1421,9 +1421,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Les fonds requis dans le cadre du système Entrée express font référence aux ressources financières que les candidats doivent démontrer qu'ils possèdent afin de soutenir leur installation au Canada. Cette exigence vise à s'assurer que les nouveaux arrivants ont les moyens nécessaires pour subvenir à leurs besoins essentiels pendant leur période d'adaptation initiale.<br>
     
@@ -1434,7 +1434,7 @@ export default class ChatBotClass {
                             En conclusion, les fonds requis dans le système Entrée express sont une mesure visant à s'assurer que les candidats ont les ressources financières nécessaires pour bien démarrer leur vie au Canada et pour contribuer positivement à la société canadienne.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1452,9 +1452,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le programme des candidats des provinces (PCP) est une initiative clé au sein du système d'immigration canadien qui permet aux provinces et aux territoires de sélectionner des candidats qualifiés et adaptés à leurs besoins spécifiques en matière d'économie et de main-d'œuvre. Ce programme offre aux provinces et aux territoires la flexibilité de choisir des candidats qui répondent à leurs priorités en matière de développement économique et de croissance.<br>
     
@@ -1482,7 +1482,7 @@ export default class ChatBotClass {
                             <br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                             </ul>
                             </h3>
                         </div>
@@ -1520,9 +1520,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The marital status of the candidate, whether single or married, plays a role in the Express Entry system.<br>
                             <ol>
@@ -1533,7 +1533,7 @@ export default class ChatBotClass {
                             In summary, the marital status of the candidate, whether single or married, can play a role in evaluating eligibility and the overall score within the framework of the Express Entry program.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1551,9 +1551,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The age criterion in the Express Entry pool is a crucial element in evaluating potential candidates for economic immigration to Canada. It pertains to how the candidate's age is considered during registration in the pool, where candidates are ranked based on various factors. Specifically, the age criterion awards points to candidates based on their age at the time of registration.<br>
     
@@ -1562,7 +1562,7 @@ export default class ChatBotClass {
                             In summary, the age criterion in the Express Entry pool aims to assess how the candidate's age can influence their potential contribution to the Canadian economy and society as a whole.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1580,9 +1580,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The education criterion in the Express Entry pool is a central factor that determines the position of potential candidates in the Canadian economic immigration process. It emphasizes the candidate's level of education at the time of registration in the pool. Specifically, this criterion awards points based on the degree of academic achievement.<br>
     
@@ -1591,7 +1591,7 @@ export default class ChatBotClass {
                             To sum up, the education criterion in the Express Entry pool evaluates how the candidate's level of education can positively influence their ability to make a lasting and beneficial contribution to the economy and society of Canada.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1609,9 +1609,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The language criterion in the Express Entry pool holds a pivotal role in evaluating candidates for potential economic immigration to Canada. It sheds light on the candidate's linguistic skills at the time of their pool entry. In practice, this criterion awards points based on the results achieved in approved language assessments.<br>
     
@@ -1620,7 +1620,7 @@ export default class ChatBotClass {
                             In conclusion, the language criterion in the Express Entry pool evaluates how a candidate's language skills can not only facilitate successful integration but also highlights the growing relevance of French proficiency since 2021. This demonstrates the ability to communicate effectively and play an active role within Canada's social and economic spheres.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1638,9 +1638,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             In the context of the Express Entry pool, the experience gained outside of Canada holds significant importance. Although it does not award standalone points, it can be seamlessly combined with other elements to maximize the candidate's overall score.<br>
     
@@ -1649,7 +1649,7 @@ export default class ChatBotClass {
                             This approach highlights the value of professional skills developed outside of Canada by seamlessly integrating them with other aspects of the candidate's profile. It also reinforces the notion of transferring skills acquired elsewhere to the Canadian job market, thus promoting a successful transition and a positive economic contribution to Canadian society.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1667,9 +1667,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The spouse of a candidate in the Express Entry program can make a significant contribution to their overall score in the pool. More specifically, the spouse can positively influence the eligibility score through three key elements:<br>
                             <ol>
@@ -1682,7 +1682,7 @@ export default class ChatBotClass {
                             In conclusion, the participation of the spouse in the Express Entry process can play an essential role in adding points to the overall score of the primary candidate. The spouse's language skills, education, and work experience are all factors that can increase eligibility chances and enhance the candidate's position in the pool.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1700,9 +1700,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The concept of skills transferability within the Express Entry program proves to be a clever way to optimize your eligibility score. By skillfully combining various aspects of your journey, you have the opportunity to gain up to 100 additional points, thereby strengthening your position in the Canadian economic immigration process.<br>
     
@@ -1711,7 +1711,7 @@ export default class ChatBotClass {
                             In brief, skills transferability presents a dynamic approach to accumulate up to 100 points, showcasing your ability to maximize your strengths and highlight your versatility and adaptability. This concept underscores the importance of strategic planning within the Express Entry framework, enabling you to skillfully play with various elements to achieve an optimal eligibility score.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1729,9 +1729,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Provincial nomination stands as a pivotal factor within the Express Entry program. When a candidate receives a nomination from a Canadian province or territory, they gain a significant advantage in terms of points in their eligibility score. Specifically, this nomination grants an impressive total of 600 points, which can propel the candidate towards the top of the pool and greatly enhance their chances of receiving an invitation to apply for permanent residency.<br>
     
@@ -1740,7 +1740,7 @@ export default class ChatBotClass {
                             Thus, provincial nomination stands out as a major catalyst in the Express Entry process, providing the candidate with an excellent opportunity to achieve a high score and thereby facilitating their path to permanent residence in Canada.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1758,9 +1758,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Draws, also known as selections or extractions, within the Express Entry program represent crucial moments where IRCC chooses potential candidates for economic immigration. These periodic selections (usually every 15 days, on Wednesdays) take place at regular intervals and aim to invite candidates with the highest eligibility scores to apply for permanent residence.<br>
     
@@ -1771,7 +1771,7 @@ export default class ChatBotClass {
                             To view the latest selection that has been made, <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html" target="_blank" rel="noreferrer">click here</a>.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1789,9 +1789,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The required funds within the framework of the Express Entry system refer to the financial resources that candidates must demonstrate they possess to support their settlement in Canada. This requirement aims to ensure that newcomers have the necessary means to meet their essential needs during their initial period of adaptation.<br>
     
@@ -1802,7 +1802,7 @@ export default class ChatBotClass {
                             To put it briefly, the required funds in the Express Entry system are a measure aimed at ensuring that candidates have the necessary financial resources to start their lives in Canada on a solid footing and to make a positive contribution to Canadian society.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1820,9 +1820,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The Provincial Nominee Program (PNP) is a key initiative within the Canadian immigration system that allows provinces and territories to select qualified candidates who are suited to their specific economic and labor market needs. This program provides provinces and territories with the flexibility to choose candidates who align with their priorities for economic development and growth.<br>
     
@@ -1850,7 +1850,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                             </ul>
                             </h3>
                         </div>
@@ -1885,9 +1885,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La liste des documents à déposer fait référence à la compilation essentielle de pièces justificatives et de dossiers requis lors de la soumission d'une demande de résidence permanente dans le cadre du programme Entrée express. Cette liste est conçue pour démontrer votre éligibilité et soutenir les informations que vous avez fournies dans votre demande.<br>
     
@@ -1901,7 +1901,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1919,9 +1919,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Après avoir reçu une invitation à déposer une demande de résidence permanente dans le cadre du système Entrée express, vous devrez fournir des informations sur vos antécédents personnels pour les dix années précédant la date de dépôt de la demande OU sinon, et c'est très recommandé, depuis l'âge de 18 ans. Cette étape implique de documenter vos activités et statuts au cours de cette période.<br>
     
@@ -1932,7 +1932,7 @@ export default class ChatBotClass {
                             Enfin, les antécédents personnels dans le cadre de l'Entrée express vous offrent l'opportunité de démontrer votre parcours au cours des dix dernières années, contribuant ainsi à une évaluation complète de votre admissibilité à la résidence permanente au Canada.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1950,9 +1950,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Les antécédents professionnels dans le contexte de l'Entrée express revêtent une importance capitale dans la démonstration de votre admissibilité à la résidence permanente au Canada. Cette étape requiert la déclaration précise et détaillée de votre expérience de travail au cours des dix dernières années OU à partir du 18ème anniversaire, mettant l'accent sur une expérience continue d'au moins une année dans un emploi éligible.<br>
     
@@ -1965,7 +1965,7 @@ export default class ChatBotClass {
                             Pour conclure, les antécédents professionnels offrent la possibilité de démontrer votre expérience de travail continue et admissible, tout en valorisant vos compétences et votre contribution potentielle à l'économie canadienne. Cette étape joue un rôle crucial dans la détermination de votre admissibilité à la résidence permanente au Canada à travers le système Entrée express.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -1983,9 +1983,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La lettre de référence professionnelle est un document important lors de la soumission d'une demande de résidence permanente dans le cadre du système Entrée express. Elle vise à fournir une évaluation objective de vos compétences, de votre expérience de travail et de votre caractère professionnel de la part d'une personne ayant supervisé ou travaillé en étroite collaboration avec vous.<br>
     
@@ -1999,7 +1999,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2017,9 +2017,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             L'attestation de don d'argent est une démarche permettant à un candidat à la résidence permanente au Canada, qui ne dispose pas de la totalité des fonds requis, de recevoir une contribution financière d'un membre de sa famille proche. Cette contribution vise à compléter le montant nécessaire pour répondre aux exigences financières du programme d'immigration.<br>
     
@@ -2033,7 +2033,7 @@ export default class ChatBotClass {
                             <br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2051,9 +2051,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             En tant que candidat à l'immigration via le système Entrée express, il est essentiel d'être conscient des frais associés à ce processus. Ces frais englobent différentes étapes, telles que les frais de présentation de la demande, les frais biométriques pour la collecte des empreintes digitales et la photographie, ainsi que les frais de droit de résidence permanente. Il est important de bien comprendre la structure tarifaire en fonction de votre situation, du nombre de membres de votre famille inclus dans la demande et de la catégorie d'immigration à laquelle vous postulez. Veiller à s'acquitter de ces frais dans les délais requis est un élément crucial pour garantir le traitement de votre demande et poursuivre votre parcours vers la résidence permanente au Canada.<br><br>
                             <ol>
@@ -2069,7 +2069,7 @@ export default class ChatBotClass {
                             <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/321111072513577/?__cft__[0]=AZVwmw321Tz5-XLh6Cce3PaUVGx1YrPtJ6NRVB4N9ryDI4bLGbhjULVH6WYE4xgtx4C_LL-ukFVEzrtBloTO44uZ4WajEsb4_l5qFWX8gdjo8dEwRYepzDtEPx2ts7D9Yhm_KvTVflLsdsJK_68_C3sZ&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Cliquez ici</a> pour voir avoir une idée sur les frais à acquitter.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2087,9 +2087,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La visite médicale exigée par Immigration, Réfugiés et Citoyenneté Canada (IRCC) est une étape importante du processus d'immigration, notamment dans le cadre du système Entrée express. Cette visite médicale vise à évaluer votre état de santé afin de garantir que vous ne présentez pas de risques pour la santé publique au Canada et que vous ne nécessiterez pas de soins de santé intensifs à votre arrivée.<br>
     
@@ -2100,7 +2100,7 @@ export default class ChatBotClass {
                             Pour récapituler, la visite médicale exigée par IRCC dans le cadre de l'Entrée express vise à garantir que les candidats à la résidence permanente sont en bonne santé et ne représentent pas de risques pour la santé publique canadienne.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2134,9 +2134,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The list of documents to be submitted refers to the essential compilation of supporting documents and required records when submitting an application for permanent residence under the Express Entry program. This list is designed to demonstrate your eligibility and support the information you have provided in your application.<br>
     
@@ -2150,7 +2150,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2168,9 +2168,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             After receiving an invitation to apply for permanent residence under the Express Entry system, you will need to provide information about your personal history for the ten years preceding the date of application OR, if recommended, since the age of 18. This step involves documenting your activities and statuses during this period.<br>
     
@@ -2181,7 +2181,7 @@ export default class ChatBotClass {
                             Ultimately, providing your personal history within the context of Express Entry offers you the opportunity to showcase your journey over the past ten years, thereby contributing to a comprehensive evaluation of your eligibility for permanent residence in Canada.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2199,9 +2199,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Professional backgrounds within the context of Express Entry hold paramount importance in demonstrating your eligibility for permanent residence in Canada. This step requires the precise and detailed declaration of your work experience over the past ten years OR from your 18th birthday onwards, with an emphasis on continuous experience of at least one year in an eligible job.<br>
     
@@ -2214,7 +2214,7 @@ export default class ChatBotClass {
                             In conclusion, professional backgrounds provide an opportunity to demonstrate your continuous and eligible work experience, while showcasing your skills and potential contribution to the Canadian economy. This step plays a crucial role in determining your eligibility for permanent residence in Canada through the Express Entry system.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2232,9 +2232,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The professional reference letter is a crucial document when submitting an application for permanent residence through the Express Entry system. Its purpose is to provide an objective assessment of your skills, work experience, and professional character from someone who has supervised or closely worked with you.<br>
     
@@ -2248,7 +2248,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2266,9 +2266,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The gift deed is a process that allows a candidate for permanent residence in Canada, who does not have the full required funds, to receive a financial contribution from a close family member. This contribution aims to supplement the required amount to meet the financial requirements of the immigration program.<br>
     
@@ -2282,7 +2282,7 @@ export default class ChatBotClass {
                             <br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2300,9 +2300,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             As an immigration candidate through the Express Entry system, it's crucial to be aware of the fees associated with this process. These fees cover various stages, including application fees, biometric fees for fingerprinting and photography, as well as permanent residence fees. It's important to understand the fee structure based on your situation, the number of family members included in the application, and the immigration category you're applying for. Ensuring timely payment of these fees is a crucial element to ensure the processing of your application and continue your journey towards permanent residence in Canada.<br><br>
                             <ol>
@@ -2318,7 +2318,7 @@ export default class ChatBotClass {
                             <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/321111072513577/?__cft__[0]=AZVwmw321Tz5-XLh6Cce3PaUVGx1YrPtJ6NRVB4N9ryDI4bLGbhjULVH6WYE4xgtx4C_LL-ukFVEzrtBloTO44uZ4WajEsb4_l5qFWX8gdjo8dEwRYepzDtEPx2ts7D9Yhm_KvTVflLsdsJK_68_C3sZ&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Click here</a> to get an idea of the fees to be paid.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2336,9 +2336,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The medical examination required by Immigration, Refugees, and Citizenship Canada (IRCC) is a crucial step in the immigration process, particularly within the context of the Express Entry system. This medical examination aims to assess your health status to ensure that you do not pose a risk to public health in Canada and that you will not require intensive healthcare upon arrival.<br>
     
@@ -2349,7 +2349,7 @@ export default class ChatBotClass {
                             In a nutshell, the IRCC-required medical examination within the context of Express Entry aims to ensure that candidates for permanent residence are in good health and do not pose a risk to Canadian public health.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2380,9 +2380,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Les données biométriques font référence à des caractéristiques physiques et uniques qui permettent d'identifier de manière précise une personne. Dans le cadre du processus d'immigration, les données biométriques sont collectées pour renforcer la sécurité et l'authenticité des documents d'identification.<br>
     
@@ -2396,7 +2396,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2414,9 +2414,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le délai de traitement d'une demande de résidence permanente via le système Entrée express varie en fonction de plusieurs facteurs, notamment le programme d'immigration choisi, le volume de demandes en cours de traitement et la complexité de votre dossier individuel. Les délais peuvent également être influencés par des circonstances externes telles que les contraintes opérationnelles ou les mesures de sécurité renforcées.<br>
     
@@ -2425,7 +2425,7 @@ export default class ChatBotClass {
                             Pour obtenir une estimation plus précise du délai de traitement de votre demande spécifique, il est recommandé de consulter le site web officiel d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/verifier-delais-traitement.html" target="_blank" rel="noreferrer">Cliquez ici pour avoir une idée sur le délai de traitement de votre demande</a>.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2443,14 +2443,14 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             ADR "Additional Document Request", "Demande de document additionnel" en français. Cela fait référence à la situation où Immigration, Réfugiés et Citoyenneté Canada (IRCC) demande des documents ou des informations supplémentaires à un candidat pour approfondir l'évaluation de leur admissibilité au programme Entrée express ou pour vérifier les informations fournies dans leur demande. Les demandes de documents additionnels sont une étape normale du processus de demande, et les candidats doivent fournir les documents demandés dans le délai spécifié afin de poursuivre leur demande.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2480,9 +2480,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Biometric data refers to unique and physical characteristics that allow for accurate identification of an individual. In the context of the immigration process, biometric data is collected to enhance the security and authenticity of identification documents.<br>
     
@@ -2496,7 +2496,7 @@ export default class ChatBotClass {
                             <br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2514,9 +2514,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The processing time for a permanent residence application through the Express Entry system varies depending on several factors, including the chosen immigration program, the volume of applications being processed, and the complexity of your individual case. Delays can also be influenced by external circumstances such as operational constraints or enhanced security measures.<br>
     
@@ -2525,7 +2525,7 @@ export default class ChatBotClass {
                             To obtain a more precise estimate of the processing time for your specific application, it is recommended to consult the official website of Immigration, Refugees and Citizenship Canada (IRCC). <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/verifier-delais-traitement.html" target="_blank" rel="noreferrer">Click here to get an idea of the processing time for your application</a>.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2543,9 +2543,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             After you have submitted your application through the Express Entry system, you may encounter a process known as "Additional Document Request" (ADR). An ADR is a request from Immigration, Refugees and Citizenship Canada (IRCC) for additional supporting documents or information to verify the details provided in your application.<br>
     
@@ -2554,7 +2554,7 @@ export default class ChatBotClass {
                             It's important to respond to the ADR promptly and provide the requested documents within the specified timeframe. Failure to provide the requested documents may lead to delays or even refusal of your application. Timely and accurate submission of the requested documents can help ensure a smooth and efficient processing of your application within the Express Entry system.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2584,9 +2584,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             L'étape de la demande de passeport intervient après avoir reçu l'approbation de votre demande de résidence permanente au Canada. Une fois que vous avez reçu la lettre d'approbation, vous devez déposer votre passeport auprès des autorités compétentes (généralement les <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noreferrer">CRDV</a>) pour obtenir le visa de résident permanent.<br>
     
@@ -2597,7 +2597,7 @@ export default class ChatBotClass {
                             En récapitulation, l'étape de la demande de passeport fait suite à l'approbation de votre demande de résidence permanente. Elle implique l'obtention du visa de résident permanent dans votre passeport, vous permettant ainsi de voyager au Canada et de confirmer votre statut de résident permanent à votre arrivée.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2615,9 +2615,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             La Confirmation de Résidence Permanente (CRP) est un document officiel émis par les autorités canadiennes pour confirmer que votre demande de résidence permanente a été approuvée. Une fois que vous avez reçu la CRP, cela signifie que vous avez satisfait aux critères d'immigration requis et que vous êtes autorisé à devenir un résident permanent du Canada.<br>
     
@@ -2626,7 +2626,7 @@ export default class ChatBotClass {
                             Lorsque vous voyagez au Canada, vous devrez présenter votre CRP aux autorités à votre arrivée pour confirmer votre statut de résident permanent. La CRP est un document essentiel que vous devrez garder en sécurité et avoir avec vous chaque fois que vous voyagez à l'étranger ou lorsque vous interagissez avec les autorités canadiennes.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2655,9 +2655,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The passport application step comes after receiving approval for your permanent residence application in Canada. Once you've received the approval letter, you need to submit your passport to the relevant authorities (usually the <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noreferrer">VACs</a>) to obtain the permanent resident visa.<br>
     
@@ -2668,7 +2668,7 @@ export default class ChatBotClass {
                             To recapitulate, the passport application step follows the approval of your permanent residence application. It involves obtaining the permanent resident visa in your passport, allowing you to travel to Canada and confirm your permanent resident status upon arrival.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2686,9 +2686,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The Confirmation of Permanent Residence (CoPR) is an official document issued by Canadian authorities to confirm the approval of your permanent residence application. Once you receive the CoPR, it signifies that you have met the required immigration criteria and are authorized to become a permanent resident of Canada.<br>
     
@@ -2697,7 +2697,7 @@ export default class ChatBotClass {
                             When you travel to Canada, you will need to present your CoPR to authorities upon arrival to confirm your permanent resident status. The CoPR is an essential document that you should keep secure and have with you whenever you travel abroad or interact with Canadian authorities.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2727,9 +2727,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Le NAS, ou <a class="text-blue-600" href="https://www.canada.ca/fr/emploi-developpement-social/services/numero-assurance-sociale.html" target="_blank" rel="noreferrer">Numéro d'Assurance Sociale</a>, est un numéro unique à neuf chiffres attribué par Service Canada, qui est l'agence responsable des services gouvernementaux liés à l'emploi, aux programmes sociaux et aux prestations au Canada. Le NAS est essentiellement un numéro d'identification fiscale et sociale utilisé pour diverses interactions avec le gouvernement, y compris pour travailler, payer des impôts et accéder à certains programmes et avantages sociaux.<br>
     
@@ -2740,7 +2740,7 @@ export default class ChatBotClass {
                             En gros, le NAS est un numéro d'assurance sociale attribué par Service Canada pour identifier les résidents au Canada et leur permettre d'accéder à divers services gouvernementaux. Vous pouvez l'obtenir en faisant une demande auprès de Service Canada en fournissant les documents requis.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2758,9 +2758,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Pour ouvrir un compte bancaire au Canada en tant que nouvel arrivant et résident permanent, suivez ces étapes générales:<br>
                             <ol>
@@ -2793,7 +2793,7 @@ export default class ChatBotClass {
                             N'oubliez pas de prendre en compte les frais, les taux d'intérêt, les services en ligne, la disponibilité des succursales et d'autres facteurs importants lors de votre décision.<br><br>
                             ${this.questionInvitationFr[Math.floor(Math.random() * this.questionInvitationFr.length)]}
                             <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Actualiser</button></li>
                             </ul>
                             </h3>
                         </div>
@@ -2822,9 +2822,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             The SIN, or <a class="text-blue-600" href="https://www.canada.ca/en/employment-social-development/services/social-insurance-number.html" target="_blank" rel="noreferrer">Social Insurance Number</a>, is a unique nine-digit number issued by Service Canada, which is the agency responsible for government services related to employment, social programs, and benefits in Canada. The SIN is essentially a tax and social identification number used for various interactions with the government, including working, paying taxes, and accessing certain social programs and benefits.<br>
     
@@ -2835,7 +2835,7 @@ export default class ChatBotClass {
                             All in all, the SIN is a social insurance number issued by Service Canada to identify residents in Canada and allow them to access various government services. You can obtain it by applying to Service Canada and providing the required documents.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -2853,9 +2853,9 @@ export default class ChatBotClass {
                 setTimeout(() => {
                     this.spinner.style.display = 'none';
                     this.discussion.innerHTML += `
-                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2 mt-1">
-                        <i class="fa-solid fa-robot ml-1 mb-1"></i>
-                        <div>
+                    <div class="discMsg text-start flex flex-row justify-around items-end gap-2">
+                        <i class="fa-solid fa-robot ml-1 mb-2"></i>
+                        <div class="mb-1">
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             To open a bank account in Canada as a newcomer and permanent resident, follow these general steps:<br>
                             <ol>
@@ -2882,7 +2882,7 @@ export default class ChatBotClass {
                             Remember to consider fees, interest rates, online services, branch availability, and other important factors when making your decision.<br><br>
                             ${this.questionInvitationEn[Math.floor(Math.random() * this.questionInvitationEn.length)]}
                             <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg">Refresh</button></li>
                             </ul>
                             </h3>
                         </div>

@@ -19,7 +19,7 @@
                     </ul></h3> --}}
                 </div>
             </div>
-            <div class="discussion flex flex-col justify-center items-start gap-2 text-start">
+            <div class="discussion flex flex-col justify-center items-start gap-2">
                 
             </div>
             <div class="spinner animate-spin" style="display: none;"><i class="fa-solid fa-spinner"></i></div>

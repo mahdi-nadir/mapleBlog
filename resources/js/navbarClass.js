@@ -17,7 +17,7 @@ export default class NavbarClass {
     init() {
         if (this.windowWidth < 768) {
             this.expressEntry.innerHTML = '<i class="fa-brands fa-canadian-maple-leaf text-white text-2xl"></i>';
-            this.arrima.innerHTML = '<div class="w-[10px] h-[10px]"><img src="/img/quebeclily.png" alt"arrima system"/></div>';
+            this.arrima.innerHTML = '<div class="w-[40px] h-[40px]" mt-1><img src="/img/quebeclily.png" alt"arrima system"/></div>';
         } else {
             this.expressEntry.innerHTML = window.location.href.includes('/fr') ? "Entrée express" : "Express Entry";
             this.arrima.innerHTML = "Arrima";

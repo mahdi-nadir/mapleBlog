@@ -270,5 +270,15 @@
     "clb_calculator": "Canadian Language Benchmark Calculator",
     "clb_calculator_msg1": "The Canadian Language Benchmarks (CLB) describe 12 levels of ability in each of four different language skills - Listening, Speaking, Reading and Writing.",
     "clb_calculator_msg2": "Please note that you are eligible only if you get CLB7 or more in all language skills",
-    "result": "Result"
+    "result": "Result",
+    "pnpSuggest": "Provincial Nominee Program Suggestions",
+    "pnpSuggestMsg1": "This tool will inform you whether your occupation is in demand and assist you in identifying the most suitable PNP program for you.",
+    "pnpSuggestMsg2": "Before you get started, please note that you need to know you NOC code and your CRS score.",
+    "pnpSuggestMsg3": "If you only know your NOC code from the 2016 version, please use this link to convert it to the 2021 version:",
+    "pnpSuggestMsg4": "NOC Conversion",
+    "eligible": "Eligible",
+    "eligibleUnderConditions": "Eligible under conditions",
+    "notEligible": "Not Eligible",
+    "nocCode": "NOC Code",
+    "crsScore": "CRS Score"
 }
