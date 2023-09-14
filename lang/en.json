@@ -121,7 +121,7 @@
     "reservedOcc": "Reserved Job Position in Canada",
     "reservedOccQuestion": "Do you have a valid job offer in Canada?",
     "reservedOccQuestion2": "Do you have a valid job offer supported by a Labour Market Impact Assessment (LMIA)",
-    "ifNedded": "if needed",
+    "ifNeeded": "if needed",
     "reservedOcc1": "A valid job offer must be:",
     "reservedOcc2": "full-time",
     "reservedOcc3": "in a skilled job listed as TEER 0, 1, 2 or 3 in the 2021 National Occupational Classification",
@@ -188,7 +188,7 @@
     "arrangedEmployment2": "What is an arranged employment?",
     "relatives": "Relatives in Canada",
     "relativesQuestion1": "Do you have",
-    "relativesQuestion2": "a relative who is 18 years or older",
+    "relativesQuestion2": "a relative who is 18 years or older?",
     "relativesQuestion3": "at least one brother or sister living in Canada who is a citizen or permanent resident?",
     "relatives1": "You can get points for having a relative in Canada if he is:",
     "relatives2": "18 years or older",
@@ -280,5 +280,11 @@
     "eligibleUnderConditions": "Eligible under conditions",
     "notEligible": "Not Eligible",
     "nocCode": "NOC Code",
-    "crsScore": "CRS Score"
+    "crsScore": "CRS Score",
+    "generalInfo": "General Information",
+    "comingSoon": "Coming Soon..",
+    "extraInfoMsg": "This table is not the main final content of the page. It shows the 10 last draws of the Express Entry system.",
+    "draw": "Draw",
+    "crsAbr": "CRS",
+    "program": "Program"
 }

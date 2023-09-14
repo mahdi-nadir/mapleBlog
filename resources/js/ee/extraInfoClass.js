@@ -31,7 +31,11 @@ export default class ExtraInfoClass {
                 this.tabDraw[i] = draws;
             }
         } catch (error) {
-            console.error('Error scraping data:', error);
+            // console.error('Error scraping data:', error);
+            let infoContainer = document.querySelector('#infoContainer');
+            infoContainer.innerHTML = `
+                <p class="text-red-500 font-bold mt-5 text-center">Error scraping data. Please try again later.</p>
+            `;
         }
     }
 
@@ -62,10 +66,10 @@ export default class ExtraInfoClass {
 
     removeProgram() {
         if (window.innerWidth < 768) {
-            let th = document.querySelector('th:nth-child(5)');
-            let tds = document.querySelectorAll('td:nth-child(5)');
-            th.style.display = 'none';
-            for (let elementTd of tds) {
+            let th5 = document.querySelector('th:nth-child(5)');
+            let tds5 = document.querySelectorAll('td:nth-child(5)');
+            th5.style.display = 'none';
+            for (let elementTd of tds5) {
                 elementTd.style.display = 'none';
             }
         }

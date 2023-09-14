@@ -4,7 +4,7 @@ export default {
     "resources/**/*.blade.php",
     "resources/**/*.js",
   ],
-
+  darkMode: 'class',
   theme: {
     extend: {
       display: ['group-focus'],

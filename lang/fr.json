@@ -95,7 +95,7 @@
     "secondLang": "Deuxième langue officielle",
     "secondLangValid": "Avez-vous d'autres résultats d'un autre test de langue ?",
     "whichLang2": "Quel test de langue avez-vous passé pour votre deuxième langue officielle ?",
-    "gotClb": "Avez-vous obtenu un score de NCLC 5 ou plus dans toutes les compétences linguistiques ?",
+    "gotClb2": "Avez-vous obtenu un score de NCLC 5 ou plus dans toutes les compétences linguistiques ?",
     "secondLangExp": "Vous pouvez obtenir des points pour votre deuxième langue officielle si vous obtenez un score de NCLC 5 ou plus dans toutes les compétences linguistiques.",
     "reading": "Compréhension écrite",
     "writing": "Expression écrite",
@@ -188,7 +188,7 @@
     "arrangedEmployment2": "Qu'est-ce qu'un emploi réservé?",
     "relatives": "Proches de famille au Canada",
     "relativesQuestion1": "Avez-vous",
-    "relativesQuestion2": "un proche de la famille qui a 18 ans ou plus",
+    "relativesQuestion2": "un proche de la famille qui a 18 ans ou plus?",
     "relativesQuestion3": "au moins un frère ou une sœur vivant au Canada qui est citoyen(ne) ou résident(e) permanent(e)?",
     "relatives1": "Vous pouvez obtenir des points pour un proche de la famille au Canada s'il ou elle est:",
     "relatives2": "âgé de 18 ans ou plus",
@@ -279,5 +279,11 @@
     "eligibleUnderConditions": "Admissible sous conditions",
     "notEligible": "Non admissible",
     "nocCode": "Code CNP",
-    "crsScore": "Score SCG"
+    "crsScore": "Score SCG",
+    "generalInfo": "Informations Générales",
+    "comingSoon": "Bientôt Disponible..",
+    "extraInfoMsg": "Ce tableau n'est pas le contenu principal final de la page. Il affiche les 10 derniers tirages du système Entrée express.",
+    "draw": "Tirage",
+    "crsAbr": "SCG",
+    "program": "Programme"
 }

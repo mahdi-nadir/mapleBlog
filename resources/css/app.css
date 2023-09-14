@@ -12,7 +12,63 @@
   }
 
 
+.body {
+    /* min-height: 100%; */
+    /* background-color: #010101; */
+    /* background-color: #eee; */
+}
 
+.bodyLanding {
+    background: url(/public/img/mapleleaf2.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.mainContainer {
+    max-width: 1200px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #eee;
+    /* background-color: #ddd; */
+}
+
+
+
+
+/* for div highlighting */
+/* Define the CSS class for highlighting */
+.highlighted-div {
+    animation: highlight 1.5s ease-in-out forwards; /* Use "forwards" to retain the final state */
+    background-color: rgba(255, 255, 0, 0.5); /* Initial background color with opacity */
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5); /* Initial box shadow with opacity */
+    border-radius: 10px;
+}
+
+/* Define the CSS animation for highlighting */
+@keyframes highlight {
+    0% {
+        background-color: rgba(255, 255, 0, 0); /* Start with fully transparent background */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0); /* Start with fully transparent box shadow */
+    }
+    50% {
+        background-color: rgba(255, 255, 0, 0.5); /* Transition to fully opaque background at 50% */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5); /* Transition to semi-transparent box shadow at 50% */
+    }
+    100% {
+        background-color: rgba(255, 255, 0, 0); /* Back to fully transparent background at the end */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0); /* Back to fully transparent box shadow at the end */
+    }
+}
+
+
+
+
+
+
+/* for suggestPNP page (should get replaced with tailwind classes) */
 .gray {
     background-color: #e5e7eb;
 }
@@ -35,32 +91,6 @@
 
 .yellow:hover {
     background-color: #fde047;
-}
-
-
-
-
-.body {
-    /* min-height: 100%; */
-    /* background-color: #010101; */
-    /* background-color: #eee; */
-}
-
-.bodyLanding {
-    background: url(/public/img/mapleleaf2.jpg); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.mainContainer {
-    max-width: 1200px;
-    font-family: 'Roboto', sans-serif;
-    margin: 0 auto;
-    min-height: 100vh;
-    background-color: #eee;
-    /* background-color: #ddd; */
 }
 
 

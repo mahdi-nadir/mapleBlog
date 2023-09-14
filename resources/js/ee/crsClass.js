@@ -39,7 +39,8 @@ export default class crsClass {
         this.eligibilityDiv = document.querySelector('.eligibility-div');
         this.explanations = document.querySelectorAll('.fa-solid')
 
-        this.martialStatus = document.querySelector('.marital-status');
+        this.maritalStatusDiv = document.querySelector('.marital-status-div');
+        this.maritalStatus = document.querySelector('.marital-status');
 
         this.spouseCanadianStatusDiv = document.querySelector('.spouseCanadianStatusDiv');
         this.spouseCanadianStatusInput = document.querySelector('[name="spouseCanadianStatus"]');
@@ -140,27 +141,40 @@ export default class crsClass {
     }
 
     init() {
-
-        this.martialStatus.addEventListener('change', () => {
-            if (this.martialStatus.value == 'married') {
-                this.ageDiv.style.display = 'none';
+        this.maritalStatus.addEventListener('change', () => {
+            if (this.maritalStatus.value == 'married') {
+                // this.ageDiv.style.display = 'none';
                 this.spouseCanadianStatusDiv.style.display = 'block';
+                this.highlightDiv(this.spouseCanadianStatusDiv);
+                this.spouseCanadianStatusInput.value = '';
+                this.spouseFollowerInput.value = '';
                 this.spouseCanadianStatusInput.scrollIntoView({ behavior: 'smooth' })
-            } else if (this.martialStatus.value == 'single') {
+            } else if (this.maritalStatus.value == 'single') {
                 this.spouseCanadianStatusDiv.style.display = 'none';
                 this.spouseFollowerDiv.style.display = 'none';
                 this.ageDiv.style.display = 'block';
+                this.highlightDiv(this.ageDiv);
                 this.ageInput.scrollIntoView({ behavior: 'smooth' })
                 this.likeSingle = true;
+            } else {
+                this.spouseCanadianStatusDiv.style.display = 'none';
+                this.spouseFollowerDiv.style.display = 'none';
+                // this.ageDiv.style.display = 'none';
+                // this.ageInput.value = '';
+                // this.spouseCanadianStatusInput.value = '';
+                // this.spouseFollowerInput.value = '';
             }
-
             this.btnReset.disabled = false;
+            this.ageInput.value = '';
+            // this.educationDiv.style.display = 'none';
+            // this.handleSelects(this.maritalStatus);
         })
 
         let spanMarried = document.querySelector('#marriedOrNot');
         this.spouseCanadianStatusInput.addEventListener('change', () => {
             if (this.spouseCanadianStatusInput.value == 'yes') {
                 this.ageDiv.style.display = 'block';
+                this.highlightDiv(this.ageDiv);
                 this.ageInput.scrollIntoView({ behavior: 'smooth' })
                 this.spouseFollowerDiv.style.display = 'none';
                 this.likeSingle = true;
@@ -169,11 +183,12 @@ export default class crsClass {
                 this.ageDiv.style.display = 'none';
                 this.ageInput.value = '';
                 this.spouseFollowerDiv.style.display = 'block';
-                this.spouseFollowerInput.scrollIntoView({ behavior: 'smooth' })
+                this.highlightDiv(this.spouseFollowerDiv);
             } /* else {
             notDisplayComponents(spouseCanadianStatusDiv);
         } */
             this.spanMarriedOrSingle(spanMarried);
+            // this.handleSelects(this.spouseCanadianStatusInput);
         })
 
         this.spouseFollowerInput.addEventListener('change', () => {
@@ -185,17 +200,15 @@ export default class crsClass {
             notDisplayComponents(spouseFollowerDiv);
         } */
             this.ageDiv.style.display = 'block';
+            this.highlightDiv(this.ageDiv);
             this.ageInput.scrollIntoView({ behavior: 'smooth' })
             this.ageInput.value = '';
             this.spanMarriedOrSingle(spanMarried);
-
+            // this.handleSelects(this.spouseFollowerInput);
         })
 
-
-
-
         this.ageInput.addEventListener('change', () => {
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 if (this.ageInput.value == 17) {
                     this.ageScore = 0;
                     this.noticeDiv.style.display = 'block';
@@ -249,7 +262,7 @@ export default class crsClass {
                     this.ageScore = 0;
                     // notDisplayComponents(ageDiv);
                 }
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 if (this.ageInput.value == 17) {
                     this.ageScore = 0;
                     this.noticeDiv.style.display = 'block';
@@ -305,11 +318,13 @@ export default class crsClass {
                 }
             }
             this.educationDiv.style.display = 'block';
+            this.highlightDiv(this.educationDiv);
             this.educationInput.scrollIntoView({ behavior: 'smooth' })
+            // this.handleSelects(this.ageInput);
         })
 
         this.educationInput.addEventListener('change', () => {
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 if (this.educationInput.value == 'secondary') {
                     this.educationScore = 28;
                 } else if (this.educationInput.value == 'one-year') {
@@ -328,7 +343,7 @@ export default class crsClass {
                     this.educationScore = 0;
                     // notDisplayComponents(educationDiv);
                 }
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 if (this.educationInput.value == 'secondary') {
                     this.educationScore = 30;
                 } else if (this.educationInput.value == 'one-year') {
@@ -349,31 +364,38 @@ export default class crsClass {
                 }
             }
             this.studiesInCanadaDiv.style.display = 'block';
+            this.highlightDiv(this.studiesInCanadaDiv);
             this.studiesInCanadaInput.scrollIntoView({ behavior: 'smooth' })
             this.noticeDiv.style.display = 'none';
             this.noticeDiv.innerHTML = '';
+            // this.handleSelects(this.educationInput);
         })
 
         this.studiesInCanadaInput.addEventListener('change', () => {
             if (this.studiesInCanadaInput.value == 'yes') {
                 this.studiesInCanadaTypeDiv.style.display = 'block';
+                this.highlightDiv(this.studiesInCanadaTypeDiv);
                 this.studiesInCanadaTypeInput.scrollIntoView({ behavior: 'smooth' })
                 this.firstLangDiv.style.display = 'none';
             } else if (this.studiesInCanadaInput.value == 'no') {
                 this.studiesInCanadaTypeDiv.style.display = 'none';
                 this.firstLangDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangDiv);
                 this.firstLangInput.scrollIntoView({ behavior: 'smooth' })
             }
+            // this.handleSelects(this.studiesInCanadaInput);
         })
 
         this.studiesInCanadaTypeInput.addEventListener('change', () => {
             this.firstLangDiv.style.display = 'block';
+            this.highlightDiv(this.firstLangDiv);
             this.firstLangInput.scrollIntoView({ behavior: 'smooth' })
         })
 
         this.firstLangInput.addEventListener('change', () => {
             if (this.firstLangInput.value == 'yes') {
                 this.firstLangTypeDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangTypeDiv);
                 this.firstLangTypeInput.scrollIntoView({ behavior: 'smooth' })
                 this.noticeDiv.style.display = 'none';
                 this.noticeDiv.innerHTML = '';
@@ -384,6 +406,7 @@ export default class crsClass {
                 this.noticeDiv.style.display = 'block';
                 this.noticeDiv.innerHTML = window.location.href.includes('/en') ? `You must have a language test result to be eligible for Express Entry.` : `Vous devez avoir un résultat de test de langue pour être admissible à Entrée express.`;
             }
+            // this.handleSelects(this.firstLangInput);
         })
 
         this.firstLangTypeInput.addEventListener('change', () => {
@@ -394,6 +417,7 @@ export default class crsClass {
 
             if (this.firstLangTypeInput.value == 'ielts') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv)
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="ielts"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="celpip"]').style.display = 'none';
@@ -404,6 +428,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('ielts', this.firstLangSpeakingInput);
             } else if (this.firstLangTypeInput.value == 'celpip') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv)
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="ielts"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="celpip"]').style.display = 'none';
@@ -414,6 +439,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('celpip', this.firstLangSpeakingInput);
             } else if (this.firstLangTypeInput.value == 'tef-canada') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv)
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'none';
@@ -424,6 +450,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('tef-canada', this.firstLangSpeakingInput);
             } else if (this.firstLangTypeInput.value == 'tcf-canada') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv)
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'none';
@@ -443,41 +470,41 @@ export default class crsClass {
                 this.secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'block';
                 this.secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'block';
             }
+            // this.handleSelects(this.firstLangTypeInput);
         })
 
         this.firstLangReadingInput.addEventListener('change', () => {
-            this.getPointsFirstLanguage(this.martialStatus.value, this.likeSingle, this.firstLangReadingInput.value, this.firstLangScoresArray, 0);
+            this.getPointsFirstLanguage(this.maritalStatus.value, this.likeSingle, this.firstLangReadingInput.value, this.firstLangScoresArray, 0);
             this.firstLangScore = this.calculateLanguageScore(this.firstLangScoresArray);
             this.errorLanguageSkill(this.firstLangReadingInput, 'reading', this.firstLangWritingInput, this.secondLangDiv);
             this.triggerSecondLangDiv(this.firstLangReadingInput, this.firstLangWritingInput, this.firstLangListeningInput, this.firstLangSpeakingInput, this.secondLangDiv);
         })
 
         this.firstLangWritingInput.addEventListener('change', () => {
-            this.getPointsFirstLanguage(this.martialStatus.value, this.likeSingle, this.firstLangWritingInput.value, this.firstLangScoresArray, 1);
+            this.getPointsFirstLanguage(this.maritalStatus.value, this.likeSingle, this.firstLangWritingInput.value, this.firstLangScoresArray, 1);
             this.firstLangScore = this.calculateLanguageScore(this.firstLangScoresArray);
             this.errorLanguageSkill(this.firstLangWritingInput, 'writing', this.firstLangListeningInput, this.secondLangDiv);
             this.triggerSecondLangDiv(this.firstLangReadingInput, this.firstLangWritingInput, this.firstLangListeningInput, this.firstLangSpeakingInput, this.secondLangDiv);
         })
 
         this.firstLangListeningInput.addEventListener('change', () => {
-            this.getPointsFirstLanguage(this.martialStatus.value, this.likeSingle, this.firstLangListeningInput.value, this.firstLangScoresArray, 2);
+            this.getPointsFirstLanguage(this.maritalStatus.value, this.likeSingle, this.firstLangListeningInput.value, this.firstLangScoresArray, 2);
             this.firstLangScore = this.calculateLanguageScore(this.firstLangScoresArray);
             this.errorLanguageSkill(this.firstLangListeningInput, 'listening', this.firstLangSpeakingInput, this.secondLangDiv);
             this.triggerSecondLangDiv(this.firstLangReadingInput, this.firstLangWritingInput, this.firstLangListeningInput, this.firstLangSpeakingInput, this.secondLangDiv);
         })
 
         this.firstLangSpeakingInput.addEventListener('change', () => {
-            this.getPointsFirstLanguage(this.martialStatus.value, this.likeSingle, this.firstLangSpeakingInput.value, this.firstLangScoresArray, 3);
+            this.getPointsFirstLanguage(this.maritalStatus.value, this.likeSingle, this.firstLangSpeakingInput.value, this.firstLangScoresArray, 3);
             this.firstLangScore = this.calculateLanguageScore(this.firstLangScoresArray);
             this.errorLanguageSkill(this.firstLangSpeakingInput, 'speaking', this.firstLangScoresDiv, this.secondLangDiv);
             this.triggerSecondLangDiv(this.firstLangReadingInput, this.firstLangWritingInput, this.firstLangListeningInput, this.firstLangSpeakingInput, this.secondLangDiv);
         })
 
-
-
         this.secondLangInput.addEventListener('change', () => {
             if (this.secondLangInput.value == 'yes') {
                 this.secondLangTypeDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangTypeDiv);
                 this.secondLangTypeDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.value = '';
                 this.workExpCanDiv.style.display = 'none';
@@ -485,13 +512,16 @@ export default class crsClass {
                 this.secondLangTypeDiv.style.display = 'none';
                 this.secondLangScoresDiv.style.display = 'none';
                 this.workExpCanDiv.style.display = 'block';
+                this.highlightDiv(this.workExpCanDiv);
                 this.workExpCanDiv.scrollIntoView({ behavior: 'smooth' })
             }
+            // this.handleSelects(this.secondLangInput);
         })
 
         this.secondLangTypeInput.addEventListener('change', () => {
             if (this.secondLangTypeInput.value == 'ielts') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('ielts', this.secondLangReadingInput);
                 this.fillLanguageWriting('ielts', this.secondLangWritingInput);
@@ -499,6 +529,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('ielts', this.secondLangSpeakingInput);
             } else if (this.secondLangTypeInput.value == 'celpip') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('celpip', this.secondLangReadingInput);
                 this.fillLanguageWriting('celpip', this.secondLangWritingInput);
@@ -506,6 +537,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('celpip', this.secondLangSpeakingInput);
             } else if (this.secondLangTypeInput.value == 'tef-canada') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('tef-canada', this.secondLangReadingInput);
                 this.fillLanguageWriting('tef-canada', this.secondLangWritingInput);
@@ -513,6 +545,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('tef-canada', this.secondLangSpeakingInput);
             } else if (this.secondLangTypeInput.value == 'tcf-canada') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('tcf-canada', this.secondLangReadingInput);
                 this.fillLanguageWriting('tcf-canada', this.secondLangWritingInput);
@@ -525,8 +558,10 @@ export default class crsClass {
                 this.secondLangSpeakingInput.value = '';
                 this.secondLangScoresDiv.style.display = 'none';
                 this.workExpCanDiv.style.display = 'block';
+                this.highlightDiv(this.workExpCanDiv);
                 this.workExpCanDiv.scrollIntoView({ behavior: 'smooth' })
             }
+            // this.handleSelects(this.secondLangTypeInput);
         })
 
         this.secondLangReadingInput.addEventListener('change', () => {
@@ -557,7 +592,7 @@ export default class crsClass {
             let monthYearSpan = document.querySelector('#monthYearExp');
             monthYearSpan.textContent = window.location.href.includes('/en') ? `${this.month} 1st, ${this.year}` : `1er ${this.month} ${this.year}`;
 
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 if (this.workExpCanInput.value == 1) {
                     this.workExpeCanScore = 35;
                 } else if (this.workExpCanInput.value == 2) {
@@ -572,7 +607,7 @@ export default class crsClass {
                     this.workExpeCanScore = 0;
                     // notDisplayComponents(educationDiv);
                 }
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 if (this.workExpCanInput.value == 1) {
                     this.workExpeCanScore = 40;
                 } else if (this.workExpCanInput.value == 2) {
@@ -590,12 +625,14 @@ export default class crsClass {
             }
 
             this.workExpDiv.style.display = 'block';
+            this.highlightDiv(this.workExpDiv);
             this.workExpInput.scrollIntoView({ behavior: 'smooth' })
 
             if (this.workExpCanInput.value == '') {
                 this.workExpeScore = 0;
                 this.workExpDiv.style.display = 'none';
             }
+            // this.handleSelects(this.workExpCanInput);
         })
 
         this.workExpInput.addEventListener('change', () => {
@@ -615,10 +652,12 @@ export default class crsClass {
                 // }, 8000);
             } else {
                 this.qualificationDiv.style.display = 'block';
+                this.highlightDiv(this.qualificationDiv);
                 this.qualificationInput.scrollIntoView({ behavior: 'smooth' })
                 this.noticeDiv.style.display = 'none';
                 this.noticeDiv.innerHTML = '';
             }
+            // this.handleSelects(this.workExpInput);
         })
 
         this.qualificationInput.addEventListener('change', () => {
@@ -628,26 +667,31 @@ export default class crsClass {
                 this.qualificationScore = 0;
             }
             this.reservedJobDiv.style.display = 'block';
+            this.highlightDiv(this.reservedJobDiv);
             this.reservedJobInput.scrollIntoView({ behavior: 'smooth' })
             if (this.qualificationInput.value == '') {
                 this.workExpeScore = 0;
                 this.reservedJobDiv.style.display = 'none';
             }
+            // this.handleSelects(this.qualificationInput);
         })
 
         this.reservedJobInput.addEventListener('change', () => {
             if (this.reservedJobInput.value == 'yes') {
                 this.jobOfferTeerDiv.style.display = 'block';
+                this.highlightDiv(this.jobOfferTeerDiv);
                 this.jobOfferTeerInput.scrollIntoView({ behavior: 'smooth' });
                 this.nominationDiv.style.display = 'none';
             } else if (this.reservedJobInput.value == 'no') {
                 this.jobOfferTeerDiv.style.display = 'none';
                 this.nominationDiv.style.display = 'block';
+                this.highlightDiv(this.nominationDiv);
                 this.nominationInput.scrollIntoView({ behavior: 'smooth' })
             } else if (this.reservedJobInput.value == '') {
                 this.jobOfferTeerDiv.style.display = 'none';
                 this.nominationDiv.style.display = 'none';
             }
+            // this.handleSelects(this.reservedJobInput);
         })
 
         this.jobOfferTeerInput.addEventListener('change', () => {
@@ -660,12 +704,14 @@ export default class crsClass {
             }
 
             this.nominationDiv.style.display = 'block';
+            this.highlightDiv(this.nominationDiv);
             this.nominationInput.scrollIntoView({ behavior: 'smooth' })
 
             if (this.jobOfferTeerInput.value == '') {
                 this.reservedJobScore = 0;
                 this.nominationDiv.style.display = 'none';
             }
+            // this.handleSelects(this.jobOfferTeerInput);
         })
 
         this.nominationInput.addEventListener('change', () => {
@@ -676,12 +722,14 @@ export default class crsClass {
             }
 
             this.relativesDiv.style.display = 'block';
+            this.highlightDiv(this.relativesDiv);
             this.relativesInput.scrollIntoView({ behavior: 'smooth' })
 
             if (this.nominationInput.value == '') {
                 this.nominationScore = 0;
                 this.relativesDiv.style.display = 'none';
             }
+            // this.handleSelects(this.nominationInput);
         })
 
         this.relativesInput.addEventListener('change', () => {
@@ -691,10 +739,11 @@ export default class crsClass {
                 this.relativesScore = 0;
             }
 
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 this.spouseEducationDiv.style.display = 'block';
+                this.highlightDiv(this.spouseEducationDiv);
                 this.spouseEducationDiv.scrollIntoView({ behavior: 'smooth' })
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 this.spouseEducationDiv.style.display = 'none';
                 this.spouseWorkExpDiv.style.display = 'none';
                 this.spouseLangDiv.style.display = 'none';
@@ -707,6 +756,7 @@ export default class crsClass {
                 this.spouseWorkExpDiv.style.display = 'none';
                 this.spouseLangDiv.style.display = 'none';
             }
+            // this.handleSelects(this.relativesInput);
         })
 
         this.spouseEducationInput.addEventListener('change', () => {
@@ -727,12 +777,14 @@ export default class crsClass {
             }
 
             this.spouseWorkExpDiv.style.display = 'block';
+            this.highlightDiv(this.spouseWorkExpDiv);
             this.spouseWorkExpDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.spouseEducationInput.value == '') {
                 this.spouseEducationScore = 0;
                 this.spouseWorkExpDiv.style.display = 'none';
             }
+            // this.handleSelects(this.spouseEducationInput);
         })
 
         this.spouseWorkExpInput.addEventListener('change', () => {
@@ -753,17 +805,20 @@ export default class crsClass {
             }
 
             this.spouseLangDiv.style.display = 'block';
+            this.highlightDiv(this.spouseLangDiv);
             this.spouseLangInput.scrollIntoView({ behavior: 'smooth' })
 
             if (this.spouseWorkExpInput.value == '') {
                 this.spouseWorkExpScore = 0;
                 this.spouseLangDiv.style.display = 'none';
             }
+            // this.handleSelects(this.spouseWorkExpInput);
         })
 
         this.spouseLangInput.addEventListener('change', () => {
             if (this.spouseLangInput.value == 'ielts') {
                 this.spouseLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.spouseLangScoresDiv);
                 this.spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('ielts', this.spouseLangReadingInput);
                 this.fillLanguageWriting('ielts', this.spouseLangWritingInput);
@@ -771,6 +826,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('ielts', this.spouseLangSpeakingInput);
             } else if (this.spouseLangInput.value == 'celpip') {
                 this.spouseLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.spouseLangScoresDiv);
                 this.spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('celpip', this.spouseLangReadingInput);
                 this.fillLanguageWriting('celpip', this.spouseLangWritingInput);
@@ -778,6 +834,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('celpip', this.spouseLangSpeakingInput);
             } else if (this.spouseLangInput.value == 'tef-canada') {
                 this.spouseLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.spouseLangScoresDiv);
                 this.spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('tef-canada', this.spouseLangReadingInput);
                 this.fillLanguageWriting('tef-canada', this.spouseLangWritingInput);
@@ -785,6 +842,7 @@ export default class crsClass {
                 this.fillLanguageSpeaking('tef-canada', this.spouseLangSpeakingInput);
             } else if (this.spouseLangInput.value == 'tcf-canada') {
                 this.spouseLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.spouseLangScoresDiv);
                 this.spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.fillLanguageReading('tcf-canada', this.spouseLangReadingInput);
                 this.fillLanguageWriting('tcf-canada', this.spouseLangWritingInput);
@@ -796,12 +854,12 @@ export default class crsClass {
                 this.spouseLangListeningInput.value = '';
                 this.spouseLangSpeakingInput.value = '';
                 this.spouseLangScoresDiv.style.display = 'none';
-
             } else {
                 this.spouseLangScoresDiv.style.display = 'none';
                 this.spouseLangScoresArray = [0, 0, 0, 0];
                 this.btnCalculate.disabled = false;
             }
+            // this.handleSelects(this.spouseLangInput);
         })
 
         this.spouseLangReadingInput.addEventListener('change', () => {
@@ -858,7 +916,40 @@ export default class crsClass {
                 });
             })
         }
+    }
 
+    // handleSelects(currentSelect) {
+    //     const selects = document.querySelectorAll('select');
+    //     let foundCurrent = false;
+    //     for (let sel of selects) {
+    //         if (foundCurrent) {
+    //             sel.value = '';
+    //         } else if (sel === currentSelect) {
+    //             foundCurrent = true;
+    //         }
+    //     }
+    // }
+
+    // handleDivs(currentDiv, nextDiv) {
+    //     const crsDivs = document.querySelectorAll('.crsDiv');
+    //     let foundCurrent = false;
+    //     for (let div of crsDivs) {
+    //         if (foundCurrent) {
+    //             div.style.display = 'none';
+    //             nextDiv.style.display = 'block';
+    //         } else if (div === currentDiv) {
+    //             foundCurrent = true;
+    //         }
+    //     }
+    // }
+
+    highlightDiv(div) {
+        if (div.querySelector('select').value == '') {
+            div.classList.add('highlighted-div');
+            setTimeout(() => {
+                div.classList.remove('highlighted-div');
+            }, 2000);
+        } // 2000 milliseconds = 2 seconds
     }
 
     fillLanguageReading(language, readingInput) {
@@ -1086,6 +1177,7 @@ export default class crsClass {
             divSecondLang.style.display = 'none';
         } else {
             divSecondLang.style.display = 'block';
+            this.highlightDiv(divSecondLang);
             divSecondLang.scrollIntoView({ behavior: 'smooth' })
         }
     }
@@ -1110,9 +1202,9 @@ export default class crsClass {
     }
 
     spanMarriedOrSingle(span) {
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             span.textContent = window.location.href.includes('/en') ? 'or your spouse or common law partner (if they will come with you to Canada)' : 'ou votre conjoint ou conjoint de fait (s\'ils vous accompagnent au Canada)';
-        } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+        } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
             span.textContent = '';
         }
     }
@@ -1152,6 +1244,7 @@ export default class crsClass {
     triggerWorkExpDiv() {
         if (this.secondLangReadingInput.value != '' && this.secondLangWritingInput.value != '' && this.secondLangListeningInput.value != '' && this.secondLangSpeakingInput.value != '') {
             this.workExpCanDiv.style.display = 'block';
+            this.highlightDiv(this.workExpCanDiv);
             this.workExpCanInput.scrollIntoView({ behavior: 'smooth' })
         } else {
             this.workExpCanDiv.style.display = 'none';
@@ -1165,6 +1258,50 @@ export default class crsClass {
             this.btnCalculate.disabled = true;
         }
     }
+
+    // checkEmptySelectAndGetCRS() {
+    //     let isEnglish = window.location.href.includes('/en');
+    //     const selects = document.querySelectorAll('select');
+    //     const selectsWithDisplayBlock = [];
+    //     let emptySelect = false;
+
+    //     selects.forEach(select => {
+    //         const parentDiv = select.closest('.crsDiv'); // Find the closest parent with class 'crsDiv'
+    //         if (parentDiv) {
+    //             const computedStyle = getComputedStyle(parentDiv);
+    //             if (computedStyle.display === 'block') {
+    //                 selectsWithDisplayBlock.push(select);
+    //                 if (select.value === '') {
+    //                     emptySelect = true;
+    //                     select.style.border = '3px solid red';
+    //                     select.scrollIntoView({ behavior: 'smooth' });
+    //                 } else {
+    //                     select.style.border = '3px solid green';
+    //                 }
+
+    //                 select.addEventListener('change', () => {
+    //                     select.style.border = '3px solid green';
+    //                     if (select.value !== '') {
+    //                         emptySelect = false;
+    //                     }
+    //                 });
+    //                 console.log(select.value + '****<br>' + emptySelect);
+    //             }
+    //         }
+    //     });
+
+    //     if (emptySelect) {
+    //         this.noticeDiv.style.display = 'block';
+    //         this.noticeDiv.innerHTML += isEnglish ? '<li class="listElement">Please fill all the fields</li>' : '<li class="listElement">Veuillez remplir tous les champs</li>';
+    //         setTimeout(() => {
+    //             this.noticeDiv.style.display = 'none';
+    //             this.noticeDiv.innerHTML = '';
+    //         }, 4000);
+    //     } else {
+    //         this.getCRS();
+    //     }
+    // }
+
 
     getCRS() {
         let studyPlusLanguage = 0
@@ -1186,7 +1323,7 @@ export default class crsClass {
         let listeningSkillFirstLanguage = this.firstLangScoresArray[2];
         let speakingSkillFirstLanguage = this.firstLangScoresArray[3];
 
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             if (readingSkillFirstLanguage < 29 || writingSkillFirstLanguage < 29 || listeningSkillFirstLanguage < 29 || speakingSkillFirstLanguage < 29) {
                 if (this.educationInput.value == 'secondary' || this.educationInput.value == 'notCompleted') {
                     studyPlusLanguage = 0;
@@ -1206,7 +1343,7 @@ export default class crsClass {
             } else {
                 studyPlusLanguage = 0;
             }
-        } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+        } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
             if (readingSkillFirstLanguage < 31 || writingSkillFirstLanguage < 31 || listeningSkillFirstLanguage < 31 || speakingSkillFirstLanguage < 31) {
                 if (this.educationInput.value == 'secondary' || this.educationInput.value == 'notCompleted') {
                     studyPlusLanguage = 0;
@@ -1253,7 +1390,7 @@ export default class crsClass {
         studiesEntries > 50 ? studiesEntries = 50 : studiesEntries = studiesEntries;
 
 
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             if (readingSkillFirstLanguage < 29 || writingSkillFirstLanguage < 29 || listeningSkillFirstLanguage < 29 || speakingSkillFirstLanguage < 29) {
                 if (this.workExpInput.value == 0) {
                     workExpPlusLanguage = 0;
@@ -1273,7 +1410,7 @@ export default class crsClass {
             } else {
                 workExpPlusLanguage = 0;
             }
-        } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+        } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
             if (readingSkillFirstLanguage < 31 || writingSkillFirstLanguage < 31 || listeningSkillFirstLanguage < 31 || speakingSkillFirstLanguage < 31) {
                 if (this.workExpInput.value == 0) {
                     workExpPlusLanguage = 0;
@@ -1315,7 +1452,7 @@ export default class crsClass {
             workExpPlusWorkExpCan = 0;
         }
 
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             if (readingSkillFirstLanguage < 29 || writingSkillFirstLanguage < 29 || listeningSkillFirstLanguage < 29 || speakingSkillFirstLanguage < 29) {
                 if (this.qualificationInput.value == 'no') {
                     qualificationPlusLanguage = 0;
@@ -1331,7 +1468,7 @@ export default class crsClass {
             } else {
                 qualificationPlusLanguage = 0;
             }
-        } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+        } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
             if (readingSkillFirstLanguage < 31 || writingSkillFirstLanguage < 31 || listeningSkillFirstLanguage < 31 || speakingSkillFirstLanguage < 31) {
                 if (this.qualificationInput.value == 'no') {
                     qualificationPlusLanguage = 0;
@@ -1350,7 +1487,7 @@ export default class crsClass {
         }
 
         if (this.firstLangTypeInput.value == 'tef-canada' || this.firstLangTypeInput.value == 'tcf-canada') {
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 if (firstLangScoree >= 64 && this.secondLangScore >= 4) {
                     pointsForFrenchlanguageSkills = 50;
                 } else if (firstLangScoree >= 64 && this.secondLangScore < 4) {
@@ -1358,7 +1495,7 @@ export default class crsClass {
                 } else {
                     pointsForFrenchlanguageSkills = 0;
                 }
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 if (firstLangScoree >= 68 && this.secondLangScore >= 4) {
                     pointsForFrenchlanguageSkills = 50;
                 } else if (firstLangScoree >= 68 && this.secondLangScore < 4) {
@@ -1368,13 +1505,13 @@ export default class crsClass {
                 }
             }
         } else if (this.firstLangTypeInput.value != 'tef-canada' || this.firstLangTypeInput.value != 'tcf-canada') {
-            if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+            if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
                 if (firstLangScoree >= 64 && this.secondLangScore >= 12) {
                     pointsForFrenchlanguageSkills = 50;
                 } else {
                     pointsForFrenchlanguageSkills = 0;
                 }
-            } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+            } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
                 if (firstLangScoree >= 68 && this.secondLangScore >= 12) {
                     pointsForFrenchlanguageSkills = 50;
                 } else {
@@ -1393,9 +1530,9 @@ export default class crsClass {
             }
         }
 
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             this.secondLangScore >= 22 ? this.secondLangScore = 22 : this.secondLangScore = this.secondLangScore;
-        } else if ((this.martialStatus.value == 'married' && this.likeSingle == true) || this.martialStatus.value == 'single') {
+        } else if ((this.maritalStatus.value == 'married' && this.likeSingle == true) || this.maritalStatus.value == 'single') {
             this.secondLangScore >= 24 ? this.secondLangScore = 24 : this.secondLangScore = this.secondLangScore;
         }
 
@@ -1445,7 +1582,7 @@ export default class crsClass {
             <h3 class="italic uppercase font-bold mt-3">${subtotal} = ${this.ageScore + this.educationScore + firstLangScoree + this.secondLangScore + this.workExpeCanScore}</h3>
         </div>
         `
-        if (this.martialStatus.value == 'married' && this.likeSingle == false) {
+        if (this.maritalStatus.value == 'married' && this.likeSingle == false) {
             this.modalResult.innerHTML += `
                 <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
                     <h1 class="text-red-800 font-bold uppercase underline">${spouseFactors}</h1>
@@ -1528,7 +1665,7 @@ export default class crsClass {
         // spouseLangListeningScore = 0;
         // spouseLangSpeakingScore = 0;
 
-        this.martialStatus.value = '';
+        this.maritalStatus.value = '';
         this.likeSingle = false;
         this.ageInput.value = '';
         this.educationInput.value = '';

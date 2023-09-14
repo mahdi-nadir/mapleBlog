@@ -137,6 +137,7 @@ export default class eligibilityClass {
                 this.btnReset.disabled = true;
             } else {
                 this.ageDiv.style.display = 'block';
+                this.highlightDiv(this.ageDiv);
                 this.ageInput.scrollIntoView({ behavior: 'smooth' })
                 this.btnReset.disabled = false;
                 if (this.martialStatus.value == 'married') {
@@ -177,6 +178,7 @@ export default class eligibilityClass {
             }
 
             this.educationDiv.style.display = 'block';
+            this.highlightDiv(this.educationDiv);
             this.educationInput.scrollIntoView({ behavior: 'smooth' })
             this.noticeDiv.style.display = 'none';
 
@@ -212,6 +214,7 @@ export default class eligibilityClass {
                 this.educationScore = 25;
             }
             this.firstLangDiv.style.display = 'block';
+            this.highlightDiv(this.firstLangDiv);
             this.firstLangInput.scrollIntoView({ behavior: 'smooth' })
 
             if (this.educationInput.value == '') {
@@ -224,6 +227,7 @@ export default class eligibilityClass {
         this.firstLangInput.addEventListener('change', () => {
             if (this.firstLangInput.value == 'yes') {
                 this.firstLangTypeDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangTypeDiv);
                 this.firstLangTypeInput.scrollIntoView({ behavior: 'smooth' })
                 this.noticeDiv.style.display = 'none';
                 this.noticeDiv.innerHTML = '';
@@ -247,11 +251,13 @@ export default class eligibilityClass {
 
             if (this.firstLangTypeInput.value == 'ielts' || this.firstLangTypeInput.value == 'celpip') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv);
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="ielts"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="celpip"]').style.display = 'none';
             } else if (this.firstLangTypeInput.value == 'tef-canada' || this.firstLangTypeInput.value == 'tcf-canada') {
                 this.firstLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.firstLangScoresDiv);
                 this.firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'none';
                 this.secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'none';
@@ -299,6 +305,7 @@ export default class eligibilityClass {
         this.secondLangInput.addEventListener('change', () => {
             if (this.secondLangInput.value == 'yes') {
                 this.secondLangTypeDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangTypeDiv);
                 this.secondLangTypeDiv.scrollIntoView({ behavior: 'smooth' })
                 this.secondLangTypeInput.value = '';
                 this.workExpDiv.style.display = 'none';
@@ -306,6 +313,7 @@ export default class eligibilityClass {
                 this.secondLangTypeDiv.style.display = 'none';
                 this.secondLangScoresDiv.style.display = 'none';
                 this.workExpDiv.style.display = 'block';
+                this.highlightDiv(this.workExpDiv);
                 this.workExpDiv.scrollIntoView({ behavior: 'smooth' })
             }
         })
@@ -313,9 +321,11 @@ export default class eligibilityClass {
         this.secondLangTypeInput.addEventListener('change', () => {
             if (this.secondLangTypeInput.value == 'ielts' || this.secondLangTypeInput.value == 'celpip') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
             } else if (this.secondLangTypeInput.value == 'tef-canada' || this.secondLangTypeInput.value == 'tcf-canada') {
                 this.secondLangScoresDiv.style.display = 'block';
+                this.highlightDiv(this.secondLangScoresDiv);
                 this.secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
             } else {
                 this.secondLangScoresDiv.style.display = 'none';
@@ -325,6 +335,7 @@ export default class eligibilityClass {
         this.secondLangScoresInput.addEventListener('change', () => {
             this.secondLangScoresInput.value == 'yes' ? this.secondLangScore = 4 : this.secondLangScore = 0;
             this.workExpDiv.style.display = 'block';
+            this.highlightDiv(this.workExpDiv);
             this.workExpDiv.scrollIntoView({ behavior: 'smooth' })
         })
 
@@ -339,6 +350,7 @@ export default class eligibilityClass {
                 this.workExpeScore = 15;
             }
             this.reservedJobDiv.style.display = 'block';
+            this.highlightDiv(this.reservedJobDiv);
             this.reservedJobDiv.scrollIntoView({ behavior: 'smooth' })
             if (this.workExpInput.value === '') {
                 this.workExpeScore = 0;
@@ -354,6 +366,7 @@ export default class eligibilityClass {
             }
 
             this.studyDiv.style.display = 'block';
+            this.highlightDiv(this.studyDiv);
             this.studyDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.reservedJobInput.value == '') {
@@ -370,6 +383,7 @@ export default class eligibilityClass {
             }
 
             this.workExpInCanadaDiv.style.display = 'block';
+            this.highlightDiv(this.workExpInCanadaDiv);
             this.workExpInCanadaDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.studyInput.value == '') {
@@ -388,6 +402,7 @@ export default class eligibilityClass {
             }
 
             this.jobOfferDiv.style.display = 'block';
+            this.highlightDiv(this.jobOfferDiv);
             this.jobOfferDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.workExpInCanadaInput.value == '') {
@@ -406,6 +421,7 @@ export default class eligibilityClass {
             }
 
             this.relativesDiv.style.display = 'block';
+            this.highlightDiv(this.relativesDiv);
             this.relativesDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.jobOfferInput.value == '') {
@@ -425,6 +441,7 @@ export default class eligibilityClass {
 
             if (this.martialStatus.value == 'married') {
                 this.spouseLangDiv.style.display = 'block';
+                this.highlightDiv(this.spouseLangDiv);
                 this.spouseLangDiv.scrollIntoView({ behavior: 'smooth' })
             } else {
                 this.spouseLangDiv.style.display = 'none';
@@ -447,6 +464,7 @@ export default class eligibilityClass {
             }
 
             this.spouseEducationDiv.style.display = 'block';
+            this.highlightDiv(this.spouseEducationDiv);
             this.spouseEducationDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.spouseLangInput.value == '') {
@@ -465,6 +483,7 @@ export default class eligibilityClass {
             }
 
             this.spouseWorkExpDiv.style.display = 'block';
+            this.highlightDiv(this.spouseWorkExpDiv);
             this.spouseWorkExpDiv.scrollIntoView({ behavior: 'smooth' })
 
             if (this.spouseEducationInput.value == '') {
@@ -491,7 +510,7 @@ export default class eligibilityClass {
             this.btnCalculate.scrollIntoView({ behavior: 'smooth' })
         })
 
-        this.btnCalculate.addEventListener('click', this.getCRS.bind(this));
+        this.btnCalculate.addEventListener('click', this.getScore.bind(this));
 
         this.btnReset.addEventListener('click', this.resetAll.bind(this));
 
@@ -520,6 +539,15 @@ export default class eligibilityClass {
                 });
             })
         }
+    }
+
+    highlightDiv(div) {
+        if (div.querySelector('select').value == '') {
+            div.classList.add('highlighted-div');
+            setTimeout(() => {
+                div.classList.remove('highlighted-div');
+            }, 2000);
+        } // 2000 milliseconds = 2 seconds
     }
 
     getPointsSecondLanguage(languageSkill, langArray, index) {
@@ -551,6 +579,7 @@ export default class eligibilityClass {
             divSecondLang.style.display = 'none';
         } else {
             divSecondLang.style.display = 'block';
+            this.highlightDiv(divSecondLang);
             divSecondLang.scrollIntoView({ behavior: 'smooth' })
         }
     }
@@ -647,6 +676,7 @@ export default class eligibilityClass {
     triggerWorkExpDiv() {
         if (this.secondLangReadingInput.value != '' && this.secondLangWritingInput.value != '' && this.secondLangListeningInput.value != '' && this.secondLangSpeakingInput.value != '') {
             this.workExpCanDiv.style.display = 'block';
+            this.highlightDiv(this.workExpCanDiv);
             this.workExpCanInput.scrollIntoView({ behavior: 'smooth' })
         } else {
             this.workExpCanDiv.style.display = 'none';
@@ -661,8 +691,7 @@ export default class eligibilityClass {
         }
     }
 
-
-    getCRS() {
+    getScore() {
         this.adaptabilityScore > 10 ? this.adaptabilityScore = 10 : this.adaptabilityScore = this.adaptabilityScore;
         this.count = this.educationScore + this.ageScore + this.firstLangScore + this.secondLangScore + this.workExpeScore + this.reservedJobScore + this.adaptabilityScore;
 
@@ -719,7 +748,7 @@ export default class eligibilityClass {
             this.modalResult.innerHTML = `<button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
             <i class="fa-solid fa-xmark"></i>
         </button>`;
-            this.resetAll();
+            location.reload();
         });
 
 
@@ -782,7 +811,7 @@ export default class eligibilityClass {
         this.spouseWorkExpInput.value = '';
         this.btnReset.disabled = true;
         this.btnCalculate.disabled = true;
-        this.eligibilityDiv.style.backgroundColor = '#e2e8f0';
-        this.modalResult.style.backgroundColor = '#f7e6e6';
+        // this.eligibilityDiv.classList.contains('dark:bg-slate-800') ? this.eligibilityDiv.style.backgroundColor = '#1f2937' : this.eligibilityDiv.style.backgroundColor = '#f7e6e6';
+        // this.modalResult.style.backgroundColor = '#f7e6e6';
     }
 }

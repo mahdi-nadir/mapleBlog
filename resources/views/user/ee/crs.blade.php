@@ -6,20 +6,20 @@
             <p class="font-bold text-lg md:text-xl">{{ __('crs_calculatorMsg2') }} <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html" target="_blank" class="text-blue-700 underline">{{ __('crs_calculator_link') }}</a> {{ __('crs_calculatorMsg3') }}</p>
             <!-- <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p> -->
         
-            <div class='bg-slate-200 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
-                <div class="flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('human_capital_factors') }}</h1>
+            <div class='bg-slate-200 dark:bg-slate-800 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
+                <div class="crsDiv flex flex-col justify-center items-center gap-4 marital-status-div">
+                    <h1 class='text-xl text-red-800 dark:text-white md:text-2xl font-bold mb-5 underline'>{{ __('human_capital_factors') }}</h1>
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('maritalStatus') }}</h1>
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <select class="marital-status rounded bg-slate-100 border-red-800 border-4 custom-select w-full overflow-hidden whitespace-nowrap overflow-ellipsis" name="marital-status" id="marital-status">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 custom-select overflow-hidden whitespace-nowrap overflow-ellipsis marital-status" name="marital-status" id="marital-status">
                             <option value="">{{ __('select') }}</option>
                             <option value="single">{{ __('singleEquivalent') }}</option>
                             <option value="married">{{ __('marriedEquivalent') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white questionMaritalStatus"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionMaritalStatus"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationMaritalStatus">
-                            <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600 absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
+                            <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
                             <p class="pt-5">
                                 <li><b>{{ __('single') }}</b> {{ __('singleMsg') }}</li>
                                 <li class="mt-1"><b>{{ __('annulMarriage') }}</b> {{ __('annulMarriageMsg') }}</li>
@@ -32,17 +32,17 @@
                     </div>
                 </div>
 
-                <div class="spouseCanadianStatusDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                <div class="crsDiv spouseCanadianStatusDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseStatus') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label class="font-bold italic text-slate-600" htmlFor="spouseCanadianStatus">{{ __('spouseStatusQuestion') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="spouseCanadianStatus">{{ __('spouseStatusQuestion') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
-                            <select class="rounded bg-slate-100 border-red-800 border-4" name="spouseCanadianStatus" id="spouseCanadianStatus">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="spouseCanadianStatus" id="spouseCanadianStatus">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="no">{{ __('no') }}</option>
                                 <option value="yes">{{ __('yes') }}</option>
                             </select>
-                            <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseCanadianStatus"></i>
+                            <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionSpouseCanadianStatus"></i>
                         </div>
                         <div style="display: none;" class="explanation explanationSpouseCanadianStatus">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -55,15 +55,15 @@
                     </div>
                 </div>
         
-                <div class="spouseFollowerDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
-                        <label class="font-bold italic text-slate-600" htmlFor="spouseFollower">{{ __('spouseStatusQuestion2') }}</label>
+                <div class="crsDiv spouseFollowerDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="spouseFollower">{{ __('spouseStatusQuestion2') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
-                        <select class="rounded bg-slate-100 border-red-800 border-4 mt-3" name="spouseFollower" id="spouseFollower">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 mt-3" name="spouseFollower" id="spouseFollower">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionspouseFollower"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionspouseFollower"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationspouseFollower">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -75,10 +75,10 @@
                     </div>
                 </div>
 
-                <div class="ageDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                <div class="crsDiv ageDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
                     <h1 class='text-xl md:text-2xl font-bold'>Age</h1>
-                    <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="age" id="age">
+                    <div class="flex flex-row justify-center items-center gap-2 ">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="age" id="age">
                             <option value="">{{ __('select') }}</option>
                             <option value="17">17 or less</option>
                             <option value="18">18</option>
@@ -110,7 +110,7 @@
                             <option value="44">44</option>
                             <option value="45">45 or more</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionAge"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionAge"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationAge">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -120,10 +120,10 @@
                     </div>
                 </div>
         
-                <div style="display: none;" class="educationDiv flex flex-col justify-center items-center gap-4 mt-10">
+                <div style="display: none;" class="crsDiv educationDiv flex flex-col justify-center items-center gap-4 mt-10">
                     <h1 class='text-xl md:text-2xl font-bold'>Education</h1>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4 w-1/2" name="education" id="education">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 w-1/2" name="education" id="education">
                             <option value="">{{ __('select') }}</option>
                             <option value="notCompleted">{{ __('notCompletedDegree') }}</option>
                             <option value="secondary">{{ __('secondaryEdu') }}</option>
@@ -134,7 +134,7 @@
                             <option value="masters">{{ __('masters') }}</option>
                             <option value="doctoral">{{ __('phd') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionEducation"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionEducation"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationEducation">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -148,17 +148,17 @@
                     </div>
                 </div>
         
-                <div class="studiesInCanadaDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                <div class="crsDiv studiesInCanadaDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{  __('studiesCanada') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label class="font-bold italic text-slate-600" htmlFor="studiesInCanada">{{  __('studiesCanadaQuestion2') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="studiesInCanada">{{  __('studiesCanadaQuestion2') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
-                            <select class="rounded bg-slate-100 border-red-800 border-4" name="studiesInCanada" id="studiesInCanada">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="studiesInCanada" id="studiesInCanada">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="no">{{ __('no') }}</option>
                                 <option value="yes">{{ __('yes') }}</option>
                             </select>
-                            <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionStudiesInCanada"></i>
+                            <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionStudiesInCanada"></i>
                         </div>
                         <div style="display: none;" class="explanation explanationStudiesInCanada">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -174,16 +174,16 @@
                     </div>
                 </div>
 
-                <div class="studiesCanadaTypeDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
-                    <label class="font-bold italic text-slate-600" htmlFor="studiesCanadaType">{{ __('studiesCanada2_question') }}</label>
+                <div class="crsDiv studiesCanadaTypeDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="studiesCanadaType">{{ __('studiesCanada2_question') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <select class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full overflow-hidden whitespace-nowrap overflow-ellipsis" name="studiesCanadaType" id="studiesCanadaType">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 custom-select w-full overflow-hidden whitespace-nowrap overflow-ellipsis" name="studiesCanadaType" id="studiesCanadaType">
                             <option value="">{{ __('select') }}</option>
                             <option value="secondary">{{ __('studiesCanada2_secondary') }}</option>
                             <option value="diploma">{{ __('studiesCanada2_oneOrTwo') }}</option>
                             <option value="bachelor">{{ __('studiesCanada2_bachelor') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionStudiesCanadaType"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionStudiesCanadaType"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationStudiesCanadaType">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -195,17 +195,17 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="first-language-div">
+                <div style="display: none;" class="crsDiv first-language-div">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('firstLang') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label class="font-bold italic text-slate-600" htmlFor="first-language-availability">{{ __('testValid') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="first-language-availability">{{ __('testValid') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
-                            <select class="rounded bg-slate-100 border-red-800 border-4" name="first-language-availability" id="first-language-availability">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="first-language-availability" id="first-language-availability">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="no">{{ __('no') }}</option>
                                 <option value="yes">{{ __('yes') }}</option>
                             </select>
-                            <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionFirstLangAvailability"></i>
+                            <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionFirstLangAvailability"></i>
                         </div>
                         <div style="display: none;" class="explanation explanationFirstLangAvailability">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -216,16 +216,16 @@
                     </div>
         
                     <div style="display: none;" class="first-language-typeDiv flex justify-center items-center gap-4 mt-8">
-                            <label class="font-bold italic text-slate-600" htmlFor="first-language-type">{{ __('whichLang1') }}</label><br>
+                            <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="first-language-type">{{ __('whichLang1') }}</label><br>
                             <div class="flex flex-row justify-center items-center gap-2"></div>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mt-3" name="first-language-type" id="first-language-type">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 mt-3" name="first-language-type" id="first-language-type">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="ielts">IELTS</option>
                                 <option value="celpip">CELPIP</option>
                                 <option value="tef-canada">TEF Canada</option>
                                 <option value="tcf-canada">TCF Canada</option>
                             </select>
-                            <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionFirstLangScores"></i>
+                            <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionFirstLangScores"></i>
                         </div>
                         <div style="display: none;" class="explanation explanationFirstLangScores">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -239,12 +239,12 @@
                                 </div>
                             </p>
                         </div>
-                    
+                        
                     <div style="display: none;" class="first-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-8">
-                        <label class="font-bold italic text-slate-600">{{ __('setUrScores') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600">{{ __('setUrScores') }}</label>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="first-language-reading">{{ __('reading') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-reading" id="first-language-reading">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-1/3 md:w-1/4 dark:border-gray-400 mb-4" name="first-language-reading" id="first-language-reading">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -258,7 +258,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="first-language-writing">{{ __('writing') }}</label>
-                            <select disabled class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-writing" id="first-language-writing">
+                            <select disabled class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="first-language-writing" id="first-language-writing">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -272,7 +272,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="first-language-listening">{{ __('listening') }}</label>
-                            <select disabled class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-listening" id="first-language-listening">
+                            <select disabled class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="first-language-listening" id="first-language-listening">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -286,7 +286,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="first-language-speaking">{{ __('speaking') }}</label>
-                            <select disabled class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-speaking" id="first-language-speaking">
+                            <select disabled class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="first-language-speaking" id="first-language-speaking">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -301,11 +301,11 @@
                     </div>
                 </div>
         
-                <div style="display: none;" class="second-language-div">
+                <div style="display: none;" class="crsDiv second-language-div">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('secondLang') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-4">
-                        <label class="font-bold italic text-slate-600" htmlFor="second-language-availability">{{ __('secondLangValid') }}</label>
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="second-language-availability" id="second-language-availability">
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="second-language-availability">{{ __('secondLangValid') }}</label>
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="second-language-availability" id="second-language-availability">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
@@ -313,8 +313,8 @@
                     </div>
 
                     <div style="display: none;" class="flex flex-col justify-center items-center gap-4 mt-10 second-language-typeDiv">
-                        <label class="font-bold italic text-slate-600" htmlFor="second-language-type">{{ __('whichLang2') }}</label><br>
-                        <select class="rounded bg-slate-100 border-red-800 border-4 mt-3" name="second-language-type" id="second-language-type">
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="second-language-type">{{ __('whichLang2') }}</label><br>
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 mt-3" name="second-language-type" id="second-language-type">
                             <option value="">{{ __('select') }}</option>
                             <option value="ielts">IELTS</option>
                             <option value="celpip">CELPIP</option>
@@ -324,10 +324,10 @@
                     </div>
                     
                     <div style="display: none;" class="second-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-8">
-                        <label class="font-bold italic text-slate-600">{{ __('setUrScores') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600">{{ __('setUrScores') }}</label>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="second-language-reading">{{ __('reading') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-reading" id="second-language-reading">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="second-language-reading" id="second-language-reading">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -341,7 +341,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="second-language-writing">{{ __('writing') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-writing" id="second-language-writing">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="second-language-writing" id="second-language-writing">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -355,7 +355,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="second-language-listening">{{ __('listening') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-listening" id="second-language-listening">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="second-language-listening" id="second-language-listening">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -369,7 +369,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="second-language-speaking">{{ __('speaking') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-speaking" id="second-language-speaking">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="second-language-speaking" id="second-language-speaking">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -384,11 +384,11 @@
                     </div>
                 </div>
         
-                <div style="display: none;" class="work-experience-can-div flex flex-col justify-center items-center gap-4 mt-10">
+                <div style="display: none;" class="crsDiv work-experience-can-div flex flex-col justify-center items-center gap-4 mt-10">
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('workExpCanada') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="work-experience-can">{{ __('workExpCanadaQuestion2') }}</label>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="work-experience-can">{{ __('workExpCanadaQuestion2') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="work-experience-can" id="work-experience-can">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="work-experience-can" id="work-experience-can">
                             <option value="">{{ __('select') }}</option>
                             <option value="0">{{ __('noneOrLess1yr') }}</option>
                             <option value="1">1 {{ __('year') }}</option>
@@ -397,7 +397,7 @@
                             <option value="4">4 {{ __('years') }}</option>
                             <option value="5">5 {{ __('years') }} {{ __('orMore') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionWorkExpCan"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionWorkExpCan"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationWorkExpCan">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -410,18 +410,18 @@
                     </div>
                 </div>
         
-                <div style="display: none;" class="work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
+                <div style="display: none;" class="crsDiv work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('foreignWorkExp') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="work-experience">{{ __('foreignWorkExpQuestion1') }} ({{ __('from') }} <span id="monthYearExp"></span>), {{ __('foreignWorkExpQuestion2') }}</label>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="work-experience">{{ __('foreignWorkExpQuestion1') }} ({{ __('from') }} <span id="monthYearExp"></span>), {{ __('foreignWorkExpQuestion2') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="work-experience" id="work-experience">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="work-experience" id="work-experience">
                             <option value="">{{ __('select') }}</option>
                             <option value="0">{{ __('noneOrLess1yr') }}</option>
                             <option value="1">1 {{ __('year') }}</option>
                             <option value="2">2 {{ __('years') }}</option>
                             <option value="3">3 {{ __('years') }} {{ __('orMore') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionWorkExp"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionWorkExp"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationWorkExp">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -431,19 +431,19 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="qualification-div flex flex-col justify-center items-center gap-4 mt-10">
-                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('skillTransferabilityFactors') }}</h1>
+                <div style="display: none;" class="crsDiv qualification-div flex flex-col justify-center items-center gap-4 mt-10">
+                    <h1 class='text-xl text-red-800 md:text-2xl dark:text-white font-bold mb-5 underline'>{{ __('skillTransferabilityFactors') }}</h1>
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('certificateQual') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="qualification">
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="qualification">
                         {{ __('certificateQualQuestion') }}
                     </label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="qualification" id="qualification">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="qualification" id="qualification">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionQualification"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionQualification"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationQualification">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -455,19 +455,19 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="reserved-job-position-in-canada-div flex flex-col justify-center items-center gap-4 mt-10">
-                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('addPoints') }}</h1>
+                <div style="display: none;" class="crsDiv reserved-job-position-in-canada-div flex flex-col justify-center items-center gap-4 mt-10">
+                    <h1 class='text-xl text-red-800 md:text-2xl dark:text-white font-bold mb-5 underline'>{{ __('addPoints') }}</h1>
                     <h1 class='text-xl md:text-2xl font-bold'>{{ __('reservedOcc') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="reserved-job-position-in-canada">
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="reserved-job-position-in-canada">
                         {{ __('reservedOccQuestion2') }} (<a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment/lmia-exempt.html" target="_blank"><span class="underline text-blue-500">{{ __('ifNeeded') }}</span></a>)?
                     </label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="reserved-job-position-in-canada" id="reserved-job-position-in-canada">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="reserved-job-position-in-canada" id="reserved-job-position-in-canada">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionReservedJob"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionReservedJob"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationReservedJob">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -489,10 +489,10 @@
                     </div>
                 </div>
         
-                <div class="jobOfferTeerDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
-                    <label class="font-bold italic text-slate-600" htmlFor="jobOfferTeer">{{ __('whichNoc') }}</label>
+                <div class="crsDiv jobOfferTeerDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="jobOfferTeer">{{ __('whichNoc') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <select class="rounded bg-slate-100 border-red-800 border-4 mt-3" name="jobOfferTeer" id="jobOfferTeer">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400 mt-3" name="jobOfferTeer" id="jobOfferTeer">
                             <option value="">{{ __('select') }}</option>
                             <option value="teer00">{{ __('noc') }} {{ __('teer') }} 0 ({{ __('majorGroup') }} 00)</option>
                             <option value="teer0123">{{ __('noc') }} {{ __('teer') }} 0, 1, 2, 3</option>
@@ -501,16 +501,16 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="nomination-div flex flex-col justify-center items-center gap-4">
+                <div style="display: none;" class="crsDiv nomination-div flex flex-col justify-center items-center gap-4">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('nomination') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="nomination">{{ __('nominationQuestion') }}</label>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="nomination">{{ __('nominationQuestion') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="nomination" id="nomination">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="nomination" id="nomination">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionNomination"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionNomination"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationNomination">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -522,16 +522,16 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="relatives-div flex flex-col justify-center items-center gap-4">
+                <div style="display: none;" class="crsDiv relatives-div flex flex-col justify-center items-center gap-4">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('relatives') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="relatives">{{ __('relativesQuestion1') }} <span id="marriedOrNot"></span> {{ __('relativesQuestion3') }}</label>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="relatives">{{ __('relativesQuestion1') }} <span id="marriedOrNot"></span> {{ __('relativesQuestion3') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="relatives" id="relatives">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="relatives" id="relatives">
                             <option value="">{{ __('select') }}</option>
                             <option value="no">{{ __('no') }}</option>
                             <option value="yes">{{ __('yes') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionRelatives"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionRelatives"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationRelatives">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -551,14 +551,14 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="spouse-education-div flex flex-col justify-center items-center gap-4">
-                    <h1 class='text-xl text-red-800 md:text-2xl font-bold mb-5 underline'>{{ __('spouseFactors') }}</h1>
-                    <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseEdu') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="spouse-education">{{ __('spouseEduQuestion1') }}
+                <div style="display: none;" class="crsDiv spouse-education-div flex flex-col justify-center items-center gap-4 mt-10">
+                    <h1 class='text-xl text-red-800 md:text-2xl dark:text-white font-bold mb-5 underline'>{{ __('spouseFactors') }}</h1>
+                    <h1 class='text-xl md:text-2xl font-bold'>{{ __('spouseEdu') }}</h1>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="spouse-education">{{ __('spouseEduQuestion1') }}
                         <li>{{ __('spouseEduQuestion2') }}</li>
                         <li>{{ __('spouseEduQuestion3') }}</li></label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4 w-1/2" name="spouse-education" id="spouse-education">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="spouse-education" id="spouse-education">
                             <option value="">{{ __('select') }}</option>
                             <option value="none">{{ __('notCompletedDegree') }}</option>
                             <option value="secondary">{{ __('secondaryEdu') }}</option>
@@ -569,7 +569,7 @@
                             <option value="masters">{{ __('masters') }}</option>
                             <option value="doctoral">{{ __('phd') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseEducation"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionSpouseEducation"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationSpouseSpouseEducation">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -583,11 +583,11 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="spouse-work-experience-div flex flex-col justify-center items-center gap-4">
+                <div style="display: none;" class="crsDiv spouse-work-experience-div flex flex-col justify-center items-center gap-4">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseWorkExp') }}</h1>
-                    <label class="font-bold italic text-slate-600" htmlFor="spouse-work-experience">{{ __('spouseWorkExpQuestion1') }}</label>
+                    <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="spouse-work-experience">{{ __('spouseWorkExpQuestion1') }}</label>
                     <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                        <select class="rounded bg-slate-100 border-red-800 border-4" name="spouse-work-experience" id="spouse-work-experience">
+                        <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="spouse-work-experience" id="spouse-work-experience">
                             <option value="">{{ __('select') }}</option>
                             <option value="0">{{ __('noneOrLess1yr') }}</option>
                             <option value="1">1 {{ __('year') }}</option>
@@ -596,7 +596,7 @@
                             <option value="4">4 {{ __('years') }}</option>
                             <option value="5">5 {{ __('years') }} {{ __('orMore') }}</option>
                         </select>
-                        <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseWorkExp"></i>
+                        <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionSpouseWorkExp"></i>
                     </div>
                     <div style="display: none;" class="explanation explanationSpouseWorkExp">
                         <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -606,12 +606,12 @@
                     </div>
                 </div>
 
-                <div style="display: none;" class="spouse-language-div flex flex-col justify-center items-center gap-4">
+                <div style="display: none;" class="crsDiv spouse-language-div flex flex-col justify-center items-center gap-4">
                     <h1 class='text-xl md:text-2xl font-bold mt-10'>{{ __('spouseLangSkills') }}</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label class="font-bold italic text-slate-600" htmlFor="spouse-language-type">{{ __('spouseLangSkillsQuestion2') }} <b>"{{ __('if') }}"</b> {{ __('spouseLangSkillsQuestion3') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600" htmlFor="spouse-language-type">{{ __('spouseLangSkillsQuestion2') }} <b>"{{ __('if') }}"</b> {{ __('spouseLangSkillsQuestion3') }}</label>
                         <div class="flex flex-row justify-center items-center gap-2">
-                            <select class="rounded bg-slate-100 border-red-800 border-4" name="spouse-language-type" id="spouse-language-type">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 border-4 w-[180px] md:w-[250px] dark:border-gray-400" name="spouse-language-type" id="spouse-language-type">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="none">{{ __('notApplicable') }}</option>
                                 <option value="ielts">IELTS</option>
@@ -619,7 +619,7 @@
                                 <option value="tef-canada">TEF Canada</option>
                                 <option value="tcf-canada">TCF Canada</option>
                             </select>
-                            <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionSpouseLanguageType"></i>
+                            <i class="fa-solid fa-question rounded p-1 border-red-900 hover:bg-red-900 hover:text-white cursor-pointer text-red-800 dark:text-gray-100 dark:hover:text-gray-50 questionSpouseLanguageType"></i>
                         </div>
                         <div style="display: none;" class="explanation explanationSpouseLanguageType">
                             <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
@@ -630,10 +630,10 @@
                     </div>
 
                     <div style="display: none;" class="spouse-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-8">
-                        <label class="font-bold italic text-slate-600">{{ __('setUrScores') }}</label>
+                        <label class="font-bold italic dark:text-slate-100 text-slate-600">{{ __('setUrScores') }}</label>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="spouse-language-reading">{{ __('reading') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-reading" id="spouse-language-reading">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="spouse-language-reading" id="spouse-language-reading">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -647,7 +647,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="spouse-language-writing">{{ __('writing') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-writing" id="spouse-language-writing">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="spouse-language-writing" id="spouse-language-writing">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -661,7 +661,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="spouse-language-listening">{{ __('listening') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-listening" id="spouse-language-listening">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="spouse-language-listening" id="spouse-language-listening">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
@@ -675,7 +675,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 mt-2">
                             <label class="font-bold" htmlFor="spouse-language-speaking">{{ __('speaking') }}</label>
-                            <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-speaking" id="spouse-language-speaking">
+                            <select class="rounded bg-slate-100 dark:text-black border-red-800 dark:border-gray-400 border-4 mb-4 w-1/3 md:w-1/4" name="spouse-language-speaking" id="spouse-language-speaking">
                                 <option value="">{{ __('select') }}</option>
                                 <option value="clb10"></option>
                                 <option value="clb9"></option>
