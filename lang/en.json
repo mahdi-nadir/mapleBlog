@@ -286,5 +286,8 @@
     "extraInfoMsg": "This table is not the main final content of the page. It shows the 10 last draws of the Express Entry system.",
     "draw": "Draw",
     "crsAbr": "CRS",
-    "program": "Program"
+    "program": "Program",
+    "weather": "Weather",
+    "selectPlace": "Select a place",
+    "check": "Check"
 }

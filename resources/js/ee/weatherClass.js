@@ -18,6 +18,7 @@ export default class WeatherClass {
         this.weatherIcon = '';
         this.condition = '';
         this.API_KEY = weatherapi;
+        this.isEnglish = window.location.pathname.includes('/en');
         this.init();
     }
 
@@ -62,7 +63,6 @@ export default class WeatherClass {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=${this.API_KEY[Math.floor(Math.random() * this.API_KEY.length)]}&units=metric`);
             const json = await response.json();
 
-
             const timezoneOffset = json.timezone / 3600;
 
             const currentTime = new Date();
@@ -91,6 +91,37 @@ export default class WeatherClass {
                 this.condition = json.weather[0].main + ' night';
                 this.condition == 'Clouds night' ? this.condition = 'Cloudy night' : this.condition;
             }
+            let conditionWord = this.condition.split(' ')[0];
+            switch (conditionWord) {
+                case 'Clear':
+                    conditionWord = 'Dégagé';
+                    break;
+                case 'Cloudy':
+                    conditionWord = 'Nuageux';
+                    break;
+                case 'Drizzle':
+                    conditionWord = 'Bruineux';
+                    break;
+                case 'Haze':
+                    conditionWord = 'Brumeux';
+                    break;
+                case 'Mist':
+                    conditionWord = 'Brumeux';
+                    break;
+                case 'Smoke':
+                    conditionWord = 'Fumeux';
+                    break;
+                case 'Snow':
+                    conditionWord = 'Neigeux';
+                    break;
+                case 'Rain':
+                    conditionWord = 'Pluvieux';
+                    break;
+                default:
+                    conditionWord = 'Unknown';
+                    break;
+            }
+
             this.result.innerHTML = `
             <div class="flex flex-col items-center justify-center gap-4">
                 <div class="flex flex-col items-center justify-center">
@@ -98,7 +129,7 @@ export default class WeatherClass {
                     <p class="text-2xl font-bold">${this.city.charAt(0).toUpperCase() + this.city.slice(1)}</p>
                     <div class="flex flex-row items-center justify-between gap-6">
                         <p class="text-2xl" id="degree">${this.temperature}°C</p>
-                        <p class="text-2xl">${this.condition.split(' ')[0]}</p>
+                        <p class="text-2xl">${conditionWord}</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2 border-t-2 border-gray-50">
@@ -108,7 +139,7 @@ export default class WeatherClass {
                             <p class="text-sm font-bold">${String(sunriseHour).padStart(2, '0')}:${String(sunriseMinute).padStart(2, '0')}</p>
                         </div>
                         <div class="flex flex-row items-center justify-center gap-1">
-                            <img src="../../img/weather_icons/clock.png" alt="actual time in ${this.city}" class="w-5 md:w-10 h-5 md:h-10">
+                            <img src="../../img/weather_icons/clock.png" alt="actual time in ${this.city}" class="w-4 md:w-7 h-4 md:h-7">
                             <p class="text-sm font-bold">${String(currentHours).padStart(2, '0')}:${String(currentMinutes).padStart(2, '0')}</p>
                         </div>
                         <div class="flex flex-row items-center justify-center">
@@ -121,13 +152,13 @@ export default class WeatherClass {
                             <img src="../../img/weather_icons/humidity.png" alt="humidity icon" class="w-5 md:w-8 h-5 md:h-8">
                             <div class="flex flex-col items-center justify-center">
                                 <p class="text-sm font-bold">${this.humidity}%</p>
-                                <p class="text-sm">Humidity</p>
+                                <p class="text-sm">${this.isEnglish ? 'Humidity' : 'Humidité'}</p>
                             </div>
                         </div>
                         <div class="flex flex-row items-center justify-center">
                             <div class="flex flex-col items-center justify-center">
                                 <p class="text-sm font-bold">${this.windSpeed} km/h</p>
-                                <p class="text-sm">Wind Speed</p>
+                                <p class="text-sm">${this.isEnglish ? 'Wind speed' : 'Vitesse du vent'}</p>
                             </div>
                             <img src="../../img/weather_icons/winnd.png" alt="wind speed icon" class="w-5 md:w-8 h-6 md:h-10">
                         </div>
@@ -136,10 +167,9 @@ export default class WeatherClass {
             </div>
             `;
         } catch (error) {
-            console.error('Please try again later', error);
             this.result.innerHTML = `
             <div class="flex flex-col items-center justify-center">
-            <p class="font-bold text-red-600">Please try again later</p>
+            <p class="font-bold text-red-600">${this.isEnglish ? 'Please try again later' : 'Veuillez réessayer plus tard'}</p>
             </div>`
         }
     }

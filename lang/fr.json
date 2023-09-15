@@ -285,5 +285,8 @@
     "extraInfoMsg": "Ce tableau n'est pas le contenu principal final de la page. Il affiche les 10 derniers tirages du système Entrée express.",
     "draw": "Tirage",
     "crsAbr": "SCG",
-    "program": "Programme"
+    "program": "Programme",
+    "weather": "Météo",
+    "selectPlace": "Sélectionnez une ville",
+    "check": "Consulter"
 }

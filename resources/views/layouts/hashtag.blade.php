@@ -6,7 +6,7 @@
         </p>
         <label class="font-bold italic text-slate-600 inline-block mb-2 mt-4" for="hashtag">Your question is about...</label><br>
         <select name="hashtag" id="hashtag" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
-            <option value="">Select..</option>
+            <option value="">{{ __('select') }}</option>
             <option value="age">Age</option>
             <option value="adr">Additional Documents Request (ADR)</option>
             <option value="addChild">Adding a child in post-ITA</option>

@@ -1,9 +1,9 @@
 <template id="weatherTemplate" style="display: none;">
-    <h1 class="text-xl md:text-3xl uppercase text-center mb-2 mt-2 font-bold underline">Weather</h1>
+    <h1 class="text-xl md:text-3xl uppercase text-center mb-2 mt-2 font-bold underline">{{ __('weather') }}</h1>
     <div class="mt-4 text-center mx-auto text-md md:text-xl">
-        <label class="font-bold italic text-slate-600" for="place">Select a place</label><br>
+        <label class="font-bold italic text-slate-600" for="place">{{ __('selectPlace') }}</label><br>
         <select name="place" id="place" class="rounded bg-slate-100 border-red-800 border-4 mt-4 text-left">
-            <option value="">Select..</option>
+            <option value="">{{ __('select') }}</option>
                 <optgroup label="Ontario">
                     <option value="ottawa">Ottawa</option>
                     <option value="toronto">Toronto</option>
@@ -211,7 +211,7 @@
                 </optgroup>
         </select>
     </div>
-    <button id="getWeather" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-4 text-lg md:text-2xl block mx-auto" disabled>Check</button>
+    <button id="getWeather" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-4 text-lg md:text-2xl block mx-auto" disabled>{{ __('check') }}</button>
     <h1 id="result" class="text-md md:text-2xl text-center mt-4">
         <!-- <h1 class="font-bold text-5xl text-center my-3" id="degree"></h1> -->
     </h1> 
