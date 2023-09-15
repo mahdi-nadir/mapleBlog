@@ -1,12 +1,12 @@
     <div class="mainChatWindow text-md md:text-lg w-3/4 md:w-1/4 border-2 border-black bg-slate-100 rounded flex-row justify-end items-end mr-2 mb-2" style="display: none;">
         <div class="h-[36px] w-full bg-blue-700 border-b-2 border-slate-700 text-white flex flex-row justify-between items-center p-2 static">
-            <span class="font-bold cursor-pointer pr-10 py-1">Talk to Medy</span>
+            <span class="font-bold cursor-pointer pr-10 py-1">{{ __('talkTo') }} Medy</span>
             <div class="flex flex-row justify-center items-center gap-2" >
-                <button class="reduceChatBtn hover:text-gray-400" title="Reduce"><i class="fa-solid fa-minus"></i></button>
-                <button class="closeChatBtn hover:text-gray-400" title="Close"><i class="fa-solid fa-xmark"></i></button>
+                <button class="reduceChatBtn hover:text-gray-400" title="{{ __('minimize') }}"><i class="fa-solid fa-minus"></i></button>
+                <button class="closeChatBtn hover:text-gray-400" title="{{ __('close') }}"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
-        <div class="chatDiv chatArea overflow-y-auto overflow-x-hidden">
+        <div class="chatDiv chatArea overflow-y-auto overflow-x-hidden dark:text-black">
             <div class="messageBot text-start flex flex-row justify-around items-end gap-2">
                 <i class="fa-solid fa-robot ml-1 mb-1 robotIcon" style="display: none;"></i>
                 <div>

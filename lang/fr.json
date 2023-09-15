@@ -239,9 +239,10 @@
     "calculate": "Calculer",
     "crs_calculator": "Calculateur du score de classement global (SCG)",
     "crs_calculatorMsg1": "Cet outil vous aidera à déterminer votre SCG pour Entrée express",
-    "crs_calculatorMsg2": "Pour recevoir une invitation à présenter une demande de résidence permanente au Canada, votre score SCG doit être supérieur au seuil minimal de points du ",
+    "crs_calculatorMsg2": "Veuillez noter que vous êtes admissible uniquement si vous obtenez 67 points ou plus /100",
+    "crs_calculatorMsg3": "Pour recevoir une invitation à présenter une demande de résidence permanente au Canada, votre score SCG doit être supérieur au seuil minimal de points du ",
     "crs_calculator_link": "tour d'invitations",
-    "crs_calculatorMsg3": "le plus récent (les seuils de points peuvent varier à chaque tour).",
+    "crs_calculatorMsg4": "le plus récent (les seuils de points peuvent varier à chaque tour).",
     "human_capital_factors": "Facteurs du capital humain",
     "spouseStatus": "Statut du conjoint au Canada",
     "spouseStatusQuestion": "Votre conjoint ou partenaire de fait est-il citoyen canadien ou résident permanent du Canada ?",
@@ -345,5 +346,10 @@
     "requiredFundsQuestion1": "Le montant d'argent dont vous avez besoin pour soutenir votre famille est déterminé par sa taille. Combien de membres compte votre famille ?",
     "requiredFundsQuestion2": "Quelle est la devise de votre pays ?",
     "member": "membre",
-    "members": "membres"
+    "members": "membres",
+    "talkTo": "Parlez à",
+    "minimize": "Minimiser",
+    "close": "Fermer",
+    "generate": "Générer",
+    "checkWeather": "Consulter la météo"
 }

@@ -29,55 +29,55 @@ export default class SuggestedPnpClass {
         // scrapOntario();
 
         function ontarioDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Ontario</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Ontario</p></a>`;
         }
 
         function albertaDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.alberta.ca/aaip-alberta-express-entry-stream-eligibility.aspx" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Alberta</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.alberta.ca/aaip-alberta-express-entry-stream-eligibility.aspx" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Alberta</p></a>`;
         }
 
         function britishColumbiaDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.welcomebc.ca/Immigrate-to-B-C/About-The-BC-PNP" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'British Columbia' : 'Colombie Britannique'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.welcomebc.ca/Immigrate-to-B-C/About-The-BC-PNP" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'British Columbia' : 'Colombie Britannique'}</p></a>`;
         }
 
         function manitobaDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://immigratemanitoba.com/fr/immigrer-au-manitoba/visite-exploratoire/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Manitoba</p></a>`;
+            resultDiv.innerHTML += `<a href="https://immigratemanitoba.com/fr/immigrer-au-manitoba/visite-exploratoire/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Manitoba</p></a>`;
         }
 
         function newBrunswickDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.welcomenb.ca/content/wel-bien/en/immigrating/content/HowToImmigrate/NBProvincialNomineeProgram.html" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'New Brunswick' : 'Nouveau-Brunswick'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.welcomenb.ca/content/wel-bien/en/immigrating/content/HowToImmigrate/NBProvincialNomineeProgram.html" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'New Brunswick' : 'Nouveau-Brunswick'}</p></a>`;
         }
 
         function newfoundlandAndLabradorDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.gov.nl.ca/immigration/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'Newfoundland and Labrador' : 'Terre-Neuve-et-Labrador'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.gov.nl.ca/immigration/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'Newfoundland and Labrador' : 'Terre-Neuve-et-Labrador'}</p></a>`;
         }
 
         function northwestTerritoriesDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.immigratenwt.ca/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'Northwest Territories' : 'Territoires du nord-ouest'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.immigratenwt.ca/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'Northwest Territories' : 'Territoires du nord-ouest'}</p></a>`;
         }
 
         function novaScotiaDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://novascotiaimmigration.com/move-here/nova-scotia-experience-express-entry/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'Nova Scotia' : 'Nouvelle-Écosse'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://novascotiaimmigration.com/move-here/nova-scotia-experience-express-entry/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'Nova Scotia' : 'Nouvelle-Écosse'}</p></a>`;
         }
 
         function nunavutDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.immigratenwt.ca/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Nunavut</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.immigratenwt.ca/" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Nunavut</p></a>`;
         }
 
         function princeEdwardIslandDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.princeedwardisland.ca/en/information/office-of-immigration/pei-express-entry" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'Prince Edward Island' : 'Île-du-Prince-Édouard'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.princeedwardisland.ca/en/information/office-of-immigration/pei-express-entry" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'Prince Edward Island' : 'Île-du-Prince-Édouard'}</p></a>`;
         }
 
         function saskatchewanDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/browse-sinp-programs/applicants-international-skilled-workers/assess-your-eligibility" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Saskatchewan</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/browse-sinp-programs/applicants-international-skilled-workers/assess-your-eligibility" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Saskatchewan</p></a>`;
         }
 
         function yukonDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://yukon.ca/en/immigrate-yukon" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">Yukon</p></a>`;
+            resultDiv.innerHTML += `<a href="https://yukon.ca/en/immigrate-yukon" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">Yukon</p></a>`;
         }
 
         function quebecDiv(bgColor) {
-            resultDiv.innerHTML += `<a href="https://www.quebec.ca/immigration/travailler-quebec/travailleurs-qualifies/programme-regulier-travailleurs-qualifies/declaration-interet" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold">${isEnglish ? 'Quebec' : 'Québec'}</p></a>`;
+            resultDiv.innerHTML += `<a href="https://www.quebec.ca/immigration/travailler-quebec/travailleurs-qualifies/programme-regulier-travailleurs-qualifies/declaration-interet" target="_blank" rel="noreferrer"><p class="rounded ${bgColor} border-2 border-black p-2 my-2 font-bold dark:text-black dark:border-white">${isEnglish ? 'Quebec' : 'Québec'}</p></a>`;
         }
 
         const edArray = ['00010', '40041', '10019', '14103', '42200', '41302', '42204', '44100', '65310', '51122', '53121', '53122', '53121', '55109', '53124', '53200', '64321', '65229', '65109', '65211', '65329', '75200', '85104', '85121 ', '85102', '85110'];

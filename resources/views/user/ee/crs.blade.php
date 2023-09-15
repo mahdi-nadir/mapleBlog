@@ -2,9 +2,9 @@
     <section id="crs">
         <div>
             <h1 class='text-2xl md:text-4xl font-bold mt-10'>{{ __('crs_calculator') }}</h1>
-            <p class='text-lg md:text-xl mt-5'>{{ __('crs_calculatorMsg1') }}</p><br>
-            <p class="font-bold text-lg md:text-xl">{{ __('crs_calculatorMsg2') }} <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html" target="_blank" class="text-blue-700 underline">{{ __('crs_calculator_link') }}</a> {{ __('crs_calculatorMsg3') }}</p>
-            <!-- <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p> -->
+            <p class='text-lg md:text-xl mt-5'>{{ __('crs_calculatorMsg1') }}</p>
+            {{-- <p class='text-lg md:text-xl'>{{ __('crs_calculatorMsg2') }}</p> --}}
+            <p class="font-bold text-lg md:text-xl mt-5">{{ __('crs_calculatorMsg3') }} <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html" target="_blank" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">{{ __('crs_calculator_link') }}</a> {{ __('crs_calculatorMsg4') }}</p>
         
             <div class='bg-slate-200 dark:bg-slate-800 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
                 <div class="crsDiv flex flex-col justify-center items-center gap-4 marital-status-div">

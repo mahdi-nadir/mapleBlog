@@ -70,7 +70,7 @@
         <div class="flex flex-col justify-center items-center gap-1">
             {{-- <x-input-label class="label" for="system" :value="__('system')" /> --}}
             <label for="system" class="label font-bold">{{ __('immSys') }}:</label>
-            <select name="system_id" id="system" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px]">
+            <select name="system_id" id="system" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_system') }}</option>
                 @foreach ($systems as $system)
                     <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ $system->name }}</option>
@@ -82,7 +82,7 @@
         <div class="flex flex-col justify-center items-center gap-1">
             {{-- <x-input-label class="label" for="diploma" :value="__('diploma')" /> --}}
             <label for="diploma" class="label font-bold">{{ __('degree') }}:</label>
-            <select name="diploma_id" id="diploma" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px]">
+            <select name="diploma_id" id="diploma" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_degree') }}</option>
                 @foreach ($diplomas as $diploma)
                     <option value="{{ $diploma->id }}" {{ Auth::user()->diploma_id == $diploma->id ? 'selected' : '' }}>{{ $diploma->level }}</option>
@@ -94,7 +94,7 @@
         <div class="flex flex-col justify-center items-center gap-1">
             {{-- <x-input-label class="label" for="noc" :value="__('noc')" /> --}}
             <label for="noc" class="label font-bold">{{ __('noc') }}:</label>
-            <select name="noc_id" id="noc" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px]">
+            <select name="noc_id" id="noc" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_noc') }}</option>
                 @foreach ($nocs as $noc)
                     <option value="{{ $noc->id }}" {{ Auth::user()->noc_id == $noc->id ? 'selected' : '' }}>{{ $noc->code }}</option>
@@ -106,7 +106,7 @@
         <div class="flex flex-col justify-center items-center gap-1">
             {{-- <x-input-label class="label" for="step" :value="__('step')" /> --}}
             <label for="step" class="label font-bold">{{ __('step') }}:</label>
-            <select name="step_id" id="step" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px]">
+            <select name="step_id" id="step" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_step') }}</option>
                 @foreach ($steps as $step)
                     <option value="{{ $step->id }}" {{ Auth::user()->step_id == $step->id ? 'selected' : '' }}>{{ $step->name }}</option>

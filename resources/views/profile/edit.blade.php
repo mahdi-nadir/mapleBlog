@@ -22,10 +22,10 @@
     
     
     <div class="flex flex-col md:flex-row md:flex-wrap justify-center md:w-1/2 items-center gap-4 md:gap-8 mx-auto">
-        <button id="showImgDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-red-800">{{ __('updatePic') }}</button>
-        <button id="showUserInfoDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-red-800">{{ __('userInfo') }}</button>
-        <button id="showUpdatePasswordDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-red-800">{{ __('updatePassword') }}</button>
-        <button id="showDeleteUserDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-red-800">{{ __('deleteAcc') }}</button>
+        <button id="showImgDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('updatePic') }}</button>
+        <button id="showUserInfoDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('userInfo') }}</button>
+        <button id="showUpdatePasswordDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('updatePassword') }}</button>
+        <button id="showDeleteUserDiv" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('deleteAcc') }}</button>
     </div>
 
     <section id="sectionEditProfile" class="flex flex-col justify-center items-center gap-4 rounded w-full  text-center p-5 mx-auto">

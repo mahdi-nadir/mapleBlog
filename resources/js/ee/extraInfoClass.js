@@ -49,7 +49,7 @@ export default class ExtraInfoClass {
                 <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${this.tabDraw[i].nbDraw}" title="Get more information about #${this.tabDraw[i].nbDraw} draw" target="_blank" rel="noreferrer">${this.tabDraw[i].nbDraw}</a></td>
                 <td>${this.tabDraw[i].date}</td>
                 <td>${this.tabDraw[i].nbInvitations}</td>
-                <td class="bg-yellow-50 font-bold">${this.tabDraw[i].crsScore}</td>
+                <td class="bg-yellow-50 dark:text-black font-bold">${this.tabDraw[i].crsScore}</td>
                 <td>${this.tabDraw[i].program}</td>
             `;
             if (document.querySelector('#tbody')) {

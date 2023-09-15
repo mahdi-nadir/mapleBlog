@@ -6,11 +6,11 @@
                 <table id="table" class="table-auto mx-auto mt-5 w-5/6 lg:w-2/3">
                     <thead>
                         <tr class="bg-indigo-100 text-sm md:text-lg">
-                            <th class="py-2 border-2 border-gray-400">{{ __('draw') }}</th>
-                            <th class="py-2 border-2 border-gray-400">Date</th>
-                            <th class="py-2 border-2 border-gray-400">ITA</th>
-                            <th class="py-2 border-2 border-gray-400">{{ __('crsAbr') }}</th>
-                            <th class="py-2 border-2 border-gray-400">{{ __('program') }}</th>
+                            <th class="py-2 border-2 border-gray-400 dark:text-black">{{ __('draw') }}</th>
+                            <th class="py-2 border-2 border-gray-400 dark:text-black">Date</th>
+                            <th class="py-2 border-2 border-gray-400 dark:text-black">ITA</th>
+                            <th class="py-2 border-2 border-gray-400 dark:text-black">{{ __('crsAbr') }}</th>
+                            <th class="py-2 border-2 border-gray-400 dark:text-black">{{ __('program') }}</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">

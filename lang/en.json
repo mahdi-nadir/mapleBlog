@@ -239,9 +239,10 @@
     "calculate": "Calculate",
     "crs_calculator": "Comprehensive Ranking Score Calculator",
     "crs_calculatorMsg1": "This tool will help you determine your CRS for Express Entry",
-    "crs_calculatorMsg2": "To get an invitation to apply, your CRS score must be above the minimum points score of the most recent",
+    "crs_calculatorMsg2": "Please note that you are only eligible if you get 67 points or more /100",
+    "crs_calculatorMsg3": "To get an invitation to apply, your CRS score must be above the minimum points score of the most recent",
     "crs_calculator_link": "round of invitations",
-    "crs_calculatorMsg3": "(cut-off scores may vary each round).",
+    "crs_calculatorMsg4": "(cut-off scores may vary each round).",
     "human_capital_factors": "Human Capital Factors",
     "spouseStatus": "Spouse Canadian Status",
     "spouseStatusQuestion": "Is your spouse or common-law partner a citizen or permanent resident of Canada?",
@@ -346,5 +347,10 @@
     "requiredFundsQuestion1": "The amount of money you need to support your family is set by the size of your family. How many family members do you have?",
     "requiredFundsQuestion2": "What is the currency of your country?",
     "member": "member",
-    "members": "members"
+    "members": "members",
+    "talkTo": "Talk to",
+    "minimize": "Minimize",
+    "close": "Close",
+    "generate": "Generate",
+    "checkWeather": "Check Weather"
 }

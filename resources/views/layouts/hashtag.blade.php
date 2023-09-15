@@ -73,6 +73,6 @@
             <option value="wPermit">{{ __('wPermit') }}</option>
         </select>
     </div>
-    <button id="getHashtagBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6 text-lg md:text-2xl block mx-auto">Generate</button>
+    <button id="getHashtagBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6 text-lg md:text-2xl block mx-auto">{{ __('generate') }}</button>
     <h1 id="result" class="text-md md:text-2xl text-center mt-8"></h1> 
 </template>
