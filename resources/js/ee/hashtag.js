@@ -6,7 +6,7 @@ export default class HashtagClass {
         this.getHashtagBtn = document.querySelector('#getHashtagBtn');
         this.overlay = document.querySelector('#overlay');
         this.result = document.querySelector('#result');
-
+        this.isEnglish = window.location.href.includes('/en');
         this.init();
     }
 
@@ -25,7 +25,7 @@ export default class HashtagClass {
                 const hours = currentDate.getHours();
                 const minutes = currentDate.getMinutes();
                 const hashtag = `#maplemind_${selectedOption}_${month}${day}_${hours}${minutes}`;
-                const hashtagWithIcon = `<h1 class="flex flex-col md:flex-row justify-center items-center gap-8"><span class="text-lg md:text-2xl font-bold">#maplemind_${selectedOption}_${month}${day}_${hours}${minutes}</span> <i id="copyHashtag" class="copy-icon fas fa-copy cursor-pointer text-slate-500 hover:text-slate-800 hover:animate-bounce" title="Click to copy"></i></h1>`;
+                const hashtagWithIcon = `<h1 class="flex flex-col md:flex-row justify-center items-center gap-8"><span class="text-lg md:text-2xl font-bold">#maplemind_${selectedOption}_${month}${day}_${hours}${minutes}</span><span id="copied" class="text-sm text-green-600 animate-pulse"></span> <i id="copyHashtag" class="copy-icon fas fa-copy cursor-pointer text-slate-500 hover:text-slate-800" title="Click to copy"></i></h1>`;
 
                 this.result.innerHTML = hashtagWithIcon;
 
@@ -34,7 +34,7 @@ export default class HashtagClass {
                     this.copyToClipboard(hashtag);
                 });
             } else {
-                this.result.innerHTML = `<h1 class="text-xl md:text-3xl font-bold text-red-400">Please select an option.</h1>`;
+                this.result.innerHTML = `<h1 class="text-sm md:text-lg font-bold text-red-700 italic">${this.isEnglish ? 'Please select an option' : 'Veuillez sélectionner une option'}</h>`;
             }
         });
 
@@ -55,10 +55,15 @@ export default class HashtagClass {
 
     copyToClipboard(text) {
         const textarea = document.createElement('textarea');
+        const copied = document.querySelector('#copied');
         textarea.value = text;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
+        copied.innerHTML = `${this.isEnglish ? 'Copied!' : 'Copié !'}`;
+        setTimeout(() => {
+            copied.innerHTML = '';
+        }, 2000);
     }
 }
