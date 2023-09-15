@@ -340,5 +340,10 @@
     "statShare": "Partage de statistiques",
     "sPermit": "Permis d'études",
     "tripHist": "Historique de voyages",
-    "wPermit": "Permis de travail"
+    "wPermit": "Permis de travail",
+    "requiredFunds": "Fonds requis",
+    "requiredFundsQuestion1": "Le montant d'argent dont vous avez besoin pour soutenir votre famille est déterminé par sa taille. Combien de membres compte votre famille ?",
+    "requiredFundsQuestion2": "Quelle est la devise de votre pays ?",
+    "member": "membre",
+    "members": "membres"
 }

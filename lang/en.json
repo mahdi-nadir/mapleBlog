@@ -341,5 +341,10 @@
     "statShare": "Stats Sharing",
     "sPermit": "Study permit",
     "tripHist": "Travel history",
-    "wPermit": "Work permit"
+    "wPermit": "Work permit",
+    "requiredFunds": "Required Funds",
+    "requiredFundsQuestion1": "The amount of money you need to support your family is set by the size of your family. How many family members do you have?",
+    "requiredFundsQuestion2": "What is the currency of your country?",
+    "member": "member",
+    "members": "members"
 }

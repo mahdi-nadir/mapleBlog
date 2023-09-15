@@ -19,7 +19,7 @@ export default class CurrencyClass {
         this.currencyResult = document.querySelector('.currencyResult');
         this.API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
         this.html = '';
-
+        this.isEnglish = window.location.href.includes('/en');
         this.init();
     }
 
@@ -112,13 +112,13 @@ export default class CurrencyClass {
                     const equivalentInLocalCurrency = (this.canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
                     const formattedNumber = equivalentInLocalCurrency.replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
-                    selectedCurrency === 'CAD' ? this.result.innerHTML = `Required funds in Canadian dollars (CAD) for ${this.familyMembers.value} person${this.familyMembers.value > 1 ? 's' : ''} are: <b>${this.canadianFunds}$</b>, that's what you need to have in your bank account.` : this.result.innerHTML = `Required funds in Canadian dollars (CAD) for ${this.familyMembers.value} person${this.familyMembers.value > 1 ? 's' : ''}: <b>${this.canadianFunds}$</b>.<br/>
-                In your local currency (${selectedCurrency}), you should have approximately: <b>${formattedNumber} ${selectedCurrency}</b>`;
+                    selectedCurrency === 'CAD' ? this.result.innerHTML = `${this.isEnglish ? 'Required funds in Canadian dollars (CAD) for' : 'Fonds requis en dollars canadiens (CAD) pour'} ${this.familyMembers.value} ${this.isEnglish ? 'person' : 'personne'}${this.familyMembers.value > 1 ? 's' : ''} ${this.isEnglish ? 'are' : 'sont'}: <b>${this.canadianFunds}$</b>, ${this.isEnglish ? 'that\'s what you need to have in your bank account.' : 'c\'est ce que vous devez avoir dans votre compte bancaire.'}` : this.result.innerHTML = `${this.isEnglish ? 'Required funds in Canadian dollars (CAD) for' : 'Fonds requis en dollars canadiens (CAD) pour'} ${this.familyMembers.value} ${this.isEnglish ? 'person' : 'personne'}${this.familyMembers.value > 1 ? 's' : ''}: <b>${this.canadianFunds}$</b>.<br/>
+                    ${this.isEnglish ? 'In your local currency' : 'En votre devise locale'} (${selectedCurrency}), ${this.isEnglish ? 'you should have approximately' : 'vous devriez avoir environ'}: <b>${formattedNumber} ${selectedCurrency}</b>`;
                 } else {
-                    this.result.textContent = 'Currency not found in exchange rates data.';
+                    this.result.textContent = this.isEnglish ? 'Currency not found in exchange rates data.' : 'Devise introuvable dans les données de taux de change.';
                 }
             } catch (error) {
-                this.result.textContent = 'An error occurred during currency conversion.';
+                this.result.textContent = this.isEnglish ? 'An error occurred during currency conversion.' : 'Une erreur est survenue lors de la conversion de la devise.';
             }
         })
 
