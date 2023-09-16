@@ -52,13 +52,10 @@ Route::middleware('auth')->group(function () {
 
             // Route::get('/essai', [UserController::class, 'index']);
             Route::get('/maplemind-blog', [BlogController::class, 'index'])->name('blog.index');
+            Route::get('/maplemind-blog/writing-post', [PostController::class, 'create'])->name('post.create');
+            Route::post('/maplemind-blog/writing-post', [PostController::class, 'store'])->name('post.store');
             Route::get('/maplemind-blog/{category}', [BlogController::class, 'showByCategory'])->name('posts.category');
             Route::get('/maplemind-blog/{categoryId}/{postId}', [PostController::class, 'index'])->name('post.index');
-            // Route::get('/maplemind-blog/express-entry', [BlogController::class, 'expressentry'])->name('posts.ee');
-            // Route::get('/maplemind-blog/arrima', [BlogController::class, 'arrima'])->name('posts.arrima');
-            // Route::get('/maplemind-blog/study-permit', [BlogController::class, 'sp'])->name('posts.sp');
-            // Route::get('/maplemind-blog/work-permit', [BlogController::class, 'wp'])->name('posts.wp');
-            // Route::get('/maplemind-blog/sponsorship', [BlogController::class, 'sponsorship'])->name('posts.sponsorship');
 
 
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
