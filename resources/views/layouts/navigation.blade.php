@@ -70,6 +70,15 @@
                     </x-nav-link>
                 </ul>
             </li>
+
+            <li class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
+                {{-- <h1 id="expressEntry">{{ __('expressEntry') }}</h1>
+                <ul class="absolute top-[115%] left-[30%] translate-x-[-30%] md:top-[99%] border border-t-0 border-white bg-black w-[180px] list-none z-20"> --}}
+                    <x-nav-link id="blogLink" class="text-white w-full" href="{{ LaravelLocalization::localizeUrl('/maplemind-blog') }}" :active="request()->routeIs('blog.index')">
+                        {{ __('Blog') }}
+                    </x-nav-link>
+                {{--</ul> --}}
+            </li>
         </ul>
 
         <div id="userMenu" class="flex flex-row justify-center items-center gap-4 md:gap-8">

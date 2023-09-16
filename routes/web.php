@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArrimaController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +37,7 @@ Route::middleware('auth')->group(function () {
                 return view('dashboard');
             })->middleware(['auth', 'verified'])->name('dashboard');
 
+
             Route::get('/arrima/expression-of-interest', [ArrimaController::class, 'expression_of_interest'])->name('arrima.expression_of_interest');
             Route::get('/arrima/self-assessment-tool', [ArrimaController::class, 'self_assessment_tool'])->name('arrima.self_assessment_tool');
             Route::get('/arrima/csq', [ArrimaController::class, 'csq'])->name('arrima.csq');
@@ -48,6 +51,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/express-entry/extra-info', [ExpressEntryController::class, 'extrainfo'])->name('ee.extrainfo');
 
             // Route::get('/essai', [UserController::class, 'index']);
+            Route::get('/maplemind-blog', [BlogController::class, 'index'])->name('blog.index');
+            Route::get('/maplemind-blog/{category}', [BlogController::class, 'showByCategory'])->name('posts.category');
+            Route::get('/maplemind-blog/{categoryId}/{postId}', [PostController::class, 'index'])->name('post.index');
+            // Route::get('/maplemind-blog/express-entry', [BlogController::class, 'expressentry'])->name('posts.ee');
+            // Route::get('/maplemind-blog/arrima', [BlogController::class, 'arrima'])->name('posts.arrima');
+            // Route::get('/maplemind-blog/study-permit', [BlogController::class, 'sp'])->name('posts.sp');
+            // Route::get('/maplemind-blog/work-permit', [BlogController::class, 'wp'])->name('posts.wp');
+            // Route::get('/maplemind-blog/sponsorship', [BlogController::class, 'sponsorship'])->name('posts.sponsorship');
+
 
             Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
