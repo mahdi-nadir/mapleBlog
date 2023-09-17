@@ -352,5 +352,17 @@
     "minimize": "Minimize",
     "close": "Close",
     "generate": "Generate",
-    "checkWeather": "Check Weather"
+    "checkWeather": "Check Weather",
+    "writePost": "Write Post",
+    "title": "Title",
+    "titlePost": "Title of the post",
+    "content": "Text",
+    "contentPost": "Content of the post",
+    "subject": "Subject",
+    "imgPost": "Image for post",
+    "createPost": "Create Post",
+    "selectCategory": "Select Category",
+    "youve": "You've got",
+    "posts": "posts",
+    "toPost": "Publish"
 }

@@ -32,4 +32,10 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function likedByUsers()
+    // {
+    //     return $this->belongsToMany(User::class, 'post_likes', 'post_id', 'user_id')
+    //         ->where('is_like', true);
+    // }
 }

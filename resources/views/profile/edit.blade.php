@@ -99,8 +99,5 @@
             deleteAccountDiv.classList.toggle('hidden');
             sectionEditProfile.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         });
-
-        
-        
     </script>
 </x-app-layout>

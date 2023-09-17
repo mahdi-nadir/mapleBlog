@@ -114,4 +114,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Gender::class);
     }
+
+    // public function likedPosts()
+    // {
+    //     return $this->belongsToMany(Post::class, 'post_likes', 'user_id', 'post_id')
+    //         ->where('is_like', true);
+    // }
 }

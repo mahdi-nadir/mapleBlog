@@ -51,7 +51,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/express-entry/extra-info', [ExpressEntryController::class, 'extrainfo'])->name('ee.extrainfo');
 
             // Route::get('/essai', [UserController::class, 'index']);
+            // Route::post('/toggle-like', [PostController::class, 'toggleLike'])->name('post.toggle-like');
+
             Route::get('/maplemind-blog', [BlogController::class, 'index'])->name('blog.index');
+            Route::post('/filter-posts', [BlogController::class, 'filterPosts'])->name('post.filter');
+
             Route::get('/maplemind-blog/writing-post', [PostController::class, 'create'])->name('post.create');
             Route::post('/maplemind-blog/writing-post', [PostController::class, 'store'])->name('post.store');
             Route::get('/maplemind-blog/{category}', [BlogController::class, 'showByCategory'])->name('posts.category');

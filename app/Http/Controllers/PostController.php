@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\ImgPost;
 use App\Models\Category;
+use App\Models\PostLike;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ImgPost;
 use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
@@ -22,16 +23,12 @@ class PostController extends Controller
     // }
     public function index($category, $postId)
     {
-
-        // Find the category by ID
         $category = Category::where('name', $category)->firstOrFail();
 
-        // Find the post by ID and category ID
         $post = Post::where('id', $postId)
             ->where('category_id', $category->id)
             ->firstOrFail();
         $image = ImgPost::where('id', $post->img_post_id)->first();
-        // You can then pass $post and $category to a view and display them
         return view('user.blog.post', compact('post', 'category', 'image'));
     }
 
@@ -54,25 +51,22 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
+        $filePath = '';
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $username = auth()->user()->username;
             $uniqueId = uniqid(auth()->user()->username . '_maplemind_');
             $fileName = $uniqueId . $image->getClientOriginalName();
 
-            // Create a folder if it doesn't exist
             $folderPath = public_path("img/$username");
             if (!file_exists($folderPath)) {
                 mkdir($folderPath, 0755, true);
             }
 
-            // Move the image to the user's folder
             $image->move($folderPath, $fileName);
 
-            // Set the full file path including the folder in the database
             $filePath = "img/$username/$fileName";
-        } else {
-            $filePath = null;
         }
 
         $imgPost = ImgPost::create([
@@ -82,15 +76,43 @@ class PostController extends Controller
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'likes' => 0,
-            'dislikes' => 0,
-            'img_post_id' => $imgPost->id,
+            'img_post_id' => $filePath != '' ? $imgPost->id : null,
             'category_id' => $request->category,
             'user_id' => auth()->user()->id,
         ]);
 
         return redirect()->route('blog.index');
     }
+
+
+    // public function toggleLike(Request $request)
+    // {
+    //     $postId = $request->input('postId');
+    //     $type = $request->input('type');
+    //     $user = auth()->user(); 
+
+    //     // Check if the user has already liked the post
+    //     $existingLike = PostLike::where('post_id', $postId)
+    //         ->where('user_id', $user->id)
+    //         ->first();
+
+    //     if ($existingLike) {
+    //         $existingLike->delete();
+    //         $result = ['action' => 'unliked'];
+    //     } else {
+    //         $postLike = new PostLike();
+    //         $postLike->post_id = $postId;
+    //         $postLike->user_id = $user->id;
+    //         $postLike->is_like = true; 
+    //         $postLike->save();
+    //         $result = ['action' => 'liked'];
+    //     }
+
+    //     return response()->json($result);
+    // }
+
+
+
 
     /**
      * Display the specified resource.

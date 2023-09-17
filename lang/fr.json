@@ -351,5 +351,17 @@
     "minimize": "Minimiser",
     "close": "Fermer",
     "generate": "Générer",
-    "checkWeather": "Consulter la météo"
+    "checkWeather": "Consulter la météo",
+    "writePost": "Rédiger une publication",
+    "title": "Titre",
+    "titlePost": "Titre de la publication",
+    "content": "Texte",
+    "contentPost": "Contenu de la publication",
+    "subject": "Sujet",
+    "imgPost": "Image de la publication",
+    "createPost": "Créer une publication",
+    "selectCategory": "Sélectionnez une catégorie",
+    "youve": "Vous avez",
+    "posts": "publications",
+    "toPost": "Publier"
 }
