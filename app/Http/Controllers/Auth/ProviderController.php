@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\ImgUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ImgUser;
+use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
 class ProviderController extends Controller
@@ -20,28 +21,35 @@ class ProviderController extends Controller
     {
         $socialuser = Socialite::driver($provider)->user();
 
-        $user = User::updateOrCreate([
-            'provider_id' => $socialuser->id,
-            'provider' => $provider,
-        ], [
-            'email' => $socialuser->email,
-            'system_id' => null,
-            'role_id' => 2,
-            'noc_id' => null,
-            'step_id' => null,
-            'diploma_id' => null,
-            'gender_id' => null,
-            'username' => User::generateUsername($socialuser->nickname),
-            'img_user_id' => 1,
-            'eligibility_score' => 0,
-            'crs_score' => 0,
-            'arrima_score' => 0,
-            'provider_token' => $socialuser->token,
-        ]);
+        $checkUser = User::where('email', $socialuser->email)->first();
 
-        auth()->login($user);
+        if ($checkUser) {
+            auth()->login($checkUser);
+            return redirect(RouteServiceProvider::HOME);
+        } else {
+            $user = User::updateOrCreate([
+                'provider_id' => $socialuser->id,
+                'provider' => $provider,
+            ], [
+                'email' => $socialuser->email,
+                'system_id' => null,
+                'role_id' => 2,
+                'noc_id' => null,
+                'step_id' => null,
+                'diploma_id' => null,
+                'gender_id' => null,
+                'username' => User::generateUsername($socialuser->nickname),
+                'img_user_id' => 1,
+                'eligibility_score' => 0,
+                'crs_score' => 0,
+                'arrima_score' => 0,
+                'provider_token' => $socialuser->token,
+            ]);
 
-        return view('auth.update-password-username', compact('user'));
+            auth()->login($user);
+
+            return view('auth.update-password-username', compact('user'));
+        }
     }
 
 
