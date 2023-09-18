@@ -41,7 +41,7 @@ class ProviderController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to('/dashboard');
+        return view('auth.update-password-username', compact('user'));
     }
 
 

@@ -364,5 +364,6 @@
     "youve": "Vous avez",
     "posts": "publications",
     "toPost": "Publier",
-    "notSpecified": "Non spécifié"
+    "notSpecified": "Non spécifié",
+    "updatePsdMsg": "Vous devez mettre à jour votre mot de passe pour pouvoir utiliser le site web. Vous pouvez conserver le même nom d'utilisateur si vous le souhaitez."
 }

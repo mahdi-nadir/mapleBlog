@@ -41,6 +41,8 @@ Route::group(
                     return view('dashboard');
                 })->middleware(['auth', 'verified'])->name('dashboard');
 
+                Route::get('/update-password', [ProfileController::class, 'updateFromSocialMedia']);
+                Route::post('/update-password', [ProfileController::class, 'updateFromSocialMedia'])->name('update.passwordUsername');
 
                 Route::get('/arrima/expression-of-interest', [ArrimaController::class, 'expression_of_interest'])->name('arrima.expression_of_interest');
                 Route::get('/arrima/self-assessment-tool', [ArrimaController::class, 'self_assessment_tool'])->name('arrima.self_assessment_tool');

@@ -81,6 +81,22 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    public function updateFromSocialMedia(ProfileUpdateRequest $request)
+    {
+        $user = $request->user();
+
+        $user->username = $request->input('username');
+        $user->password = $request->input('password');
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        return view('dashboard');
+    }
+
     /**
      * Delete the user's account.
      */

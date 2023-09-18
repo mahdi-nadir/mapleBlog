@@ -134,7 +134,6 @@
         </div>
 
         <div class="flex flex-col justify-center items-center gap-1">
-            {{-- <x-input-label class="label" for="system" :value="__('system')" /> --}}
             <label for="system" class="label font-bold">{{ __('immSys') }}:</label>
             <select name="system_id" id="system" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_system') }}</option>
@@ -146,7 +145,6 @@
         </div>
 
         <div class="flex flex-col justify-center items-center gap-1">
-            {{-- <x-input-label class="label" for="diploma" :value="__('diploma')" /> --}}
             <label for="diploma" class="label font-bold">{{ __('degree') }}:</label>
             <select name="diploma_id" id="diploma" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_degree') }}</option>
@@ -158,7 +156,6 @@
         </div>
 
         <div class="flex flex-col justify-center items-center gap-1">
-            {{-- <x-input-label class="label" for="noc" :value="__('noc')" /> --}}
             <label for="noc" class="label font-bold">{{ __('noc') }}:</label>
             <select name="noc_id" id="noc" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_noc') }}</option>

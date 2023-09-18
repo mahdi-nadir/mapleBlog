@@ -363,7 +363,7 @@
     "createPost": "Create Post",
     "selectCategory": "Select Category",
     "youve": "You've got",
-    "posts": "posts",
     "toPost": "Publish",
-    "notSpecified": "Not Specified"
+    "notSpecified": "Not Specified",
+    "updatePsdMsg": "You need to update your password to be able to use the website. You can keep the same username if you want."
 }
