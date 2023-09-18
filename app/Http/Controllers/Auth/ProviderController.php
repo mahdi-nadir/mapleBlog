@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\ImgUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -25,6 +26,8 @@ class ProviderController extends Controller
 
         if ($checkUser) {
             auth()->login($checkUser);
+            $array_greetings = ['Hello', 'Hi', 'Welcome', 'Greetings', 'Hey', 'Howdy'];
+            connectify('success', 'Welcome back ' . Auth::user()->username, 'Good to see you again');
             return redirect(RouteServiceProvider::HOME);
         } else {
             $user = User::updateOrCreate([

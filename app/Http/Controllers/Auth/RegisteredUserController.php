@@ -80,6 +80,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        $array_greetings = ['Hello', 'Hi', 'Welcome', 'Greetings', 'Hey', 'Howdy'];
+        connectify('success', 'Welcome to MapleMind', 'We\'re so excited to have you join us ' . Auth::user()->username);
 
         return redirect(RouteServiceProvider::HOME);
     }

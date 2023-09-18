@@ -26,6 +26,18 @@ class BlogController extends Controller
     {
         $categoryId = $request->input('category');
         $posts = Post::where('category_id', $categoryId)->get();
+
+        foreach ($posts as $post) {
+            $post->category_name = $post->category->name;
+            $post->post_id = $post->id;
+        }
+
+        return response()->json($posts);
+    }
+
+    public function getAllPosts()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
         return response()->json($posts);
     }
 

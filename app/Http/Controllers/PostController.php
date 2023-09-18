@@ -25,8 +25,8 @@ class PostController extends Controller
     {
         $category = Category::where('name', $category)->firstOrFail();
 
-        $post = Post::where('id', $postId)
-            ->where('category_id', $category->id)
+        $post = Post::where('category_id', $category->id)
+            ->where('id', $postId)
             ->firstOrFail();
         $image = ImgPost::where('id', $post->img_post_id)->first();
         return view('user.blog.post', compact('post', 'category', 'image'));

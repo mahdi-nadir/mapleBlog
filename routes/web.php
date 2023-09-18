@@ -60,6 +60,7 @@ Route::group(
                 // Route::post('/toggle-like', [PostController::class, 'toggleLike'])->name('post.toggle-like');
 
                 Route::get('/maplemind-blog', [BlogController::class, 'index'])->name('blog.index');
+                Route::get('/posts', [BlogController::class, 'getAllPosts'])->name('blog.allPosts');
                 Route::post('/filter-posts', [BlogController::class, 'filterPosts'])->name('post.filter');
 
                 Route::get('/maplemind-blog/writing-post', [PostController::class, 'create'])->name('post.create');

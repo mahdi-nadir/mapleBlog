@@ -93,7 +93,8 @@ class ProfileController extends Controller
         }
 
         $user->save();
-
+        $array_greetings = ['Hello', 'Hi', 'Welcome', 'Greetings', 'Hey', 'Howdy'];
+        connectify('success', 'Welcome to MapleMind', 'It\'s a pleasure to have you here ' . Auth::user()->username);
         return view('dashboard');
     }
 
