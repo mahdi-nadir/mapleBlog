@@ -11,13 +11,7 @@ class Comment extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = [
-        'content',
-        'likes',
-        'dislikes',
-        'post_id',
-        'user_id',
-    ];
+    protected $guarded = [];
 
     public function post()
     {

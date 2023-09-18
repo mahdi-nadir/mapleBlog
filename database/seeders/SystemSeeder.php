@@ -14,9 +14,12 @@ class SystemSeeder extends Seeder
     public function run(): void
     {
         DB::table('systems')->insert([
-            ['name' => 'Not set'],
             ['name' => 'Arrima'],
             ['name' => 'Express Entry'],
+            ['name' => 'Citizenship'],
+            ['name' => 'Work permit'],
+            ['name' => 'Study permit'],
+            ['name' => 'Visitor'],
         ]);
     }
 }

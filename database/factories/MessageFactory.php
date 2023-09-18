@@ -18,8 +18,8 @@ class MessageFactory extends Factory
     {
         return [
             'content' => $this->faker->text(50),
-            'from_user_id' => $this->faker->numberBetween(1, 20),
-            'to_user_id' => $this->faker->numberBetween(1, 20),
+            'from_user_id' => $this->faker->numberBetween(1, 5),
+            'to_user_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

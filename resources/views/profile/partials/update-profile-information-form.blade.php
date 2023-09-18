@@ -57,14 +57,80 @@
             <div class="flex flex-col md:flex-row justify-center items-center gap-2">
                 {{-- <x-input-label class="label" for="gender" :value="__('Gender')" /> --}}
                 <label for="gender" class="label font-bold">{{ __('gender') }}:</label>
-                <h4>{{ Auth::user()->gender->name == NULL ? 'not set' : Auth::user()->gender->name }}</h4>
+                @if ( Auth::user()->gender_id != NULL )
+                    <h4>
+                        {{-- @if (Auth::user()->gender_id == NULL) --}}
+                        {{ Auth::user()->gender->name}} 
+                        {{-- @else
+                        {{ Auth::user()->gender->name }}
+                        @endif --}}
+                    </h4>
+                @else
+                    <div class="mt-2 md:mt-4 w-[100%]">
+                        {{-- <h4>current data: {{ Auth::user()->gender->name }}</h4> --}}
+                        <select name="gender_id" id="gender" class="w-[100%] p-1 text-lg md:text-xl text-black rounded-md">
+                            <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                        <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
+                    </div>
+                @endif
             </div>
             <x-input-error :messages="$errors->get('gender')" />
         </div>
 
         <div class="flex flex-col md:flex-row justify-center items-center gap-2">
             <label for="date_of_birth" class="label font-bold">{{ __('dob') }}:</label>
+            @if ($user->date_of_birth != null)
             <h3>{{ explode('-',Auth::user()->date_of_birth)[2] }}/{{ explode('-',Auth::user()->date_of_birth)[1] }}/{{ explode('-',Auth::user()->date_of_birth)[0] }}</h3>
+            @else
+            {{-- <x-input-label for="dob" :value="__('Date of birth')" class="text-white text-lg md:text-xl mt-2 md:mt-4 mb-[-3%]"/> --}}
+                <div class="flex flex-row justify-center items-center gap-2 w-[100%]">
+                    <div>
+                        <select name="dob" id="dob" class="text-black rounded-md p-2">
+                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[2] }}">{{ explode('-',Auth::user()->date_of_birth)[2] }}</option> --}}
+                            {{-- @for ($i = 1; $i <= 31; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor --}}
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <select name="mob" id="mob" class="text-black rounded-md p-2">
+                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[1] }}">{{ explode('-',Auth::user()->date_of_birth)[1] }}</option> --}}
+                            <option value="">{{ __('mm') }}</option>
+                            <option value="1">{{ __('January') }}</option>
+                            <option value="2">{{ __('February') }}</option>
+                            <option value="3">{{ __('March') }}</option>
+                            <option value="4">{{ __('April') }}</option>
+                            <option value="5">{{ __('May') }}</option>
+                            <option value="6">{{ __('June') }}</option>
+                            <option value="7">{{ __('July') }}</option>
+                            <option value="8">{{ __('August') }}</option>
+                            <option value="9">{{ __('September') }}</option>
+                            <option value="10">{{ __('October') }}</option>
+                            <option value="11">{{ __('November') }}</option>
+                            <option value="12">{{ __('December') }}</option>
+                        </select>
+                    </div>
+            
+                    <div>
+                        <select name="yob" id="yob" class="text-black rounded-md p-2">
+                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[0] }}">{{ explode('-',Auth::user()->date_of_birth)[0] }}</option> --}}
+                            @for ($i = 1945; $i <= 2005; $i++)
+                                @if ($i == 1945)
+                                    '<option value="">yyyy</option>
+                                @endif
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <x-input-error  :messages="$errors->get('dob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
+                    <x-input-error  :messages="$errors->get('mob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
+                    <x-input-error  :messages="$errors->get('yob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
+                </div>
+            @endif
         </div>
 
         <div class="flex flex-col justify-center items-center gap-1">
@@ -120,3 +186,36 @@
         </div>
     </form>
 </section>
+<script>
+    const dobSelect = document.getElementById('dob');
+   const mobSelect = document.getElementById('mob');
+
+   if (dobSelect != null || mobSelect != null) {
+    dobSelect.addEventListener('change', updateDays);
+   }
+
+   function updateDays() {
+       const selectedDay = dobSelect.value; // Save the selected day
+       
+       const selectedMonth = parseInt(mobSelect.value, 10);
+       const selectedYear = parseInt(document.getElementById('yob').value, 10); // You need to have an element with ID 'yob' for year selection
+       
+       dobSelect.innerHTML = '<option value="" selected>dd</option>';
+
+       let daysInMonth = 31;
+       if ([4, 6, 9, 11].includes(selectedMonth)) {
+           daysInMonth = 30;
+       } else if (selectedMonth === 2) {
+           daysInMonth = (selectedYear % 4 === 0 && (selectedYear % 100 !== 0 || selectedYear % 400 === 0)) ? 29 : 28;
+       }
+
+       for (let i = 1; i <= daysInMonth; i++) {
+           dobSelect.innerHTML += `<option value="${i}" ${i === parseInt(selectedDay) ? 'selected' : ''}>${i}</option>`;
+       }
+   }
+
+   // Initialize day options based on default selected month
+   if (dobSelect != null || mobSelect != null) {
+   updateDays();
+    }
+</script>

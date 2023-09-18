@@ -363,5 +363,6 @@
     "selectCategory": "Sélectionnez une catégorie",
     "youve": "Vous avez",
     "posts": "publications",
-    "toPost": "Publier"
+    "toPost": "Publier",
+    "notSpecified": "Non spécifié"
 }

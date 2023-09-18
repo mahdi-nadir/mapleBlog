@@ -57,11 +57,20 @@ class ProfileController extends Controller
 
         $user->step_id = $request->input('step_id');
 
+        if ($request->input('dob')) {
+            $dob = $request->input('yob') . '-' . $request->input('mob') . '-' . $request->input('dob');
+            $user->date_of_birth = $dob;
+        }
+
+        if ($request->input('gender_id')) {
+            $user->gender_id = $request->input('gender_id');
+        }
+
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        if ($user->system_id == 1 || $user->diploma_id == 1 || $user->noc_id == 1 || $user->step_id == 1) {
+        if ($user->system_id == NULL || $user->diploma_id == NULL || $user->noc_id == NULL || $user->step_id == NULL || $user->gender_id == NULL || $user->date_of_birth == NULL) {
             notify()->warning('Great, but there\'s still other information to update', 'Almost done');
         } else {
             notify()->success('Well done, your profile is now updated', 'Success');

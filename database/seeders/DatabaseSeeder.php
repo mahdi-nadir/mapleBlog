@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
         // Category::factory()->create(['name' => 'housing']);
         // Category::factory()->create(['name' => 'process']);
 
-        User::factory(20)->create();
+        User::factory(5)->create();
 
 
 
@@ -82,9 +82,9 @@ class DatabaseSeeder extends Seeder
         // ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/555']);
         // ImgPost::factory()->create(['path' => 'https://dummyimage.com/600x400/fff/999']);
 
-        Post::factory(20)->create();
-        Comment::factory(20)->create();
+        Post::factory(5)->create();
+        Comment::factory(5)->create();
 
-        Message::factory(20)->create();
+        Message::factory(5)->create();
     }
 }

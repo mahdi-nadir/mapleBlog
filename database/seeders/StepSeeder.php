@@ -14,7 +14,6 @@ class StepSeeder extends Seeder
     public function run(): void
     {
         DB::table('steps')->insert([
-            ['name' => 'Not set'],
             ['name' => 'Pre-ITA'],
             ['name' => 'ITA'],
             ['name' => 'Post-ITA'],

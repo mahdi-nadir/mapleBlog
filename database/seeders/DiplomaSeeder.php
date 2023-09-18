@@ -14,7 +14,6 @@ class DiplomaSeeder extends Seeder
     public function run(): void
     {
         DB::table('diplomas')->insert([
-            ['level' => 'Not set'],
             ['level' => 'Secondary Diploma'],
             ['level' => 'One-year program'],
             ['level' => 'Two-year program'],

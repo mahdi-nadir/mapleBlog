@@ -34,6 +34,9 @@ class User extends Authenticatable
         'crs_score',
         'step_id',
         'is_banned',
+        'provider',
+        'provider_id',
+        'provider_token'
     ];
 
     /**
@@ -120,4 +123,18 @@ class User extends Authenticatable
     //     return $this->belongsToMany(Post::class, 'post_likes', 'user_id', 'post_id')
     //         ->where('is_like', true);
     // }
+
+    public static function generateUsername($username)
+    {
+        if ($username === null) {
+            $username = 'maplemind_user_' . rand(100000, 999999);
+        }
+
+        if (User::where('username', $username)->exists()) {
+            $newUsername = $username . '_' . rand(100000, 999999);
+            $username = self::generateUsername($newUsername);
+        }
+
+        return $username;
+    }
 }

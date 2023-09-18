@@ -20,8 +20,8 @@ class CommentFactory extends Factory
             'content' => $this->faker->text(50),
             // 'likes' => $this->faker->numberBetween(0, 100),
             // 'dislikes' => $this->faker->numberBetween(0, 100),
-            'post_id' => $this->faker->numberBetween(1, 20),
-            'user_id' => $this->faker->numberBetween(1, 20),
+            'post_id' => $this->faker->numberBetween(1, 5),
+            'user_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

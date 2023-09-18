@@ -13,20 +13,16 @@
                     </div>
                 </div>
 
-                <x-input-label for="username" :value="__('Date of birth')" class="text-white text-lg md:text-xl mt-2 md:mt-4 mb-[-3%]"/>
+               {{--  <x-input-label for="dob" :value="__('Date of birth')" class="text-white text-lg md:text-xl mt-2 md:mt-4 mb-[-3%]"/>
                 <div class="flex flex-row justify-center items-center gap-2 w-[100%]">
                     <div>
                         <select name="dob" id="dob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[2] }}">{{ explode('-',Auth::user()->date_of_birth)[2] }}</option> --}}
-                            {{-- @for ($i = 1; $i <= 31; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor --}}
+                            
                         </select>
                     </div>
                     
                     <div>
                         <select name="mob" id="mob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[1] }}">{{ explode('-',Auth::user()->date_of_birth)[1] }}</option> --}}
                             <option value="">{{ __('mm') }}</option>
                             <option value="1">{{ __('January') }}</option>
                             <option value="2">{{ __('February') }}</option>
@@ -45,7 +41,6 @@
             
                     <div>
                         <select name="yob" id="yob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[0] }}">{{ explode('-',Auth::user()->date_of_birth)[0] }}</option> --}}
                             @for ($i = 1945; $i <= 2005; $i++)
                                 @if ($i == 1945)
                                     '<option value="">yyyy</option>
@@ -57,18 +52,17 @@
                     <x-input-error  :messages="$errors->get('dob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
                     <x-input-error  :messages="$errors->get('mob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
                     <x-input-error  :messages="$errors->get('yob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
-                </div>
+                </div> --}}
 
-                <div class="mt-2 md:mt-4 w-[100%]">
+                {{-- <div class="mt-2 md:mt-4 w-[100%]">
                     <x-input-label for="gender" :value="__('Gender')" class="text-white text-lg md:text-xl"/>
-                    {{-- <h4>current data: {{ Auth::user()->gender->name }}</h4> --}}
                     <select name="gender_id" id="gender" class="w-[100%] p-1 text-lg md:text-xl text-black rounded-md">
                         <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
-                        <option value="2">Male</option>
-                        <option value="3">Female</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
                     </select>
                     <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
-                </div>
+                </div> --}}
 
                 <!-- Email Address -->
                 <div class="mt-2 md:mt-4 w-[100%]">
@@ -114,11 +108,10 @@
             </form>
         </section>
 </x-guest-layout>
-<script>
+{{-- <script>
      const dobSelect = document.getElementById('dob');
     const mobSelect = document.getElementById('mob');
 
-    // Update day options based on selected month
     mobSelect.addEventListener('change', updateDays);
 
     function updateDays() {
@@ -141,6 +134,5 @@
         }
     }
 
-    // Initialize day options based on default selected month
     updateDays();
-</script>
+</script> --}}

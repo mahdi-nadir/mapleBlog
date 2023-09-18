@@ -18,7 +18,7 @@
                     </div>
                 </div>
 
-                <input type="text" name="title" id="title" placeholder="{{ __('titlePost') }}" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-5/6 dark:text-black dark:border-gray-400 px-2">
+                <input type="text" name="title" id="title" maxlength="100" placeholder="{{ __('titlePost') }}" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-5/6 dark:text-black dark:border-gray-400 px-2">
 
                 <select name="category" id="category" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-5/6 dark:text-black dark:border-gray-400 h-9 px-1">
                     <option value="">{{ __('selectCategory') }}</option>
@@ -28,7 +28,7 @@
                 </select>
                     
                 <div class="w-5/6 flex flex-col justify-center items-center gap-1">
-                    <textarea name="content" id="content" placeholder="{{ __('contentPost') }}" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-full dark:text-black dark:border-gray-400 resize-none md:overflow-y-hidden px-2" rows="4" maxlength="500"></textarea>
+                    <textarea name="content" id="content" placeholder="{{ __('contentPost') }}" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-full dark:text-black dark:border-gray-400 resize-none md:overflow-y-hidden px-2" rows="5" maxlength="500"></textarea>
                     <div class="flex flex-row justify-between items-center gap-1 w-full">
                         <button id="deleteContent" class="font-bold italic px-1 bg-red-600 hover:bg-red-800 text-white text-sm rounded">{{ __('reset') }}</button>
                         <p class="font-bold italic"><span id="nbChars">0</span>/500</p>

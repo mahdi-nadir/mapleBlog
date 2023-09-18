@@ -56,25 +56,25 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $dob = $request->input('yob') . '-' . $request->input('mob') . '-' . $request->input('dob');
-        if ($request->gender_id == NULL || $request->gender_id == '') {
-            $request->gender_id = '1';
-        }
+        // $dob = $request->input('yob') . '-' . $request->input('mob') . '-' . $request->input('dob');
+        // if ($request->gender_id == NULL || $request->gender_id == '') {
+        //     $request->gender_id = '1';
+        // }
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => 2,
             'img_user_id' => 2,
-            'gender_id' => $request->gender_id,
-            'date_of_birth' => $dob,
+            'gender_id' => null,
+            'date_of_birth' => null,
             // 'dob' => 1,
             // 'mob' => 1,
             // 'yob' => 2000,
-            'system_id' => 1,
-            'diploma_id' => 1,
-            'noc_id' => 1,
-            'step_id' => 1,
+            'system_id' => null,
+            'diploma_id' => null,
+            'noc_id' => null,
+            'step_id' => null,
         ]);
 
         event(new Registered($user));

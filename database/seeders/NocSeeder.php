@@ -14,7 +14,6 @@ class NocSeeder extends Seeder
     public function run(): void
     {
         DB::table('nocs')->insert([
-            ['code' => 'Not set'],
             ['code' => '10010'],
             ['code' => '10011'],
             ['code' => '10012'],

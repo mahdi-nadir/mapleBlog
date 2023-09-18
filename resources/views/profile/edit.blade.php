@@ -11,12 +11,70 @@
         <!-- User Information -->
         <div class="text-lg lg:text-xl">
             <h3><span class="font-bold">{{ __('username') }}: </span>{{ $user->username }}</h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('email') }}: </span>{{ $user->email }}</h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('immSys') }}: </span><span class={{ $user->system->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->system->name }}</span></h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('step') }}: </span><span class={{ $user->step->name == 'Not set' ? 'text-red-500' : '' }}>{{ $user->step->name }}</span></h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('degree') }}: </span><span class={{ $user->diploma->level == 'Not set' ? 'text-red-500' : '' }}>{{ $user->diploma->level }}</span></h3>
-            <h3 class="mt-1"><span class="font-bold">{{ __('noc') }}: </span><span class={{ $user->noc->code == 'Not set' ? 'text-red-500' : '' }}>{{ $user->noc->code }}</span></h3>
+            <h3 class="mt-1">
+                <span class="font-bold">
+                    {{ __('email') }}: 
+                </span>
+                {{ $user->email }}
+            </h3>
+            
+            <h3 class="mt-1">
+                <span class="font-bold">
+                    {{ __('immSys') }}: 
+                </span>
+                <span class={{ $user->system_id == null ? 'text-red-500' : '' }}>
+                    @if ($user->system_id == null)
+                    {{ __('notSpecified') }}
+                    @else
+                    {{ $user->system->name }}
+                    @endif
+                </span>
+            </h3>
+            
+            <h3 class="mt-1">
+                <span class="font-bold">
+                    {{ __('step') }}: 
+                </span>
+                <span class={{ $user->step_id == null ? 'text-red-500' : '' }}>
+                    @if ($user->step_id == null)
+                    {{ __('notSpecified') }}
+                    @else
+                    {{ $user->step->name }}
+                    @endif
+                </span>
+            </h3>
+            
+            <h3 class="mt-1">
+                <span class="font-bold">
+                    {{ __('degree') }}: 
+                </span>
+                <span class={{ $user->diploma_id == null ? 'text-red-500' : '' }}>
+                    @if ($user->diploma_id == null)
+                    {{ __('notSpecified') }}
+                    @else
+                    {{ $user->diploma->level }}
+                    @endif
+                </span>
+            </h3>
+            
+            <h3 class="mt-1">
+                <span class="font-bold">
+                    {{ __('noc') }}: 
+                </span>
+                <span class={{ $user->noc_id == null ? 'text-red-500' : '' }}>
+                    @if ($user->noc_id == null)
+                    {{ __('notSpecified') }}
+                    @else
+                    {{ $user->noc->code }}
+                    @endif
+                </span>
+            </h3>
+            
+            @if ($user->date_of_birth != null)
             <h3 class="mt-1"><span class="font-bold">{{ __('dob') }}: </span>{{ explode('-', $user->date_of_birth)[2] }}-{{ explode('-', $user->date_of_birth)[1] }}-{{ explode('-', $user->date_of_birth)[0] }}</h3>
+            @else
+            <h3 class="mt-1"><span class="font-bold">{{ __('dob') }}: </span>{{ __('notSpecified') }}</h3>
+            @endif
         </div>
     </div>
     

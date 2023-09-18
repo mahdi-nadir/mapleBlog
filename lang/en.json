@@ -364,5 +364,6 @@
     "selectCategory": "Select Category",
     "youve": "You've got",
     "posts": "posts",
-    "toPost": "Publish"
+    "toPost": "Publish",
+    "notSpecified": "Not Specified"
 }
