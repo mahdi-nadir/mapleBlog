@@ -8,5 +8,4 @@
     @include('layouts.utilities-buttons')
 
     @include('layouts.chat')
-    @include('layouts.footer')
 </div>

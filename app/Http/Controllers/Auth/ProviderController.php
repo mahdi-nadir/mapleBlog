@@ -52,7 +52,7 @@ class ProviderController extends Controller
             ], [
                 'username' => User::generateUsername($socialuser->nickname),
                 'email' => $socialuser->email,
-                'password' => Hash::make(User::generateUsername($socialuser->nickname)),
+                'password' => Hash::make(User::generateUsername($socialuser->nickname) . '_9Hfx4@1s'),
                 // 'password_confirmed' => 0,
                 'system_id' => null,
                 'role_id' => 2,

@@ -19,26 +19,17 @@
         <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
     </head>
     <body class="mainContainer flex flex-col h-screen justify-between text-center dark:bg-black dark:text-white mx-auto max-w-screen">
-        <div>        
-            @include('layouts.navigation')
-            <x-notify::notify />
-                
-                <!-- Page Heading -->
-                {{-- @if (isset($header))
-                    <header>
-                        <div>
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif --}}
-                    
-                <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        @include('layouts.navigation')
+        <x-notify::notify />
+    
+        <main class="flex-grow">
+            {{ $slot }}
+        </main>
+    
         @include('layouts.utilities')
-            {{-- <script src="{{ asset('js/ee/main.js') }}" type="module"></script> --}}
-            @notifyJs
+    
+        <footer class="bg-gray-200 dark:bg-gray-800 text-center">
+            @include('layouts.footer')
+        </footer>
     </body>
 </html>
