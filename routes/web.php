@@ -50,6 +50,7 @@ Route::group(
                 Route::get('/arrima/csq', [ArrimaController::class, 'csq'])->name('arrima.csq');
                 Route::get('/arrima/permanent-residence', [ArrimaController::class, 'permanent_residence'])->name('arrima.permanent_residence');
                 Route::get('/arrima/pmi', [ArrimaController::class, 'pmi'])->name('arrima.pmi');
+                Route::put('/arrima/update-arrima-score', [ArrimaController::class, 'updateArrimaScore'])->name('update.arrima-score');
 
                 Route::get('/express-entry/eligibility-calculator', [ExpressEntryController::class, 'eligibility'])->name('ee.eligibility');
                 Route::get('/express-entry/crs-calculator', [ExpressEntryController::class, 'crs'])->name('ee.crs');

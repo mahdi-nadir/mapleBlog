@@ -14,7 +14,8 @@ class ArrimaController extends Controller
 
     public function self_assessment_tool()
     {
-        return view('user.arrima.self_assessment_tool');
+        $scoreArrima = auth()->user()->arrima_score;
+        return view('user.arrima.self_assessment_tool', compact('scoreArrima'));
     }
 
     public function csq()
@@ -30,5 +31,20 @@ class ArrimaController extends Controller
     public function pmi()
     {
         return view('user.arrima.pmi');
+    }
+
+    public function updateArrimaScore(Request $request)
+    {
+        $request->validate([
+            'arrima_score' => 'required|numeric|min:0|max:1320',
+        ]);
+
+        $user = auth()->user();
+        $user->arrima_score = $request->arrima_score;
+        $user->save();
+
+        notify()->success('Your Arrima score has been updated successfully.', 'Success', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
     }
 }

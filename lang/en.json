@@ -369,5 +369,11 @@
     "updateInfo": "Update Profile Information",
     "updateInfoAndPass": "Update Profile Information and Password",
     "updatePass": "Update Password",
-    "loggedFromGoogle": "Since you logged in with Google, you need to update your password right away."
+    "loggedFromGoogle": "Since you logged in with Google, you need to update your password right away.",
+    "selfAssessTool": "Self-Assessment Tool",
+    "selfAssessMsg": "This tool will help you determine your eligibility for Arrima",
+    "selfAssessMsg2": "For now, you'll be redirected to the official website of Quebec in order to calculate your score. Please note that we are developing the same tool and it will be available soon in the page.",
+    "clickHere": "Click here",
+    "yourScoreIs": "Your score is",
+    "scoreHere": "Put your score here"
 }

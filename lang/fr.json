@@ -369,5 +369,10 @@
     "updateInfo": "Mettre à jour les informations de profil",
     "updateInfoAndPass": "Mettre à jour les informations de profil et le mot de passe",
     "updatePass": "Mettre à jour le mot de passe",
-    "loggedFromGoogle": "Étant donné que vous vous êtes connecté avec Google, vous devez immédiatement mettre à jour votre mot de passe."
+    "loggedFromGoogle": "Étant donné que vous vous êtes connecté avec Google, vous devez immédiatement mettre à jour votre mot de passe.",
+    "selfAssessTool": "Outil d'auto-évaluation",
+    "selfAssessMsg": "Pour le moment, vous serez redirigé vers le site officiel du Québec afin de calculer votre score. Veuillez noter que nous développons le même outil, et il sera bientôt disponible sur la page.",
+    "clickHere": "Cliquez ici",
+    "yourScoreIs": "Votre score est",
+    "scoreHere": "Mettez votre score ici"
 }
