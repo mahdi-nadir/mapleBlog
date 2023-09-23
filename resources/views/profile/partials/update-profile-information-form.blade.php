@@ -54,78 +54,73 @@
         </div>
 
         <div>
+            @if ( Auth::user()->gender_id != NULL )
             <div class="flex flex-col md:flex-row justify-center items-center gap-2">
-                {{-- <x-input-label class="label" for="gender" :value="__('Gender')" /> --}}
                 <label for="gender" class="label font-bold">{{ __('gender') }}:</label>
-                @if ( Auth::user()->gender_id != NULL )
-                    <h4>
-                        {{-- @if (Auth::user()->gender_id == NULL) --}}
-                        {{ LaravelLocalization::getCurrentLocale() == 'en' ? Auth::user()->gender->name_en : Auth::user()->gender->name_fr}} 
-                        {{-- @else
-                        {{ Auth::user()->gender->name }}
-                        @endif --}}
-                    </h4>
-                @else
-                    <div class="mt-2 md:mt-4 w-[100%]">
-                        {{-- <h4>current data: {{ Auth::user()->gender->name }}</h4> --}}
-                        <select name="gender_id" id="gender" class="w-[100%] p-1 text-lg md:text-xl text-black rounded-md">
-                            <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
-                            @foreach ($genders as $gender)
-                                <option value="{{ $gender->id }}" {{ Auth::user()->gender_id == $gender->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $gender->name_en : $gender->name_fr }}</option>
-                            @endforeach
-                        </select>
-                        <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
-                    </div>
-                @endif
+                <h4>
+                    {{ LaravelLocalization::getCurrentLocale() == 'en' ? Auth::user()->gender->name_en : Auth::user()->gender->name_fr}}
+                </h4>
             </div>
+            @else
+                <div class="flex flex-col justify-center items-center gap-2">
+                    <label for="gender" class="label font-bold">{{ __('gender') }}:</label>
+                    <select name="gender_id" id="gender" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
+                        <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
+                        @foreach ($genders as $gender)
+                            <option value="{{ $gender->id }}" {{ Auth::user()->gender_id == $gender->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $gender->name_en : $gender->name_fr }}</option>
+                        @endforeach
+                    </select>
+                    <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
+                </div>
+            @endif
             <x-input-error :messages="$errors->get('gender')" />
         </div>
 
-        <div class="flex flex-col md:flex-row justify-center items-center gap-2">
-            <label for="date_of_birth" class="label font-bold">{{ __('dob') }}:</label>
+        <div>
             @if ($user->date_of_birth != null)
-            <h3>{{ explode('-',Auth::user()->date_of_birth)[2] }}/{{ explode('-',Auth::user()->date_of_birth)[1] }}/{{ explode('-',Auth::user()->date_of_birth)[0] }}</h3>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+                    <label for="date_of_birth" class="label font-bold">{{ __('dob') }}:</label>
+                    <h3>
+                        {{ explode('-',Auth::user()->date_of_birth)[2] }}/{{ explode('-',Auth::user()->date_of_birth)[1] }}/{{ explode('-',Auth::user()->date_of_birth)[0] }}
+                    </h3>
+                </div>
             @else
-            {{-- <x-input-label for="dob" :value="__('Date of birth')" class="text-white text-lg md:text-xl mt-2 md:mt-4 mb-[-3%]"/> --}}
-                <div class="flex flex-row justify-center items-center gap-2 w-[100%]">
-                    <div>
-                        <select name="dob" id="dob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[2] }}">{{ explode('-',Auth::user()->date_of_birth)[2] }}</option> --}}
-                            {{-- @for ($i = 1; $i <= 31; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor --}}
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <select name="mob" id="mob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[1] }}">{{ explode('-',Auth::user()->date_of_birth)[1] }}</option> --}}
-                            <option value="">{{ __('mm') }}</option>
-                            <option value="1">{{ __('January') }}</option>
-                            <option value="2">{{ __('February') }}</option>
-                            <option value="3">{{ __('March') }}</option>
-                            <option value="4">{{ __('April') }}</option>
-                            <option value="5">{{ __('May') }}</option>
-                            <option value="6">{{ __('June') }}</option>
-                            <option value="7">{{ __('July') }}</option>
-                            <option value="8">{{ __('August') }}</option>
-                            <option value="9">{{ __('September') }}</option>
-                            <option value="10">{{ __('October') }}</option>
-                            <option value="11">{{ __('November') }}</option>
-                            <option value="12">{{ __('December') }}</option>
-                        </select>
-                    </div>
-            
-                    <div>
-                        <select name="yob" id="yob" class="text-black rounded-md p-2">
-                            {{-- <option value="{{ explode('-',Auth::user()->date_of_birth)[0] }}">{{ explode('-',Auth::user()->date_of_birth)[0] }}</option> --}}
-                            @for ($i = 1945; $i <= 2005; $i++)
-                                @if ($i == 1945)
-                                    '<option value="">yyyy</option>
-                                @endif
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
-                        </select>
+                <div class="flex flex-col justify-center items-center gap-2 w-[100%]">
+                    <label for="date_of_birth" class="label font-bold">{{ __('dob') }}:</label>
+                    <div class="flex flex-row justify-centeritems-center gap-2">
+                        <div>
+                            <select name="dob" id="dob" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[50px] dark:border-gray-400 dark:text-black">
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <select name="mob" id="mob" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[80px] dark:border-gray-400 dark:text-black">
+                                <option value="">{{ __('mm') }}</option>
+                                <option value="1">{{ __('January') }}</option>
+                                <option value="2">{{ __('February') }}</option>
+                                <option value="3">{{ __('March') }}</option>
+                                <option value="4">{{ __('April') }}</option>
+                                <option value="5">{{ __('May') }}</option>
+                                <option value="6">{{ __('June') }}</option>
+                                <option value="7">{{ __('July') }}</option>
+                                <option value="8">{{ __('August') }}</option>
+                                <option value="9">{{ __('September') }}</option>
+                                <option value="10">{{ __('October') }}</option>
+                                <option value="11">{{ __('November') }}</option>
+                                <option value="12">{{ __('December') }}</option>
+                            </select>
+                        </div>
+                
+                        <div>
+                            <select name="yob" id="yob" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[70px] dark:border-gray-400 dark:text-black">
+                                @for ($i = 1945; $i <= 2005; $i++)
+                                    @if ($i == 1945)
+                                        '<option value="">yyyy</option>
+                                    @endif
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
                     </div>
                     <x-input-error  :messages="$errors->get('dob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
                     <x-input-error  :messages="$errors->get('mob')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
@@ -139,11 +134,7 @@
             <select name="system_id" id="system" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_system') }}</option>
                 @foreach ($systems as $system)
-                {{-- @if {{ LaravelLocalization::getCurrentLocale() == 'en'}} --}}
                     <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $system->name_en : $system->name_fr }}</option>
-                    {{-- @else
-                    <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ $system->name_fr }}</option>
-                    @endif --}}
                 @endforeach
             </select>
             <x-input-error  :messages="$errors->get('system')" />
@@ -172,7 +163,6 @@
         </div>
 
         <div class="flex flex-col justify-center items-center gap-1">
-            {{-- <x-input-label class="label" for="step" :value="__('step')" /> --}}
             <label for="step" class="label font-bold">{{ __('step') }}:</label>
             <select name="step_id" id="step" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_step') }}</option>

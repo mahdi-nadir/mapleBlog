@@ -12,6 +12,10 @@ class ProfilePictureController extends Controller
 {
     public function update(Request $request)
     {
+        $request->validate([
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
+        ]);
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $fileName = auth()->user()->username . '_maplmind' . auth()->user()->id . 'xhr_' . explode('@', auth()->user()->email)[0];
