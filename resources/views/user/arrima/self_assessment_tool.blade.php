@@ -4,7 +4,7 @@
         <p class="text-xl mt-5">
             {{ __('selfAssessMsg') }}
         </p>
-        <a href="#" {{-- target="_blank" --}} rel="noreferrer" id="clickLink" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">
+        <a href="https://arrima.immigration-quebec.gouv.qc.ca/monespacepublic/calculette/sommaire" target="_blank" rel="noreferrer" id="clickLink" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">
             {{ __('clickHere') }}
         </a>
         <div style="display: none;" id="arrimaFormDiv" class="p-8 border-2 border-black dark:border-white rounded-lg w-4/6 md:w-1/4 mx-auto mt-10">
