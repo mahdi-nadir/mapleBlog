@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" id="navbar" class="bg-black fixed top-0 left-0 w-full px-2 h-[60px] flex flex-row justify-between items-center relative text-white">
+<nav x-data="{ open: false }" id="navbar" class="bg-black fixed bottom-0 left-0 w-full px-2 h-[60px] flex flex-row justify-between items-center relative text-white">
     <div class="container m-auto flex flex-row justify-between items-center">
         <h1>
             <a id="linklogo" class="inline-flex p-y text-xl tracking-wider font-bold" href="{{ route('dashboard') }}" title="{{ __('home page') }}">
@@ -106,9 +106,20 @@
 </div>
 </nav>
 @if (Auth::user()->diploma_id == null || Auth::user()->system_id == null || Auth::user()->noc_id == null || Auth::user()->step_id == null || Auth::user()->date_of_birth == null || Auth::user()->gender_id == null)
-    <x-responsive-nav-link :href="route('profile.edit')" title="{{ __('Update Profile') }}">
+    <x-responsive-nav-link :href="route('profile.edit')" title="{{ __('updateInfo') }}">
         <section class="mt-1 bg-red-500 p-4 font-bold text-white w-full rounded-lg border-black dark:border-white border-2 uppercase hover:bg-red-600">
-                {{ __('please update your profile') }} <i class="fa-solid fa-angles-right animate-pulse"></i>
+            @if (Auth::user()->password_confirmed == 0)
+                {{ __('updateInfoAndPass') }} 
+            @else
+                {{ __('updateInfo') }}
+            @endif
+                <i class="fa-solid fa-angles-right animate-pulse"></i>
+        </section>
+    </x-responsive-nav-link>
+@else
+    <x-responsive-nav-link :href="route('profile.edit')" title="{{ __('updatePass') }}">
+        <section class="mt-1 bg-red-500 p-4 font-bold text-white w-full rounded-lg border-black dark:border-white border-2 uppercase hover:bg-red-600">
+                {{ __('updatePass') }} <i class="fa-solid fa-angles-right animate-pulse"></i>
         </section>
     </x-responsive-nav-link>
 @endif

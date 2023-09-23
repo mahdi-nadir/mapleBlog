@@ -365,5 +365,8 @@
     "youve": "You've got",
     "toPost": "Publish",
     "notSpecified": "Not Specified",
-    "updatePsdMsg": "You need to update your password to be able to use the website. You can keep the same username if you want."
+    "updatePsdMsg": "You need to update your password to be able to use the website. You can keep the same username if you want.",
+    "updateInfo": "Update Profile Information",
+    "updateInfoAndPass": "Update Profile Information and Password",
+    "updatePass": "Update Password"
 }

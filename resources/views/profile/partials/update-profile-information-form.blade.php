@@ -60,7 +60,7 @@
                 @if ( Auth::user()->gender_id != NULL )
                     <h4>
                         {{-- @if (Auth::user()->gender_id == NULL) --}}
-                        {{ Auth::user()->gender->name}} 
+                        {{ LaravelLocalization::getCurrentLocale() == 'en' ? Auth::user()->gender->name_en : Auth::user()->gender->name_fr}} 
                         {{-- @else
                         {{ Auth::user()->gender->name }}
                         @endif --}}
@@ -70,8 +70,9 @@
                         {{-- <h4>current data: {{ Auth::user()->gender->name }}</h4> --}}
                         <select name="gender_id" id="gender" class="w-[100%] p-1 text-lg md:text-xl text-black rounded-md">
                             <option value="" class="text-slate-400" disabled selected>{{ __('XY') }}</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
+                            @foreach ($genders as $gender)
+                                <option value="{{ $gender->id }}" {{ Auth::user()->gender_id == $gender->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $gender->name_en : $gender->name_fr }}</option>
+                            @endforeach
                         </select>
                         <x-input-error  :messages="$errors->get('gender')" class="mt-2 bg-red-600 p-1 text-white italic rounded"/>
                     </div>
@@ -138,7 +139,11 @@
             <select name="system_id" id="system" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_system') }}</option>
                 @foreach ($systems as $system)
-                    <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ $system->name }}</option>
+                {{-- @if {{ LaravelLocalization::getCurrentLocale() == 'en'}} --}}
+                    <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $system->name_en : $system->name_fr }}</option>
+                    {{-- @else
+                    <option value="{{ $system->id }}" {{ Auth::user()->system_id == $system->id ? 'selected' : '' }}>{{ $system->name_fr }}</option>
+                    @endif --}}
                 @endforeach
             </select>
             <x-input-error  :messages="$errors->get('system')" />
@@ -149,7 +154,7 @@
             <select name="diploma_id" id="diploma" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_degree') }}</option>
                 @foreach ($diplomas as $diploma)
-                    <option value="{{ $diploma->id }}" {{ Auth::user()->diploma_id == $diploma->id ? 'selected' : '' }}>{{ $diploma->level }}</option>
+                    <option value="{{ $diploma->id }}" {{ Auth::user()->diploma_id == $diploma->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $diploma->level_en : $diploma->level_fr }}</option>
                 @endforeach
             </select>
             <x-input-error  :messages="$errors->get('diploma')" />
@@ -172,7 +177,7 @@
             <select name="step_id" id="step" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-[200px] dark:border-gray-400 dark:text-black">
                 <option value="">{{ __('select_step') }}</option>
                 @foreach ($steps as $step)
-                    <option value="{{ $step->id }}" {{ Auth::user()->step_id == $step->id ? 'selected' : '' }}>{{ $step->name }}</option>
+                    <option value="{{ $step->id }}" {{ Auth::user()->step_id == $step->id ? 'selected' : '' }}>{{ LaravelLocalization::getCurrentLocale() == 'en' ? $step->name_en : $step->name_fr }}</option>
                 @endforeach
             </select>
             <x-input-error  :messages="$errors->get('step')" />

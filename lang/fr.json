@@ -365,5 +365,8 @@
     "posts": "publications",
     "toPost": "Publier",
     "notSpecified": "Non spécifié",
-    "updatePsdMsg": "Vous devez mettre à jour votre mot de passe pour pouvoir utiliser le site web. Vous pouvez conserver le même nom d'utilisateur si vous le souhaitez."
+    "updatePsdMsg": "Vous devez mettre à jour votre mot de passe pour pouvoir utiliser le site web. Vous pouvez conserver le même nom d'utilisateur si vous le souhaitez.",
+    "updateInfo": "Mettre à jour les informations de profil",
+    "updateInfoAndPass": "Mettre à jour les informations de profil et le mot de passe",
+    "updatePass": "Mettre à jour le mot de passe"
 }

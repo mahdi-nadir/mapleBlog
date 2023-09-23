@@ -14,13 +14,13 @@ class DiplomaSeeder extends Seeder
     public function run(): void
     {
         DB::table('diplomas')->insert([
-            ['level' => 'Secondary Diploma'],
-            ['level' => 'One-year program'],
-            ['level' => 'Two-year program'],
-            ['level' => 'Bachelor\'s degree'],
-            ['level' => 'Two or more certificates'],
-            ['level' => 'Master\'s degree'],
-            ['level' => 'Doctorate'],
+            ['level_en' => 'Secondary Diploma', 'level_fr' => 'Diplôme d\'études secondaires'],
+            ['level_en' => 'One-year program', 'level_fr' => 'Programme d\'un an'],
+            ['level_en' => 'Two-year program', 'level_fr' => 'Programme de deux ans'],
+            ['level_en' => 'Bachelor\'s degree', 'level_fr' => 'Baccalauréat'],
+            ['level_en' => 'Two or more certificates', 'level_fr' => 'Deux diplômes ou plus'],
+            ['level_en' => 'Master\'s degree', 'level_fr' => 'Maîtrise'],
+            ['level_en' => 'Doctorate', 'level_fr' => 'Doctorat']
         ]);
     }
 }

@@ -14,12 +14,12 @@ class SystemSeeder extends Seeder
     public function run(): void
     {
         DB::table('systems')->insert([
-            ['name' => 'Arrima'],
-            ['name' => 'Express Entry'],
-            ['name' => 'Citizenship'],
-            ['name' => 'Work permit'],
-            ['name' => 'Study permit'],
-            ['name' => 'Visitor'],
+            ['name_en' => 'Arrima', 'name_fr' => 'Arrima'],
+            ['name_en' => 'Express Entry', 'name_fr' => 'Entrée Express'],
+            ['name_en' => 'Citizenship', 'name_fr' => 'Citoyenneté'],
+            ['name_en' => 'Study permit', 'name_fr' => 'Permis d\'études'],
+            ['name_en' => 'Work permit', 'name_fr' => 'Permis de travail'],
+            ['name_en' => 'Visitor', 'name_fr' => 'Visiteur']
         ]);
     }
 }

@@ -9,9 +9,7 @@ class Diploma extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'level',
-    ];
+    protected $guarded = [];
 
     public function users()
     {

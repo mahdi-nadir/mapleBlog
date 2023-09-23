@@ -64,8 +64,9 @@ class RegisteredUserController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'password_confirmed' => 1,
             'role_id' => 2,
-            'img_user_id' => 2,
+            // 'img_user_id' => 1,
             'gender_id' => null,
             'date_of_birth' => null,
             // 'dob' => 1,
@@ -80,7 +81,6 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        $array_greetings = ['Hello', 'Hi', 'Welcome', 'Greetings', 'Hey', 'Howdy'];
         connectify('success', 'Welcome to MapleMind', 'We\'re so excited to have you join us ' . Auth::user()->username);
 
         return redirect(RouteServiceProvider::HOME);

@@ -2,48 +2,49 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArrimaController;
-use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExpressEntryController;
+use App\Http\Controllers\Auth\ProviderController;
+use App\Mail\MyTestEmail;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 
-
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+        Route::get('/', function () {
+            return view('welcome');
+        });
 
-        Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->middleware(['auth', 'verified'])->name('dashboard');
 
-        Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
+
+
+        // Route::get('/update-password', [ProfileController::class, 'updateFromSocialMedia']);
+
 
 
         Route::middleware('auth')->group(
             function () {
                 //...
+                // Route::post('/update-password', [ProfileController::class, 'updateFromSocialMedia'])->name('update.passwordUsername');
 
                 /** Localized Routes here **/
-                Route::get('/', function () {
-                    return view('welcome');
-                });
-
-                Route::get('/dashboard', function () {
-                    return view('dashboard');
-                })->middleware(['auth', 'verified'])->name('dashboard');
-
-                Route::get('/update-password', [ProfileController::class, 'updateFromSocialMedia']);
-                Route::post('/update-password', [ProfileController::class, 'updateFromSocialMedia'])->name('update.passwordUsername');
-
                 Route::get('/arrima/expression-of-interest', [ArrimaController::class, 'expression_of_interest'])->name('arrima.expression_of_interest');
                 Route::get('/arrima/self-assessment-tool', [ArrimaController::class, 'self_assessment_tool'])->name('arrima.self_assessment_tool');
                 Route::get('/arrima/csq', [ArrimaController::class, 'csq'])->name('arrima.csq');

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('genders', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name_en', 20)->nullable();
+            $table->string('name_fr', 20)->nullable();
             $table->timestamps();
         });
     }

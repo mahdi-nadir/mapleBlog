@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('diplomas', function (Blueprint $table) {
             $table->id();
-            $table->string('level', 50)->nullable();
+            $table->string('level_en', 50)->nullable();
+            $table->string('level_fr', 50)->nullable();
             $table->timestamps();
         });
     }

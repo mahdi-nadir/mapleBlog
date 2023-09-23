@@ -18,10 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger("role_id")->default(2);
             $table->string('password')->nullable();
+            $table->boolean('password_confirmed')->default(false);
             $table->string('provider_id')->nullable();
             $table->string('provider_token')->nullable();
             $table->string('provider')->nullable();
-            $table->unsignedBigInteger("img_user_id")->nullable();
+            $table->unsignedBigInteger("img_user_id")->nullable()->default(1);
             $table->unsignedBigInteger("gender_id")->nullable();
             $table->date("date_of_birth")->nullable();
             // $table->integer("dob")->default(1)->max(31)->min(1);

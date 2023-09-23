@@ -14,15 +14,15 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         DB::table('categories')->insert([
-            ['name' => 'Express Entry'],
-            ['name' => 'Arrima'],
-            ['name' => 'Work visa'],
-            ['name' => 'Study visa'],
-            ['name' => 'Family Sponsorship and Reunification'],
-            ['name' => 'Canadian Citizenship'],
-            ['name' => 'Canadian Immigration News'],
-            ['name' => 'Settlement and Integration'],
-            ['name' => 'Community and Diversity'],
+            ['name_en' => 'Express Entry', 'name_fr' => 'Entrée Express'],
+            ['name_en' => 'Arrima', 'name_fr' => 'Arrima'],
+            ['name_en' => 'Work visa', 'name_fr' => 'Permis de travail'],
+            ['name_en' => 'Study visa', 'name_fr' => 'Permis d\'étude'],
+            ['name_en' => 'Family Sponsorship and Reunification', 'name_fr' => 'Parrainage et regroupement familial'],
+            ['name_en' => 'Canadian Citizenship', 'name_fr' => 'Citoyenneté Canadienne'],
+            ['name_en' => 'Canadian Immigration News', 'name_fr' => 'Infos sur l\'immigration canadienne'],
+            ['name_en' => 'Settlement and Integration', 'name_fr' => 'Installation et intégration'],
+            ['name_en' => 'Community and Diversity', 'name_fr' => 'Communauté et diversité'],
         ]);
     }
 }

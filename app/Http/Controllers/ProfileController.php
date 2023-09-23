@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Noc;
+use App\Models\Step;
 use App\Models\User;
+use App\Models\Gender;
+use App\Models\System;
+use App\Models\Diploma;
 use App\Models\ImgUser;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules\Password;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\Diploma;
-use App\Models\Step;
-use App\Models\System;
 
 class ProfileController extends Controller
 {
@@ -26,8 +29,9 @@ class ProfileController extends Controller
         $diplomas = Diploma::all();
         $steps = Step::all();
         $nocs = Noc::all();
+        $genders = Gender::all();
         $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
-        $image == NULL ? $image = 'default.png' : $image = $image->path;
+        $image ? $image = $image->path : $image = 'default.png';
 
         // emotify('success', 'Well done, your profile is now updated');
         return view('profile.edit', [
@@ -37,6 +41,7 @@ class ProfileController extends Controller
             'steps' => $steps,
             'diplomas' => $diplomas,
             'systems' => $systems,
+            'genders' => $genders
         ]);
     }
 
@@ -81,22 +86,20 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    public function updateFromSocialMedia(ProfileUpdateRequest $request)
-    {
-        $user = $request->user();
+    // public function updateFromSocialMedia(Request $request)
+    // {
+    //     $validated = $request->validateWithBag('updatePassword', [
+    //         'password' => ['required', Password::defaults(), 'confirmed'],
+    //     ]);
 
-        $user->username = $request->input('username');
-        $user->password = $request->input('password');
+    //     $request->user()->update([
+    //         'password' => Hash::make($validated['password']),
+    //     ]);
 
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
+    //     connectify('success', 'Welcome to MapleMind', 'It\'s a pleasure to have you here ' . Auth::user()->username);
 
-        $user->save();
-        $array_greetings = ['Hello', 'Hi', 'Welcome', 'Greetings', 'Hey', 'Howdy'];
-        connectify('success', 'Welcome to MapleMind', 'It\'s a pleasure to have you here ' . Auth::user()->username);
-        return view('dashboard');
-    }
+    //     return view('dashboard');
+    // }
 
     /**
      * Delete the user's account.
