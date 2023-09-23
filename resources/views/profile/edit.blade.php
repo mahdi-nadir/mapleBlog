@@ -22,11 +22,12 @@
                 <span class="font-bold">
                     {{ __('immSys') }}: 
                 </span>
-                <span class={{ $user->system_id == null ? 'text-red-500' : '' }}>
-                    @if ($user->system_id == null)
+                @if ($user->system_id == null)
+                <span class='text-red-500'>
                     {{ __('notSpecified') }}
                     @else
-                    {{ $user->system->name }}
+                    <span>
+                    {{ LaravelLocalization::getCurrentLocale() == 'en' ? auth()->user()->system->name_en : auth()->user()->system->name_fr }}
                     @endif
                 </span>
             </h3>
@@ -35,11 +36,12 @@
                 <span class="font-bold">
                     {{ __('step') }}: 
                 </span>
-                <span class={{ $user->step_id == null ? 'text-red-500' : '' }}>
-                    @if ($user->step_id == null)
+                @if ($user->step_id == null)
+                <span class='text-red-500'>
                     {{ __('notSpecified') }}
                     @else
-                    {{ $user->step->name }}
+                    <span>
+                        {{ LaravelLocalization::getCurrentLocale() == 'en' ? auth()->user()->step->name_en : auth()->user()->step->name_fr }}
                     @endif
                 </span>
             </h3>
@@ -48,11 +50,12 @@
                 <span class="font-bold">
                     {{ __('degree') }}: 
                 </span>
-                <span class={{ $user->diploma_id == null ? 'text-red-500' : '' }}>
-                    @if ($user->diploma_id == null)
+                @if ($user->diploma_id == null)
+                <span class='text-red-500'>
                     {{ __('notSpecified') }}
                     @else
-                    {{ $user->diploma->level }}
+                    <span>
+                        {{ LaravelLocalization::getCurrentLocale() == 'en' ? auth()->user()->diploma->level_en : auth()->user()->diploma->level_fr }}
                     @endif
                 </span>
             </h3>
@@ -61,19 +64,20 @@
                 <span class="font-bold">
                     {{ __('noc') }}: 
                 </span>
-                <span class={{ $user->noc_id == null ? 'text-red-500' : '' }}>
-                    @if ($user->noc_id == null)
+                @if ($user->noc_id == null)
+                <span class='text-red-500'>
                     {{ __('notSpecified') }}
                     @else
+                    <span>
                     {{ $user->noc->code }}
                     @endif
                 </span>
             </h3>
             
-            @if ($user->date_of_birth != null)
+            @if (auth()->user()->date_of_birth != null)
             <h3 class="mt-1"><span class="font-bold">{{ __('dob') }}: </span>{{ explode('-', $user->date_of_birth)[2] }}-{{ explode('-', $user->date_of_birth)[1] }}-{{ explode('-', $user->date_of_birth)[0] }}</h3>
             @else
-            <h3 class="mt-1"><span class="font-bold">{{ __('dob') }}: </span>{{ __('notSpecified') }}</h3>
+            <h3 class="mt-1"><span class="font-bold">{{ __('dob') }}: </span><span class='text-red-500'>{{ __('notSpecified') }}</span></h3>
             @endif
         </div>
     </div>
