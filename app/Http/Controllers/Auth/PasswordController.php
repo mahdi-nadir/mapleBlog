@@ -19,16 +19,23 @@ class PasswordController extends Controller
 
         // $password = User::where('id', $request->user()->id)->first()->password;
         // $request->current_password == '' ? $request->current_password = NULL : $request->current_password = $request->current_password;
+        $password_confirmed = User::where('id', $request->user()->id)->first()->password_confirmed;
 
         $validated = $request->validateWithBag('updatePassword', [
             'current_password' => ['current_password'],
             'password' => ['required', Password::defaults(), 'confirmed'],
         ]);
 
-        $request->user()->update([
-            'password' => Hash::make($validated['password']),
-            'password_confirmed' => 1,
-        ]);
+        if ($password_confirmed == 0) {
+            $request->user()->update([
+                'password' => Hash::make($validated['password']),
+                'password_confirmed' => 1,
+            ]);
+        } else {
+            $request->user()->update([
+                'password' => Hash::make($validated['password']),
+            ]);
+        }
 
         notify()->success('Great, your password has been updated', 'Well done');
 

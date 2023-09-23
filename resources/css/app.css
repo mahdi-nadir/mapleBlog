@@ -5,11 +5,11 @@
 .dark {
     --tw-bg-opacity: 1;
     background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-  }
-  
-  .dark .dark-text {
+}
+
+.dark .dark-text {
     color: var(--tw-text-opacity, 1);
-  }
+}
 
 
 .body {

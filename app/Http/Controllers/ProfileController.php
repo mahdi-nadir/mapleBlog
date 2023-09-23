@@ -32,6 +32,7 @@ class ProfileController extends Controller
         $genders = Gender::all();
         $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
         $image ? $image = $image->path : $image = 'default.png';
+        $password_confirmed = Auth::user()->password_confirmed;
 
         // emotify('success', 'Well done, your profile is now updated');
         return view('profile.edit', [
@@ -41,7 +42,8 @@ class ProfileController extends Controller
             'steps' => $steps,
             'diplomas' => $diplomas,
             'systems' => $systems,
-            'genders' => $genders
+            'genders' => $genders,
+            'password_confirmed' => $password_confirmed,
         ]);
     }
 

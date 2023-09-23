@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger("role_id")->default(2);
             $table->string('password')->nullable();
+            // $table->string('tmp_password')->nullable();
             $table->boolean('password_confirmed')->default(false);
             $table->string('provider_id')->nullable();
             $table->string('provider_token')->nullable();

@@ -12,10 +12,16 @@
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
+
+        @if ($password_confirmed == 0)
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                {{ __('loggedFromGoogle') }}
+            </p>
+        @endif
         
         <div class="flex flex-col justify-center items-center">
             <label for="current_password" class="font-bold">{{ __('currentPassword') }}</label>
-            <input id="current_password" name="current_password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-1/2 mt-1 block dark:border-gray-400 dark:text-black" autocomplete="current-password" />
+            <input id="current_password" name="current_password" type="password" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-1/2 mt-1 block dark:border-gray-400 dark:text-black" autocomplete="current-password" value={{ $password_confirmed == 0 ? 'password' : ''}} {{ $password_confirmed == 0 ? 'readonly' : null}} />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 

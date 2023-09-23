@@ -368,5 +368,6 @@
     "updatePsdMsg": "You need to update your password to be able to use the website. You can keep the same username if you want.",
     "updateInfo": "Update Profile Information",
     "updateInfoAndPass": "Update Profile Information and Password",
-    "updatePass": "Update Password"
+    "updatePass": "Update Password",
+    "loggedFromGoogle": "Since you logged in with Google, you need to update your password right away."
 }

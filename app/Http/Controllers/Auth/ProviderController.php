@@ -52,7 +52,8 @@ class ProviderController extends Controller
             ], [
                 'username' => User::generateUsername($socialuser->nickname),
                 'email' => $socialuser->email,
-                'password' => Hash::make(User::generateUsername($socialuser->nickname) . '_9Hfx4@1s'),
+                'password' => Hash::make('password'),
+                // 'tmp_password' => 'maplemind_9Hfx4@1s',
                 // 'password_confirmed' => 0,
                 'system_id' => null,
                 'role_id' => 2,
@@ -76,6 +77,8 @@ class ProviderController extends Controller
             $genders = Gender::all();
             $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
             $image ? $image = $image->path : $image = 'default.png';
+            $password_confirmed = Auth::user()->password_confirmed;
+            $tmp_password = Auth::user()->tmp_password;
 
             connectify('success', 'Welcome' . Auth::user()->username, 'It is time to complete your profile for better experience');
             // return view('auth.update-password-username', compact('user'));
@@ -87,7 +90,9 @@ class ProviderController extends Controller
                 'steps' => $steps,
                 'diplomas' => $diplomas,
                 'systems' => $systems,
-                'genders' => $genders
+                'genders' => $genders,
+                'password_confirmed' => $password_confirmed,
+                // 'tmp_password' => $tmp_password,
             ]);
         }
         // Mail::to('mehdinip@gmail.com')->send(new MyTestEmail('Mehdi'));
