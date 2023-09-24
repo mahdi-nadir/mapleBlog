@@ -1,7 +1,7 @@
 <x-app-layout>
-    <section class="text-center md:text-justify text-xl">
+    <section class="text-center md:text-justify text-lg">
         <h1 class="text-4xl font-bold mt-5 text-center">{{ __('expOfInt') }}</h1>
-        <div class="mt-5 flex flex-col justify-center items-center gap-4 md:leading-9">
+        <div class="mt-5 flex flex-col justify-center items-center gap-4">
             <p class="indent-8">{{ __('expOfIntParagraph') }}</p>
             <p class="indent-8">{{ __('expOfIntParagraph2') }}</p>
             <p class="indent-8">{{ __('expOfIntParagraph3') }}</p>
@@ -10,7 +10,7 @@
 
         <h1 class="text-3xl font-bold mt-5">{{ __('expOfIntBigTitle') }}</h1>
         
-        <div class="mt-5 text-xlflex flex-col justify-center items-center md:leading-9">
+        <div class="mt-5 text-xlflex flex-col justify-center items-center">
             <div>
                 <h1 class="text-2xl font-bold mt-5">Conditions</h1>
                 <ol class="indent-8 text-start list-decimal pl-8">

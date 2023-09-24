@@ -1,7 +1,7 @@
 <x-app-layout>
-    <section class="text-center md:text-justify text-xl">
+    <section class="text-center md:text-justify text-lg">
         <h1 class="text-4xl font-bold mt-5 text-center">Arrima.. {{ __('howItWorks') }}</h1>
-        <div class="mt-5 flex flex-col justify-center items-center gap-4 md:leading-9">
+        <div class="mt-5 flex flex-col justify-center items-center gap-4">
             <p class="indent-8">{{ __('howItWorksParagraph') }}</p>
             <p class="indent-8">{{ __('howItWorksParagraph2') }}</p>
             <div class="mt-5 md:mt-8">
