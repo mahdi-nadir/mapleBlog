@@ -117,11 +117,13 @@
         </section>
     </x-responsive-nav-link>
 @else
+@if (Auth::user()->password_confirmed == 0)
     <x-responsive-nav-link :href="route('profile.edit')" title="{{ __('updatePass') }}">
         <section class="mt-1 bg-red-500 p-4 font-bold text-white w-full rounded-lg border-black dark:border-white border-2 uppercase hover:bg-red-600">
                 {{ __('updatePass') }} <i class="fa-solid fa-angles-right animate-pulse"></i>
         </section>
     </x-responsive-nav-link>
+@endif
 @endif
 <script>
     const toggleDarkMode = () => {

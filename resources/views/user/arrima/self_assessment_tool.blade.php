@@ -1,8 +1,11 @@
 <x-app-layout>
-    <section id="extraInfo">
+    <section>
         <h1 class="text-4xl font-bold mt-5">{{ __('selfAssessTool') }}</h1>
         <p class="text-xl mt-5">
             {{ __('selfAssessMsg') }}
+        </p>
+        <p class="text-xl mt-5">
+            {{ __('selfAssessMsg2') }}
         </p>
         <a href="https://arrima.immigration-quebec.gouv.qc.ca/monespacepublic/calculette/sommaire" target="_blank" rel="noreferrer" id="clickLink" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">
             {{ __('clickHere') }}
@@ -27,8 +30,27 @@
 <script>
     const clickLink = document.getElementById('clickLink');
     const arrimaFormDiv = document.getElementById('arrimaFormDiv');
+    const input = document.querySelector('input[name="arrima_score"]');
+    const submitBtn = document.querySelector('button[type="submit"]');
 
     clickLink.addEventListener('click', () => {
         arrimaFormDiv.style.display = 'block';
     });
+
+    // input.addEventListener('input', () => {
+    //     if (input.value > 1320) {
+    //         input.value = 1320;
+    //     }
+    // });
+
+    // submitBtn.addEventListener('click', (e) => {
+    //     if (input.value > 1320) {
+    //         input.value = 1320;
+    //     } else if (input.value < 0) {
+    //         input.value = 0;
+    //     } else if (input.value == '') {
+    //         input.value = 0;
+    //         e.preventDefault();
+    //     }
+    // });
 </script>
