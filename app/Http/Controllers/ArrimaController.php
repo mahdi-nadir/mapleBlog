@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ArrimaController extends Controller
 {
+    public function index()
+    {
+        return view('user.arrima.how_arrima_works');
+    }
+
     public function expression_of_interest()
     {
         return view('user.arrima.expression_of_interest');

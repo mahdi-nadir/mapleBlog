@@ -49,6 +49,10 @@
             <li id="arrimaBtn" class="relative py-[10px] md:py-[16px] list-none text-xl font-bold uppercase px-2 cursor-pointer hover:underline">
                 <h1 id="arrima" class="w-10 h-10 md:w-fit md:h-fit pt-1">{{ __('Arrima') }}</h1>
                 <ul class="absolute top-[101%] left-[30%] translate-x-[-30%] md:top-[95%] border border-t-0 border-white bg-black w-[210px] list-none z-20">
+                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/how-it-works') }}" class="text-white w-full" :active="request()->routeIs('arrima.how_arrima_works')">
+                        {{ __('howItWorks') }}
+                    </x-nav-link>
+
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/expression-of-interest') }}" class="text-white w-full" :active="request()->routeIs('arrima.expression_of_interest')">
                         {{ __('exprInterest') }}
                     </x-nav-link>
@@ -60,10 +64,10 @@
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/csq') }}" class="text-white w-full" :active="request()->routeIs('arrima.csq')">
                         {{ __('csq') }}
                     </x-nav-link>
-                    
-                    <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/permanent-residence') }}" class="text-white w-full" :active="request()->routeIs('arrima.permanent_residence')">
+
+                    {{-- <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/permanent-residence') }}" class="text-white w-full" :active="request()->routeIs('arrima.permanent_residence')">
                         {{ __('pr') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/pmi') }}" class="text-white w-full" :active="request()->routeIs('arrima.pmi')">
                         {{ __('PMI') }}

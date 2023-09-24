@@ -45,6 +45,7 @@ Route::group(
                 // Route::post('/update-password', [ProfileController::class, 'updateFromSocialMedia'])->name('update.passwordUsername');
 
                 /** Localized Routes here **/
+                Route::get('/arrima/how-it-works', [ArrimaController::class, 'index'])->name('arrima.how_arrima_works');
                 Route::get('/arrima/expression-of-interest', [ArrimaController::class, 'expression_of_interest'])->name('arrima.expression_of_interest');
                 Route::get('/arrima/self-assessment-tool', [ArrimaController::class, 'self_assessment_tool'])->name('arrima.self_assessment_tool');
                 Route::get('/arrima/csq', [ArrimaController::class, 'csq'])->name('arrima.csq');

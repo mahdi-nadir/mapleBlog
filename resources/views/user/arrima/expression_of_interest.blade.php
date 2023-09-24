@@ -2,10 +2,10 @@
     <section class="text-center md:text-justify text-xl">
         <h1 class="text-4xl font-bold mt-5 text-center">{{ __('expOfInt') }}</h1>
         <div class="mt-5 flex flex-col justify-center items-center gap-4 md:leading-9">
-            <p>{{ __('expOfIntParagraph') }}</p>
-            <p>{{ __('expOfIntParagraph2') }}</p>
-            <p>{{ __('expOfIntParagraph3') }}</p>
-            <p>{{ __('expOfIntParagraph4') }}</p>
+            <p class="indent-8">{{ __('expOfIntParagraph') }}</p>
+            <p class="indent-8">{{ __('expOfIntParagraph2') }}</p>
+            <p class="indent-8">{{ __('expOfIntParagraph3') }}</p>
+            <p class="indent-8">{{ __('expOfIntParagraph4') }}</p>
         </div>
 
         <h1 class="text-3xl font-bold mt-5">{{ __('expOfIntBigTitle') }}</h1>
@@ -43,7 +43,7 @@
                     <li>{{ __('infoElement8') }}</li>
                     <li>{{ __('infoElement9') }}</li>
                 </ul>
-                <p class="mt-5">{{ __('infoParagraph') }}</p>
+                <p class="mt-5 indent-8">{{ __('infoParagraph') }}</p>
                 <p class="italic mt-3 font-bold">{{ __('infoMust2') }}</p>
                 <ol class="indent-8 text-start list-decimal pl-8">
                     <li>{{ __('infoElement10') }}</li>
@@ -55,7 +55,7 @@
             
             <div class="mt-8 md:mt-12">
                 <h1 class="text-2xl font-bold mt-5">{{ __('howToApplyTitle') }}</h1>
-                <p class="mt-2">
+                <p class="mt-2 indent-8">
                     {{ __('infoParagraph2') }} <a href="https://arrima.immigration-quebec.gouv.qc.ca/aiguillage/?" target="_blank" rel="noreferrer" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">{{ __('infoLien') }}</a> {{ __('infoParagraph3') }}
                 </p>
             </div>
