@@ -34,7 +34,7 @@
                 <p class="indent-8">{{ __('howItWorksParagraph5') }}</p>
                 <p>{{ __('howItWorksParagraph6') }}</p>
                 <ul class="indent-8 text-start list-disc pl-8">
-                    <li>{{ __('howItWorksElement14') }} <a href="http://localhost:9000/en/arrima/self-assessment-tool" target="_blank" rel="noreferrer" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">{{ __('selfAssessTool') }}</a> {{ __('howItWorksElement15') }}</li>
+                    <li>{{ __('howItWorksElement14') }} <a href="{{ route('arrima.self_assessment_tool') }}" target="_blank" rel="noreferrer" class="text-blue-700 dark:text-blue-300 hover:text-blue-500 hover:dark:text-blue-500 underline">{{ __('selfAssessTool') }}</a> {{ __('howItWorksElement15') }}</li>
                     <li>{{ __('howItWorksElement16') }}</li>
                     <li>{{ __('howItWorksElement17') }}</li>
                     <li>{{ __('howItWorksElement18') }}</li>
