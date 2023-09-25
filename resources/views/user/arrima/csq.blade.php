@@ -9,7 +9,7 @@
         <div class="mt-5">
             <h1 class="text-2xl font-bold">{{ __('csqTitle2') }}</h1>
             <p class="mt-3 indent-8 italic">{{ __('csqParagraph3') }}</p>
-            <ul class="indent-8 text-start list-disc pl-8 my-4">
+            <ul class="ml-2 md:ml-5 text-start list-disc pl-8 my-4">
                 <li>{{ __('csqElement1') }}</li>
                 <li>{{ __('csqElement2') }}</li>
                 <li>{{ __('csqElement3') }}</li>

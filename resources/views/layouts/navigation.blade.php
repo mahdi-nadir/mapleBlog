@@ -70,7 +70,7 @@
                     </x-nav-link> --}}
 
                     <x-nav-link href="{{ LaravelLocalization::localizeUrl('/arrima/pmi') }}" class="text-white w-full" :active="request()->routeIs('arrima.pmi')">
-                        {{ __('PMI') }}
+                        PMI+
                     </x-nav-link>
                 </ul>
             </li>
