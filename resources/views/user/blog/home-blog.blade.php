@@ -1,19 +1,32 @@
 <x-app-layout>
-    @if (Auth::user()->diploma_id == 1 || Auth::user()->system_id == 1 || Auth::user()->noc_id == 1)
+    {{-- @if (Auth::user()->diploma_id == 1 || Auth::user()->system_id == 1 || Auth::user()->noc_id == 1)
     you cannot write a post until you complete your profile
     @else
     @include('user.blog.blog-components.writing-post')
+    @endif --}}
+
+    @if (Auth::user()->diploma_id == null || Auth::user()->system_id == null || Auth::user()->noc_id == null || Auth::user()->step_id == null || Auth::user()->date_of_birth == null || Auth::user()->gender_id == null)
+    <div class="my-2">
+        <a href="{{ route('profile.edit') }}" title="{{ __('updateInfo') }}">
+            <button class="p-1 text-md w-fit bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">
+                {{ __('updateInfoToWritePost') }}
+            </button>
+        </a>
+    </div>
+    @else
+        <button id="showWritePost" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('writePost') }}</button>
     @endif
     
     <select name="category" id="cat" class="dark:text-black">
         <option value="">{{ __('all') }}</option>
         @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option value="{{ $category->id }}">{{ LaravelLocalization::getCurrentLocale() == 'en' ? $category->name_en : $category->name_fr }}</option>
         @endforeach
     </select>
+
     <div id="posts-container">
         @foreach ($posts as $post)
-        <a href=" {{ route('post.index', [$post->category->name, $post->id]) }}">
+        <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
         {{ $post->title }}</a><br>
         @endforeach
     </div>

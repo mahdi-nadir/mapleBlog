@@ -1,5 +1,9 @@
 <div>
-    <button id="showWritePost" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('writePost') }}</button>
+    @if (Auth::user()->diploma_id == null || Auth::user()->system_id == null || Auth::user()->noc_id == null || Auth::user()->step_id == null || Auth::user()->date_of_birth == null || Auth::user()->gender_id == null)
+    <a href="{{ route('profile.edit') }}" title="{{ __('updateInfo') }}"><button class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('updateInfoToWritePost') }}</button></a>
+    @else
+        <button id="showWritePost" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('writePost') }}</button>
+    @endif
 
     <div id="modalWritePost" class="py-3 px-6 text-start text-sm md:text-md dark:text-black overflow-auto w-5/6 md:w-1/2 h-fit">
         <button class="cancelWritePost absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
@@ -23,7 +27,7 @@
                 <select name="category" id="category" class="rounded text-start bg-slate-100 border-red-800 border-4 text-lg w-5/6 dark:text-black dark:border-gray-400 h-9 px-1">
                     <option value="">{{ __('selectCategory') }}</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ LaravelLocalization::getCurrentLocale() == 'en' ? $category->name_en : $category->name_fr }}</option>
                     @endforeach
                 </select>
                     
@@ -45,7 +49,7 @@
                     <span class="sr-only">Upload image</span>
                 </label>
                 <input type="file" name="image" id="image" style="display: none;">
-            
+                {{-- <img id="imagePreview" src="#" alt="Image Preview" style="display: none"> --}}
                 <div class="flex items-center gap-4">
                     <x-primary-button>{{ __('toPost') }}</x-primary-button>
                 </div>
@@ -61,20 +65,22 @@
     let modalWritePost = document.querySelector('#modalWritePost');
     let overlay = document.querySelector('#overlay');
     
-    showWritePost.addEventListener('click', () => {
-        let cancelBtn = modalWritePost.querySelector('.cancelWritePost');
-        overlay.style.display = 'block';
-        overlay.style.opacity = '0.8';
-        overlay.style.visibility = 'visible';
-        modalWritePost.style.transform = 'translate(-50%, -50%) scale(1)';
+    if (showWritePost) {
+        showWritePost.addEventListener('click', () => {
+            let cancelBtn = modalWritePost.querySelector('.cancelWritePost');
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modalWritePost.style.transform = 'translate(-50%, -50%) scale(1)';
 
-        cancelBtn.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
-            modalWritePost.style.transform = 'translate(-50%, -50%) scale(0)';
+            cancelBtn.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalWritePost.style.transform = 'translate(-50%, -50%) scale(0)';
+            });
         });
-    });
+    }
 
     if (window.innerWidth > 768) {
         document.addEventListener('input', function (e) {
@@ -111,4 +117,6 @@
         textarea.value = '';
         nbChars.textContent = 0;
     });
+
+    
 </script>

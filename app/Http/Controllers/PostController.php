@@ -23,7 +23,7 @@ class PostController extends Controller
     // }
     public function index($category, $postId)
     {
-        $category = Category::where('name', $category)->firstOrFail();
+        $category = Category::where('name_en', $category)->firstOrFail();
 
         $post = Post::where('category_id', $category->id)
             ->where('id', $postId)
