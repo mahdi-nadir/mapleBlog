@@ -70,6 +70,7 @@ Route::group(
                 Route::post('/maplemind-blog/writing-post', [PostController::class, 'store'])->name('post.store');
                 Route::get('/maplemind-blog/{category}', [BlogController::class, 'showByCategory'])->name('posts.category');
                 Route::get('/maplemind-blog/{categoryId}/{postId}', [PostController::class, 'index'])->name('post.index');
+                Route::delete('/maplemind-blog/{postId}/delete', [PostController::class, 'destroy'])->name('post.destroy');
 
 
                 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

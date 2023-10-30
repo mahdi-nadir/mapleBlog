@@ -14,7 +14,9 @@
         </a>
     </div>
     @else
-        <button id="showWritePost" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('writePost') }}</button>
+        <div class="my-2">
+            <button id="showWritePost" class="p-1 text-md w-60 bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300">{{ __('writePost') }}</button>
+        </div>
     @endif
     
     <select name="category" id="cat" class="dark:text-black">
@@ -27,9 +29,19 @@
     <div id="posts-container">
         @foreach ($posts as $post)
         <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
-        {{ $post->title }}</a><br>
+        {{ $post->title }}</a>
+        @if ($post->user_id == Auth::user()->id)
+        <form action="{{ route('post.destroy', $post->id) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <button type="submit">Delete</button>
+        </form>
+        @endif
+        <br>
         @endforeach
     </div>
+    @include('user.blog.blog-components.writing-post')
 </x-app-layout>
     <script>
         const categorySelect = document.querySelector('#cat');
