@@ -15,7 +15,7 @@
         
             <div class="w-full mt-4 flex flex-col justify-center items-center gap-3">
                 <div class="px-2 text-black flex flex-row justify-center items-center gap-2">
-                    <img src="{{ asset('img/' . $image) }}" alt="Profile Picture of {{ Auth::user()->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
+                    <img src="{{ asset('img/' .  $image ) }}" alt="Profile Picture of {{ Auth::user()->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
                     <div class="flex flex-col text-start">
                         <span class="font-bold">{{ Auth::user()->username }}</span>
                         <span class="italic">{{ __('youve') }} {{ $userPosts->count() }} {{ __('posts') }}</span>

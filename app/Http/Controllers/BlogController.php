@@ -19,6 +19,7 @@ class BlogController extends Controller
         // posts of user
         $userPosts = Post::where('user_id', Auth::user()->id)->get();
         $posts = Post::orderBy('created_at', 'desc')->get();
+        // $posts->load('user.image');
         return view('user.blog.home-blog', compact('posts', 'categories', 'image', 'userPosts'));
     }
 

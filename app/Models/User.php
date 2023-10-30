@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function profileImage()
     {
-        return $this->hasOne(ImgUser::class);
+        return $this->belongsTo(ImgUser::class, 'img_user_id');
     }
 
     // public function country()

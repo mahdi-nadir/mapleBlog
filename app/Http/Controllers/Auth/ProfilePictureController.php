@@ -18,7 +18,7 @@ class ProfilePictureController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $fileName = auth()->user()->username . '_maplmind' . auth()->user()->id . 'xhr_' . explode('@', auth()->user()->email)[0];
+            $fileName = auth()->user()->username . '_maplemind' . auth()->user()->id . 'xhr_' . explode('@', auth()->user()->email)[0];
             $existingFilePath = public_path('img/' . $fileName[0]);
             if (File::exists($existingFilePath)) {
                 File::delete($existingFilePath); // Delete the existing file
