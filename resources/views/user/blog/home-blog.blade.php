@@ -31,25 +31,74 @@
         @foreach ($posts as $post)
         <div class="w-5/6 md:w-1/3 bg-red-300 mx-auto my-8">
             <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
-                <div class="px-2 text-black flex flex-row justify-center items-center gap-2">
-                    @if ($post->user->profileImage != null)
-                        <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
-                    @else
-                        <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
-                    @endif
-                    {{-- <img src="{{ asset('img/' . $post->user->profileImage ?? ) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white"> --}}
-                    <div class="flex flex-col text-start">
-                        <span class="font-bold">{{ $post->user->username }}</span>
+                <div class="flex flex-col justify-between gap-3">
+                    <div class="flex flex-row justify-between items-center pr-2">
+                        <div class="px-2 text-black flex flex-row justify-center items-center gap-2">
+                            @if ($post->user->profileImage != null)
+                                <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
+                            @else
+                                <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
+                            @endif
+                            <div class="flex flex-col text-start text-[12px] italic">
+                                <span class="font-bold">{{ $post->user->username }}</span>
+                                @php
+                                    $dateString = $post->created_at;
+                                    $date = new DateTime($dateString);
+                                    $now = new DateTime();
+                                    $interval = $now->diff($date);
+                                    if (LaravelLocalization::getCurrentLocale() == 'en') {
+                                        if ($interval->y > 0) {
+                                            echo $interval->y . ' years ago';
+                                        } elseif ($interval->m > 0) {
+                                            echo $interval->m . ' months ago';
+                                        } elseif ($interval->d > 0) {
+                                            echo $interval->d . ' days ago';
+                                        } elseif ($interval->h > 0) {
+                                            echo $interval->h . ' hours ago';
+                                        } elseif ($interval->i > 0) {
+                                            echo $interval->i . ' minutes ago';
+                                        } elseif ($interval->s > 0) {
+                                            echo $interval->s . ' seconds ago';
+                                        }
+                                    } else {
+                                        if ($interval->y > 0) {
+                                            echo $interval->y . ' ans';
+                                        } elseif ($interval->m > 0) {
+                                            echo $interval->m . ' mois';
+                                        } elseif ($interval->d > 0) {
+                                            echo $interval->d . ' jours';
+                                        } elseif ($interval->h > 0) {
+                                            echo $interval->h . ' heures';
+                                        } elseif ($interval->i > 0) {
+                                            echo $interval->i . ' minutes';
+                                        } elseif ($interval->s > 0) {
+                                            echo $interval->s . ' secondes';
+                                        }
+                                    }                               
+                                @endphp
+                            </div>
+                        </div>
+                        @if ($post->user_id == Auth::user()->id)
+                            <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                <button type="submit" title="{{ __('deletePost') }}"><i class="fa-solid fa-trash-can p-2 bg-red-500 hover:bg-red-700 text-white rounded-full"></i></button>
+                            </form>
+                        @endif
+                    </div>
+                    <div>
+                        <h1>
+                            {{ $post->title }}
+                        </h1>
+                    </div>
+                    <div>
+                        <p>
+                            {{ $post->content }}
+                        </p>
                     </div>
                 </div>
-                @if ($post->user_id == Auth::user()->id)
-                    <form action="{{ route('post.destroy', $post->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-                        <button type="submit">Delete</button>
-                    </form>
-                @endif
+                
                 
                 
                 
