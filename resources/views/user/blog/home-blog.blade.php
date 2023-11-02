@@ -87,15 +87,27 @@
                             </form>
                         @endif
                     </div>
-                    <div>
-                        <h1>
-                            {{ $post->title }}
-                        </h1>
+                    <div class="ml-4 text-start">
+                        <div class="w-80 overflow-hidden">
+                            <h1 class="font-bold truncate">
+                                {{ $post->title }}
+                            </h1>
+                        </div>
+                        <div {{-- class="w-200 overflow-hidden" --}}>
+                            <p class="indent-4 {{-- truncate --}}">
+                                {{ $post->content }}
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <p>
-                            {{ $post->content }}
-                        </p>
+                    <div class="w-[200px]">
+                        @if ($post->img_post_id != null)
+                        @php
+                            $img = $post->imgPost->path;
+                        @endphp
+                            <img src="{{ asset("$img") }}" alt="{{ $post->id }}">
+                        @else
+                            jjjj
+                        @endif
                     </div>
                 </div>
                 

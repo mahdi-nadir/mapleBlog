@@ -59,14 +59,14 @@ class PostController extends Controller
             $uniqueId = uniqid(auth()->user()->username . '_maplemind_');
             $fileName = $uniqueId . $image->getClientOriginalName();
 
-            $folderPath = public_path("img/$username");
+            $folderPath = public_path("img/posts/$username");
             if (!file_exists($folderPath)) {
                 mkdir($folderPath, 0755, true);
             }
 
             $image->move($folderPath, $fileName);
 
-            $filePath = "img/$username/$fileName";
+            $filePath = "img/posts/$username/$fileName";
         }
 
         $imgPost = ImgPost::create([

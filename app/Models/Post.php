@@ -20,7 +20,7 @@ class Post extends Model
 
     public function imgPost()
     {
-        return $this->hasOne(ImgPost::class);
+        return $this->belongsTo(ImgPost::class);
     }
 
     public function comments()

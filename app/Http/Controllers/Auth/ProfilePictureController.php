@@ -19,11 +19,11 @@ class ProfilePictureController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $fileName = auth()->user()->username . '_maplemind' . auth()->user()->id . 'xhr_' . explode('@', auth()->user()->email)[0];
-            $existingFilePath = public_path('img/' . $fileName[0]);
+            $existingFilePath = public_path('img/users/' . $fileName[0]);
             if (File::exists($existingFilePath)) {
                 File::delete($existingFilePath); // Delete the existing file
             }
-            $image->move(public_path('img'), $fileName);
+            $image->move(public_path('img/users'), $fileName);
         } else {
             $fileName = 'default.jpg';
         }
@@ -34,7 +34,6 @@ class ProfilePictureController extends Controller
                 'path' => $fileName,
             ]);
         } else {
-            // update image
             $imgUser = ImgUser::where('id', auth()->user()->img_user_id)->first();
             $imgUser->path = $fileName;
             $imgUser->save();
