@@ -29,17 +29,16 @@
 
     <div id="posts-container">
         @foreach ($posts as $post)
-        <div class="w-5/6 md:w-1/3 bg-red-300 mx-auto my-8">
-            <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
+        <div class="w-5/6 md:w-1/3 mx-auto my-8 border-2 border-slate-700 dark:border-slate-600 rounded p-2">
                 <div class="flex flex-col justify-between gap-3">
-                    <div class="flex flex-row justify-between items-center pr-2">
+                    <div class="flex flex-row justify-between items-center pr-2 border-b-2 border-slate-700 dark:border-slate-600 pb-2">
                         <div class="px-2 text-black flex flex-row justify-center items-center gap-2">
                             @if ($post->user->profileImage != null)
                                 <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
                             @else
                                 <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 border-2 border-black dark:border-white">
                             @endif
-                            <div class="flex flex-col text-start text-[12px] italic">
+                            <div class="flex flex-col text-start text-[12px] italic dark:text-white">
                                 <span class="font-bold">{{ $post->user->username }}</span>
                                 @php
                                     $dateString = $post->created_at;
@@ -74,7 +73,7 @@
                                         } elseif ($interval->s > 0) {
                                             echo $interval->s . ' secondes';
                                         }
-                                    }                               
+                                    }
                                 @endphp
                             </div>
                         </div>
@@ -99,22 +98,28 @@
                             </p>
                         </div>
                     </div>
-                    <div class="w-[200px]">
-                        @if ($post->img_post_id != null)
+                    @if ($post->img_post_id != null)
+                        <div class="w-[200px] md:w-[350px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded">
                         @php
                             $img = $post->imgPost->path;
                         @endphp
-                            <img src="{{ asset("$img") }}" alt="{{ $post->id }}">
-                        @else
-                            jjjj
-                        @endif
+                            <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="cover">
+                        </div>
+                    @endif
+                    <div class="text-end mr-2 mb-1 border-t-2 border-slate-700 dark:border-slate-600 pt-2">
+                        <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
+                            <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
+                                {{ __('showPost')}} <i class="fa-solid fa-angles-right animate-pulse"></i>
+                            </button>
+                        </a>
                     </div>
+
+                    {{-- <div class="text-end mr-2 mb-1">
+                        <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
+                            {{ __('comment')}}
+                        </button>
+                    </div> --}}
                 </div>
-                
-                
-                
-                
-            </a>
         </div>
         {{-- @if ($post->user_id == Auth::user()->id)
         <form action="{{ route('post.destroy', $post->id) }}" method="post">
