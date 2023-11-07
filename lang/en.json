@@ -514,5 +514,6 @@
     "updateInfoToWritePost": "You need to update your profile information to be able to write a post",
     "deletePost": "Delete Post",
     "showPost": "Show Post",
-    "comment": "Comment"
+    "comment": "Comment",
+    "search": "Search"
 }

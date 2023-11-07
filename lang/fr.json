@@ -514,5 +514,6 @@
     "updateInfoToWritePost": "Vous devez mettre à jour vos informations de profil pour pouvoir publier sur le blog",
     "deletePost": "Supprimer la publication",
     "showPost": "Afficher la publication",
-    "comment": "Commenter"
+    "comment": "Commenter",
+    "search": "Rechercher"
 }
