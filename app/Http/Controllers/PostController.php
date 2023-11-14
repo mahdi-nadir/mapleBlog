@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\ImgPost;
+use App\Models\ImgUser;
 use App\Models\Category;
 use App\Models\PostLike;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
@@ -23,13 +25,19 @@ class PostController extends Controller
     // }
     public function index($category, $postId)
     {
-        $category = Category::where('name_en', $category)->firstOrFail();
+        $category = Category::where('name_en', $category)->orWhere('name_fr', $category)->firstOrFail();
+
+        $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
+        $image == NULL ? $image = 'default.png' : $image = $image->path;
+        $categories = Category::all();
+        $userPosts = Post::where('user_id', Auth::user()->id)->get();
 
         $post = Post::where('category_id', $category->id)
             ->where('id', $postId)
             ->firstOrFail();
         $image = ImgPost::where('id', $post->img_post_id)->first();
-        return view('user.blog.post', compact('post', 'category', 'image'));
+        $comments = $post->comments()->get();
+        return view('user.blog.post', compact('post', 'category', 'image', 'categories', 'userPosts', 'comments'));
     }
 
     /**
