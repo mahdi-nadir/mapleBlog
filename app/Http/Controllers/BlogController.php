@@ -20,7 +20,12 @@ class BlogController extends Controller
         $userPosts = Post::where('user_id', Auth::user()->id)->get();
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         // $posts->load('user.image');
-        return view('user.blog.home-blog', compact('posts', 'categories', 'image', 'userPosts'));
+        // get comments for each post
+        $comments = [];
+        foreach ($posts as $post) {
+            $comments[$post->id] = $post->comments()->get();
+        }
+        return view('user.blog.home-blog', compact('posts', 'categories', 'image', 'userPosts', 'comments'));
     }
 
     public function filterPosts(Request $request)

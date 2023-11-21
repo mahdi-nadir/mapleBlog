@@ -34,71 +34,71 @@
 
     <div id="posts-container">
         @foreach ($posts as $post)
-        <div class="w-5/6 md:w-4/6 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded">
-                <div class="flex flex-row justify-between gap-3">
-                    <div class="w-[280px] md:w-[280px] flex flex-col justify-center items-center border-r-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
-                        <div class="px-2 text-black flex flex-col justify-center items-center gap-2">
+        <div class="w-5/6 md:w-1/3 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded">
+                <div class="flex flex-col justify-between gap-3">
+                    <div class="w-full flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
+                        <div class="px-2 text-black flex flex-row justify-center items-center gap-2 mt-2">
                             @if ($post->user->profileImage != null)
-                                <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 md:w-16 md:h-16 border-2 border-black dark:border-white">
+                                <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                             @else
-                                <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-10 h-10 md:w-28 md:h-28 border-2 border-black dark:border-white">
+                                <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                             @endif
-                            <div class="flex flex-col text-start justify-center items-center text-[12px] italic dark:text-white">
+                            <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
                                 <span class="font-bold">{{ $post->user->username }}</span>
-                                {{----}}
+                                <div class="italic font-bold text-blue-500 dark:text-blue-300">
+                                    @php
+                                        $dateString = $post->created_at;
+                                        $date = new DateTime($dateString);
+                                        $now = new DateTime();
+                                        $interval = $now->diff($date);
+                                        if (LaravelLocalization::getCurrentLocale() == 'en') {
+                                            if ($interval->y > 0) {
+                                                echo $interval->y . ' years ago';
+                                            } elseif ($interval->m > 0) {
+                                                echo $interval->m . ' months ago';
+                                            } elseif ($interval->d > 0) {
+                                                echo $interval->d . ' days ago';
+                                            } elseif ($interval->h > 0) {
+                                                echo $interval->h . ' hours ago';
+                                            } elseif ($interval->i > 0) {
+                                                echo $interval->i . ' minutes ago';
+                                            } elseif ($interval->s > 0) {
+                                                echo $interval->s . ' seconds ago';
+                                            }
+                                        } else {
+                                            if ($interval->y > 0) {
+                                                echo $interval->y . ' ans';
+                                            } elseif ($interval->m > 0) {
+                                                echo $interval->m . ' mois';
+                                            } elseif ($interval->d > 0) {
+                                                echo $interval->d . ' jours';
+                                            } elseif ($interval->h > 0) {
+                                                echo $interval->h . ' heures';
+                                            } elseif ($interval->i > 0) {
+                                                echo $interval->i . ' minutes';
+                                            } elseif ($interval->s > 0) {
+                                                echo $interval->s . ' secondes';
+                                            }
+                                        }
+                                    @endphp
+                                </div>
                             </div> 
                         </div>
                     </div>
+                    {{-- date --}}
                     <div class="text-start w-full">
-                        <div>
-                            @php
-                                $dateString = $post->created_at;
-                                $date = new DateTime($dateString);
-                                $now = new DateTime();
-                                $interval = $now->diff($date);
-                                if (LaravelLocalization::getCurrentLocale() == 'en') {
-                                    if ($interval->y > 0) {
-                                        echo $interval->y . ' years ago';
-                                    } elseif ($interval->m > 0) {
-                                        echo $interval->m . ' months ago';
-                                    } elseif ($interval->d > 0) {
-                                        echo $interval->d . ' days ago';
-                                    } elseif ($interval->h > 0) {
-                                        echo $interval->h . ' hours ago';
-                                    } elseif ($interval->i > 0) {
-                                        echo $interval->i . ' minutes ago';
-                                    } elseif ($interval->s > 0) {
-                                        echo $interval->s . ' seconds ago';
-                                    }
-                                } else {
-                                    if ($interval->y > 0) {
-                                        echo $interval->y . ' ans';
-                                    } elseif ($interval->m > 0) {
-                                        echo $interval->m . ' mois';
-                                    } elseif ($interval->d > 0) {
-                                        echo $interval->d . ' jours';
-                                    } elseif ($interval->h > 0) {
-                                        echo $interval->h . ' heures';
-                                    } elseif ($interval->i > 0) {
-                                        echo $interval->i . ' minutes';
-                                    } elseif ($interval->s > 0) {
-                                        echo $interval->s . ' secondes';
-                                    }
-                                }
-                            @endphp
-                        </div>
-                        <div class="overflow-hidden">
+                        <div class="overflow-hidden text-center uppercase underline mb-2">
                             <h1 class="font-bold truncate">
                                 {{ $post->title }}
                             </h1>
                         </div>
                         <div {{-- class="w-200 overflow-hidden" --}}>
-                            <p class="indent-4 {{-- truncate --}}">
+                            <p class="{{--indent-4  truncate --}}">
                                 {{ $post->content }}
                             </p>
                         </div>
                         @if ($post->img_post_id != null)
-                            <div class="w-[150px] md:w-[250px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded">
+                            <div class="w-[150px] md:w-[250px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
                             @php
                                 $img = $post->imgPost->path;
                             @endphp
@@ -107,7 +107,8 @@
                         @endif
                     </div>
                     
-                    <div class="w-1/6 text-end mr-2 mb-1 border-l-2 border-slate-700 dark:border-slate-600 pt-2">
+                    {{-- delete and show buttons --}}
+                    <div class="w-1/6 text-end pr-2 bg-slate-600 dark:bg-slate-400 border-l-2 border-slate-700 dark:border-slate-600 pt-2">
                         <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}">
                             <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
                                 {{ __('showPost')}} <i class="fa-solid fa-angles-right animate-pulse"></i>
@@ -121,6 +122,8 @@
                                 <button type="submit" title="{{ __('deletePost') }}"><i class="fa-solid fa-trash-can p-2 bg-red-500 hover:bg-red-700 text-white rounded-full"></i></button>
                             </form>
                         @endif
+                        {{-- nb of comments --}}
+                        {{$post->comments->count()}}
                     </div>
 
                     {{-- <div class="text-end mr-2 mb-1">
