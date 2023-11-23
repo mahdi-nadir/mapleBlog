@@ -19,7 +19,7 @@
 }
 
 .bodyLanding {
-    background: url(/public/img/mapleleaf.jpg); 
+    background: url(/public/img/mapleleaf.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,25 +46,36 @@
 /* for div highlighting */
 /* Define the CSS class for highlighting */
 .highlighted-div {
-    animation: highlight 1.5s ease-in-out forwards; /* Use "forwards" to retain the final state */
-    background-color: rgba(255, 255, 0, 0.5); /* Initial background color with opacity */
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5); /* Initial box shadow with opacity */
+    animation: highlight 1.5s ease-in-out forwards;
+    /* Use "forwards" to retain the final state */
+    background-color: rgba(255, 255, 0, 0.5);
+    /* Initial background color with opacity */
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5);
+    /* Initial box shadow with opacity */
     border-radius: 10px;
 }
 
 /* Define the CSS animation for highlighting */
 @keyframes highlight {
     0% {
-        background-color: rgba(255, 255, 0, 0); /* Start with fully transparent background */
-        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0); /* Start with fully transparent box shadow */
+        background-color: rgba(255, 255, 0, 0);
+        /* Start with fully transparent background */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0);
+        /* Start with fully transparent box shadow */
     }
+
     50% {
-        background-color: rgba(255, 255, 0, 0.5); /* Transition to fully opaque background at 50% */
-        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5); /* Transition to semi-transparent box shadow at 50% */
+        background-color: rgba(255, 255, 0, 0.5);
+        /* Transition to fully opaque background at 50% */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.5);
+        /* Transition to semi-transparent box shadow at 50% */
     }
+
     100% {
-        background-color: rgba(255, 255, 0, 0); /* Back to fully transparent background at the end */
-        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0); /* Back to fully transparent box shadow at the end */
+        background-color: rgba(255, 255, 0, 0);
+        /* Back to fully transparent background at the end */
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0);
+        /* Back to fully transparent box shadow at the end */
     }
 }
 
@@ -125,7 +136,8 @@
     display: none;
 }
 
-#navbarOptions li ul *, #navbarOptions li {
+#navbarOptions li ul *,
+#navbarOptions li {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -167,7 +179,11 @@
     pointer-events: auto;
 }
 
-#modal, #modalResult, #modalConfirmation, #modalWritePost {
+#modal,
+#modalResult,
+#modalConfirmation,
+#modalWritePost,
+#modalPics {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -206,7 +222,7 @@
 @media screen and (max-width: 767px) {
     .bodyLanding {
         background: url(/public/img/mapleleafsmall2.jpg);
-        background-repeat: no-repeat; 
+        background-repeat: no-repeat;
         background-position: center -200px;
         background-attachment: fixed;
     }
@@ -215,8 +231,8 @@
         display: block;
     }
 
-    #burger:checked + .navBig,
-    #burger:checked + #labelburger + .navSmall {
+    #burger:checked+.navBig,
+    #burger:checked+#labelburger+.navSmall {
         display: flex;
     }
 

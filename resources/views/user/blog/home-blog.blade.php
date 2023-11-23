@@ -40,48 +40,56 @@
                         <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2 bg-blue-400">
                             <div class="flex flex-row justify-between items-center gap-2">
                                 @if ($post->user->profileImage != null)
-                                    <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                    <a href="#">
+                                        <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                    </a>
                                 @else
-                                    <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                    <a href="#">
+                                        <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                    </a>
                                 @endif
                                 <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
-                                    <span class="font-bold">{{ $post->user->username }}</span>
+                                    <a href="#">
+                                        <span class="font-bold">{{ $post->user->username }}</span>
+                                    </a>
                                     <div class="italic font-bold text-blue-500 dark:text-blue-300">
-                                        @php
-                                            $dateString = $post->created_at;
-                                            $date = new DateTime($dateString);
-                                            $now = new DateTime();
-                                            $interval = $now->diff($date);
-                                            if (LaravelLocalization::getCurrentLocale() == 'en') {
-                                                if ($interval->y > 0) {
-                                                    echo $interval->y . ' years ago';
-                                                } elseif ($interval->m > 0) {
-                                                    echo $interval->m . ' months ago';
-                                                } elseif ($interval->d > 0) {
-                                                    echo $interval->d . ' days ago';
-                                                } elseif ($interval->h > 0) {
-                                                    echo $interval->h . ' hours ago';
-                                                } elseif ($interval->i > 0) {
-                                                    echo $interval->i . ' minutes ago';
-                                                } elseif ($interval->s > 0) {
-                                                    echo $interval->s . ' seconds ago';
+                                        <a href="">
+                                            @php
+                                                $dateString = $post->created_at;
+                                                $date = new DateTime($dateString);
+                                                $now = new DateTime();
+                                                $interval = $now->diff($date);
+                                                if (LaravelLocalization::getCurrentLocale() == 'en') {
+                                                    if ($interval->y > 0) {
+                                                        echo $interval->y . ' years ago';
+                                                    } elseif ($interval->m > 0) {
+                                                        echo $interval->m . ' months ago';
+                                                    } elseif ($interval->d > 0) {
+                                                        echo $interval->d . ' days ago';
+                                                    } elseif ($interval->h > 0) {
+                                                        echo $interval->h . ' hours ago';
+                                                    } elseif ($interval->i > 0) {
+                                                        echo $interval->i . ' minutes ago';
+                                                    } elseif ($interval->s > 0) {
+                                                        echo $interval->s . ' seconds ago';
+                                                    }
+                                                } else {
+                                                    if ($interval->y > 0) {
+                                                        echo $interval->y . ' ans';
+                                                    } elseif ($interval->m > 0) {
+                                                        echo $interval->m . ' mois';
+                                                    } elseif ($interval->d > 0) {
+                                                        echo $interval->d . ' jours';
+                                                    } elseif ($interval->h > 0) {
+                                                        echo $interval->h . ' heures';
+                                                    } elseif ($interval->i > 0) {
+                                                        echo $interval->i . ' minutes';
+                                                    } elseif ($interval->s > 0) {
+                                                        echo $interval->s . ' secondes';
+                                                    }
                                                 }
-                                            } else {
-                                                if ($interval->y > 0) {
-                                                    echo $interval->y . ' ans';
-                                                } elseif ($interval->m > 0) {
-                                                    echo $interval->m . ' mois';
-                                                } elseif ($interval->d > 0) {
-                                                    echo $interval->d . ' jours';
-                                                } elseif ($interval->h > 0) {
-                                                    echo $interval->h . ' heures';
-                                                } elseif ($interval->i > 0) {
-                                                    echo $interval->i . ' minutes';
-                                                } elseif ($interval->s > 0) {
-                                                    echo $interval->s . ' secondes';
-                                                }
-                                            }
-                                        @endphp
+                                            @endphp
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +132,7 @@
                             @php
                                 $img = $post->imgPost->path;
                             @endphp
-                                <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="cover">
+                                <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="postPicture cover cursor-zoom-in">
                             </div>
                         @endif
                     </div>
@@ -228,6 +236,56 @@
 //         });
 //     })
 // });
+
+let postPictures = document.querySelectorAll('.postPicture');
+postPictures.forEach(element => {
+    element.addEventListener('click', () => {
+        let modalPics = document.querySelector('#modalPics');
+        let cancelBtn = modalPics.querySelectorAll('.cancel');
+        let overlay = document.querySelector('#overlay');
+        overlay.innerHTML = `
+            <div class="w-full h-full flex flex-col justify-center items-center">
+                <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover cursor-zoom-out">
+                </div>
+                <button class="absolute top-0 right-0 text-white text-2xl" class="closeImgBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        `;
+
+        overlay.style.display = 'block';
+        overlay.style.opacity = '0.8';
+        overlay.style.visibility = 'visible';
+        modalPics.style.transform = 'translate(-50%, -50%) scale(1)';
+
+        cancelBtn.forEach(element => {
+            element.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalPics.style.transform = 'translate(-50%, -50%) scale(0)';
+                modalPics.innerHTML = `
+            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            `;
+            });
+        })
+
+        // document.addEventListener('keydown', (e) => {
+        //     if (e.key == 'Escape') {
+        //         overlay.remove();
+        //     }
+        // });
+
+        // document.addEventListener('click', (e) => {
+        //     if (e.target == overlay) {
+        //         overlay.remove();
+        //     }
+        // });
+    });
+});
 
     </script>
 
