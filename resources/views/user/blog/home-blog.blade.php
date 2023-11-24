@@ -140,8 +140,10 @@
                     
 
                     {{-- nb of comments --}}
-                    {{-- {{$post->comments->count()}}
-                    id: {{$post->user_id}} --}}
+                    <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
+                        <p class="font-bold text-end pr-2">{{ __('comments') }}: <span class="font-normal">{{$post->comments->count()}}</span></p>
+                    </a>
+                    {{--id: {{$post->user_id}} --}}
 
                     {{-- <div class="text-end mr-2 mb-1">
                         <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
@@ -247,7 +249,7 @@ postPictures.forEach(element => {
         <i class="fa-solid fa-xmark"></i>
     </button>                
                 <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
-                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover w-[500px]">
                 </div>
         `;
 
@@ -263,11 +265,6 @@ postPictures.forEach(element => {
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
                 modalPics.style.transform = 'translate(-50%, -50%) scale(0)';
-            //     modalPics.innerHTML = `
-            // <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-            //     <i class="fa-solid fa-xmark"></i>
-            // </button>
-            // `;
             });
         })
 

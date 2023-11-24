@@ -515,5 +515,6 @@
     "deletePost": "Supprimer la publication",
     "showPost": "Afficher la publication",
     "comment": "Commenter",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "comments": "Commentaires"
 }

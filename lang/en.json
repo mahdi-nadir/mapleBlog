@@ -515,5 +515,6 @@
     "deletePost": "Delete Post",
     "showPost": "Show Post",
     "comment": "Comment",
-    "search": "Search"
+    "search": "Search",
+    "comments": "Comments"
 }

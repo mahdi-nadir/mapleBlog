@@ -88,7 +88,7 @@
                 @php
                     $img = $post->imgPost->path;
                 @endphp
-                    <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="cover">
+                    <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="postPicture cover cursor-zoom-in">
                 </div>
             @endif
             <div class="text-end mr-2 mb-1 border-t-2 border-slate-700 dark:border-slate-600 pt-2">
@@ -175,6 +175,47 @@
 //     }
 // }
 //     });
+let postPictures = document.querySelectorAll('.postPicture');
+postPictures.forEach(element => {
+    element.addEventListener('click', () => {
+        let modalPics = document.querySelector('#modalPics');
+        let overlay = document.querySelector('#overlay');
+        modalPics.innerHTML = `
+        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        <i class="fa-solid fa-xmark"></i>
+    </button>                
+                <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover w-[500px]">
+                </div>
+        `;
 
+        overlay.style.display = 'block';
+        overlay.style.opacity = '0.8';
+        overlay.style.visibility = 'visible';
+        modalPics.style.transform = 'translate(-50%, -50%) scale(1)';
+        
+        let cancelBtn = modalPics.querySelectorAll('.cancel');
+        cancelBtn.forEach(element => {
+            element.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalPics.style.transform = 'translate(-50%, -50%) scale(0)';
+            });
+        })
+
+        // document.addEventListener('keydown', (e) => {
+        //     if (e.key == 'Escape') {
+        //         overlay.remove();
+        //     }
+        // });
+
+        // document.addEventListener('click', (e) => {
+        //     if (e.target == overlay) {
+        //         overlay.remove();
+        //     }
+        // });
+    });
+});
 </script>
 
