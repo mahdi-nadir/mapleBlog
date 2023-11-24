@@ -241,35 +241,33 @@ let postPictures = document.querySelectorAll('.postPicture');
 postPictures.forEach(element => {
     element.addEventListener('click', () => {
         let modalPics = document.querySelector('#modalPics');
-        let cancelBtn = modalPics.querySelectorAll('.cancel');
         let overlay = document.querySelector('#overlay');
-        overlay.innerHTML = `
-            <div class="w-full h-full flex flex-col justify-center items-center">
+        modalPics.innerHTML = `
+        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        <i class="fa-solid fa-xmark"></i>
+    </button>                
                 <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
-                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover cursor-zoom-out">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover">
                 </div>
-                <button class="absolute top-0 right-0 text-white text-2xl" class="closeImgBtn">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
         `;
 
         overlay.style.display = 'block';
         overlay.style.opacity = '0.8';
         overlay.style.visibility = 'visible';
         modalPics.style.transform = 'translate(-50%, -50%) scale(1)';
-
+        
+        let cancelBtn = modalPics.querySelectorAll('.cancel');
         cancelBtn.forEach(element => {
             element.addEventListener('click', () => {
                 overlay.style.display = 'none';
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
                 modalPics.style.transform = 'translate(-50%, -50%) scale(0)';
-                modalPics.innerHTML = `
-            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            `;
+            //     modalPics.innerHTML = `
+            // <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+            //     <i class="fa-solid fa-xmark"></i>
+            // </button>
+            // `;
             });
         })
 

@@ -198,6 +198,15 @@
     border-radius: 5px;
 }
 
+#modalPics {
+    width: 90%;
+    height: 90%;
+    max-width: 1000px;
+    max-height: 1000px;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .active {
     color: yellow !important;
     text-decoration: underline;
@@ -234,6 +243,14 @@
     #burger:checked+.navBig,
     #burger:checked+#labelburger+.navSmall {
         display: flex;
+    }
+
+    #modalPics {
+        width: 90%;
+        height: 50%;
+        max-width: 1000px;
+        max-height: 1000px;
+        overflow: auto;
     }
 
     /* #navbarOptions {
