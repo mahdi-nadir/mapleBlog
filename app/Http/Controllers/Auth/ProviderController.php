@@ -76,7 +76,7 @@ class ProviderController extends Controller
             $nocs = Noc::all();
             $genders = Gender::all();
             $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
-            $image ? $image = $image->path : $image = 'default.png';
+            $image ? $image = $image->path : $image = null;
             $password_confirmed = Auth::user()->password_confirmed;
             $tmp_password = Auth::user()->tmp_password;
 

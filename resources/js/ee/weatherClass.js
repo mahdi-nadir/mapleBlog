@@ -3,7 +3,7 @@ import weatherapi from './apikey.js';
 export default class WeatherClass {
     constructor() {
         this.modalResult = document.querySelector('#modalResult');
-        this.cancelBtn = modalResult.querySelectorAll('.cancel');
+        this.cancelBtn = this.modalResult.querySelectorAll('.cancel');
 
         this.overlay = document.querySelector('#overlay');
 

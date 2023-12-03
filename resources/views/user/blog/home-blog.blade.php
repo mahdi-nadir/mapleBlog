@@ -37,15 +37,15 @@
         <div class="w-5/6 md:w-2/5 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded" >
                 <div class="post flex flex-col justify-between gap-3" data-user-id="{{$post->user_id}}" data-post-id="{{$post->id}}" data-cat="{{ $post->category->name_en }}">
                     <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
-                        <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2 bg-blue-400">
+                        <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
                             <div class="flex flex-row justify-between items-center gap-2">
                                 @if ($post->user->profileImage != null)
                                     <a href="#">
-                                        <img src="{{ asset('img/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                        <img src="{{ asset('img/users/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                                     </a>
                                 @else
                                     <a href="#">
-                                        <img src="{{ asset('img/default.png') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                        <img src="{{ asset('img/default.jpg') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                                     </a>
                                 @endif
                                 <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
@@ -258,7 +258,7 @@ postPictures.forEach(element => {
         overlay.style.visibility = 'visible';
         modalPics.style.transform = 'translate(-50%, -50%) scale(1)';
         
-        let cancelBtn = modalPics.querySelectorAll('.cancel');
+        let cancelBtn = modalPics.querySelectorAll('.cancelBtn');
         cancelBtn.forEach(element => {
             element.addEventListener('click', () => {
                 overlay.style.display = 'none';

@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $nocs = Noc::all();
         $genders = Gender::all();
         $image = ImgUser::where('id', Auth::user()->img_user_id)->first();
-        $image ? $image = $image->path : $image = 'default.png';
+        $image ? $image = $image->path : $image = null;
         $password_confirmed = Auth::user()->password_confirmed;
 
         // emotify('success', 'Well done, your profile is now updated');

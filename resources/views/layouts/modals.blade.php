@@ -9,7 +9,7 @@
 </div>
 
 <div id="modalPics" class="w-5/6 h-fit bg-black pt-5 flex items-center justify-center">
-    {{-- <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+    {{-- <button id="cancel" class="cancelBtn absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
         <i class="fa-solid fa-xmark"></i>
     </button> --}}
 </div>

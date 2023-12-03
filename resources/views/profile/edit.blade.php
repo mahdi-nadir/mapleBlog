@@ -6,7 +6,11 @@
     {{-- </x-slot> --}}
     <div class="flex flex-col items-center text-center md:flex-row md:justify-center md:text-left md:space-x-10 w-full md:w-1/2 mx-auto mb-10 mt-5">
         <!-- Profile Image -->
-        <img src="{{ asset('img/' . $image) }}" alt="Profile Image" class="object-cover w-60 h-60 border-2 border-black dark:border-white rounded-lg mb-4 lg:mb-0">
+        @if ($image != null)
+            <img src="{{ asset('img/users/' . $image) }}" alt="Profile Image" class="object-cover w-60 h-60 border-2 border-black dark:border-white rounded-lg mb-4 lg:mb-0">
+        @else
+            <img src="{{ asset('img/default.jpg') }}" alt="Profile Image" class="object-cover w-60 h-60 border-2 border-black dark:border-white rounded-lg mb-4 lg:mb-0">
+        @endif
     
         <!-- User Information -->
         <div class="text-lg lg:text-xl">
