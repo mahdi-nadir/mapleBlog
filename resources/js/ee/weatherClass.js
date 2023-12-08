@@ -2,10 +2,10 @@ import weatherapi from './apikey.js';
 
 export default class WeatherClass {
     constructor() {
-        this.modalResult = document.querySelector('#modalResult');
-        this.cancelBtn = this.modalResult.querySelectorAll('.cancel');
+        // this.modalResult = document.querySelector('#modalResult');
+        // this.cancelBtn = this.modalResult.querySelectorAll('.cancel');
 
-        this.overlay = document.querySelector('#overlay');
+        // this.overlay = document.querySelector('#overlay');
 
         this.place = document.querySelector('#place');
         // this.degree = document.querySelector('#degree');
@@ -24,10 +24,10 @@ export default class WeatherClass {
 
     init() {
         this.city = '';
-        this.overlay.style.display = 'block';
-        this.overlay.style.opacity = '0.8';
-        this.overlay.style.visibility = 'visible';
-        this.modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+        // this.overlay.style.display = 'block';
+        // this.overlay.style.opacity = '0.8';
+        // this.overlay.style.visibility = 'visible';
+        // this.modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
 
         this.place.addEventListener('change', () => {
             if (this.place.value != '') {
@@ -40,22 +40,22 @@ export default class WeatherClass {
         this.getWeather.addEventListener('click', async () => {
             this.city = this.place.value;
             this.getWeatherFunction(this.city);
-            this.result.scrollIntoView({ behavior: 'smooth' });
+            // this.result.scrollIntoView({ behavior: 'smooth' });
         })
 
-        this.cancelBtn.forEach(element => {
-            element.addEventListener('click', () => {
-                this.overlay.style.display = 'none';
-                this.overlay.style.opacity = '0';
-                this.overlay.style.visibility = 'hidden';
-                this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-                this.modalResult.innerHTML = `
-            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            `;
-            });
-        })
+        // this.cancelBtn.forEach(element => {
+        //     element.addEventListener('click', () => {
+        //         this.overlay.style.display = 'none';
+        //         this.overlay.style.opacity = '0';
+        //         this.overlay.style.visibility = 'hidden';
+        //         this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+        //         this.modalResult.innerHTML = `
+        //     <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        //         <i class="fa-solid fa-xmark"></i>
+        //     </button>
+        //     `;
+        //     });
+        // })
     }
 
     async getWeatherFunction(city) {

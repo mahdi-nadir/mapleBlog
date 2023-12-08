@@ -72,11 +72,11 @@
                 @endif
             </div>
             <div class="ml-4 text-start">
-                <div class="w-80 overflow-hidden">
+                {{-- <div class="w-80 overflow-hidden">
                     <h1 class="font-bold truncate text-sm md:text-md lg:text-lg">
                         {{ $post->title }}
                     </h1>
-                </div>
+                </div> --}}
                 <div {{-- class="w-200 overflow-hidden" --}}>
                     <p class="indent-4 {{-- truncate --}} text-sm md:text-md lg:text-lg">
                         {{ $post->content }}
@@ -183,7 +183,7 @@ postPictures.forEach(element => {
         let modalPics = document.querySelector('#modalPics');
         let overlay = document.querySelector('#overlay');
         modalPics.innerHTML = `
-        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        <button id="cancel" class="cancelBtn absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
         <i class="fa-solid fa-xmark"></i>
     </button>                
                 <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">

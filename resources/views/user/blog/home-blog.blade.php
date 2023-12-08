@@ -31,128 +31,132 @@
         <input type="text" name="search" id="search">
         <input type="submit" value="{{ __('search') }}" class="p-1 w-fit bg-black text-white uppercase rounded font-bold hover:bg-green-600 dark:bg-white dark:text-black hover:dark:bg-green-300 cursor-pointer italic text-sm">
     </form>
-    
-    <div id="posts-container">
-        @foreach ($posts as $post)
-        <div class="w-5/6 md:w-2/5 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded" >
-                <div class="post flex flex-col justify-between gap-3" data-user-id="{{$post->user_id}}" data-post-id="{{$post->id}}" data-cat="{{ $post->category->name_en }}">
-                    <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
-                        <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
-                            <div class="flex flex-row justify-between items-center gap-2">
-                                @if ($post->user->profileImage != null)
-                                    <a href="#">
-                                        <img src="{{ asset('img/users/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                    </a>
-                                @else
-                                    <a href="#">
-                                        <img src="{{ asset('img/default.jpg') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                    </a>
-                                @endif
-                                <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
-                                    <a href="#">
-                                        <span class="font-bold">{{ $post->user->username }}</span>
-                                    </a>
-                                    <div class="italic font-bold text-blue-500 dark:text-blue-300">
-                                        <a href="">
-                                            @php
-                                                $dateString = $post->created_at;
-                                                $date = new DateTime($dateString);
-                                                $now = new DateTime();
-                                                $interval = $now->diff($date);
-                                                if (LaravelLocalization::getCurrentLocale() == 'en') {
-                                                    if ($interval->y > 0) {
-                                                        echo $interval->y . ' years ago';
-                                                    } elseif ($interval->m > 0) {
-                                                        echo $interval->m . ' months ago';
-                                                    } elseif ($interval->d > 0) {
-                                                        echo $interval->d . ' days ago';
-                                                    } elseif ($interval->h > 0) {
-                                                        echo $interval->h . ' hours ago';
-                                                    } elseif ($interval->i > 0) {
-                                                        echo $interval->i . ' minutes ago';
-                                                    } elseif ($interval->s > 0) {
-                                                        echo $interval->s . ' seconds ago';
-                                                    }
-                                                } else {
-                                                    if ($interval->y > 0) {
-                                                        echo $interval->y . ' ans';
-                                                    } elseif ($interval->m > 0) {
-                                                        echo $interval->m . ' mois';
-                                                    } elseif ($interval->d > 0) {
-                                                        echo $interval->d . ' jours';
-                                                    } elseif ($interval->h > 0) {
-                                                        echo $interval->h . ' heures';
-                                                    } elseif ($interval->i > 0) {
-                                                        echo $interval->i . ' minutes';
-                                                    } elseif ($interval->s > 0) {
-                                                        echo $interval->s . ' secondes';
-                                                    }
-                                                }
-                                            @endphp
+
+
+    <div class="flex flex-row gap-10">
+        @include('layouts.weather-card')
+        <div id="posts-container">
+            @foreach ($posts as $post)
+            <div class="w-5/6 md:w-2/5 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded" >
+                    <div class="post flex flex-col justify-between gap-3" data-user-id="{{$post->user_id}}" data-post-id="{{$post->id}}" data-cat="{{ $post->category->name_en }}">
+                        <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
+                            <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
+                                <div class="flex flex-row justify-between items-center gap-2">
+                                    @if ($post->user->profileImage != null)
+                                        <a href="#">
+                                            <img src="{{ asset('img/users/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                                         </a>
+                                    @else
+                                        <a href="#">
+                                            <img src="{{ asset('img/default.jpg') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
+                                        </a>
+                                    @endif
+                                    <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
+                                        <a href="#">
+                                            <span class="font-bold">{{ $post->user->username }}</span>
+                                        </a>
+                                        <div class="italic font-bold text-blue-500 dark:text-blue-300">
+                                            <a href="">
+                                                @php
+                                                    $dateString = $post->created_at;
+                                                    $date = new DateTime($dateString);
+                                                    $now = new DateTime();
+                                                    $interval = $now->diff($date);
+                                                    if (LaravelLocalization::getCurrentLocale() == 'en') {
+                                                        if ($interval->y > 0) {
+                                                            echo $interval->y . ' years ago';
+                                                        } elseif ($interval->m > 0) {
+                                                            echo $interval->m . ' months ago';
+                                                        } elseif ($interval->d > 0) {
+                                                            echo $interval->d . ' days ago';
+                                                        } elseif ($interval->h > 0) {
+                                                            echo $interval->h . ' hours ago';
+                                                        } elseif ($interval->i > 0) {
+                                                            echo $interval->i . ' minutes ago';
+                                                        } elseif ($interval->s > 0) {
+                                                            echo $interval->s . ' seconds ago';
+                                                        }
+                                                    } else {
+                                                        if ($interval->y > 0) {
+                                                            echo $interval->y . ' ans';
+                                                        } elseif ($interval->m > 0) {
+                                                            echo $interval->m . ' mois';
+                                                        } elseif ($interval->d > 0) {
+                                                            echo $interval->d . ' jours';
+                                                        } elseif ($interval->h > 0) {
+                                                            echo $interval->h . ' heures';
+                                                        } elseif ($interval->i > 0) {
+                                                            echo $interval->i . ' minutes';
+                                                        } elseif ($interval->s > 0) {
+                                                            echo $interval->s . ' secondes';
+                                                        }
+                                                    }
+                                                @endphp
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                                {{-- <div class="cursor-pointer">
+                                    <i class="fa-solid fa-ellipsis" data-id={{$post->id}}></i>
+                                </div> --}}
+                                {{-- delete and show buttons --}}
+                                <div class="flex flex-row items-center justify-end gap-3 w-fit text-end pr-2 pt-2">
+                                    @if ($post->user_id == Auth::user()->id)
+                                        <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                            <button type="submit" title="{{ __('deletePost') }}"><i class="fa-solid fa-trash-can p-2 bg-red-500 hover:bg-red-700 text-white rounded-full"></i></button>
+                                        </form>
+                                    @endif
+                                    <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
+                                        <button class="italic">
+                                            {{-- {{ __('showPost')}} --}} <i class="fa-solid fa-angles-right animate-pulse text-lg text-white p-2 bg-green-500 hover:bg-green-700 rounded-full"></i>
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-                            {{-- <div class="cursor-pointer">
-                                <i class="fa-solid fa-ellipsis" data-id={{$post->id}}></i>
+                        </div>
+                        
+                        {{-- post content --}}
+                        <div class="text-start w-full">
+                            {{-- <div class="overflow-hidden text-center uppercase underline mb-2">
+                                <h1 class="font-bold truncate">
+                                    {{ $post->title }}
+                                </h1>
                             </div> --}}
-                            {{-- delete and show buttons --}}
-                            <div class="flex flex-row items-center justify-end gap-3 w-fit text-end pr-2 pt-2">
-                                @if ($post->user_id == Auth::user()->id)
-                                    <form action="{{ route('post.destroy', $post->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                        <button type="submit" title="{{ __('deletePost') }}"><i class="fa-solid fa-trash-can p-2 bg-red-500 hover:bg-red-700 text-white rounded-full"></i></button>
-                                    </form>
-                                @endif
-                                <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
-                                    <button class="italic">
-                                        {{-- {{ __('showPost')}} --}} <i class="fa-solid fa-angles-right animate-pulse text-lg text-white p-2 bg-green-500 hover:bg-green-700 rounded-full"></i>
-                                    </button>
-                                </a>
+                            <div {{-- class="w-200 overflow-hidden" --}}>
+                                <p class="pl-2 text-md md:text-lg{{--indent-4  truncate --}}">
+                                    {{ $post->content }}
+                                </p>
                             </div>
+                            @if ($post->img_post_id != null)
+                                <div class="w-[150px] md:w-[250px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                                @php
+                                    $img = $post->imgPost->path;
+                                @endphp
+                                    <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="postPicture cover cursor-zoom-in">
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                    
-                    {{-- post content --}}
-                    <div class="text-start w-full">
-                        {{-- <div class="overflow-hidden text-center uppercase underline mb-2">
-                            <h1 class="font-bold truncate">
-                                {{ $post->title }}
-                            </h1>
+                        
+                        
+
+                        {{-- nb of comments --}}
+                        <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
+                            <p class="font-bold text-end pr-2">{{ __('comments') }}: <span class="font-normal">{{$post->comments->count()}}</span></p>
+                        </a>
+                        {{--id: {{$post->user_id}} --}}
+
+                        {{-- <div class="text-end mr-2 mb-1">
+                            <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
+                                {{ __('comment')}}
+                            </button>
                         </div> --}}
-                        <div {{-- class="w-200 overflow-hidden" --}}>
-                            <p class="pl-2 text-md md:text-lg{{--indent-4  truncate --}}">
-                                {{ $post->content }}
-                            </p>
-                        </div>
-                        @if ($post->img_post_id != null)
-                            <div class="w-[150px] md:w-[250px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
-                            @php
-                                $img = $post->imgPost->path;
-                            @endphp
-                                <img src="{{ asset("$img") }}" alt="{{ $post->id }}" class="postPicture cover cursor-zoom-in">
-                            </div>
-                        @endif
                     </div>
-                    
-                    
-
-                    {{-- nb of comments --}}
-                    <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
-                        <p class="font-bold text-end pr-2">{{ __('comments') }}: <span class="font-normal">{{$post->comments->count()}}</span></p>
-                    </a>
-                    {{--id: {{$post->user_id}} --}}
-
-                    {{-- <div class="text-end mr-2 mb-1">
-                        <button class="italic text-[12px] p-1 rounded bg-green-800 text-white hover:bg-green-600">
-                            {{ __('comment')}}
-                        </button>
-                    </div> --}}
-                </div>
+            </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 </x-app-layout>
     <script>
@@ -245,7 +249,7 @@ postPictures.forEach(element => {
         let modalPics = document.querySelector('#modalPics');
         let overlay = document.querySelector('#overlay');
         modalPics.innerHTML = `
-        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        <button id="cancel" class="cancelBtn absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
         <i class="fa-solid fa-xmark"></i>
     </button>                
                 <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">

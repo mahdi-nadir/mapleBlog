@@ -62,13 +62,13 @@ new ChatBotClass();
 //     new translationClass();
 // });
 
-weatherBtn.addEventListener('click', () => {
-    let modalResult = document.querySelector('#modalResult');
-    let weatherTemplate = document.querySelector('#weatherTemplate');
-    let clone = weatherTemplate.content.cloneNode(true);
-    modalResult.appendChild(clone);
-    new WeatherClass();
-})
+// weatherBtn.addEventListener('click', () => {
+//     let modalResult = document.querySelector('#modalResult');
+//     let weatherTemplate = document.querySelector('#weatherTemplate');
+//     let clone = weatherTemplate.content.cloneNode(true);
+//     modalResult.appendChild(clone);
+new WeatherClass();
+// })
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
