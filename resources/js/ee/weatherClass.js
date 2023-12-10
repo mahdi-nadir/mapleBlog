@@ -23,11 +23,14 @@ export default class WeatherClass {
     }
 
     init() {
-        this.city = '';
-        // this.overlay.style.display = 'block';
-        // this.overlay.style.opacity = '0.8';
-        // this.overlay.style.visibility = 'visible';
-        // this.modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+        if (this.city == '' || this.city == null || this.city == undefined || this.city != 'montreal') {
+            this.city = sessionStorage.getItem('city');
+            this.place.value = this.city;
+            // this.getWeatherFunction(this.city);
+        } else {
+            this.city = 'montreal';
+        }
+        this.getWeatherFunction(this.city);
 
         this.place.addEventListener('change', () => {
             if (this.place.value != '') {
@@ -39,23 +42,9 @@ export default class WeatherClass {
 
         this.getWeather.addEventListener('click', async () => {
             this.city = this.place.value;
-            this.getWeatherFunction(this.city);
-            // this.result.scrollIntoView({ behavior: 'smooth' });
+            sessionStorage.setItem('city', this.city);
+            await this.getWeatherFunction(this.city);
         })
-
-        // this.cancelBtn.forEach(element => {
-        //     element.addEventListener('click', () => {
-        //         this.overlay.style.display = 'none';
-        //         this.overlay.style.opacity = '0';
-        //         this.overlay.style.visibility = 'hidden';
-        //         this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-        //         this.modalResult.innerHTML = `
-        //     <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-        //         <i class="fa-solid fa-xmark"></i>
-        //     </button>
-        //     `;
-        //     });
-        // })
     }
 
     async getWeatherFunction(city) {
@@ -92,75 +81,77 @@ export default class WeatherClass {
                 this.condition == 'Clouds night' ? this.condition = 'Cloudy night' : this.condition;
             }
             let conditionWord = this.condition.split(' ')[0];
-            switch (conditionWord) {
-                case 'Clear':
-                    conditionWord = 'Dégagé';
-                    break;
-                case 'Cloudy':
-                    conditionWord = 'Nuageux';
-                    break;
-                case 'Drizzle':
-                    conditionWord = 'Bruineux';
-                    break;
-                case 'Haze':
-                    conditionWord = 'Brumeux';
-                    break;
-                case 'Mist':
-                    conditionWord = 'Brumeux';
-                    break;
-                case 'Smoke':
-                    conditionWord = 'Fumeux';
-                    break;
-                case 'Snow':
-                    conditionWord = 'Neigeux';
-                    break;
-                case 'Rain':
-                    conditionWord = 'Pluvieux';
-                    break;
-                default:
-                    conditionWord = 'Unknown';
-                    break;
+            if (this.isEnglish == false) {
+                switch (conditionWord) {
+                    case 'Clear':
+                        conditionWord = 'Dégagé';
+                        break;
+                    case 'Cloudy':
+                        conditionWord = 'Nuageux';
+                        break;
+                    case 'Drizzle':
+                        conditionWord = 'Bruineux';
+                        break;
+                    case 'Haze':
+                        conditionWord = 'Brumeux';
+                        break;
+                    case 'Mist':
+                        conditionWord = 'Brumeux';
+                        break;
+                    case 'Smoke':
+                        conditionWord = 'Fumeux';
+                        break;
+                    case 'Snow':
+                        conditionWord = 'Neigeux';
+                        break;
+                    case 'Rain':
+                        conditionWord = 'Pluvieux';
+                        break;
+                    default:
+                        conditionWord = 'Unknown';
+                        break;
+                }
             }
 
             this.result.innerHTML = `
-            <div class="flex flex-col items-center justify-center gap-4">
+            <div class="flex flex-col items-center justify-center gap-2">
                 <div class="flex flex-col items-center justify-center">
-                    <img src="../../img/weather_icons/${this.condition}.png" alt="weather icon" class="w-20 md:w-30 h-20 md:h-30 mt-1">
-                    <p class="text-2xl font-bold">${this.city.charAt(0).toUpperCase() + this.city.slice(1)}</p>
+                    <img src="../../img/weather_icons/${this.condition}.png" alt="weather icon" class="w-10 md:w-14 h-10 md:h-14">
+                    <p class="text-xl font-bold">${this.city.charAt(0).toUpperCase() + this.city.slice(1)}</p>
                     <div class="flex flex-row items-center justify-between gap-6">
-                        <p class="text-2xl" id="degree">${this.temperature}°C</p>
-                        <p class="text-2xl">${conditionWord}</p>
+                        <p class="text-xl" id="degree">${this.temperature}°C</p>
+                        <p class="text-xl">${conditionWord}</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2 border-t-2 border-gray-50">
                     <div class="flex flex-row items-center justify-center gap-6 md:gap-10 border-b-2 border-gray-50">
                         <div class="flex flex-row items-center justify-center">
-                            <img src="../../img/weather_icons/sunrise.png" alt="sunrise time" class="w-5 md:w-10 h-5 md:h-10">
+                            <img src="../../img/weather_icons/sunrise.png" alt="sunrise time" class="w-3 md:w-7 h-3 md:h-7">
                             <p class="text-sm font-bold">${String(sunriseHour).padStart(2, '0')}:${String(sunriseMinute).padStart(2, '0')}</p>
                         </div>
                         <div class="flex flex-row items-center justify-center gap-1">
-                            <img src="../../img/weather_icons/clock.png" alt="actual time in ${this.city}" class="w-4 md:w-7 h-4 md:h-7">
+                            <img src="../../img/weather_icons/clock.png" alt="actual time in ${this.city}" class="w-3 md:w-5 h-3 md:h-5">
                             <p class="text-sm font-bold">${String(currentHours).padStart(2, '0')}:${String(currentMinutes).padStart(2, '0')}</p>
                         </div>
                         <div class="flex flex-row items-center justify-center">
-                            <img src="../../img/weather_icons/sunset.png" alt="sunset time" class="w-5 md:w-10 h-5 md:h-10">
+                            <img src="../../img/weather_icons/sunset.png" alt="sunset time" class="w-3 md:w-7 h-3 md:h-7">
                             <p class="text-sm font-bold">${String(sunsetHour).padStart(2, '0')}:${String(sunsetMinute).padStart(2, '0')}</p>
                         </div>
                     </div>
-                    <div class="flex flex-row items-center justify-center gap-6 md:gap-10">
-                        <div class="flex flex-row items-center justify-center">
-                            <img src="../../img/weather_icons/humidity.png" alt="humidity icon" class="w-5 md:w-8 h-5 md:h-8">
-                            <div class="flex flex-col items-center justify-center">
-                                <p class="text-sm font-bold">${this.humidity}%</p>
-                                <p class="text-sm">${this.isEnglish ? 'Humidity' : 'Humidité'}</p>
+                    <div class="flex flex-row items-center justify-center gap-3 md:gap-5">
+                        <div class="flex flex-col items-center justify-center text-sm">
+                            <p class="font-bold">${this.isEnglish ? 'Humidity' : 'Humidité'}</p>
+                            <div class="flex flex-row items-center justify-center gap-1">
+                                <img src="../../img/weather_icons/humidity.png" alt="humidity icon" class="w-3 md:w-4 h-3 md:h-4">
+                                <p>${this.humidity}%</p>
                             </div>
                         </div>
-                        <div class="flex flex-row items-center justify-center">
-                            <div class="flex flex-col items-center justify-center">
-                                <p class="text-sm font-bold">${this.windSpeed} km/h</p>
-                                <p class="text-sm">${this.isEnglish ? 'Wind speed' : 'Vitesse du vent'}</p>
+                        <div class="flex flex-col items-center justify-center text-sm">
+                            <p class="font-bold">${this.isEnglish ? 'Wind' : 'Vent'}</p>
+                            <div class="flex flex-row items-center justify-center">
+                                <img src="../../img/weather_icons/winnd.png" alt="wind speed icon" class="w-3 md:w-5 h-3 md:h-5">
+                                <p>${this.windSpeed} km/h</p>
                             </div>
-                            <img src="../../img/weather_icons/winnd.png" alt="wind speed icon" class="w-5 md:w-8 h-6 md:h-10">
                         </div>
                     </div>
                 </div>
