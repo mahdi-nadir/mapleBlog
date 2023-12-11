@@ -33,11 +33,13 @@
     </form>
 
 
-    <div class="flex flex-row gap-10">
-        @include('layouts.weather-card')
-        <div id="posts-container">
+    <div class="flex flex-row gap-6 mt-10">
+        {{-- <div class="w-1/4 h-screen py-5 box-content"> --}}
+            {{-- @include('layouts.weather-card') --}}
+        {{-- </div> --}}
+        <div id="posts-container" class="w-full pr-5 border-r-4 border-gray-600 dark:border-gray-300">
             @foreach ($posts as $post)
-            <div class="w-5/6 md:w-2/5 md:ml-5 my-6 border-2 border-slate-700 dark:border-slate-600 rounded" >
+            <div class="mb-10 border-2 border-slate-700 dark:border-slate-600 rounded" >
                     <div class="post flex flex-col justify-between gap-3" data-user-id="{{$post->user_id}}" data-post-id="{{$post->id}}" data-cat="{{ $post->category->name_en }}">
                         <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
                             <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
@@ -156,6 +158,11 @@
                     </div>
             </div>
             @endforeach
+        </div>
+        <div class="w-1/2 bg-green-500 h-screen">
+            {{-- services and ad part here --}}
+            @include('layouts.weather-card')
+
         </div>
     </div>
 </x-app-layout>

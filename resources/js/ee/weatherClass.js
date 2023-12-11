@@ -123,8 +123,8 @@ export default class WeatherClass {
                         <p class="text-xl">${conditionWord}</p>
                     </div>
                 </div>
-                <div class="flex flex-col items-center justify-center gap-2 border-t-2 border-gray-50">
-                    <div class="flex flex-row items-center justify-center gap-6 md:gap-10 border-b-2 border-gray-50">
+                <div class="flex flex-col items-center justify-center gap-2 border-t-2 border-gray-400 dark:border-gray-300">
+                    <div class="flex flex-row items-center justify-center gap-6 md:gap-10 border-b-2 border-gray-400 dark:border-gray-300">
                         <div class="flex flex-row items-center justify-center">
                             <img src="../../img/weather_icons/sunrise.png" alt="sunrise time" class="w-3 md:w-7 h-3 md:h-7">
                             <p class="text-sm font-bold">${String(sunriseHour).padStart(2, '0')}:${String(sunriseMinute).padStart(2, '0')}</p>
