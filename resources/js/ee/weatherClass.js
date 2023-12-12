@@ -23,13 +23,11 @@ export default class WeatherClass {
     }
 
     init() {
-        if (this.city == '' || this.city == null || this.city == undefined || this.city != 'montreal') {
-            this.city = sessionStorage.getItem('city');
-            this.place.value = this.city;
-            // this.getWeatherFunction(this.city);
-        } else {
+        this.city = sessionStorage.getItem('city');
+        if (this.city == '' || this.city == null) {
             this.city = 'montreal';
         }
+        this.place.value = this.city;
         this.getWeatherFunction(this.city);
 
         this.place.addEventListener('change', () => {

@@ -37,11 +37,11 @@
         {{-- <div class="w-1/4 h-screen py-5 box-content"> --}}
             {{-- @include('layouts.weather-card') --}}
         {{-- </div> --}}
-        <div id="posts-container" class="w-full pr-5 border-r-4 border-gray-600 dark:border-gray-300">
+        <div id="posts-container" class="w-2/3 pr-5 lg:border-r-4 border-gray-600 dark:border-gray-300">
             @foreach ($posts as $post)
-            <div class="mb-10 border-2 border-slate-700 dark:border-slate-600 rounded" >
+            <div class="mb-10 border-2 border-slate-700 dark:border-slate-600 rounded shadow-md shadow-slate-500 dark:shadow-slate-400">
                     <div class="post flex flex-col justify-between gap-3" data-user-id="{{$post->user_id}}" data-post-id="{{$post->id}}" data-cat="{{ $post->category->name_en }}">
-                        <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 pb-2">
+                        <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 rounded pb-2">
                             <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
                                 <div class="flex flex-row justify-between items-center gap-2">
                                     @if ($post->user->profileImage != null)
@@ -122,18 +122,18 @@
                         
                         {{-- post content --}}
                         <div class="text-start w-full">
-                            {{-- <div class="overflow-hidden text-center uppercase underline mb-2">
+                            <div class="pl-2 overflow-hidden uppercase mb-2 text-lg font-bold md:text-2xl">
                                 <h1 class="font-bold truncate">
                                     {{ $post->title }}
                                 </h1>
-                            </div> --}}
+                            </div>
                             <div {{-- class="w-200 overflow-hidden" --}}>
-                                <p class="pl-2 text-md md:text-lg{{--indent-4  truncate --}}">
+                                <p class="pl-2 text-md md:text-lg indent-4 {{-- truncate --}}">
                                     {{ $post->content }}
                                 </p>
                             </div>
                             @if ($post->img_post_id != null)
-                                <div class="w-[150px] md:w-[250px] mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                                <div class="w-5/6 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
                                 @php
                                     $img = $post->imgPost->path;
                                 @endphp
@@ -159,7 +159,7 @@
             </div>
             @endforeach
         </div>
-        <div class="w-1/2 bg-green-500 h-screen">
+        <div class="w-1/3 bg-green-500 h-screen">
             {{-- services and ad part here --}}
             @include('layouts.weather-card')
 
