@@ -78,13 +78,13 @@ currencyBtn.addEventListener('click', () => {
     new CurrencyClass();
 })
 
-hashtagBtn.addEventListener('click', () => {
-    let modalResult = document.querySelector('#modalResult');
-    let hashtagTemplate = document.querySelector('#hashtagTemplate');
-    let clone = hashtagTemplate.content.cloneNode(true);
-    modalResult.appendChild(clone);
-    new HashtagClass();
-})
+// hashtagBtn.addEventListener('click', () => {
+//     let modalResult = document.querySelector('#modalResult');
+//     let hashtagTemplate = document.querySelector('#hashtagTemplate');
+//     let clone = hashtagTemplate.content.cloneNode(true);
+//     modalResult.appendChild(clone);
+new HashtagClass();
+// })
 
 // add event listeners to buttons and display the right component when clicked
 // homeBtn.addEventListener('click', () => {

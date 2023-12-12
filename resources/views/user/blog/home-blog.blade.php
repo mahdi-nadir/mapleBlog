@@ -133,7 +133,7 @@
                                 </p>
                             </div>
                             @if ($post->img_post_id != null)
-                                <div class="w-5/6 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                                <div class="w-3/5 h-auto mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
                                 @php
                                     $img = $post->imgPost->path;
                                 @endphp
@@ -159,9 +159,10 @@
             </div>
             @endforeach
         </div>
-        <div class="w-1/3 bg-green-500 h-screen">
+        <div class="w-1/3 bg-green-500 h-screen md:flex md:flex-col md:gap-4">
             {{-- services and ad part here --}}
             @include('layouts.weather-card')
+            @include('layouts.hashtag-card')
 
         </div>
     </div>
@@ -259,8 +260,8 @@ postPictures.forEach(element => {
         <button id="cancel" class="cancelBtn absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
         <i class="fa-solid fa-xmark"></i>
     </button>                
-                <div class="w-5/6 md:w-1/2 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
-                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover w-[500px]">
+                <div class="w-5/6 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover w-full">
                 </div>
         `;
 
