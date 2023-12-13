@@ -8,9 +8,13 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    // public function index()
-    // {
-    //     $users = User::all();
-    //     return view('user.ee.essai')->with('users', $users);
-    // }
+    public function showUserProfile($id)
+    {
+        $visitedUser = User::find($id);
+        // $image = $user->image;
+        return view('user-profile.user-profile', [
+            'visitedUser' => $visitedUser,
+            // 'image' => $image
+        ]);
+    }
 }

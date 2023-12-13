@@ -1,7 +1,6 @@
 <div id="weatherTemplate" class="bg-blue-50 dark:bg-blue-900 h-fit p-2 border-2 rounded border-black dark:border-white">
     <h1 class="text-lg md:text-lg uppercase text-center font-bold underline">{{ __('weather') }}</h1>
     <div class="text-center mx-auto text-sm md:text-md w-full md:w-[265px]">
-        {{-- <label class="font-bold italic text-slate-600" for="place">{{ __('selectPlace') }}</label> --}}
         <div class="flex flex-col md:flex-row gap-0 md:gap-2">
             <select name="place" id="place" class="rounded bg-slate-100 border-red-800 dark:border-gray-400 border-4 mt-4 text-left text-black">
                 <option value="">{{ __('select') }}</option>
@@ -215,6 +214,5 @@
         </div>
     </div>
     <div id="result" class="text-md md:text-2xl text-center mt-4">
-        {{-- <h1 class="font-bold text-5xl text-center my-3" id="degree"></h1> --}}
     </div> 
 </div>

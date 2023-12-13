@@ -44,21 +44,19 @@
                         <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 rounded pb-2">
                             <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
                                 <div class="flex flex-row justify-between items-center gap-2">
-                                    @if ($post->user->profileImage != null)
-                                        <a href="#">
+                                    <a href=" {{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
+                                        @if ($post->user->profileImage != null)
                                             <img src="{{ asset('img/users/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                        </a>
-                                    @else
-                                        <a href="#">
+                                        @else
                                             <img src="{{ asset('img/default.jpg') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                        </a>
-                                    @endif
+                                        @endif
+                                    </a>
                                     <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
-                                        <a href="#">
+                                        <a href=" {{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
                                             <span class="font-bold">{{ $post->user->username }}</span>
                                         </a>
                                         <div class="italic font-bold text-blue-500 dark:text-blue-300">
-                                            <a href="">
+                                            <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
                                                 @php
                                                     $dateString = $post->created_at;
                                                     $date = new DateTime($dateString);
@@ -164,8 +162,6 @@
             @include('layouts.weather-card')
             @include('layouts.hashtag-card')
             @include('layouts.currency-card')
-
-
         </div>
     </div>
 </x-app-layout>

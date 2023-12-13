@@ -73,6 +73,8 @@ Route::group(
                 Route::get('/maplemind-blog/{categoryId}/{postId}', [PostController::class, 'index'])->name('post.index');
                 Route::delete('/maplemind-blog/{postId}/delete', [PostController::class, 'destroy'])->name('post.destroy');
 
+                Route::get('/show-user/{id}', [UserController::class, 'showUserProfile'])->name('user.showUserProfile');
+
 
                 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
                 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -516,5 +516,6 @@
     "showPost": "Afficher la publication",
     "comment": "Commenter",
     "search": "Rechercher",
-    "comments": "Commentaires"
+    "comments": "Commentaires",
+    "showUserProfile": "Afficher le profil de l'utilisateur"
 }
