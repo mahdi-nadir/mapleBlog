@@ -1,7 +1,7 @@
 export default class CurrencyClass {
     constructor() {
-        this.modalResult = document.querySelector('#modalResult');
-        this.cancelBtn = this.modalResult.querySelectorAll('.cancel');
+        // this.modalResult = document.querySelector('#modalResult');
+        // this.cancelBtn = this.modalResult.querySelectorAll('.cancel');
         // this.currencyTemplate = document.querySelector('#currencyTemplate');
         // this.clone = currencyTemplate.content.cloneNode(true);
         this.familyMembers = document.querySelector('#familyMembers');
@@ -10,9 +10,9 @@ export default class CurrencyClass {
         this.amountDiv = document.querySelector('.amountDiv');
         this.amount = document.querySelector('#amount');
         this.convertBtn = document.querySelector('#convertBtn');
-        this.overlay = document.querySelector('#overlay');
+        // this.overlay = document.querySelector('#overlay');
         this.canadianFunds = 0;
-        this.result = document.querySelector('#result');
+        this.result = document.querySelector('#resultCurrency');
 
         this.select = document.querySelectorAll('.currencySelect');
         this.input = document.querySelectorAll('.currencyInput');
@@ -24,10 +24,10 @@ export default class CurrencyClass {
     }
 
     init() {
-        this.overlay.style.display = 'block';
-        this.overlay.style.opacity = '0.8';
-        this.overlay.style.visibility = 'visible';
-        this.modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+        // this.overlay.style.display = 'block';
+        // this.overlay.style.opacity = '0.8';
+        // this.overlay.style.visibility = 'visible';
+        // this.modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
 
         this.familyMembers.addEventListener('change', () => {
             if (this.familyMembers.value != '') {
@@ -122,19 +122,19 @@ export default class CurrencyClass {
             }
         })
 
-        this.cancelBtn.forEach(element => {
-            element.addEventListener('click', () => {
-                this.overlay.style.display = 'none';
-                this.overlay.style.opacity = '0';
-                this.overlay.style.visibility = 'hidden';
-                this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-                this.modalResult.innerHTML = `
-            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            `;
-            });
-        })
+        // this.cancelBtn.forEach(element => {
+        //     element.addEventListener('click', () => {
+        //         this.overlay.style.display = 'none';
+        //         this.overlay.style.opacity = '0';
+        //         this.overlay.style.visibility = 'hidden';
+        //         this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+        //         this.modalResult.innerHTML = `
+        //     <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+        //         <i class="fa-solid fa-xmark"></i>
+        //     </button>
+        //     `;
+        //     });
+        // })
     }
 
     async getCurrencyData() {

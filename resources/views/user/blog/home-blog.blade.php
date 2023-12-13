@@ -122,18 +122,18 @@
                         
                         {{-- post content --}}
                         <div class="text-start w-full">
-                            <div class="pl-2 overflow-hidden uppercase mb-2 text-lg font-bold md:text-2xl">
+                            <div class="pl-2 overflow-hidden uppercase mb-2 text-sm font-bold md:text-md">
                                 <h1 class="font-bold truncate">
                                     {{ $post->title }}
                                 </h1>
                             </div>
                             <div {{-- class="w-200 overflow-hidden" --}}>
-                                <p class="pl-2 text-md md:text-lg indent-4 {{-- truncate --}}">
+                                <p class="pl-2 text-sm md:text-md indent-4 {{-- truncate --}}">
                                     {{ $post->content }}
                                 </p>
                             </div>
                             @if ($post->img_post_id != null)
-                                <div class="w-3/5 h-auto mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                                <div class="w-3/5 md:w-2/5 h-auto mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
                                 @php
                                     $img = $post->imgPost->path;
                                 @endphp
@@ -163,6 +163,8 @@
             {{-- services and ad part here --}}
             @include('layouts.weather-card')
             @include('layouts.hashtag-card')
+            @include('layouts.currency-card')
+
 
         </div>
     </div>
@@ -260,8 +262,8 @@ postPictures.forEach(element => {
         <button id="cancel" class="cancelBtn absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
         <i class="fa-solid fa-xmark"></i>
     </button>                
-                <div class="w-5/6 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
-                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover w-full">
+                <div class="w-4/6 mx-auto border-2 border-slate-700 dark:border-slate-600 rounded my-4">
+                    <img src="${element.src}" alt="${element.alt}" class="postPicture cover">
                 </div>
         `;
 

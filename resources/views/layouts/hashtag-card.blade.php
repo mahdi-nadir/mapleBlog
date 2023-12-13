@@ -4,8 +4,8 @@
         <p class="italic my-2">
             <span class="font-bold text-red-600">Note:</span> {{ __('getHashtagMsg') }}
         </p>
-        <label class="font-bold text-slate-600 inline-block mb-2 mt-4" for="hashtag">{{ __('getHashtagMsg2') }}</label>
-        <select name="hashtag" id="hashtag" class="rounded bg-slate-100 border-red-800 border-4 custom-select w-2/3 h-7">
+        <label class="font-bold text-slate-600 inline-block mb-2 mt-4 dark:text-white" for="hashtag">{{ __('getHashtagMsg2') }}</label>
+        <select name="hashtag" id="hashtag" class="rounded bg-slate-100 dark:border-gray-400 border-red-800 border-4 custom-select w-2/3 h-7">
                 <option value="">{{ __('select') }}</option>
                 <option value="age">Age</option>
                 <option value="adr">{{ __('adr') }}</option>
@@ -73,6 +73,6 @@
                 <option value="wPermit">{{ __('wPermit') }}</option>
             </select>
     </div>
-    <button id="getHashtagBtn" class="font-bold bg-blue-500 text-white px-2 py-1 mt-2 rounded-lg block mx-auto">{{ __('generate') }}</button>
+    <button id="getHashtagBtn" class="font-bold bg-blue-500 text-white px-2 py-1 mt-4 rounded-lg block mx-auto">{{ __('generate') }}</button>
     <h1 id="resultHashtag" class="text-sm md:text-lg text-center mt-5"></h1> 
 </div>
