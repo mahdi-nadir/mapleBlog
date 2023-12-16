@@ -93,6 +93,9 @@
             <x-responsive-nav-link :href="route('profile.edit')" class="px-2" title="{{ Auth::user()->username }}">
                 <i class="fa-solid fa-user text-xl md:text-2xl hover:text-green-400"></i>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('profile.showMessages', Auth::user()->id )" class="px-2" title="{{ Auth::user()->username }}">
+                <i class="fa-solid fa-envelope text-xl md:text-2xl hover:text-green-400"></i>
+            </x-responsive-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="px-2">

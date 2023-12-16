@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\MyTestEmail;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -9,10 +10,10 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArrimaController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExpressEntryController;
 use App\Http\Controllers\Auth\ProviderController;
-use App\Mail\MyTestEmail;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -74,6 +75,7 @@ Route::group(
                 Route::delete('/maplemind-blog/{postId}/delete', [PostController::class, 'destroy'])->name('post.destroy');
 
                 Route::get('/show-user/{id}', [UserController::class, 'showUserProfile'])->name('user.showUserProfile');
+                Route::get('/show-messages/{id}', [MessageController::class, 'showMessages'])->name('profile.showMessages');
 
 
                 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

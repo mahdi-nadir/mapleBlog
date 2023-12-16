@@ -57,9 +57,13 @@
                                         <img src="{{ $profileImage }}" alt="{{ $altText }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                                     </a>
                                     <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
-                                        <a href=" {{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
-                                            <span class="font-bold">{{ $post->user->username }}</span>
-                                        </a>
+                                        @if ($post->user_id == Auth::user()->id)
+                                            <a href="{{ route('profile.edit')}}" title="{{ Auth::user()->username }}">
+                                        @else
+                                            <a href="{{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
+                                        @endif
+                                                <span class="font-bold">{{ $post->user->username }}</span>
+                                            </a>
                                         <div class="italic font-bold text-blue-500 dark:text-blue-300">
                                             <a href=" {{ route('post.index', [$post->category->name_en, $post->id]) }}" title="{{ __('showPost') }}">
                                                 @php
