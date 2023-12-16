@@ -518,5 +518,6 @@
     "search": "Search",
     "comments": "Comments",
     "showUserProfile": "Show User Profile",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "readLess": "Read Less"
 }
