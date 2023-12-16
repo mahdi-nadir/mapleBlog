@@ -44,12 +44,17 @@
                         <div class="flex flex-col justify-center items-start border-b-2 border-slate-700 dark:border-slate-600 bg-red-200 dark:bg-slate-400 rounded pb-2">
                             <div class="w-full px-2 text-black flex flex-row justify-between items-center mt-2">
                                 <div class="flex flex-row justify-between items-center gap-2">
-                                    <a href=" {{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
-                                        @if ($post->user->profileImage != null)
-                                            <img src="{{ asset('img/users/' . $post->user->profileImage->path) }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                        @else
-                                            <img src="{{ asset('img/default.jpg') }}" alt="Profile Picture of {{ $post->user->username }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
-                                        @endif
+                                    @php
+                                        $profileImage = $post->user->profileImage != null ? asset('img/users/' . $post->user->profileImage->path) : asset('img/default.jpg');
+                                        $altText = "Profile Picture of " . $post->user->username;
+                                    @endphp
+
+                                    @if ($post->user_id == Auth::user()->id)
+                                        <a href="{{ route('profile.edit')}}" title="{{ Auth::user()->username }}">
+                                    @else
+                                        <a href="{{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
+                                    @endif
+                                        <img src="{{ $profileImage }}" alt="{{ $altText }}" class="rounded-full w-8 h-8 md:w-14 md:h-14 border-2 border-black dark:border-white">
                                     </a>
                                     <div class="flex flex-col text-start justify-center items-start text-[14px] dark:text-white">
                                         <a href=" {{ route('user.showUserProfile', $post->user_id) }}" title="{{ __('showUserProfile') }}">
