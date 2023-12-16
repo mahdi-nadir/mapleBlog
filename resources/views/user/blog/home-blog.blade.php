@@ -126,8 +126,8 @@
                                 </h1>
                             </div>
                             <div {{-- class="w-200 overflow-hidden" --}}>
-                                <p class="pl-2 text-sm md:text-md indent-4 {{-- truncate --}}">
-                                    {{ $post->content }}
+                                <p class="postContent pl-2 text-sm md:text-md indent-4 {{-- truncate --}}">
+                                    {{ $post->content }} <button class="readMoreBtn text-blue-500 dark:text-blue-300 hover:underline hover:text-blue-700 dark:hover:text-blue-400 cursor-pointer" style="display: none;">{{ __('readMore') }}</button>
                                 </p>
                             </div>
                             @if ($post->img_post_id != null)
@@ -248,6 +248,27 @@
 //         });
 //     })
 // });
+
+let postContents = document.querySelectorAll('.postContent');
+postContents.forEach(postContent => {
+    let readMore = postContent.querySelector('.readMoreBtn');
+    if (postContent.textContent.length > 100) {
+        postContent.classList.add('truncate');
+        readMore.style.display = 'block';
+        readMore.addEventListener('click', () => {
+            if (postContent.classList.contains('truncate')) {
+                postContent.classList.remove('truncate');
+                readMore.textContent = "{{ __('readLess') }}";
+            } else {
+                postContent.classList.add('truncate');
+                readMore.textContent = "{{ __('readMore') }}";
+            }
+        });
+    } else {
+        return
+    }
+})
+
 
 let postPictures = document.querySelectorAll('.postPicture');
 postPictures.forEach(element => {

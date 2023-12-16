@@ -517,5 +517,6 @@
     "comment": "Commenter",
     "search": "Rechercher",
     "comments": "Commentaires",
-    "showUserProfile": "Afficher le profil de l'utilisateur"
+    "showUserProfile": "Afficher le profil de l'utilisateur",
+    "readMore": "Lire la suite"
 }
