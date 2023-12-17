@@ -517,7 +517,9 @@
     "comment": "Comment",
     "search": "Search",
     "comments": "Comments",
-    "showUserProfile": "Show User Profile",
+    "showUserProfile": "Show Profile of ",
+    "showMessage": "Show Message",
+    "deleteMessage": "Delete Message",
     "readMore": "Read More",
     "readLess": "Read Less"
 }

@@ -517,7 +517,9 @@
     "comment": "Commenter",
     "search": "Rechercher",
     "comments": "Commentaires",
-    "showUserProfile": "Afficher le profil de l'utilisateur",
+    "showUserProfile": "Afficher le profil de ",
+    "showMessage": "Afficher le message",
+    "deleteMessage": "Supprimer le message",
     "readMore": "Lire la suite",
     "readLess": "Lire moins"
 }

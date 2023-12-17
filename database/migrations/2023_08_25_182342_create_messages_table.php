@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('content', 300);
             $table->unsignedBigInteger('from_user_id');
             $table->unsignedBigInteger('to_user_id');
+            $table->boolean('from_show')->default(true);
+            $table->boolean('to_show')->default(true);
             $table->timestamps();
             $table->softDeletes();
 

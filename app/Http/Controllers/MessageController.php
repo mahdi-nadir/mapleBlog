@@ -13,7 +13,18 @@ class MessageController extends Controller
      */
     public function showMessages($user_id)
     {
-        $messages = Message::where('to_user_id', auth()->user()->id)->get()->where('to_show', true);
+        $userId = auth()->user()->id;
+
+        $messages = Message::where(function ($query) use ($userId) {
+            $query->where('to_user_id', $userId)
+                ->where('to_show', true);
+        })
+            ->orWhere(function ($query) use ($userId) {
+                $query->where('from_user_id', $userId)
+                    ->where('from_show', true);
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('profile.messages.messages', compact('messages'));
     }
 
@@ -68,8 +79,16 @@ class MessageController extends Controller
     public function hideMessage($id)
     {
         $message = Message::where('id', $id)->first();
-        $message->to_show = false;
-        $message->save();
+        if ($message->to_show == true && $message->from_show == true || $message->to_show == true && $message->from_show == false) {
+            $message->to_show = false;
+            $message->save();
+        } elseif ($message->to_show == false && $message->from_show == true) {
+            $message->from_show = false;
+            $message->save();
+        } elseif ($message->to_show == false && $message->from_show == false) {
+            $message->delete();
+        }
+        // $message->save();
         return redirect()->route('profile.showMessages', auth()->user()->id);
     }
 
