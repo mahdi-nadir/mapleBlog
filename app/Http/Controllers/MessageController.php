@@ -11,9 +11,9 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function showMessages($id)
+    public function showMessages($user_id)
     {
-        $messages = Message::where('to_user_id', auth()->user()->id)->get();
+        $messages = Message::where('to_user_id', auth()->user()->id)->get()->where('to_show', true);
         return view('profile.messages.messages', compact('messages'));
     }
 
@@ -38,7 +38,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -46,7 +45,8 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $message = Message::where('id', $id)->first();
+        return view('profile.messages.show-message', compact('message'));
     }
 
     /**
@@ -63,6 +63,14 @@ class MessageController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    public function hideMessage($id)
+    {
+        $message = Message::where('id', $id)->first();
+        $message->to_show = false;
+        $message->save();
+        return redirect()->route('profile.showMessages', auth()->user()->id);
     }
 
     /**

@@ -75,7 +75,10 @@ Route::group(
                 Route::delete('/maplemind-blog/{postId}/delete', [PostController::class, 'destroy'])->name('post.destroy');
 
                 Route::get('/show-user/{id}', [UserController::class, 'showUserProfile'])->name('user.showUserProfile');
-                Route::get('/show-messages/{id}', [MessageController::class, 'showMessages'])->name('profile.showMessages');
+                Route::get('/show-messages/{user_id}', [MessageController::class, 'showMessages'])->name('profile.showMessages');
+                Route::get('/show-message/{id}', [MessageController::class, 'show'])->name('message.show');
+                Route::post('/delete-message/{id}', [MessageController::class, 'hideMessage'])->name('message.hide');
+
 
 
                 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
