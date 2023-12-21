@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -14,18 +15,25 @@ class MessageController extends Controller
     public function showMessages($user_id)
     {
         $userId = auth()->user()->id;
-
-        $messages = Message::where(function ($query) use ($userId) {
-            $query->where('to_user_id', $userId)
-                ->where('to_show', true);
-        })
-            ->orWhere(function ($query) use ($userId) {
-                $query->where('from_user_id', $userId)
-                    ->where('from_show', true);
-            })
-            ->orderBy('created_at', 'desc')
+        $messages = Message::where('from_user_id', $user_id)
+            ->orWhere('to_user_id', $user_id)
+            ->distinct()
             ->get();
-        return view('profile.messages.messages', compact('messages'));
+
+        $users = [];
+
+        foreach ($messages as $message) {
+            if ($message->from_user_id == $userId) {
+                $user = User::where('id', $message->to_user_id)->first();
+                $users[] = $user;
+            } elseif ($message->to_user_id == $userId) {
+                $user = User::where('id', $message->from_user_id)->first();
+                $users[] = $user;
+            }
+        }
+        $users = array_unique($users);
+
+        return view('profile.messages.messages', compact('messages', 'users'));
     }
 
     /**
