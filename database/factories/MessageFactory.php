@@ -14,12 +14,16 @@ class MessageFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            'content' => $this->faker->text(50),
-            'from_user_id' => $this->faker->numberBetween(1, 5),
-            'to_user_id' => $this->faker->numberBetween(1, 5),
+            'inbox_id' => fake()->numberBetween(1, 5),
+            // 'user_inbox_id' => fake()->numberBetween(1, 5),
+            // 'user_communicating_id' => fake()->numberBetween(1, 5),
+            // 'content' => fake()->text(150),
+            'user1_id' => fake()->numberBetween(1, 5),
+            'user2_id' => fake()->numberBetween(1, 5),
+            'content' => fake()->text(150),
         ];
     }
 }

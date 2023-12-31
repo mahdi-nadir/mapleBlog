@@ -2,38 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Message;
 use App\Models\User;
+use App\Models\Message;
+use App\Models\InboxParticipants;
+use App\Models\Inbox;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function showMessages($user_id)
+    public function showMessages()
     {
-        $userId = auth()->user()->id;
-        $messages = Message::where('from_user_id', $user_id)
-            ->orWhere('to_user_id', $user_id)
-            ->distinct()
-            ->get();
-
-        $users = [];
-
-        foreach ($messages as $message) {
-            if ($message->from_user_id == $userId) {
-                $user = User::where('id', $message->to_user_id)->first();
-                $users[] = $user;
-            } elseif ($message->to_user_id == $userId) {
-                $user = User::where('id', $message->from_user_id)->first();
-                $users[] = $user;
-            }
-        }
-        $users = array_unique($users);
-
-        return view('profile.messages.messages', compact('messages', 'users'));
+        // $inboxParticipants = InboxParticipants::where('user_inbox_id', auth()->user()->id)
+        //     ->orWhere('user_communicating_id', auth()->user()->id)->get();
+        // $inboxes = [];
+        // foreach ($inboxParticipants as $inboxParticipant) {
+        //     $inbox = Inbox::where('id', $inboxParticipant->inbox_id)->first();
+        //     array_push($inboxes, $inbox);
+        // }
+        // get only users that have sent messages to the auth user and the auth user has sent messages to
+        // $users = [];
+        // foreach ($inboxes as $inbox) {
+        //     $user = User::where('id', $inbox->last_message_sent_id)->first();
+        //     array_push($users, $user);
+        //     // delete duplicates
+        //     $users = array_unique($users);
+        // }
+        $inboxes = Inbox::where('user1_id', auth()->user()->id)
+            ->orWhere('user2_id', auth()->user()->id)->get();
+        return view('profile.messages.messages', compact(/* 'users', */'inboxes'));
     }
 
     /**
@@ -62,10 +63,11 @@ class MessageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $inbox_id)
     {
-        $message = Message::where('id', $id)->first();
-        return view('profile.messages.show-message', compact('message'));
+        // $inbox = Inbox::where('id', $inbox_id)->first();
+        $messages = Message::where('inbox_id', $inbox_id)->/* where('user1_id', auth()->user()->id)->orWhere('user2_id', auth()->user()->id)-> */get();
+        return view('profile.messages.show-message', compact('messages'));
     }
 
     /**

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Inbox;
+use App\Models\InboxParticipants;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -104,15 +106,20 @@ class User extends Authenticatable
         return $this->belongsTo(Step::class);
     }
 
-    public function sentMessages()
+    public function inboxes()
     {
-        return $this->hasMany(Message::class, 'from_user_id');
+        return $this->hasMany(Inbox::class, 'user1_id', 'id')->orWhere('user2_id', $this->id);
     }
 
-    public function receivedMessages()
+    public function sentMessages()
     {
-        return $this->hasMany(Message::class, 'to_user_id');
+        return $this->hasMany(Message::class, 'user_id', 'id');
     }
+
+    // public function receivedMessages()
+    // {
+    //     return $this->hasMany(Message::class, 'to_user_id');
+    // }
 
     public function gender()
     {

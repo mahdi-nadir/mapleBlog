@@ -49,48 +49,54 @@
                     </td>
                 </tr>
                 @endforeach --}}
-                @foreach ($users as $user)
+                {{-- {{ $inboxes[0]->inbox_participants }} --}}
+                @foreach ($inboxes as $inbox)
                 <tr class="messagesTr border-2 border-black">
                     <td class="p-2 pl-1 flex flex-row justify-start items-center gap-1">
                         @php
-                            $profileImage = $user->profileImage != null ? asset('img/users/' . $user->profileImage->path) : asset('img/default.jpg');
-                            $altText = "Profile Picture of " . $user->username;
+                            $inboxUser = $inbox->user1->id == Auth::user()->id ? $inbox->user2 : $inbox->user1;
+                            /* if ($inbox->user1->id == Auth::user()->id) {
+                                $inboxUser = $inboxUser->user2_id;
+                            } else {
+                                $inboxUser = $inboxUser->user1_id;
+                            } */
+                            $profileImage = $inboxUser->profileImage != null ? asset('img/users/' . $inboxUser->profileImage->path) : asset('img/default.jpg');
+                            $altText = "Profile Picture of " . $inboxUser->username;
                         @endphp
-                        <a href="{{ route('user.showUserProfile', $user->id) }}" title="{{ __('showUserProfile') . $user->username }}" class="flex flex-row justify-start items-center gap-1">
+                        <a href="{{ route('user.showUserProfile', $inboxUser->id) }}" title="{{ __('showUserProfile') . $inboxUser->username }}" class="flex flex-row justify-start items-center gap-1">
                             <img src="{{ $profileImage }}" alt="{{ $altText }}" class="rounded-full w-4 h-4 md:w-7 md:h-7 border-2 border-black dark:border-white">
-                            {{$user->username}}
+                            {{$inboxUser->username}}
                         </a>
-
                     </td>
                     <td class="messageContent text-start p-2">
-                        {{$user->sentMessages == null ? $user->receivedMessages->last()->content : $user->sentMessages->last()}}
+                        {{$inbox->last_message}}
                     </td>
-                    {{-- <td class="messageDate text-start p-2">
+                    <td class="messageDate text-start p-2">
                         @php
-                            $message = $user->sentMessages == null ? $user->receivedMessages->last() : $user->sentMessages->last();
-                            $date = new DateTime($message->created_at);
+                            $message_time = $inbox->updated_at;
+                            $date = new DateTime($message_time);
                             $result = $date->format('d M Y - H:i');
                         @endphp
                         {{$result}}
-                    </td> --}}
+                    </td>
                     <td class="flex flex-row justify-start items-center gap-2 p-2">
-                        @php
+                        {{-- @php
                             $message = $user->sentMessages == null ? $user->receivedMessages->last() : $user->sentMessages->last();
-                        @endphp
+                        @endphp --}}
                         {{-- delete message --}}
                         {{-- <form action="{{route('message.hide', $message->id)}}" method="POST">
                             @csrf
                             <button type="submit" title="{{ __('deleteMessage') }}"><i class="fa-solid fa-trash"></i></button>
                         </form> --}}
                         {{-- <a href="{{route('message.show', $message->id)}}"><i class="fa-regular fa-comment-dots"></i></i></a> --}}
-                        {{-- <a href="{{route('message.show', $message->id)}}" title="{{ __('showMessage') }}"><i class="fa-solid fa-eye"></i></a> --}}
+                        <a href="{{route('inbox.show', $inbox->id)}}" title="{{ __('showMessage') }}"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach
         </table>
-        @foreach ($users as $user)
+        {{-- @foreach ($users as $user)
             {{ $user->username }}
-        @endforeach
+        @endforeach --}}
         </div>
         <div class="w-1/3 bg-green-500 h-screen md:flex md:flex-col md:gap-4">
             @include('layouts.weather-card')

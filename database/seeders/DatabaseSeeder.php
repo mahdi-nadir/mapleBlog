@@ -11,6 +11,8 @@ use App\Models\Diploma;
 use App\Models\Gender;
 use App\Models\ImgPost;
 use App\Models\ImgUser;
+use App\Models\Inbox;
+use App\Models\InboxParticipants;
 use App\Models\Message;
 use App\Models\Noc;
 use App\Models\Post;
@@ -85,6 +87,8 @@ class DatabaseSeeder extends Seeder
         Post::factory(5)->create();
         Comment::factory(5)->create();
 
+        Inbox::factory(5)->create();
+        // InboxParticipants::factory(5)->create();
         Message::factory(5)->create();
     }
 }
