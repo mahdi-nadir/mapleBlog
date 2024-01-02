@@ -66,7 +66,7 @@ class MessageController extends Controller
     public function show(string $inbox_id)
     {
         // $inbox = Inbox::where('id', $inbox_id)->first();
-        $messages = Message::where('inbox_id', $inbox_id)->/* where('user1_id', auth()->user()->id)->orWhere('user2_id', auth()->user()->id)-> */get();
+        $messages = Message::where('inbox_id', $inbox_id)->orderBy('created_at', 'asc')->/* where('user1_id', auth()->user()->id)->orWhere('user2_id', auth()->user()->id)-> */get();
         return view('profile.messages.show-message', compact('messages'));
     }
 
