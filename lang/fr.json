@@ -521,5 +521,6 @@
     "showMessage": "Afficher le message",
     "deleteMessage": "Supprimer le message",
     "readMore": "Lire la suite",
-    "readLess": "Lire moins"
+    "readLess": "Lire moins",
+    "goToProfile": "Aller au profil"
 }
