@@ -78,6 +78,8 @@ Route::group(
                 Route::get('/show-messages', [MessageController::class, 'showMessages'])->name('profile.showMessages');
                 Route::get('/show-conversation/{inbox_id}', [MessageController::class, 'show'])->name('inbox.show');
                 Route::post('/delete-message/{id}', [MessageController::class, 'hideMessage'])->name('message.hide');
+                Route::post('/message-read/{inbox_id}', [MessageController::class, 'messageRead'])->name('message.read');
+                Route::get('/number-of-messages', [MessageController::class, 'nbOfMessages'])->name('messages.number');
 
 
 

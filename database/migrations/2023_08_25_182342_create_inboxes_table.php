@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user2_id');
             $table->mediumText('last_message');
             $table->unsignedBigInteger('last_message_sent_id');
+            $table->boolean('read_user1')->default(false);
+            $table->boolean('read_user2')->default(false);
 
             $table->foreign('last_message_sent_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user1_id')->references('id')->on('users')->onDelete('cascade');

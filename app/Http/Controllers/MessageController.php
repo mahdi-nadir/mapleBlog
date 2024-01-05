@@ -45,6 +45,32 @@ class MessageController extends Controller
         //
     }
 
+    public function messageRead(Request $request)
+    {
+        $inbox = Inbox::where('id', $request->inbox_id)->first();
+        if ($inbox->user1_id == auth()->user()->id) {
+            $inbox->read_user1 = true;
+        } elseif ($inbox->user2_id == auth()->user()->id) {
+            $inbox->read_user2 = true;
+        }
+        $inbox->save();
+        return redirect()->route('inbox.show', $request->inbox_id);
+    }
+
+    public function nbOfMessages()
+    {
+        $userId = auth()->user()->id;
+        $messages = [];
+        $inboxesWhereUserAppears = Inbox::where('user1_id', $userId)->orWhere('user2_id', $userId)->get();
+        foreach ($inboxesWhereUserAppears as $inbox) {
+            if ($inbox->user1_id == $userId && $inbox->read_user1 == false) {
+                $messages[] = $inbox->id;
+            } elseif ($inbox->user2_id == $userId && $inbox->read_user2 == false) {
+                $messages[] = $inbox->id;
+            }
+        }
+        return response()->json($messages);
+    }
     /**
      * Show the form for creating a new resource.
      */

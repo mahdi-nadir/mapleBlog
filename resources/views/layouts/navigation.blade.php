@@ -94,7 +94,8 @@
                 <i class="fa-solid fa-user text-xl md:text-2xl hover:text-green-400"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('profile.showMessages', Auth::user()->id )" class="px-2" title="{{ Auth::user()->username }}">
-                <i class="fa-solid fa-envelope text-xl md:text-2xl hover:text-green-400"></i>
+                <i class="fa-solid fa-envelope text-xl md:text-2xl hover:text-green-400 relative">
+                <span id="nbMsgs" class="bg-green-500 text-white rounded-full text-[8px] font-bold p-1 absolute top-3 left-4"></span></i>
             </x-responsive-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -166,12 +167,20 @@
     }
 });
 
-// const storedFrench = localStorage.getItem('french');
-// if (storedFrench === 'true') {
-//     toggleLanguage();
-// } else {
-//     // Update the language button text based on the current URL
-//     languageToggle.innerHTML = window.location.href.includes('/fr') ? 'EN' : 'FR';
-// }
+const nbMsgs = document.querySelector('#nbMsgs');
+const nbMsgsRoute = "{{ route('messages.number') }}";
+
+(function fetchMessages() {
+    fetch(nbMsgsRoute)
+        .then((response) => response.json())
+        .then(async (data) => {
+            nbMsgs.innerHTML = data.length;
+            data.length == 0 ? nbMsgs.style.display = 'none' : nbMsgs.style.display = 'block';
+        });
+})();
+
+setInterval(() => {
+    fetchMessages();
+}, 60000);
 </script>
 
