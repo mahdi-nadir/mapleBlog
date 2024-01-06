@@ -94,8 +94,7 @@
                 <i class="fa-solid fa-user text-xl md:text-2xl hover:text-green-400"></i>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('profile.showMessages', Auth::user()->id )" class="px-2" title="{{ Auth::user()->username }}">
-                <i class="fa-solid fa-envelope text-xl md:text-2xl hover:text-green-400 relative">
-                <span id="nbMsgs" class="bg-green-500 text-white rounded-full text-[8px] font-bold p-1 absolute top-3 left-4"></span></i>
+                <i id="iconLetter" class="fa-solid fa-envelope text-xl md:text-2xl hover:text-green-400 relative"></i>
             </x-responsive-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -159,28 +158,34 @@
 
     
     // switch language
-    const languageToggle = document.querySelector('#language');languageToggle.addEventListener('click', () => {
-    if (languageToggle.innerHTML == 'EN') {
-        window.location.href = window.location.href.replace('/fr', '/en');
-    } else {
-        window.location.href = window.location.href.replace('/en', '/fr');
-    }
-});
+    const languageToggle = document.querySelector('#language');
+    
+    languageToggle.addEventListener('click', () => {
+        if (languageToggle.innerHTML == 'EN') {
+            window.location.href = window.location.href.replace('/fr', '/en');
+        } else {
+            window.location.href = window.location.href.replace('/en', '/fr');
+        }
+    });
 
-const nbMsgs = document.querySelector('#nbMsgs');
+const iconLetter = document.querySelector('#iconLetter');
 const nbMsgsRoute = "{{ route('messages.number') }}";
 
-(function fetchMessages() {
+function fetchMessages() {
     fetch(nbMsgsRoute)
         .then((response) => response.json())
         .then(async (data) => {
-            nbMsgs.innerHTML = data.length;
-            data.length == 0 ? nbMsgs.style.display = 'none' : nbMsgs.style.display = 'block';
+            if (data.length >= 1) {
+                let nbMsgs = document.createElement('span');
+                nbMsgs.classList.add('bg-green-500', 'text-white', 'rounded-full', 'text-[8px]', 'font-bold', 'p-1', 'absolute', 'top-3', 'left-4', 'animate-bounce');
+                nbMsgs.innerHTML = data.length;
+                iconLetter.appendChild(nbMsgs);
+            }  
         });
-})();
+}
 
-setInterval(() => {
+// setTimeout(() => {
     fetchMessages();
-}, 60000);
+// }, 2000);
 </script>
 
